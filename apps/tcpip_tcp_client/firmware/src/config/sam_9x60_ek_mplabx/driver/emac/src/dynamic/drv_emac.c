@@ -206,7 +206,6 @@ SYS_MODULE_OBJ macDrvrInitialize(
     }
 
     pMacDrvr = macDrvrDescription + macIndex;
-    pMacDrvr->pObj = macDrvrObjects[macIndex];
 
     if( SYS_STATUS_UNINITIALIZED != pMacDrvr->sysStat )
     {   // already initialized
@@ -249,6 +248,7 @@ SYS_MODULE_OBJ macDrvrInitialize(
     // initialize the MAC object
     memset( pMacDrvr, 0x0, sizeof( *pMacDrvr ) );
 
+    pMacDrvr->pObj = macDrvrObjects[macIndex];
     pMacDrvr->hPhyClient = DRV_HANDLE_INVALID;
     pMacDrvr->hPhySysObject = SYS_MODULE_OBJ_INVALID;
     pMacDrvr->sysStat = SYS_STATUS_UNINITIALIZED;
@@ -256,9 +256,6 @@ SYS_MODULE_OBJ macDrvrInitialize(
     pMacDrvr->macIx = macIndex;
     pMacDrvr->phyIx = macIndex;     // use the same index for the associated PHY
     pMacDrvr->macFlags._linkPrev = 0;
-
-    memset( &pMacDrvr->rxStat, 0, sizeof( pMacDrvr->rxStat ) );
-    memset( &pMacDrvr->txStat, 0, sizeof( pMacDrvr->txStat ) );
 
     // use initialization data
     pMacDrvr->allocH = macControl->memH;
@@ -498,12 +495,12 @@ DRV_HANDLE macDrvrOpen(
                     pMacDrvr->macFlags._open = 1;
                     hMac = (DRV_HANDLE) pMacDrvr;
                 }
-#if (macDrvrCLIENTS_NUMBER > 1)
+#if defined(macDrvrCLIENTS_NUMBER) && (macDrvrCLIENTS_NUMBER > 1)
                 else
                 {   // allow multiple clients
                     hMac = (DRV_HANDLE) pMacDrvr;
                 }
-#endif
+#endif  // defined(macDrvrCLIENTS_NUMBER) && (macDrvrCLIENTS_NUMBER > 1)
                 break;
             case SYS_STATUS_ERROR_EXTENDED:
             case SYS_STATUS_ERROR:
@@ -787,7 +784,7 @@ static void macDrvrTxAcknowledge( MAC_DRIVER * pMacDrvr )
     {
         segmentsReady = 0;
         extract = pMacDrvr->txExtractPt;
-        if( EMAC_TX_ERR_BITS & pMacDrvr->pTxDesc[ extract ].status.val )
+        if( (EMAC_TX_ERR_BITS & pMacDrvr->pTxDesc[ extract ].status.val) )
         {   // transmit error: emac has restarted at base, descriptors should be reset
             macDrvrTxAckAllPending( pMacDrvr, TCPIP_MAC_PKT_ACK_BUFFER_ERR );
             macDrvrLibTxInit( pMacDrvr );
@@ -871,7 +868,7 @@ static MAC_DRVR_RESULT macDrvrRemoveDynamicsFromPacketPool( MAC_DRIVER * pMacDrv
         pMacPacket = macDrvrPacketListHeadRemove( &pMacDrvr->rxMacPacketPool );
         if( pMacPacket )
         {
-            if( pMacPacket->pDSeg->segFlags & TCPIP_MAC_SEG_FLAG_RX_STICKY )
+            if( (pMacPacket->pDSeg->segFlags & TCPIP_MAC_SEG_FLAG_RX_STICKY) )
             {
                 macDrvrPacketListTailAdd( &pMacDrvr->rxMacPacketPool,
                                           pMacPacket
@@ -1196,7 +1193,7 @@ bool macDrvrEventMaskSet(
 
     macEvents &= ~pEventDescription->macEventsPending;      // keep un-ack events
     (void) pMacRegs->EMAC_ISR;                              // clear the interrupt status
-    pMacRegs->EMAC_IDR = ~macEvents & EMAC_IDR_Msk;
+    pMacRegs->EMAC_IDR = (~macEvents) & EMAC_IDR_Msk;
     pMacRegs->EMAC_IER =  macEvents & EMAC_IER_Msk;
     SYS_INT_SourceRestore( pMacDrvr->config.macIntSrc, previouslyActive );
     if( previouslyActive )
@@ -1483,7 +1480,7 @@ static void macDrvrLinkStateGetLink( MAC_DRIVER * pMacDrvr )
         {   // some error occurred
             macDrvrLinkStateDown( pMacDrvr );
         }
-        else if( !pMacDrvr->linkInfo.negResult.linkStatus & DRV_ETHPHY_LINK_ST_UP )
+        else if( !(pMacDrvr->linkInfo.negResult.linkStatus & DRV_ETHPHY_LINK_ST_UP) )
         {   // down
             macDrvrLinkStateDown( pMacDrvr );
         }
@@ -1569,7 +1566,7 @@ static void macDrvrLinkStateNegResult( MAC_DRIVER * pMacDrvr )
         {   // some error occurred
             macDrvrLinkStateDown( pMacDrvr );
         }
-        else if( pMacDrvr->linkInfo.negResult.linkStatus & DRV_ETHPHY_LINK_ST_UP )
+        else if( (pMacDrvr->linkInfo.negResult.linkStatus & DRV_ETHPHY_LINK_ST_UP) )
         {   // negotiation succeeded; properly update the MAC
             pPhyBase->DRV_ETHPHY_HWConfigFlagsGet( pMacDrvr->hPhyClient, &phyCfgFlags );
             pMacDrvr->linkInfo.negResult.linkFlags |= (phyCfgFlags & DRV_ETHPHY_CFG_RMII) ? TCPIP_ETH_OPEN_RMII : TCPIP_ETH_OPEN_MII;

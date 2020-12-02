@@ -231,6 +231,10 @@ const TCPIP_IPV4_MODULE_CONFIG  tcpipIPv4InitData =
 };
 
 
+
+
+
+
 TCPIP_STACK_HEAP_INTERNAL_CONFIG tcpipHeapConfig =
 {
     .heapType = TCPIP_STACK_HEAP_TYPE_INTERNAL_HEAP,
@@ -307,7 +311,7 @@ const size_t TCPIP_STACK_MODULE_CONFIG_TBL_SIZE = sizeof (TCPIP_STACK_MODULE_CON
  ********************************************************************/
 
 
-SYS_MODULE_OBJ TCPIP_STACK_Init()
+SYS_MODULE_OBJ TCPIP_STACK_Init(void)
 {
     TCPIP_STACK_INIT    tcpipInit;
 
@@ -520,6 +524,7 @@ void SYS_Initialize ( void* data )
     SYS_ASSERT(sysObj.tcpip != SYS_MODULE_OBJ_INVALID, "TCPIP_STACK_Init Failed" );
 
 
+    CRYPT_WCCB_Initialize();
 
     APP_Initialize();
 

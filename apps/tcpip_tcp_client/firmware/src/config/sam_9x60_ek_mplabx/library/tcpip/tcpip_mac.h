@@ -339,8 +339,13 @@ typedef struct _tag_MAC_DATA_SEGMENT
 
     /*  Segment payload size;
         TX: Number of bytes from this segment that has to be transmitted.
+            This is the total number of bytes including the Ethernet header
+            but not the FCS (that should be added by the driver)
         RX: Number of payload bytes in the segment.
-        Note: the segLen field is updated by each stack layer in turn */
+            The MAC driver subtracts the FCS and Ethernet header length before
+            handing over the packet to the stack
+            
+            Then the segLen field is updated by each stack layer in turn */
     uint16_t                 segLen;         
 
     /*  Segment allocated total usable size.
@@ -663,6 +668,12 @@ typedef enum
 
     /* RX: packet was dropped because it was processed externally */
     TCPIP_MAC_PKT_ACK_EXTERN            = -20,
+
+    /* RX: packet was directly processed successfuly by the bridge */
+    TCPIP_MAC_PKT_ACK_BRIDGE_DONE       = -21,
+
+    /* RX: packet was dropped by the bridge */
+    TCPIP_MAC_PKT_ACK_BRIDGE_DISCARD    = -22,
 }TCPIP_MAC_PKT_ACK_RES;
 
 
@@ -860,10 +871,7 @@ struct _tag_TCPIP_MAC_PACKET
     uint8_t*                        pNetLayer;
 
     /* Pointer to the transport layer.
-       On TX: the sending higher layer protocol updates this field.
-            The MAC driver shouldn't need this field.
-       On RX: the MAC driver updates this field before handing over the packet.
-       (MCHP TCP/IP stack note: The packet allocation function updates this field automatically. But not for IPv6!). */
+       The MAC driver does not use this field. */
     uint8_t*                        pTransportLayer;
 
     /* Total length of the transport layer.
