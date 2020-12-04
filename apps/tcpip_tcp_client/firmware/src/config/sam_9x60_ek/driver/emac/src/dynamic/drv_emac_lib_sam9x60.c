@@ -81,9 +81,9 @@ typedef struct
 } EMAC1_DRVR_HW_DCPT_SPACE;
 // place the descriptors in an uncached memory region
 #if defined(__XC32)
-__attribute__((__aligned__(32))) __attribute__((space(data),section(".region_nocache"))) EMAC0_DRVR_HW_DCPT_SPACE EMAC0_DcptArray;
+__attribute__((__aligned__(32))) __attribute__((space(data),section(".region_nocache"))) EMAC1_DRVR_HW_DCPT_SPACE EMAC1_DcptArray;
 #elif defined(__IAR_SYSTEMS_ICC__)
-__attribute__((__aligned__(4))) EMAC0_DRVR_HW_DCPT_SPACE EMAC0_DcptArray @".region_nocache";
+__attribute__((__aligned__(4))) EMAC1_DRVR_HW_DCPT_SPACE EMAC1_DcptArray @".region_nocache";
 #endif
 #endif
 
@@ -240,7 +240,7 @@ void macDrvrLibInitializeEmac( MAC_DRIVER * pMacDrvr )
     {   // Receive All Multi-cast packets, so set 64-bit hash value to all ones.
         // check against DRV_EMACx_RX_FILTERS
         MAC_DRVR_HASH hash;
-        hash.value = 0xffffffffffffffff;    // Set 64-bit Hash value to all 1s, to receive all multi-cast
+        hash.value = -1;    // Set 64-bit Hash value to all 1s, to receive all multi-cast
         hash.calculate = false;             // No hash calculation; directly set hash register
         macDrvrLibRxFilterHashCalculate( pMacDrvr, &hash );
     }
@@ -546,7 +546,7 @@ macDrvrHashValueSet(
 static __inline__ uint64_t __attribute__((always_inline))
 macDrvrHashValueGet( emac_registers_t * pToMacRegs )
 {
-    uint64_t value = 0LL;
+    uint64_t value = 0;
     value = pToMacRegs->EMAC_HRT;
     value = (value << 32) | pToMacRegs->EMAC_HRB;
     return value;
@@ -690,60 +690,55 @@ static MAC_RXFRAME_STATE rxFindValidPacket(
         if( !(DRVRnEMAC_RX_OWNER_BIT & pRxDesc[ ii ].bufferAddress.val) )
         {   // we don't have ownership -- emac dma does: even when
             // (MAC_RX_SOF_DETECTED_STATE == frameState), we'll assume emac's not done
-            ii = pFrameInfo->startIndex;
-            frameState = MAC_RX_NO_FRAME_STATE;
-            break;
+            return MAC_RX_NO_FRAME_STATE;
         }
-        else
-        {   // Rx Descriptors with software owned descriptor
-            // look for the first descriptor of data frame
-            if( MAC_RX_NO_FRAME_STATE == frameState )
-            {
-                if( (EMAC_RX_SOF_BIT & pRxDesc[ ii ].status.val) )
-                {   // Start of Frame bit set
-                    // transition the state to SOF detected
-                    frameState = MAC_RX_SOF_DETECTED_STATE;
-                    pFrameInfo->startIndex = ii;
-                    pFrameInfo->bufferCount = 1;    // start counting number of frames from 1
-                    if( (EMAC_RX_EOF_BIT & pRxDesc[ ii ].status.val) )
-                    {   // End of Frame in same descriptor
-                        // SOF and EOF in same descriptor; transition to EOF detected
-                        frameState = MAC_RX_VALID_FRAME_DETECTED_STATE;
-                        pFrameInfo->endIndex = ii;
-                        //
-                        ii = moduloIncrement( ii, rxDescCount );
-                        break;
-                    }
-                }
-                else
-                {   // Mid or End of Frame without a start of frame; must be an error
-                    // any packet dma given back to us without SOF is not usable
-                    pFrameInfo->startIndex = ii;
-                    pFrameInfo->bufferCount = 1;
-                    pFrameInfo->endIndex = ii;
-                    rxExpungeFrameSegments( pMacDrvr, pFrameInfo );
-                }
-            }
-            else if( MAC_RX_SOF_DETECTED_STATE == frameState )
-            {
-                ++pFrameInfo->bufferCount;
-                if( (EMAC_RX_SOF_BIT & pRxDesc[ ii ].status.val) )
-                {   // SOF detected again; must be an error, clear the preceding descriptors
-                    // and use this as the new start
-                    pFrameInfo->endIndex = moduloDecrement( ii, rxDescCount );    // end of group we're expunging is one back
-                    --pFrameInfo->bufferCount;
-                    rxExpungeFrameSegments( pMacDrvr, pFrameInfo );
-                    pFrameInfo->startIndex = ii;    // new beginning
-                    pFrameInfo->bufferCount = 1;    // start counting number of frames from 1
-                }
+
+        // Rx Descriptors with software owned descriptor
+        // look for the first descriptor of data frame
+        if( MAC_RX_NO_FRAME_STATE == frameState )
+        {
+            if( (EMAC_RX_SOF_BIT & pRxDesc[ ii ].status.val) )
+            {   // Start of Frame bit set
+                // transition the state to SOF detected
+                frameState = MAC_RX_SOF_DETECTED_STATE;
+                pFrameInfo->startIndex = ii;
+                pFrameInfo->bufferCount = 1;    // start counting number of frames from 1
                 if( (EMAC_RX_EOF_BIT & pRxDesc[ ii ].status.val) )
-                {
+                {   // End of Frame in same descriptor
+                    // SOF and EOF in same descriptor; transition to EOF detected
                     frameState = MAC_RX_VALID_FRAME_DETECTED_STATE;
                     pFrameInfo->endIndex = ii;
                     //
-                    ii = moduloIncrement( ii, rxDescCount );
                     break;
                 }
+            }
+            else
+            {   // Mid or End of Frame without a start of frame; must be an error
+                // any packet dma given back to us without SOF is not usable
+                pFrameInfo->startIndex = ii;
+                pFrameInfo->bufferCount = 1;
+                pFrameInfo->endIndex = ii;
+                rxExpungeFrameSegments( pMacDrvr, pFrameInfo );
+            }
+        }
+        else if( MAC_RX_SOF_DETECTED_STATE == frameState )
+        {
+            ++pFrameInfo->bufferCount;
+            if( (EMAC_RX_SOF_BIT & pRxDesc[ ii ].status.val) )
+            {   // SOF detected again; must be an error, clear the preceding descriptors
+                // and use this as the new start
+                pFrameInfo->endIndex = moduloDecrement( ii, rxDescCount );    // end of group we're expunging is one back
+                --pFrameInfo->bufferCount;
+                rxExpungeFrameSegments( pMacDrvr, pFrameInfo );
+                pFrameInfo->startIndex = ii;    // new beginning
+                pFrameInfo->bufferCount = 1;    // start counting number of frames from 1
+            }
+            if( (EMAC_RX_EOF_BIT & pRxDesc[ ii ].status.val) )
+            {
+                frameState = MAC_RX_VALID_FRAME_DETECTED_STATE;
+                pFrameInfo->endIndex = ii;
+                //
+                break;
             }
         }
         ii = moduloIncrement( ii, rxDescCount );
@@ -784,7 +779,7 @@ static MAC_DRVR_RESULT rxExtractPacket(
         bytesRemaining = EMAC_RX_FRAME_LENGTH_MASK & pMacDrvr->pRxDesc[ pFrameInfo->endIndex ].status.val;
         // process all the frame segments
         pDSeg = pMacPacket->pDSeg;
-        DCACHE_CLEAN_BY_ADDR( (uint32_t *) pDSeg->segLoad, pDSeg->segSize );
+        DCACHE_INVALIDATE_BY_ADDR( (uint32_t *) pDSeg->segLoad, pDSeg->segSize );
         pDSeg->segFlags |= TCPIP_MAC_SEG_FLAG_ACK_REQUIRED; // allow rxMacPacketAck entry
         while( bufferCount-- )
         {
@@ -812,7 +807,7 @@ static MAC_DRVR_RESULT rxExtractPacket(
                 pTemp = *(TCPIP_MAC_PACKET **) ((EMAC_RX_ADDRESS_MASK & pMacDrvr->pRxDesc[ ii ].bufferAddress.val) - pMacDrvr->_segLoadOffset);
                 pDSeg->next = pTemp->pDSeg;
                 pDSeg = pDSeg->next;
-                DCACHE_CLEAN_BY_ADDR( (uint32_t *) pDSeg->segLoad, pDSeg->segSize );
+                DCACHE_INVALIDATE_BY_ADDR( (uint32_t *) pDSeg->segLoad, pDSeg->segSize );
             }
         }
         pFrameInfo->endIndex = moduloIncrement( pFrameInfo->endIndex,
@@ -821,6 +816,7 @@ static MAC_DRVR_RESULT rxExtractPacket(
         pMacDrvr->rxExtractPt = pFrameInfo->endIndex;
         retval = MAC_DRVR_RES_OK;
     }
+
     // setup reply
     *ppRxMacPacket = pMacPacket;
 

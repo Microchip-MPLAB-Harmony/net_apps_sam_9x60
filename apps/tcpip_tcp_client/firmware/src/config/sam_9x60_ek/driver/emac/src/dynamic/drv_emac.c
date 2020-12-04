@@ -206,7 +206,6 @@ SYS_MODULE_OBJ macDrvrInitialize(
     }
 
     pMacDrvr = macDrvrDescription + macIndex;
-    pMacDrvr->pObj = macDrvrObjects[macIndex];
 
     if( SYS_STATUS_UNINITIALIZED != pMacDrvr->sysStat )
     {   // already initialized
@@ -249,6 +248,7 @@ SYS_MODULE_OBJ macDrvrInitialize(
     // initialize the MAC object
     memset( pMacDrvr, 0x0, sizeof( *pMacDrvr ) );
 
+    pMacDrvr->pObj = macDrvrObjects[macIndex];
     pMacDrvr->hPhyClient = DRV_HANDLE_INVALID;
     pMacDrvr->hPhySysObject = SYS_MODULE_OBJ_INVALID;
     pMacDrvr->sysStat = SYS_STATUS_UNINITIALIZED;
@@ -256,9 +256,6 @@ SYS_MODULE_OBJ macDrvrInitialize(
     pMacDrvr->macIx = macIndex;
     pMacDrvr->phyIx = macIndex;     // use the same index for the associated PHY
     pMacDrvr->macFlags._linkPrev = 0;
-
-    memset( &pMacDrvr->rxStat, 0, sizeof( pMacDrvr->rxStat ) );
-    memset( &pMacDrvr->txStat, 0, sizeof( pMacDrvr->txStat ) );
 
     // use initialization data
     pMacDrvr->allocH = macControl->memH;
@@ -498,12 +495,12 @@ DRV_HANDLE macDrvrOpen(
                     pMacDrvr->macFlags._open = 1;
                     hMac = (DRV_HANDLE) pMacDrvr;
                 }
-#if (macDrvrCLIENTS_NUMBER > 1)
+#if defined(macDrvrCLIENTS_NUMBER) && (macDrvrCLIENTS_NUMBER > 1)
                 else
                 {   // allow multiple clients
                     hMac = (DRV_HANDLE) pMacDrvr;
                 }
-#endif
+#endif  // defined(macDrvrCLIENTS_NUMBER) && (macDrvrCLIENTS_NUMBER > 1)
                 break;
             case SYS_STATUS_ERROR_EXTENDED:
             case SYS_STATUS_ERROR:

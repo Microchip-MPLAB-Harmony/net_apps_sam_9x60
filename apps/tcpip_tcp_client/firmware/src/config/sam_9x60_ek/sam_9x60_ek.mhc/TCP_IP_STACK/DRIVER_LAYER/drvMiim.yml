@@ -1,0 +1,22 @@
+format_version: v1.0
+type: UniqueComponent
+attributes: {id: drvMiim}
+children:
+- type: Symbols
+  children:
+  - type: Boolean
+    attributes: {id: DRV_MIIM_COMMANDS}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: String
+    attributes: {id: DRV_MIIM_ETH_MODULE_ID}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: drvMiim, value: EMAC0_BASE_ADDRESS}
+- type: ElementPosition
+  attributes: {x: '281', y: '20', id: drvMiim}

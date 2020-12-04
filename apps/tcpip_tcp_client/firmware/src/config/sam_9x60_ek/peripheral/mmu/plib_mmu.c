@@ -87,10 +87,10 @@ __ALIGNED(16384) static uint32_t trns_tbl[4096];
     Configure MMU by setting TTRB0 address.
 
 */
-static void mmu_configure(void *trns_tbl)
+static void mmu_configure(void *p_trns_tbl)
 {
     /* Translation Table Base Register 0 */
-    cp15_write_ttbr0((uint32_t)trns_tbl);
+    cp15_write_ttbr0((uint32_t)p_trns_tbl);
 
     /* Domain Access Register */
     /* only domain 15: access are not checked */
@@ -450,7 +450,7 @@ void MMU_Initialize(void)
     mmu_configure(trns_tbl);
     icache_Enable();
     mmu_enable();
-    //dcache_Enable();
+    dcache_Enable();
 
     // disable the processor alignment fault testing
     uint32_t sctlrValue = cp15_read_sctlr();
