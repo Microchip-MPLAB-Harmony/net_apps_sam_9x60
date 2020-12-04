@@ -1462,13 +1462,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: BBE2AB9763E7BB36934A49D9681301A3
-- generatedChecksum: 0FBB1178F619227ACA94CBCA5BBC16B5
+- generatedChecksum: 7FD301DF52CAE0FF3F203420795C48C3
   logicalPath: config\sam_9x60_ek_mplabx
   name: configuration.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 0FBB1178F619227ACA94CBCA5BBC16B5
+  userChecksum: 7FD301DF52CAE0FF3F203420795C48C3
 - generatedChecksum: 8B35997040E0D61B0C62411FF7C4E9C1
   logicalPath: config\sam_9x60_ek_mplabx\peripheral\mmu
   name: cp15.h
@@ -3373,13 +3373,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 1CFB14BA718B0754E95BCEA45389F9D8
-- generatedChecksum: null
+- generatedChecksum: 4B3C3EF8A318908A22B78500515C3288
   logicalPath: config\sam_9x60_ek_mplabx
   name: user.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: null
+  userChecksum: 4B3C3EF8A318908A22B78500515C3288
 - generatedChecksum: 3144F84B824DCBB3D2DDFD94665867BD
   logicalPath: wolfcrypt
   name: visibility.h

@@ -405,6 +405,7 @@ extern "C" {
 #define HAVE_MCAPI
 #define WOLF_CRYPTO_CB  // provide call-back support
 #define WOLFCRYPT_ONLY
+// ---------- FUNCTIONAL CONFIGURATION START ----------
 #define NO_MD4
 #define WOLFSSL_SHA224
 #define WOLFSSL_AES_128
@@ -431,6 +432,7 @@ extern "C" {
 #define SINGLE_THREADED
 #define NO_ERROR_STRINGS
 #define NO_WOLFSSL_MEMORY
+// ---------- FUNCTIONAL CONFIGURATION END ----------
 
 
 #define TCPIP_INTMAC_PHY_CONFIG_FLAGS              	( 0 \
