@@ -1,0 +1,13 @@
+configName: sam_9x60_ek_freertos
+folderName: ''
+format_version: v1.0
+frameworkPath: C:\Users\C50921\HarmonyCode
+processor: SAM9X60
+projectName: tcpip_udp_client_server
+settings:
+  PackageFilter: audio;bsp;bt;core;crypto;cryptoauthlib;csp;csp_apps_sam_9x60;expresslogic_threadx;gfx;motor_control;net;net;net;net;net;net;net;net;net;usb;wireless;
+  FORCE_OPTIMIZATION: 'false'
+  GENERATE_BACKUP: 'true'
+  CMSISPath: .\dev_packs\arm\CMSIS\5.7.0
+  MERGE_STRATEGY: ALL
+  DFPPath: .\dev_packs\Microchip\SAM9X60_DFP\1.4.40\atdf\SAM9X60.atdf
