@@ -52,10 +52,6 @@
 #include "bsp/bsp.h"
 #include "peripheral/tc/plib_tc0.h"
 #include "system/time/sys_time.h"
-#include "net_pres/pres/net_pres.h"
-#include "net_pres/pres/net_pres_encryptionproviderapi.h"
-#include "net_pres/pres/net_pres_transportapi.h"
-#include "net_pres/pres/net_pres_socketapi.h"
 #include "system/int/sys_int.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
@@ -63,9 +59,7 @@
 #include "driver/emac/drv_emac.h"
 #include "driver/miim/drv_miim.h"
 #include "system/sys_time_h2_adapter.h"
-#include "system/sys_clk_h2_adapter.h"
 #include "system/sys_random_h2_adapter.h"
-#include "system/sys_reset_h2_adapter.h"
 #include "driver/sdmmc/drv_sdmmc.h"
 #include "system/command/sys_command.h"
 #include "peripheral/mmu/plib_mmu.h"
@@ -73,6 +67,10 @@
 #include "peripheral/pio/plib_pio.h"
 #include "peripheral/aic/plib_aic.h"
 #include "wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h"
+#include "net_pres/pres/net_pres.h"
+#include "net_pres/pres/net_pres_encryptionproviderapi.h"
+#include "net_pres/pres/net_pres_transportapi.h"
+#include "net_pres/pres/net_pres_socketapi.h"
 #include "system/fs/sys_fs.h"
 #include "system/fs/sys_fs_media_manager.h"
 #include "system/fs/sys_fs_fat_interface.h"
@@ -206,8 +204,6 @@ Remarks:
 typedef struct
 {
     SYS_MODULE_OBJ  sysTime;
-    SYS_MODULE_OBJ  netPres;
-
     SYS_MODULE_OBJ  sysConsole0;
 
 
@@ -215,6 +211,8 @@ typedef struct
 
     SYS_MODULE_OBJ  drvMiim;
     SYS_MODULE_OBJ  sysDebug;
+
+    SYS_MODULE_OBJ  netPres;
 
     SYS_MODULE_OBJ  drvSDMMC0;
 

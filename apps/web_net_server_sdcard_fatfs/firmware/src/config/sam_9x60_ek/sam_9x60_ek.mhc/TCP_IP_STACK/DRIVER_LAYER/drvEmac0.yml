@@ -1,0 +1,29 @@
+format_version: v1.0
+type: UniqueComponent
+attributes: {id: drvEmac0}
+children:
+- type: Symbols
+  children:
+  - type: Integer
+    attributes: {id: DRV_EMAC_HEAP_SIZE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: drvEmac0, value: '2560'}
+  - type: String
+    attributes: {id: DRV_MAC_PHY_TYPE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: drvEmac0, value: KSZ8081}
+  - type: Integer
+    attributes: {id: MAX_RX_PACKET_POINTERS}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: drvEmac0, value: '1024'}
+- type: ElementPosition
+  attributes: {x: '540', y: '20', id: drvEmac0}

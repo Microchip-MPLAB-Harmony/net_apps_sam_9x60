@@ -994,14 +994,12 @@ TCPIP_TFTPC_HANDLE TCPIP_TFTPC_HandlerRegister(TCPIP_NET_HANDLE hNet, TCPIP_TFTP
 {
     if(handler && tftpcMemH)
     {
-        TCPIP_TFTPC_LIST_NODE* newNode = (TCPIP_TFTPC_LIST_NODE*)TCPIP_Notification_Add(&tftpcRegisteredUsers, tftpcMemH, sizeof(*newNode));
-        if(newNode)
-        {
-            newNode->handler = handler;
-            newNode->hParam = hParam;
-            newNode->hNet = hNet;
-            return newNode;
-        }
+        TCPIP_TFTPC_LIST_NODE tftpNode;
+        tftpNode.handler = handler;
+        tftpNode.hParam = hParam;
+        tftpNode.hNet = hNet;
+
+        return (TCPIP_TFTPC_LIST_NODE*)TCPIP_Notification_Add(&tftpcRegisteredUsers, tftpcMemH, &tftpNode, sizeof(tftpNode));
     }
 
     return 0;
