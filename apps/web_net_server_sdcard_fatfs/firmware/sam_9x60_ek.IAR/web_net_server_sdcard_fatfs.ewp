@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <project>
     <fileVersion>3</fileVersion>
     <configuration>
@@ -190,11 +190,11 @@
                 </option>
                 <option>
                     <name>GenLocaleTags</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>GenLocaleDisplayOnly</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>DSPExtension</name>
@@ -220,8 +220,6 @@
                 <debug>1</debug>
                 <option>
                     <name>CCDefines</name>
-                    <state>HAVE_CONFIG_H</state>
-                    <state>WOLFSSL_IGNORE_FILE_WARN</state>
                     <state>HAVE_CONFIG_H</state>
                     <state>WOLFSSL_IGNORE_FILE_WARN</state>
                     <state>__SAM9X60__</state>
@@ -268,15 +266,15 @@
                 </option>
                 <option>
                     <name>CCDiagRemark</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>CCDiagWarning</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>CCDiagError</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>CCObjPrefix</name>
@@ -341,7 +339,7 @@
                 </option>
                 <option>
                     <name>PreInclude</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>CompilerMisraOverride</name>
@@ -349,16 +347,6 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\library</state>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src</state>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\common</state>
-                    <state>$PROJ_DIR$\..\src</state>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek</state>
-                    <state>$PROJ_DIR$\..\src\packs\SAM9X60_DFP</state>
-                    <state>$PROJ_DIR$\..\src\packs\CMSIS\CMSIS\Core\Include</state>
-                    <state>$PROJ_DIR$\..\src\packs\CMSIS</state>
-                    <state>$PROJ_DIR$\..\src\third_party\wolfssl</state>
-                    <state>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl</state>
                     <state>$PROJ_DIR$\.</state>
                     <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\file_system</state>
                     <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\hardware_access</state>
@@ -372,9 +360,6 @@
                     <state>$PROJ_DIR$\..\src\packs\CMSIS</state>
                     <state>$PROJ_DIR$\..\src\third_party\wolfssl</state>
                     <state>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl</state>
-                    <state>$PROJ_DIR$\.</state>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\file_system</state>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\hardware_access</state>
                     <state>$PROJ_DIR$\..\..\firmware\src\config\sam_9x60_ek\library</state>
                     <state>$PROJ_DIR$\..\..\firmware\src\config\sam_9x60_ek\library\tcpip\src</state>
                     <state>$PROJ_DIR$\..\..\firmware\src\config\sam_9x60_ek\library\tcpip\src\common</state>
@@ -547,15 +532,15 @@
                 </option>
                 <option>
                     <name>AWarnOne</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>AWarnRange1</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>AWarnRange2</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>ADebug</name>
@@ -567,7 +552,6 @@
                 </option>
                 <option>
                     <name>ADefines</name>
-                    <state></state>
                 </option>
                 <option>
                     <name>AList</name>
@@ -677,7 +661,7 @@
                 </option>
                 <option>
                     <name>AExtraOptionsV2</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>AsmNoLiteralPool</name>
@@ -719,8 +703,8 @@
             <name>CUSTOM</name>
             <archiveVersion>3</archiveVersion>
             <data>
-                <extensions></extensions>
-                <cmdline></cmdline>
+                <extensions />
+                <cmdline />
                 <hasPrio>0</hasPrio>
             </data>
         </settings>
@@ -733,8 +717,8 @@
             <name>BUILDACTION</name>
             <archiveVersion>1</archiveVersion>
             <data>
-                <prebuild></prebuild>
-                <postbuild></postbuild>
+                <prebuild />
+                <postbuild />
             </data>
         </settings>
         <settings>
@@ -766,31 +750,31 @@
                 </option>
                 <option>
                     <name>IlinkKeepSymbols</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinaryFile</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinarySymbol</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinarySegment</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinaryAlign</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkDefines</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkConfigDefines</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkMapFile</name>
@@ -826,7 +810,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkEnableRemarks</name>
@@ -834,19 +818,19 @@
                 </option>
                 <option>
                     <name>IlinkSuppressDiags</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkTreatAsRem</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkTreatAsWarn</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkTreatAsErr</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkWarningsAreErrors</name>
@@ -858,7 +842,7 @@
                 </option>
                 <option>
                     <name>IlinkExtraOptions</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkLowLevelInterfaceSlave</name>
@@ -870,7 +854,7 @@
                 </option>
                 <option>
                     <name>IlinkAdditionalLibs</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkOverrideProgramEntryLabel</name>
@@ -1005,11 +989,11 @@
                 </option>
                 <option>
                     <name>IlinkStackControlFile</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkStackCallGraphFile</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>CrcAlgorithm</name>
@@ -1031,7 +1015,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile_AltDefault</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkEncInput</name>
@@ -1063,19 +1047,19 @@
                 </option>
                 <option>
                     <name>IlinkRawBinaryFile2</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinarySymbol2</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinarySegment2</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinaryAlign2</name>
-                    <state></state>
+                    <state />
                 </option>
             </data>
         </settings>
@@ -1088,7 +1072,7 @@
                 <debug>1</debug>
                 <option>
                     <name>IarchiveInputs</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IarchiveOverride</name>
@@ -1300,11 +1284,11 @@
                 </option>
                 <option>
                     <name>GenLocaleTags</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>GenLocaleDisplayOnly</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>DSPExtension</name>
@@ -1330,8 +1314,6 @@
                 <debug>0</debug>
                 <option>
                     <name>CCDefines</name>
-                    <state>HAVE_CONFIG_H</state>
-                    <state>WOLFSSL_IGNORE_FILE_WARN</state>
                     <state>HAVE_CONFIG_H</state>
                     <state>WOLFSSL_IGNORE_FILE_WARN</state>
                     <state>NDEBUG</state>
@@ -1379,15 +1361,15 @@
                 </option>
                 <option>
                     <name>CCDiagRemark</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>CCDiagWarning</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>CCDiagError</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>CCObjPrefix</name>
@@ -1416,7 +1398,7 @@
                 </option>
                 <option>
                     <name>IExtraOptions</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>CCLangConformance</name>
@@ -1452,7 +1434,7 @@
                 </option>
                 <option>
                     <name>PreInclude</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>CompilerMisraOverride</name>
@@ -1460,16 +1442,6 @@
                 </option>
                 <option>
                     <name>CCIncludePath2</name>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\library</state>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src</state>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\common</state>
-                    <state>$PROJ_DIR$\..\src</state>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek</state>
-                    <state>$PROJ_DIR$\..\src\packs\SAM9X60_DFP</state>
-                    <state>$PROJ_DIR$\..\src\packs\CMSIS\CMSIS\Core\Include</state>
-                    <state>$PROJ_DIR$\..\src\packs\CMSIS</state>
-                    <state>$PROJ_DIR$\..\src\third_party\wolfssl</state>
-                    <state>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl</state>
                     <state>$PROJ_DIR$\.</state>
                     <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\file_system</state>
                     <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\hardware_access</state>
@@ -1483,9 +1455,6 @@
                     <state>$PROJ_DIR$\..\src\packs\CMSIS</state>
                     <state>$PROJ_DIR$\..\src\third_party\wolfssl</state>
                     <state>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl</state>
-                    <state>$PROJ_DIR$\.</state>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\file_system</state>
-                    <state>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\hardware_access</state>
                     <state>$PROJ_DIR$\..\..\firmware\src\config\sam_9x60_ek\library</state>
                     <state>$PROJ_DIR$\..\..\firmware\src\config\sam_9x60_ek\library\tcpip\src</state>
                     <state>$PROJ_DIR$\..\..\firmware\src\config\sam_9x60_ek\library\tcpip\src\common</state>
@@ -1658,15 +1627,15 @@
                 </option>
                 <option>
                     <name>AWarnOne</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>AWarnRange1</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>AWarnRange2</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>ADebug</name>
@@ -1678,7 +1647,6 @@
                 </option>
                 <option>
                     <name>ADefines</name>
-                    <state></state>
                 </option>
                 <option>
                     <name>AList</name>
@@ -1788,7 +1756,7 @@
                 </option>
                 <option>
                     <name>AExtraOptionsV2</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>AsmNoLiteralPool</name>
@@ -1830,8 +1798,8 @@
             <name>CUSTOM</name>
             <archiveVersion>3</archiveVersion>
             <data>
-                <extensions></extensions>
-                <cmdline></cmdline>
+                <extensions />
+                <cmdline />
                 <hasPrio>0</hasPrio>
             </data>
         </settings>
@@ -1844,8 +1812,8 @@
             <name>BUILDACTION</name>
             <archiveVersion>1</archiveVersion>
             <data>
-                <prebuild></prebuild>
-                <postbuild></postbuild>
+                <prebuild />
+                <postbuild />
             </data>
         </settings>
         <settings>
@@ -1877,31 +1845,31 @@
                 </option>
                 <option>
                     <name>IlinkKeepSymbols</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinaryFile</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinarySymbol</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinarySegment</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinaryAlign</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkDefines</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkConfigDefines</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkMapFile</name>
@@ -1937,7 +1905,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkEnableRemarks</name>
@@ -1945,19 +1913,19 @@
                 </option>
                 <option>
                     <name>IlinkSuppressDiags</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkTreatAsRem</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkTreatAsWarn</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkTreatAsErr</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkWarningsAreErrors</name>
@@ -1969,7 +1937,7 @@
                 </option>
                 <option>
                     <name>IlinkExtraOptions</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkLowLevelInterfaceSlave</name>
@@ -1981,7 +1949,7 @@
                 </option>
                 <option>
                     <name>IlinkAdditionalLibs</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkOverrideProgramEntryLabel</name>
@@ -2116,11 +2084,11 @@
                 </option>
                 <option>
                     <name>IlinkStackControlFile</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkStackCallGraphFile</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>CrcAlgorithm</name>
@@ -2142,7 +2110,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile_AltDefault</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkEncInput</name>
@@ -2174,19 +2142,19 @@
                 </option>
                 <option>
                     <name>IlinkRawBinaryFile2</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinarySymbol2</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinarySegment2</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IlinkRawBinaryAlign2</name>
-                    <state></state>
+                    <state />
                 </option>
             </data>
         </settings>
@@ -2199,7 +2167,7 @@
                 <debug>0</debug>
                 <option>
                     <name>IarchiveInputs</name>
-                    <state></state>
+                    <state />
                 </option>
                 <option>
                     <name>IarchiveOverride</name>
@@ -2227,100 +2195,169 @@
         <group>
             <name>Header Files</name>
             <group>
-                <name>\</name>
-                <group>
-                    <name>driver</name>
-                    <group>
-                        <name>emac</name>
-                        <group>
-                            <name>config</name>
-                            <group>
-                                <name>sam_9x60_ek</name>
-                                <group>
-                                    <name>driver</name>
-                                    <group>
-                                        <name>emac</name>
-                                        <group>
-                                            <name>src</name>
-                                            <group>
-                                                <name>dynamic</name>
-                                                <file>
-                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_dcpt_lists.h</name>
-                                                </file>
-                                                <file>
-                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_lib.h</name>
-                                                </file>
-                                            </group>
-                                            <file>
-                                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\drv_emac_local.h</name>
-                                            </file>
-                                        </group>
-                                        <file>
-                                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\drv_emac.h</name>
-                                        </file>
-                                    </group>
-                                </group>
-                            </group>
-                        </group>
-                    </group>
-                </group>
+                <name>wolfssl</name>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\callbacks.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\certs_test.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\crl.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\error-ssl.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\internal.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\ocsp.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\sniffer.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\sniffer_error.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\ssl.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\test.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\version.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfio.h</name>
+                </file>
             </group>
             <group>
                 <name>config</name>
                 <group>
                     <name>sam_9x60_ek</name>
                     <group>
-                        <name>bsp</name>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\bsp\bsp.h</name>
-                        </file>
-                    </group>
-                    <group>
-                        <name>crypto</name>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\crypto\crypto.h</name>
-                        </file>
-                    </group>
-                    <group>
-                        <name>driver</name>
+                        <name>system</name>
                         <group>
-                            <name>ethphy</name>
-                            <group>
-                                <name>src</name>
-                                <group>
-                                    <name>dynamic</name>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\src\dynamic\drv_extphy_ksz8081.h</name>
-                                    </file>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\src\dynamic\drv_extphy_regs.h</name>
-                                    </file>
-                                </group>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\src\drv_ethphy_local.h</name>
-                                </file>
-                            </group>
+                            <name>time</name>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\drv_ethphy.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\time\sys_time.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\time\sys_time_definitions.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\time\src\sys_time_local.h</name>
+                            </file>
+                        </group>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\system.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\system_common.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\system_module.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\system_media.h</name>
+                        </file>
+                        <group>
+                            <name>int</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\int\sys_int.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\int\sys_int_mapping.h</name>
                             </file>
                         </group>
                         <group>
+                            <name>debug</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\debug\sys_debug.h</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>fs</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\sys_fs.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\src\sys_fs_local.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\sys_fs_media_manager.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\src\sys_fs_media_manager_local.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\sys_fs_fat_interface.h</name>
+                            </file>
+                            <group>
+                                <name>fat_fs</name>
+                                <group>
+                                    <name>file_system</name>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\file_system\ff.h</name>
+                                    </file>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\file_system\ffconf.h</name>
+                                    </file>
+                                </group>
+                                <group>
+                                    <name>hardware_access</name>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\hardware_access\diskio.h</name>
+                                    </file>
+                                </group>
+                            </group>
+                        </group>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\sys_time_h2_adapter.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\sys_random_h2_adapter.h</name>
+                        </file>
+                        <group>
+                            <name>command</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\command\sys_command.h</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>console</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\console\sys_console.h</name>
+                            </file>
+                        </group>
+                    </group>
+                    <group>
+                        <name>driver</name>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\driver.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\driver_common.h</name>
+                        </file>
+                        <group>
                             <name>miim</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\miim\drv_miim.h</name>
+                            </file>
                             <group>
                                 <name>src</name>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\miim\src\drv_miim_local.h</name>
+                                </file>
                                 <group>
                                     <name>dynamic</name>
                                     <file>
                                         <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\miim\src\dynamic\drv_miim_mapping.h</name>
                                     </file>
                                 </group>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\miim\src\drv_miim_local.h</name>
-                                </file>
                             </group>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\miim\drv_miim.h</name>
-                            </file>
                         </group>
                         <group>
                             <name>sdmmc</name>
@@ -2328,34 +2365,199 @@
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\sdmmc\drv_sdmmc.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\sdmmc\drv_sdmmc_definitions.h</name>
-                            </file>
-                            <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\sdmmc\src\drv_sdmmc_local.h</name>
                             </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\sdmmc\drv_sdmmc_definitions.h</name>
+                            </file>
                         </group>
+                        <group>
+                            <name>ethphy</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\drv_ethphy.h</name>
+                            </file>
+                            <group>
+                                <name>src</name>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\src\drv_ethphy_local.h</name>
+                                </file>
+                                <group>
+                                    <name>dynamic</name>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\src\dynamic\drv_extphy_regs.h</name>
+                                    </file>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\src\dynamic\drv_extphy_ksz8081.h</name>
+                                    </file>
+                                </group>
+                            </group>
+                        </group>
+                    </group>
+                    <group>
+                        <name>osal</name>
                         <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\driver.h</name>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\osal\osal.h</name>
                         </file>
                         <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\driver_common.h</name>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\osal\osal_definitions.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\osal\osal_impl_basic.h</name>
                         </file>
                     </group>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\user.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\configuration.h</name>
+                    </file>
+                    <group>
+                        <name>net_pres</name>
+                        <group>
+                            <name>pres</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_certstore.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_encryptionproviderapi.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_socketapi.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_transportapi.h</name>
+                            </file>
+                            <group>
+                                <name>src</name>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\src\net_pres_local.h</name>
+                                </file>
+                            </group>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_socketapiconversion.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_enc_glue.h</name>
+                            </file>
+                        </group>
+                    </group>
+                    <group>
+                        <name>peripheral</name>
+                        <group>
+                            <name>sdmmc</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\sdmmc\plib_sdmmc_common.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\sdmmc\plib_sdmmc0.h</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>dbgu</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\dbgu\plib_dbgu_common.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\dbgu\plib_dbgu.h</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>tc</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\tc\plib_tc0.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\tc\plib_tc_common.h</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>mmu</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\mmu\plib_mmu.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\mmu\cp15.h</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>clk</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\clk\plib_clk.h</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>pio</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\pio\plib_pio.h</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>aic</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\aic\plib_aic.h</name>
+                            </file>
+                        </group>
+                    </group>
+                    <group>
+                        <name>bsp</name>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\bsp\bsp.h</name>
+                        </file>
+                    </group>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\device.h</name>
+                    </file>
                     <group>
                         <name>library</name>
                         <group>
                             <name>tcpip</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_common_ports.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_mac.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_mac_object.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_manager.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_heap.h</name>
+                            </file>
                             <group>
                                 <name>src</name>
-                                <group>
-                                    <name>common</name>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\common\helpers.h</name>
-                                    </file>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\common\sys_fs_shell.h</name>
-                                    </file>
-                                </group>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_heap_alloc.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ndp_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ndp_private.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv4_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv4_private.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv6_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv6_private.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\icmp_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\icmpv6_manager.h</name>
+                                </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\arp_manager.h</name>
                                 </file>
@@ -2363,10 +2565,16 @@
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\arp_private.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\berkeley_manager.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\udp_manager.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ddns_manager.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\udp_private.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcp_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcp_private.h</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dhcp_manager.h</name>
@@ -2381,10 +2589,13 @@
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dhcps_private.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dhcpv6_manager.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_helper.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dhcpv6_private.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_link_local_private.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_manager.h</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dns_manager.h</name>
@@ -2411,79 +2622,31 @@
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ftpc_private.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\hash_fnv.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\nbns_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ddns_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\telnet_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\smtp_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\sntp_manager.h</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\http_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\http_private.h</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\http_net_manager.h</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\http_net_private.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\http_private.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\icmp_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\icmpv6_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\igmp_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\igmp_private.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\iperf_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv4_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv4_private.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv6_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv6_private.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\link_list.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\lldp_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\lldp_private.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\lldp_tlv.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\nbns_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ndp_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ndp_private.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\oahash.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\smtp_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\smtpc_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\smtpc_private.h</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\snmp_manager.h</name>
@@ -2495,31 +2658,61 @@
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\snmpv3_private.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\sntp_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcp_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcp_private.h</name>
-                                </file>
-                                <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_announce_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\smtpc_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\smtpc_private.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\igmp_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\igmp_private.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftpc_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftpc_private.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftps_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftps_private.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_reboot_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\iperf_manager.h</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_commands_manager.h</name>
                                 </file>
+                                <group>
+                                    <name>common</name>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\common\helpers.h</name>
+                                    </file>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\common\sys_fs_shell.h</name>
+                                    </file>
+                                </group>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_heap_alloc.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\hash_fnv.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\link_list.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\oahash.h</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_helpers_private.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_mac_bridge_manager.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_mac_bridge_private.h</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_manager_control.h</name>
@@ -2537,50 +2730,62 @@
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_private.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_reboot_manager.h</name>
-                                </file>
-                                <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_types.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\telnet_manager.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\berkeley_manager.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftpc_manager.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dhcpv6_manager.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftpc_private.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dhcpv6_private.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftps_manager.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\lldp_manager.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftps_private.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\lldp_private.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\udp_manager.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\lldp_tlv.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\udp_private.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_mac_bridge_manager.h</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_helper.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_link_local_private.h</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_manager.h</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_mac_bridge_private.h</name>
                                 </file>
                             </group>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_helpers.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\ndp.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\ipv4.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\ipv6.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\icmpv6.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\dhcpv6.h</name>
+                            </file>
                             <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\arp.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\berkeley_api.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\udp.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\ddns.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcp.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\berkeley_api.h</name>
                             </file>
                             <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\dhcp.h</name>
@@ -2589,7 +2794,10 @@
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\dhcps.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\dhcpv6.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\zero_conf_link_local.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\zero_conf_multicast_dns.h</name>
                             </file>
                             <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\dns.h</name>
@@ -2604,43 +2812,28 @@
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\ftpc.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\http.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\http_net.h</name>
-                            </file>
-                            <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\icmp.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\icmpv6.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\igmp.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\iperf.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\ipv4.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\ipv6.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\lldp.h</name>
                             </file>
                             <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\nbns.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\ndp.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\ddns.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\telnet.h</name>
                             </file>
                             <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\smtp.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\smtpc.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\sntp.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\http.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\http_net.h</name>
                             </file>
                             <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\snmp.h</name>
@@ -2649,49 +2842,16 @@
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\snmpv3.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\sntp.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcp.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip.h</name>
-                            </file>
-                            <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_announce.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_commands.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\lldp.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_common_ports.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\smtpc.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_ethernet.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_heap.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_helpers.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_mac.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_mac_bridge.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_mac_object.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_manager.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_reboot.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\telnet.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\igmp.h</name>
                             </file>
                             <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tftpc.h</name>
@@ -2700,229 +2860,25 @@
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tftps.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\udp.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_reboot.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\zero_conf_link_local.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\iperf.h</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\zero_conf_multicast_dns.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_commands.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_mac_bridge.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\tcpip_ethernet.h</name>
                             </file>
                         </group>
                     </group>
-                    <group>
-                        <name>net_pres</name>
-                        <group>
-                            <name>pres</name>
-                            <group>
-                                <name>src</name>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\src\net_pres_local.h</name>
-                                </file>
-                            </group>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_certstore.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_enc_glue.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_encryptionproviderapi.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_socketapi.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_socketapiconversion.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_transportapi.h</name>
-                            </file>
-                        </group>
-                    </group>
-                    <group>
-                        <name>osal</name>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\osal\osal.h</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\osal\osal_definitions.h</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\osal\osal_impl_basic.h</name>
-                        </file>
-                    </group>
-                    <group>
-                        <name>peripheral</name>
-                        <group>
-                            <name>aic</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\aic\plib_aic.h</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>clk</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\clk\plib_clk.h</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>dbgu</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\dbgu\plib_dbgu.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\dbgu\plib_dbgu_common.h</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>mmu</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\mmu\cp15.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\mmu\plib_mmu.h</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>pio</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\pio\plib_pio.h</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>sdmmc</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\sdmmc\plib_sdmmc0.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\sdmmc\plib_sdmmc_common.h</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>tc</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\tc\plib_tc0.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\tc\plib_tc_common.h</name>
-                            </file>
-                        </group>
-                    </group>
-                    <group>
-                        <name>system</name>
-                        <group>
-                            <name>command</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\command\sys_command.h</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>console</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\console\sys_console.h</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>debug</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\debug\sys_debug.h</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>fs</name>
-                            <group>
-                                <name>fat_fs</name>
-                                <group>
-                                    <name>file_system</name>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\file_system\ff.h</name>
-                                    </file>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\file_system\ffconf.h</name>
-                                    </file>
-                                </group>
-                                <group>
-                                    <name>hardware_access</name>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\fat_fs\hardware_access\diskio.h</name>
-                                    </file>
-                                </group>
-                            </group>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\sys_fs.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\sys_fs_fat_interface.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\src\sys_fs_local.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\sys_fs_media_manager.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\src\sys_fs_media_manager_local.h</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>int</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\int\sys_int.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\int\sys_int_mapping.h</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>time</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\time\sys_time.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\time\sys_time_definitions.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\time\src\sys_time_local.h</name>
-                            </file>
-                        </group>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\sys_random_h2_adapter.h</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\sys_time_h2_adapter.h</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\system.h</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\system_common.h</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\system_media.h</name>
-                        </file>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\system_module.h</name>
-                        </file>
-                    </group>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\config.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\configuration.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\definitions.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\device.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\device_cache.h</name>
-                    </file>
                     <file>
                         <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system_config.h</name>
                     </file>
@@ -2930,11 +2886,68 @@
                         <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system_definitions.h</name>
                     </file>
                     <file>
+                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\device_cache.h</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\toolchain_specifics.h</name>
                     </file>
                     <file>
-                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\user.h</name>
+                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\definitions.h</name>
                     </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\config.h</name>
+                    </file>
+                    <group>
+                        <name>crypto</name>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\crypto\crypto.h</name>
+                        </file>
+                    </group>
+                </group>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\src\app.h</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\src\http_net_print.h</name>
+            </file>
+            <group>
+                <name>\</name>
+                <group>
+                    <name>driver</name>
+                    <group>
+                        <name>emac</name>
+                        <group>
+                            <name>config</name>
+                            <group>
+                                <name>sam_9x60_ek</name>
+                                <group>
+                                    <name>driver</name>
+                                    <group>
+                                        <name>emac</name>
+                                        <file>
+                                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\drv_emac.h</name>
+                                        </file>
+                                        <group>
+                                            <name>src</name>
+                                            <file>
+                                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\drv_emac_local.h</name>
+                                            </file>
+                                            <group>
+                                                <name>dynamic</name>
+                                                <file>
+                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_dcpt_lists.h</name>
+                                                </file>
+                                                <file>
+                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_lib.h</name>
+                                                </file>
+                                            </group>
+                                        </group>
+                                    </group>
+                                </group>
+                            </group>
+                        </group>
+                    </group>
                 </group>
             </group>
             <group>
@@ -3079,208 +3092,19 @@
                             <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\component\xdmac.h</name>
                         </file>
                     </group>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\sam9x60.h</name>
+                    </file>
                     <group>
                         <name>pio</name>
                         <file>
                             <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\pio\sam9x60.h</name>
                         </file>
                     </group>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\sam9x60.h</name>
-                    </file>
                 </group>
             </group>
             <group>
                 <name>wolfcrypt</name>
-                <group>
-                    <name>port</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_aes_hw.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_aes_hwInt.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_aes_sam6149.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_aes_u2238.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_crya_saml11.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_ecc_ba414e.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_ecc_pukcl.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_pukcl_definitions.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_pukcl_functions.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_rng_hw.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_rsa_pukcl.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha1_hw.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha224_hw.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha256_hw.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha384_hw.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha512_hw.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha_hw.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha_sam11105.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha_sam6156.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_tdes_hw.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_tdes_hwInt.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_tdes_sam6150.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_wolfcryptcb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_cf_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ClearFlags_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Comp_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_CondCopy_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_CRT_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Div_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ExpMod_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_FastCopy_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Fill_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Fmult_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GCD_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEccAdd_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEccConv_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEccDbl_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEccMul_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEcDsa_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Hardware_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Headers_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_JumpTable_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_mapping_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_PrimeGen_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Rc_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_RedMod_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Rng_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_SelfTest_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Services_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Smult_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Square_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Swap_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_typedef_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccAdd_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccAddSub_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccConv_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccDbl_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccMul_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccQuickDualMul_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEcDsa_pb.h</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\pic32mz-crypt.h</name>
-                    </file>
-                </group>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\aes.h</name>
-                </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\arc4.h</name>
                 </file>
@@ -3393,10 +3217,10 @@
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\md5.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\mem_track.h</name>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\memory.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\memory.h</name>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\mem_track.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\misc.h</name>
@@ -3438,19 +3262,7 @@
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\selftest.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\settings.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\sha.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\sha256.h</name>
-                </file>
-                <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\sha3.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\sha512.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\signature.h</name>
@@ -3480,177 +3292,300 @@
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\wc_pkcs11.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\wc_port.h</name>
-                </file>
-                <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\wolfevent.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\wolfmath.h</name>
                 </file>
+                <group>
+                    <name>port</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\pic32mz-crypt.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_cf_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ClearFlags_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Comp_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_CondCopy_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_CRT_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Div_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ExpMod_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_FastCopy_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Fill_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Fmult_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GCD_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEccAdd_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEccConv_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEccDbl_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEccMul_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEcDsa_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Hardware_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Headers_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_JumpTable_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_mapping_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_PrimeGen_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Rc_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_RedMod_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Rng_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_SelfTest_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Services_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Smult_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Square_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Swap_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_typedef_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccAddSub_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccAdd_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccConv_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccDbl_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccMul_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEccQuickDualMul_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEcDsa_pb.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_aes_hw.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_aes_hwInt.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_aes_sam6149.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_aes_u2238.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_crya_saml11.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_ecc_ba414e.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_ecc_pukcl.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_pukcl_definitions.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_pukcl_functions.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_rng_hw.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_rsa_pukcl.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha1_hw.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha224_hw.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha256_hw.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha384_hw.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha512_hw.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha_hw.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha_sam11105.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_sha_sam6156.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_tdes_hw.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_tdes_hwInt.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_tdes_sam6150.h</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_wolfcryptcb.h</name>
+                    </file>
+                </group>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\settings.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\aes.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\sha.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\sha256.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\sha512.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\wc_port.h</name>
+                </file>
             </group>
-            <group>
-                <name>wolfssl</name>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\callbacks.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\certs_test.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\crl.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\error-ssl.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\internal.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\ocsp.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\sniffer.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\sniffer_error.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\ssl.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\test.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\version.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfio.h</name>
-                </file>
-            </group>
-            <file>
-                <name>$PROJ_DIR$\..\src\app.h</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\src\http_net_print.h</name>
-            </file>
-        </group>
-        <group>
-            <name>Linker File</name>
-            <file>
-                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\ddram.icf</name>
-            </file>
         </group>
         <group>
             <name>Source Files</name>
             <group>
-                <name>\</name>
-                <group>
-                    <name>driver</name>
-                    <group>
-                        <name>emac</name>
-                        <group>
-                            <name>config</name>
-                            <group>
-                                <name>sam_9x60_ek</name>
-                                <group>
-                                    <name>driver</name>
-                                    <group>
-                                        <name>emac</name>
-                                        <group>
-                                            <name>src</name>
-                                            <group>
-                                                <name>dynamic</name>
-                                                <file>
-                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac.c</name>
-                                                </file>
-                                                <file>
-                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_lib_sam9x60.c</name>
-                                                </file>
-                                                <file>
-                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_statistics.c</name>
-                                                </file>
-                                            </group>
-                                        </group>
-                                    </group>
-                                </group>
-                            </group>
-                        </group>
-                    </group>
-                </group>
-            </group>
-            <group>
                 <name>config</name>
                 <group>
                     <name>sam_9x60_ek</name>
-                    <group>
-                        <name>bsp</name>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\bsp\bsp.c</name>
-                        </file>
-                    </group>
-                    <group>
-                        <name>crypto</name>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\crypto\src\crypto.c</name>
-                        </file>
-                    </group>
-                    <group>
-                        <name>driver</name>
-                        <group>
-                            <name>ethphy</name>
-                            <group>
-                                <name>src</name>
-                                <group>
-                                    <name>dynamic</name>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\src\dynamic\drv_ethphy.c</name>
-                                    </file>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\src\dynamic\drv_extphy_ksz8081.c</name>
-                                    </file>
-                                </group>
-                            </group>
-                        </group>
-                        <group>
-                            <name>miim</name>
-                            <group>
-                                <name>src</name>
-                                <group>
-                                    <name>dynamic</name>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\miim\src\dynamic\drv_miim.c</name>
-                                    </file>
-                                </group>
-                            </group>
-                        </group>
-                        <group>
-                            <name>sdmmc</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\sdmmc\src\drv_sdmmc.c</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\sdmmc\src\drv_sdmmc_file_system.c</name>
-                            </file>
-                        </group>
-                    </group>
                     <group>
                         <name>library</name>
                         <group>
                             <name>tcpip</name>
                             <group>
                                 <name>src</name>
-                                <group>
-                                    <name>common</name>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\helpers.c</name>
-                                    </file>
-                                    <file>
-                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\common\sys_fs_shell.c</name>
-                                    </file>
-                                </group>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\icmp.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcp.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_helper.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_link_local.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_multicast_dns.c</name>
+                                </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\arp.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ndp.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv6.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\telnet.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftps.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\iperf.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ftpc.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv4.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\smtpc.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_announce.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\udp.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ftp.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\http_net.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\nbns.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\icmpv6.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_commands.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\berkeley_api.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_heap_alloc.c</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_heap_internal.c</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dhcp.c</name>
@@ -3658,44 +3593,20 @@
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dns.c</name>
                                 </file>
+                                <group>
+                                    <name>common</name>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\common\sys_fs_shell.c</name>
+                                    </file>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\helpers.c</name>
+                                    </file>
+                                </group>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\hash_fnv.c</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\http_net.c</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\icmp.c</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\iperf.c</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv4.c</name>
-                                </file>
-                                <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\oahash.c</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\smtpc.c</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\sntp.c</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcp.c</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_announce.c</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_commands.c</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_heap_alloc.c</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_heap_internal.c</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_helpers.c</name>
@@ -3710,126 +3621,57 @@
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tcpip_packet.c</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\telnet.c</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\sntp.c</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftpc.c</name>
                                 </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftps.c</name>
-                                </file>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\udp.c</name>
-                                </file>
                             </group>
                         </group>
-                    </group>
-                    <group>
-                        <name>net_pres</name>
-                        <group>
-                            <name>pres</name>
-                            <group>
-                                <name>src</name>
-                                <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\src\net_pres.c</name>
-                                </file>
-                            </group>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_cert_store.c</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_enc_glue.c</name>
-                            </file>
-                        </group>
-                    </group>
-                    <group>
-                        <name>peripheral</name>
-                        <group>
-                            <name>aic</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\aic\plib_aic.c</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>clk</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\clk\plib_clk.c</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>dbgu</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\dbgu\plib_dbgu.c</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>mmu</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\mmu\plib_mmu.c</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>pio</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\pio\plib_pio.c</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>sdmmc</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\sdmmc\plib_sdmmc0.c</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>tc</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\tc\plib_tc0.c</name>
-                            </file>
-                        </group>
-                    </group>
-                    <group>
-                        <name>stdio</name>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\stdio\iar_monitor.c</name>
-                        </file>
                     </group>
                     <group>
                         <name>system</name>
                         <group>
-                            <name>command</name>
+                            <name>time</name>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\command\src\sys_command.c</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\time\src\sys_time.c</name>
                             </file>
                         </group>
                         <group>
                             <name>console</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\console\src\sys_console.c</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\console\src\sys_console_local.h</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\console\src\sys_console_uart.c</name>
-                            </file>
                             <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\console\src\sys_console_uart.h</name>
                             </file>
                             <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\console\src\sys_console_uart_definitions.h</name>
                             </file>
-                        </group>
-                        <group>
-                            <name>debug</name>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\debug\src\sys_debug.c</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\console\src\sys_console_uart.c</name>
                             </file>
                             <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\debug\src\sys_debug_local.h</name>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\console\src\sys_console.c</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\console\src\sys_console_local.h</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>int</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\int\src\sys_int.c</name>
                             </file>
                         </group>
                         <group>
                             <name>fs</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\src\sys_fs.c</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\src\sys_fs_media_manager.c</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\src\sys_fs_fat_interface.c</name>
+                            </file>
                             <group>
                                 <name>fat_fs</name>
                                 <group>
@@ -3848,87 +3690,207 @@
                                     </file>
                                 </group>
                             </group>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\src\sys_fs.c</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\src\sys_fs_fat_interface.c</name>
-                            </file>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\src\sys_fs_media_manager.c</name>
-                            </file>
                         </group>
-                        <group>
-                            <name>int</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\int\src\sys_int.c</name>
-                            </file>
-                        </group>
-                        <group>
-                            <name>time</name>
-                            <file>
-                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\time\src\sys_time.c</name>
-                            </file>
-                        </group>
-                        <file>
-                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\sys_random_h2_adapter.c</name>
-                        </file>
                         <file>
                             <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\sys_time_h2_adapter.c</name>
                         </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\sys_random_h2_adapter.c</name>
+                        </file>
+                        <group>
+                            <name>command</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\command\src\sys_command.c</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>debug</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\debug\src\sys_debug_local.h</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\debug\src\sys_debug.c</name>
+                            </file>
+                        </group>
                     </group>
                     <file>
-                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\cstartup.s</name>
+                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\tasks.c</name>
                     </file>
+                    <group>
+                        <name>driver</name>
+                        <group>
+                            <name>miim</name>
+                            <group>
+                                <name>src</name>
+                                <group>
+                                    <name>dynamic</name>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\miim\src\dynamic\drv_miim.c</name>
+                                    </file>
+                                </group>
+                            </group>
+                        </group>
+                        <group>
+                            <name>sdmmc</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\sdmmc\src\drv_sdmmc_file_system.c</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\sdmmc\src\drv_sdmmc.c</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>ethphy</name>
+                            <group>
+                                <name>src</name>
+                                <group>
+                                    <name>dynamic</name>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\src\dynamic\drv_ethphy.c</name>
+                                    </file>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\ethphy\src\dynamic\drv_extphy_ksz8081.c</name>
+                                    </file>
+                                </group>
+                            </group>
+                        </group>
+                    </group>
+                    <group>
+                        <name>net_pres</name>
+                        <group>
+                            <name>pres</name>
+                            <group>
+                                <name>src</name>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\src\net_pres.c</name>
+                                </file>
+                            </group>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_enc_glue.c</name>
+                            </file>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\net_pres\pres\net_pres_cert_store.c</name>
+                            </file>
+                        </group>
+                    </group>
+                    <group>
+                        <name>peripheral</name>
+                        <group>
+                            <name>sdmmc</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\sdmmc\plib_sdmmc0.c</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>dbgu</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\dbgu\plib_dbgu.c</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>tc</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\tc\plib_tc0.c</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>mmu</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\mmu\plib_mmu.c</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>clk</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\clk\plib_clk.c</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>pio</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\pio\plib_pio.c</name>
+                            </file>
+                        </group>
+                        <group>
+                            <name>aic</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\peripheral\aic\plib_aic.c</name>
+                            </file>
+                        </group>
+                    </group>
+                    <group>
+                        <name>bsp</name>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\bsp\bsp.c</name>
+                        </file>
+                    </group>
                     <file>
                         <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\initialization.c</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\interrupts.c</name>
                     </file>
+                    <group>
+                        <name>stdio</name>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\stdio\iar_monitor.c</name>
+                        </file>
+                    </group>
                     <file>
-                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\tasks.c</name>
+                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\cstartup.s</name>
                     </file>
                     <file>
                         <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\vectortrap.s</name>
                     </file>
+                    <group>
+                        <name>crypto</name>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\crypto\src\crypto.c</name>
+                        </file>
+                    </group>
                 </group>
             </group>
             <group>
+                <name>wolfssl</name>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\crl.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\keys.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\ocsp.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\sniffer.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\ssl.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\tls.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\tls13.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\wolfio.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\internal.c</name>
+                </file>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\src\app.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\src\http_net_print.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\src\custom_http_net_app.c</name>
+            </file>
+            <group>
                 <name>web_pages</name>
-                <group>
-                    <name>dyndns</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\web_pages\dyndns\index.htm</name>
-                    </file>
-                </group>
-                <group>
-                    <name>email</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\web_pages\email\index.htm</name>
-                    </file>
-                </group>
-                <group>
-                    <name>protect</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\web_pages\protect\config.htm</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\web_pages\protect\index.htm</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\web_pages\protect\reboot.cgi</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\web_pages\protect\reboot.htm</name>
-                    </file>
-                </group>
-                <group>
-                    <name>snmp</name>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\web_pages\snmp\snmpconfig.htm</name>
-                    </file>
-                </group>
                 <file>
                     <name>$PROJ_DIR$\..\src\web_pages\auth.htm</name>
                 </file>
@@ -3977,75 +3939,81 @@
                 <file>
                     <name>$PROJ_DIR$\..\src\web_pages\upload.htm</name>
                 </file>
-            </group>
-            <group>
-                <name>wolfcrypt</name>
                 <group>
-                    <name>port</name>
+                    <name>dyndns</name>
                     <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_aes_sam6149.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_aes_u2238.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_ecc_ba414e.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_ecc_pukcl.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_pukcl_functions.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_rng_sam6334.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_rng_u2242.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_rsa_pukcl.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sam_u2803.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha1_sam11105.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha1_sam6156.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha224_sam11105.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha224_sam6156.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha256_sam11105.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha256_sam6156.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha384_sam6156.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha512_sam6156.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_tdes_sam6150.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_wolfcryptcb.c</name>
-                    </file>
-                    <file>
-                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\pic32mz-crypt.c</name>
+                        <name>$PROJ_DIR$\..\src\web_pages\dyndns\index.htm</name>
                     </file>
                 </group>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\aes.c</name>
-                </file>
+                <group>
+                    <name>email</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\web_pages\email\index.htm</name>
+                    </file>
+                </group>
+                <group>
+                    <name>protect</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\web_pages\protect\config.htm</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\web_pages\protect\index.htm</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\web_pages\protect\reboot.cgi</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\web_pages\protect\reboot.htm</name>
+                    </file>
+                </group>
+                <group>
+                    <name>snmp</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\web_pages\snmp\snmpconfig.htm</name>
+                    </file>
+                </group>
+            </group>
+            <group>
+                <name>\</name>
+                <group>
+                    <name>driver</name>
+                    <group>
+                        <name>emac</name>
+                        <group>
+                            <name>config</name>
+                            <group>
+                                <name>sam_9x60_ek</name>
+                                <group>
+                                    <name>driver</name>
+                                    <group>
+                                        <name>emac</name>
+                                        <group>
+                                            <name>src</name>
+                                            <group>
+                                                <name>dynamic</name>
+                                                <file>
+                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac.c</name>
+                                                </file>
+                                                <file>
+                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_statistics.c</name>
+                                                </file>
+                                                <file>
+                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_lib_SAM9X60.c</name>
+                                                </file>
+                                            </group>
+                                        </group>
+                                    </group>
+                                </group>
+                            </group>
+                        </group>
+                    </group>
+                </group>
+            </group>
+            <file>
+                <name>$PROJ_DIR$\..\src\main_sam_9x60.c</name>
+            </file>
+            <group>
+                <name>wolfcrypt</name>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\arc4.c</name>
                 </file>
@@ -4090,9 +4058,6 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\curve448.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\des3.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\dh.c</name>
@@ -4179,25 +4144,13 @@
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\rabbit.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\random.c</name>
-                </file>
-                <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\ripemd.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\rsa.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sha.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sha256.c</name>
-                </file>
-                <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sha3.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sha512.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\signature.c</name>
@@ -4253,49 +4206,94 @@
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\wolfmath.c</name>
                 </file>
+                <group>
+                    <name>port</name>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\pic32mz-crypt.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_aes_sam6149.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_aes_u2238.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_ecc_ba414e.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_ecc_pukcl.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_pukcl_functions.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_rng_sam6334.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_rng_u2242.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_rsa_pukcl.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sam_u2803.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha1_sam11105.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha1_sam6156.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha224_sam11105.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha224_sam6156.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha256_sam11105.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha256_sam6156.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha384_sam6156.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha512_sam6156.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_tdes_sam6150.c</name>
+                    </file>
+                    <file>
+                        <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_wolfcryptcb.c</name>
+                    </file>
+                </group>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\aes.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\des3.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\random.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sha.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sha256.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sha512.c</name>
+                </file>
             </group>
-            <group>
-                <name>wolfssl</name>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\crl.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\internal.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\keys.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\ocsp.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\sniffer.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\ssl.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\tls.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\tls13.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\src\wolfio.c</name>
-                </file>
-            </group>
+        </group>
+        <group>
+            <name>Linker File</name>
             <file>
-                <name>$PROJ_DIR$\..\src\app.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\src\custom_http_net_app.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\src\http_net_print.c</name>
-            </file>
-            <file>
-                <name>$PROJ_DIR$\..\src\main_sam_9x60.c</name>
+                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\ddram.icf</name>
             </file>
         </group>
     </group>
-</project>
+    </project>

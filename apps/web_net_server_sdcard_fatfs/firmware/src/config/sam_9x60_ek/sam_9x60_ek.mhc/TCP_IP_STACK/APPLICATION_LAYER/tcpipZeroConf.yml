@@ -1,11 +1,11 @@
 format_version: v1.0
 type: UniqueComponent
-attributes: {id: tcpipCmd}
+attributes: {id: tcpipZeroConf}
 children:
 - type: Symbols
   children:
   - type: Boolean
-    attributes: {id: TCPIP_STACK_COMMANDS_STORAGE_ENABLE}
+    attributes: {id: TCPIP_USE_MULTI_CAST_DNS_ZERO_CONFIG}
     children:
     - type: Attributes
       children:
@@ -14,4 +14,4 @@ children:
         children:
         - {type: Value, value: 'true'}
 - type: ElementPosition
-  attributes: {x: '212', y: '75', id: tcpipCmd}
+  attributes: {x: '870', y: '140', id: tcpipZeroConf}

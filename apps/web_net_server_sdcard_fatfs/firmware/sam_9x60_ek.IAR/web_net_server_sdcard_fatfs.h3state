@@ -16,6 +16,9 @@
             "WOLFSSL_IGNORE_FILE_WARN"
         ], 
         "includes": [
+            ".", 
+            "..\\src\\config\\sam_9x60_ek\\system\\fs\\fat_fs\\file_system", 
+            "..\\src\\config\\sam_9x60_ek\\system\\fs\\fat_fs\\hardware_access", 
             "..\\src\\config\\sam_9x60_ek\\library", 
             "..\\src\\config\\sam_9x60_ek\\library\\tcpip\\src", 
             "..\\src\\config\\sam_9x60_ek\\library\\tcpip\\src\\common", 
@@ -25,10 +28,7 @@
             "..\\src\\packs\\CMSIS\\CMSIS\\Core\\Include", 
             "..\\src\\packs\\CMSIS", 
             "..\\src\\third_party\\wolfssl", 
-            "..\\src\\third_party\\wolfssl\\wolfssl", 
-            ".", 
-            "..\\src\\config\\sam_9x60_ek\\system\\fs\\fat_fs\\file_system", 
-            "..\\src\\config\\sam_9x60_ek\\system\\fs\\fat_fs\\hardware_access"
+            "..\\src\\third_party\\wolfssl\\wolfssl"
         ]
     }
 }

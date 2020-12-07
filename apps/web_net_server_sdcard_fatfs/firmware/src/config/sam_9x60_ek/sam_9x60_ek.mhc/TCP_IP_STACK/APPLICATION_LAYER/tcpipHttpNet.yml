@@ -5,6 +5,13 @@ children:
 - type: Symbols
   children:
   - type: Boolean
+    attributes: {id: TCPIP_HTTP_NET_CONSOLE_CMD}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Boolean
     attributes: {id: TCPIP_HTTP_NET_CUSTOM_TEMPLATE_SL}
     children:
     - type: Values

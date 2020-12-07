@@ -4,6 +4,13 @@ attributes: {id: tcpipUdp}
 children:
 - type: Symbols
   children:
+  - type: Boolean
+    attributes: {id: TCPIP_UDP_COMMANDS}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
   - type: Integer
     attributes: {id: TCPIP_UDP_HEAP_SIZE}
     children:

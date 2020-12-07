@@ -5,18 +5,12 @@ children:
 - type: Symbols
   children:
   - type: Boolean
-    attributes: {id: wolfsslOsalHeapKeys}
+    attributes: {id: wolfssl}
     children:
-    - type: Attributes
+    - type: Values
       children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'true'}
-      - type: Boolean
-        attributes: {id: visible}
-        children:
-        - {type: Value, value: 'true'}
+      - type: Dynamic
+        attributes: {id: net_Pres, value: 'true'}
 - type: Attachments
   children:
   - type: DirectDependency
