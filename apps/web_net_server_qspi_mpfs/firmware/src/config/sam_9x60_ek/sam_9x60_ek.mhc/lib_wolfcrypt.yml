@@ -25,5 +25,12 @@ children:
       children:
       - type: Dynamic
         attributes: {id: lib_wolfcrypt, value: 'false'}
+  - type: Boolean
+    attributes: {id: wolfssl_included}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: lib_wolfcrypt, value: 'true'}
 - type: ElementPosition
-  attributes: {x: '350', y: '340', id: lib_wolfcrypt}
+  attributes: {x: '351', y: '359', id: lib_wolfcrypt}
