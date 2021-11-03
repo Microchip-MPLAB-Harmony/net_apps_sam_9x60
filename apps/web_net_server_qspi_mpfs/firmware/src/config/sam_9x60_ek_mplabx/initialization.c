@@ -503,6 +503,29 @@ const TCPIP_TFTPS_MODULE_CONFIG tcpipTFTPSInitData =
     .mountPath              = TCPIP_TFTPS_MOUNT_POINT,
 };
 
+/*** DHCP server initialization data ***/
+TCPIP_DHCPS_ADDRESS_CONFIG DHCP_POOL_CONFIG[]=
+{
+    {
+        .interfaceIndex     = TCPIP_DHCP_SERVER_INTERFACE_INDEX_IDX0,
+		.poolIndex          = TCPIP_DHCP_SERVER_POOL_INDEX_IDX0,
+        .serverIPAddress    = TCPIP_DHCPS_DEFAULT_SERVER_IP_ADDRESS_IDX0,
+        .startIPAddRange    = TCPIP_DHCPS_DEFAULT_IP_ADDRESS_RANGE_START_IDX0,
+        .ipMaskAddress      = TCPIP_DHCPS_DEFAULT_SERVER_NETMASK_ADDRESS_IDX0,
+        .priDNS             = TCPIP_DHCPS_DEFAULT_SERVER_PRIMARY_DNS_ADDRESS_IDX0,
+        .secondDNS          = TCPIP_DHCPS_DEFAULT_SERVER_SECONDARY_DNS_ADDRESS_IDX0,
+        .poolEnabled        = TCPIP_DHCP_SERVER_POOL_ENABLED_IDX0,
+    },
+};
+const TCPIP_DHCPS_MODULE_CONFIG tcpipDHCPSInitData =
+{
+    .enabled            = true,
+    .deleteOldLease     = TCPIP_DHCP_SERVER_DELETE_OLD_ENTRIES,
+	.dhcpServerCnt		= TCPIP_DHCPS_MAX_NUMBER_INSTANCES,
+    .leaseEntries       = TCPIP_DHCPS_LEASE_ENTRIES_DEFAULT,
+    .entrySolvedTmo     = TCPIP_DHCPS_LEASE_SOLVED_ENTRY_TMO,
+    .dhcpServer         = (TCPIP_DHCPS_ADDRESS_CONFIG*)DHCP_POOL_CONFIG,
+};
 
 /*** FTP Server Initialization Data ***/
 const TCPIP_FTP_MODULE_CONFIG tcpipFTPInitData =
@@ -535,6 +558,14 @@ const TCPIP_DNS_CLIENT_MODULE_CONFIG tcpipDNSClientInitData =
     .nIPv6Entries  = TCPIP_DNS_CLIENT_CACHE_PER_IPV6_ADDRESS,
 };
 
+/*** DNS Server Initialization Data ***/
+const TCPIP_DNSS_MODULE_CONFIG tcpipDNSServerInitData =
+{ 
+    .deleteOldLease         = TCPIP_DNSS_DELETE_OLD_LEASE,
+    .replyBoardAddr         = TCPIP_DNSS_REPLY_BOARD_ADDR,
+    .IPv4EntriesPerDNSName  = TCPIP_DNSS_CACHE_PER_IPV4_ADDRESS,
+    .IPv6EntriesPerDNSName  = TCPIP_DNSS_CACHE_PER_IPV6_ADDRESS,
+};
 
 /*** IPv6 Initialization Data ***/
 const TCPIP_IPV6_MODULE_CONFIG  tcpipIPv6InitData = 
@@ -543,6 +574,27 @@ const TCPIP_IPV6_MODULE_CONFIG  tcpipIPv6InitData =
     .fragmentPktRxTimeout   = TCPIP_IPV6_FRAGMENT_PKT_TIMEOUT,
 };
 
+/*** DHCPv6 client Initialization Data ***/
+const TCPIP_DHCPV6_MODULE_CONFIG  tcpipDhcpcv6InitData = 
+{
+    .configFlags                = TCPIP_DHCPV6_CONFIG_STARTUP_FLAG,
+    .dhcpCliPort                = TCPIP_DHCPV6_CLIENT_CONNECT_PORT,
+    .dhcpSrvPort                = TCPIP_DHCPV6_SERVER_LISTEN_PORT,
+    .duidType                   = TCPIP_DHCPV6_DUID_TYPE_CONFIG,
+    .nIanaDcpts                 = TCPIP_DHCPV6_IANA_DESCRIPTORS_NO,
+    .nIataDcpts                 = TCPIP_DHCPV6_IATA_DESCRIPTORS_NO,
+    .nFreeDcpts                 = TCPIP_DHCPV6_IA_FREE_DESCRIPTORS_NO,
+    .defaultIanaT1              = TCPIP_DHCPV6_IANA_DEFAULT_T1,
+    .defaultIanaT2              = TCPIP_DHCPV6_IANA_DEFAULT_T2,
+    .defaultIataT1              = TCPIP_DHCPV6_IATA_DEFAULT_T1,
+    .defaultIataT2              = TCPIP_DHCPV6_IATA_DEFAULT_T2,
+    .ianaSolicitT1              = TCPIP_DHCPV6_IANA_SOLICIT_T1,
+    .ianaSolicitT2              = TCPIP_DHCPV6_IANA_SOLICIT_T2,
+    .solicitPrefLTime           = TCPIP_DHCPV6_IA_SOLICIT_ADDRESS_PREF_LTIME,
+    .solicitValidLTime          = TCPIP_DHCPV6_IA_SOLICIT_ADDRESS_VALID_LTIME,
+    .nMsgBuffers                = TCPIP_DHCPV6_MESSAGE_BUFFERS,
+    .msgBufferSize              = TCPIP_DHCPV6_MESSAGE_BUFFER_SIZE,        
+};
 
 /*** IPv4 Initialization Data ***/
 
@@ -599,11 +651,14 @@ const TCPIP_STACK_MODULE_CONFIG TCPIP_STACK_MODULE_CONFIG_TBL [] =
     {TCPIP_MODULE_IPV6,             &tcpipIPv6InitData},            // TCPIP_MODULE_IPV6
     {TCPIP_MODULE_ICMPV6,           0},                             // TCPIP_MODULE_ICMPV6
     {TCPIP_MODULE_NDP,              0},                             // TCPIP_MODULE_NDP
+	{TCPIP_MODULE_DHCPV6_CLIENT,    &tcpipDhcpcv6InitData},         // TCPIP_MODULE_DHCPV6_CLEINT
     {TCPIP_MODULE_UDP,              &tcpipUDPInitData},             // TCPIP_MODULE_UDP
     {TCPIP_MODULE_TCP,              &tcpipTCPInitData},             // TCPIP_MODULE_TCP
     {TCPIP_MODULE_DHCP_CLIENT,      &tcpipDHCPInitData},            // TCPIP_MODULE_DHCP_CLIENT
+    {TCPIP_MODULE_DHCP_SERVER,      &tcpipDHCPSInitData},           // TCPIP_MODULE_DHCP_SERVER
     {TCPIP_MODULE_ANNOUNCE,         &tcpipAnnounceInitData},        // TCPIP_MODULE_ANNOUNCE
     {TCPIP_MODULE_DNS_CLIENT,       &tcpipDNSClientInitData},       // TCPIP_MODULE_DNS_CLIENT
+    {TCPIP_MODULE_DNS_SERVER,       &tcpipDNSServerInitData},       // TCPIP_MODULE_DNS_SERVER
     {TCPIP_MODULE_NBNS,             &tcpipNBNSInitData},            // TCPIP_MODULE_NBNS
     {TCPIP_MODULE_SNTP,             &tcpipSNTPInitData},            // TCPIP_MODULE_SNTP
 

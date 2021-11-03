@@ -335,6 +335,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 8EAC77700DE184BFBF09D9BB89EC1E55
+- generatedChecksum: 2E8B98E39992C1D42DF8E80A7434CD72
+  logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
+  name: dhcps.c
+  physicalPath: library/tcpip/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 2E8B98E39992C1D42DF8E80A7434CD72
+- generatedChecksum: 087003035BA7C51A9EB632ED21B6451C
+  logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
+  name: dhcpv6.c
+  physicalPath: library/tcpip/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 087003035BA7C51A9EB632ED21B6451C
 - generatedChecksum: 47635753828B814A05048B66B1AF534B
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
   name: dns.c
@@ -342,6 +356,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 47635753828B814A05048B66B1AF534B
+- generatedChecksum: 47F8D23EB159ACCD0E02719B69022351
+  logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
+  name: dnss.c
+  physicalPath: library/tcpip/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 47F8D23EB159ACCD0E02719B69022351
 - generatedChecksum: FFF6AFB4449C1DD9CD04793B37AAAF5D
   logicalPath: config/sam_9x60_ek_mplabx/driver/emac/src/dynamic
   name: drv_emac.c
@@ -629,13 +650,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: E1C11C9FEFFE008A939BAEE929D54A1D
-- generatedChecksum: 0AC73CA8B5CC7C0D88348357BB013EE4
+- generatedChecksum: 002F12E177C409DB48074C767E1EE27D
   logicalPath: config/sam_9x60_ek_mplabx
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 0AC73CA8B5CC7C0D88348357BB013EE4
+  userChecksum: 002F12E177C409DB48074C767E1EE27D
 - generatedChecksum: 479A727027F5AD9CBBDC717FD86D8B5E
   logicalPath: wolfcrypt
   name: integer.c
@@ -768,7 +789,7 @@ files:
   physicalPath: ../..
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 2E89E47DCE9D78E9E0A559CA4E61DAE8
+  userChecksum: 9EF4A809FBB95157E96E2228FA863486
 - generatedChecksum: 3D1FBA1F5B3DFFA1B419A579EA0D8600
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
   name: nbns.c
@@ -1266,13 +1287,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 78BC897FBB3F1CEB2E47BCAF7F152E34
-- generatedChecksum: 56CC52ADDAD81C9B99CE68AA8CBF8749
+- generatedChecksum: B342EF4B980D55EE7BDFA6C54B0CEDE3
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
   name: tcpip_commands.c
   physicalPath: library/tcpip/src
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 56CC52ADDAD81C9B99CE68AA8CBF8749
+  userChecksum: B342EF4B980D55EE7BDFA6C54B0CEDE3
 - generatedChecksum: 0911DB28A8AA8D2EDEC039BD1BA1CED1
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
   name: tcpip_heap_alloc.c
@@ -1959,13 +1980,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 15AB6693CC2E1EE7AB845EE42A6AC762
-- generatedChecksum: A6D14275D873912C9170B2DC4923F7BB
+- generatedChecksum: C3BF60B8E5E1D493E29605616801C12B
   logicalPath: config/sam_9x60_ek_mplabx
   name: configuration.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: A6D14275D873912C9170B2DC4923F7BB
+  userChecksum: C3BF60B8E5E1D493E29605616801C12B
 - generatedChecksum: 8B35997040E0D61B0C62411FF7C4E9C1
   logicalPath: config/sam_9x60_ek_mplabx/peripheral/mmu
   name: cp15.h
@@ -4129,13 +4150,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: B08B1392542365A5E9A327B6C21155EC
-- generatedChecksum: 23DE8966BE74C2116AB2C96109C8F6BE
+- generatedChecksum: CEF26CAFB4449C4F7A04C8FCECB1B98B
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip
   name: tcpip.h
   physicalPath: library/tcpip
   security: NON_SECURE
   type: HEADER
-  userChecksum: 23DE8966BE74C2116AB2C96109C8F6BE
+  userChecksum: CEF26CAFB4449C4F7A04C8FCECB1B98B
 - generatedChecksum: 60B94F95E8C1F65E61E54288D55B0319
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip
   name: tcpip_announce.h
@@ -4276,13 +4297,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 3DBAA4F039E31AF2D181FA01A817E728
-- generatedChecksum: 3E61E76BA2F4A5EE2D6BB22A7DB1322B
+- generatedChecksum: ADE76AFCD5DE92091E3C0072D8AEC4E2
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
   name: tcpip_private.h
   physicalPath: library/tcpip/src
   security: NON_SECURE
   type: HEADER
-  userChecksum: 3E61E76BA2F4A5EE2D6BB22A7DB1322B
+  userChecksum: ADE76AFCD5DE92091E3C0072D8AEC4E2
 - generatedChecksum: 1359095D6A60712C36D5DA1C8DC53BE3
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip
   name: tcpip_reboot.h

@@ -239,15 +239,6 @@ children:
       children:
       - type: User
         attributes: {value: main_sam_9x60}
-  - type: Menu
-    attributes: {id: CoreXC32Menu}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: visible}
-        children:
-        - {type: Value, value: 'true'}
   - type: Boolean
     attributes: {id: DBGU_CLOCK_ENABLE}
     children:
