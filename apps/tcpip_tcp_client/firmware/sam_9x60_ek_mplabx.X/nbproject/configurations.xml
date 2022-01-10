@@ -13,6 +13,16 @@
             <itemPath>../src/config/sam_9x60_ek_mplabx/crypto/crypto.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f6" displayName="driver" projectFiles="true">
+            <logicalFolder name="f3" displayName="emac" projectFiles="true">
+              <logicalFolder name="f1" displayName="src" projectFiles="true">
+                <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
+                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_dcpt_lists.h</itemPath>
+                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_lib.h</itemPath>
+                </logicalFolder>
+                <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/drv_emac_local.h</itemPath>
+              </logicalFolder>
+              <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/drv_emac.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="f2" displayName="ethphy" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
@@ -114,6 +124,8 @@
                 <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/lldp_tlv.h</itemPath>
                 <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_mac_bridge_manager.h</itemPath>
                 <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_mac_bridge_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcp_server_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcp_server_private.h</itemPath>
               </logicalFolder>
               <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_common_ports.h</itemPath>
               <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_mac.h</itemPath>
@@ -160,6 +172,7 @@
               <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip.h</itemPath>
               <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_ethernet.h</itemPath>
               <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_mac_bridge.h</itemPath>
+              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/dhcp_server.h</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f5" displayName="net_pres" projectFiles="true">
@@ -214,6 +227,9 @@
               <itemPath>../src/config/sam_9x60_ek_mplabx/system/int/sys_int.h</itemPath>
               <itemPath>../src/config/sam_9x60_ek_mplabx/system/int/sys_int_mapping.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="f7" displayName="reset" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_ek_mplabx/system/reset/sys_reset.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="f1" displayName="time" projectFiles="true">
               <itemPath>../src/config/sam_9x60_ek_mplabx/system/time/sys_time.h</itemPath>
               <itemPath>../src/config/sam_9x60_ek_mplabx/system/time/sys_time_definitions.h</itemPath>
@@ -234,6 +250,7 @@
           <itemPath>../src/config/sam_9x60_ek_mplabx/toolchain_specifics.h</itemPath>
           <itemPath>../src/config/sam_9x60_ek_mplabx/definitions.h</itemPath>
           <itemPath>../src/config/sam_9x60_ek_mplabx/config.h</itemPath>
+          <itemPath>../src/config/sam_9x60_ek_mplabx/interrupts.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f2" displayName="driver" projectFiles="true">
@@ -244,12 +261,8 @@
                 <logicalFolder name="f1" displayName="emac" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                      <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_dcpt_lists.h</itemPath>
-                      <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_lib.h</itemPath>
                     </logicalFolder>
-                    <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/drv_emac_local.h</itemPath>
                   </logicalFolder>
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/drv_emac.h</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
@@ -304,6 +317,72 @@
             <itemPath>../src/packs/SAM9X60_DFP/component/uhphs.h</itemPath>
             <itemPath>../src/packs/SAM9X60_DFP/component/wdt.h</itemPath>
             <itemPath>../src/packs/SAM9X60_DFP/component/xdmac.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="f3" displayName="instance" projectFiles="true">
+            <itemPath>../src/packs/SAM9X60_DFP/instance/adc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/aes.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/aic.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/bsc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/can0.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/can1.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/classd.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/dbgu.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/emac0.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/emac1.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom0.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom1.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom10.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom11.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom12.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom2.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom3.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom4.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom5.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom6.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom7.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom8.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/flexcom9.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/gfx2d.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/gpbr.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/i2smcc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/isi.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/lcdc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/matrix.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/mpddrc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/otpc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/pioa.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/piob.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/pioc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/piod.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/pit.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/pit64b.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/pmc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/pmecc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/pmerrloc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/pwm.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/qspi.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/rstc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/rtc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/rtt.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/sckc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/sdmmc0.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/sdmmc1.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/sdramc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/sfr.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/sha.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/shdwc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/smc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/ssc.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/syscwp.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/tc0.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/tc1.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/tdes.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/trng.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/udphs.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/uhphs_ehci.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/uhphs_ohci.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/wdt.h</itemPath>
+            <itemPath>../src/packs/SAM9X60_DFP/instance/xdmac.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="pio" projectFiles="true">
             <itemPath>../src/packs/SAM9X60_DFP/pio/sam9x60.h</itemPath>
@@ -446,6 +525,7 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sha512.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/wc_port.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/certs_test.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/rc2.h</itemPath>
       </logicalFolder>
       <itemPath>../src/app.h</itemPath>
     </logicalFolder>
@@ -470,6 +550,15 @@
             <itemPath>../src/config/sam_9x60_ek_mplabx/crypto/src/crypto.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f6" displayName="driver" projectFiles="true">
+            <logicalFolder name="f3" displayName="emac" projectFiles="true">
+              <logicalFolder name="f1" displayName="src" projectFiles="true">
+                <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
+                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_statistics.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_lib_SAM9X60.c</itemPath>
+                </logicalFolder>
+              </logicalFolder>
+            </logicalFolder>
             <logicalFolder name="f2" displayName="ethphy" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
@@ -557,6 +646,9 @@
             <logicalFolder name="f3" displayName="int" projectFiles="true">
               <itemPath>../src/config/sam_9x60_ek_mplabx/system/int/src/sys_int.c</itemPath>
             </logicalFolder>
+            <logicalFolder name="f7" displayName="reset" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_ek_mplabx/system/reset/sys_reset.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="f1" displayName="time" projectFiles="true">
               <itemPath>../src/config/sam_9x60_ek_mplabx/system/time/src/sys_time.c</itemPath>
             </logicalFolder>
@@ -578,9 +670,6 @@
                 <logicalFolder name="f1" displayName="emac" projectFiles="true">
                   <logicalFolder name="f1" displayName="src" projectFiles="true">
                     <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                      <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac.c</itemPath>
-                      <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_statistics.c</itemPath>
-                      <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_lib_SAM9X60.c</itemPath>
                     </logicalFolder>
                   </logicalFolder>
                 </logicalFolder>
@@ -682,6 +771,7 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha256.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha512.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/rc2.c</itemPath>
       </logicalFolder>
       <itemPath>../src/app_commands.c</itemPath>
       <itemPath>../src/app.c</itemPath>
@@ -768,11 +858,11 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>2.50</languageToolchainVersion>
+        <languageToolchainVersion>4.00</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="SAM9X6_DFP" vendor="Microchip" version="1.5.50"/>
+        <pack name="SAM9X6_DFP" vendor="Microchip" version="1.7.65"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -834,7 +924,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src/third_party/wolfssl/wolfssl;../src/third_party/wolfssl;../src;../src/config/sam_9x60_ek_mplabx;../src/packs/SAM9X60_DFP;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/CMSIS/;../src/config/sam_9x60_ek_mplabx/library;../src/config/sam_9x60_ek_mplabx/library/tcpip/src;../src/config/sam_9x60_ek_mplabx/library/tcpip/src/common"/>
+                  value="../src;../src/config/sam_9x60_ek_mplabx;../src/config/sam_9x60_ek_mplabx/library;../src/config/sam_9x60_ek_mplabx/library/tcpip/src;../src/config/sam_9x60_ek_mplabx/library/tcpip/src/common;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/SAM9X60_DFP;../src/third_party/wolfssl;../src/third_party/wolfssl/wolfssl"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -844,9 +934,10 @@
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros"
-                  value="WOLFSSL_IGNORE_FILE_WARN;HAVE_CONFIG_H"/>
+                  value="HAVE_CONFIG_H;WOLFSSL_IGNORE_FILE_WARN"/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
+        <property key="tentative-definitions" value=""/>
         <property key="toplevel-reordering" value=""/>
         <property key="unaligned-access" value=""/>
         <property key="use-cci" value="false"/>
@@ -878,6 +969,7 @@
       </C32-AS>
       <C32-CO>
         <property key="coverage-enable" value=""/>
+        <property key="stack-guidance" value="false"/>
       </C32-CO>
       <C32-LD>
         <property key="additional-options-use-response-files" value="false"/>
@@ -932,7 +1024,7 @@
         <property key="exceptions" value="true"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/sam_9x60_ek_mplabx;../src/packs/SAM9X60_DFP;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/CMSIS/"/>
+                  value="../src;../src/config/sam_9x60_ek_mplabx;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/SAM9X60_DFP"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -960,6 +1052,7 @@
         <property key="omit-pack-options" value="1"/>
         <property key="relaxed-math" value="false"/>
         <property key="save-temps" value="false"/>
+        <property key="stack-smashing" value=""/>
         <property key="wpo-lto" value="false"/>
       </C32Global>
       <PICkit3PlatformTool>
