@@ -2030,6 +2030,20 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
+  - type: Boolean
+    attributes: {id: PIT_INTERRUPT_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: pit, value: 'true'}
+  - type: String
+    attributes: {id: PIT_INTERRUPT_HANDLER}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: pit, value: PIT_InterruptHandler}
   - type: KeyValueSet
     attributes: {id: PWM_INTERRUPT_PRIORITY}
     children:
@@ -2169,7 +2183,7 @@ children:
     - type: Values
       children:
       - type: Dynamic
-        attributes: {id: core, value: 'false'}
+        attributes: {id: core, value: 'true'}
   - type: String
     attributes: {id: SYSC_INTERRUPT_HANDLER}
     children:
@@ -2345,6 +2359,13 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
+  - type: Boolean
+    attributes: {id: USE_FREERTOS_VECTORS}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: FreeRTOS, value: 'true'}
   - type: KeyValueSet
     attributes: {id: WDT_EARLY_RESET_ACTION}
     children:

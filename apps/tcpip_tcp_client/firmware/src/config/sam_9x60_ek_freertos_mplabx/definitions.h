@@ -50,6 +50,7 @@
 #include <stdbool.h>
 #include "crypto/crypto.h"
 #include "bsp/bsp.h"
+#include "peripheral/pit/plib_pit.h"
 #include "peripheral/tc/plib_tc0.h"
 #include "system/time/sys_time.h"
 #include "driver/emac/drv_emac.h"
@@ -71,6 +72,8 @@
 #include "system/console/sys_console.h"
 #include "system/console/src/sys_console_uart_definitions.h"
 #include "peripheral/dbgu/plib_dbgu.h"
+#include "FreeRTOS.h"
+#include "task.h"
 #include "app.h"
 
 

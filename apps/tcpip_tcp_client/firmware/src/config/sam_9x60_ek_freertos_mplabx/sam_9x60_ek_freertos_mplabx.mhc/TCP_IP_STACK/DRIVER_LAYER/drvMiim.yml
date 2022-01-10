@@ -18,6 +18,15 @@ children:
       children:
       - type: Dynamic
         attributes: {id: drvMiim, value: EMAC0_BASE_ADDRESS}
+  - type: Menu
+    attributes: {id: DRV_MIIM_RTOS_MENU}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
   - type: File
     attributes: {id: DRV_SDHC_SYS_RTOS_TASK}
     children:
@@ -26,6 +35,6 @@ children:
       - type: Boolean
         attributes: {id: enabled}
         children:
-        - {type: Value, value: 'false'}
+        - {type: Value, value: 'true'}
 - type: ElementPosition
   attributes: {x: '281', y: '20', id: drvMiim}
