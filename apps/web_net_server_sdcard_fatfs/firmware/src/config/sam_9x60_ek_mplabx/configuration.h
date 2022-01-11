@@ -189,9 +189,9 @@ extern "C" {
 
 /*** ICMPv4 Client Configuration ***/
 #define TCPIP_STACK_USE_ICMP_CLIENT
-#define TCPIP_ICMP_CLIENT_USER_NOTIFICATION   true
 #define TCPIP_ICMP_ECHO_REQUEST_TIMEOUT        500
 #define TCPIP_ICMP_TASK_TICK_RATE              33
+#define TCPIP_STACK_MAX_CLIENT_ECHO_REQUESTS   4
 #define TCPIP_ICMP_COMMAND_ENABLE              false
 
 /******************************************************************************/
@@ -410,12 +410,12 @@ extern "C" {
 #define TCPIP_SMTPC_MAIL_RETRIES 	                3
 #define TCPIP_SMTPC_SERVER_TRANSIENT_RETRY_TIMEOUT  600
 #define TCPIP_SMTPC_INTERNAL_RETRY_TIMEOUT          10
-#define TCPIP_SMTPC_SERVER_REPLY_BUFFER_SIZE 	    512
+#define TCPIP_SMTPC_SERVER_REPLY_BUFFER_SIZE 	    2048
 #define TCPIP_SMTPC_CLIENT_AUTH_BUFFER_SIZE 	    100
 #define TCPIP_SMTPC_CLIENT_ADDR_BUFFER_SIZE 	    80
 #define TCPIP_SMTPC_PLAIN_LINE_BUFF_SIZE 	        256
-#define TCPIP_SMTPC_SKT_TX_BUFF_SIZE			    0
-#define TCPIP_SMTPC_SKT_RX_BUFF_SIZE			    0
+#define TCPIP_SMTPC_SKT_TX_BUFF_SIZE			    2048
+#define TCPIP_SMTPC_SKT_RX_BUFF_SIZE			    2048
 #define TCPIP_SMTPC_TASK_TICK_RATE			        55
 
 
@@ -472,9 +472,8 @@ extern "C" {
 #define TCPIP_STACK_USE_DHCPV6_CLIENT
 #define TCPIP_DHCPV6_CONFIG_STARTUP_FLAG                       		\
 																	TCPIP_DHCPV6_FLAG_START_ENABLE |\
-																	TCPIP_DHCPV6_FLAG_DAD_DISABLE |\
 																	TCPIP_DHCPV6_FLAG_NONE
-
+																	
 #define TCPIP_DHCPV6_MIN_UDP_TX_BUFFER_SIZE                         512
 #define TCPIP_DHCPV6_DUID_TYPE_CONFIG								TCPIP_DHCPV6_DUID_TYPE_LL
 #define TCPIP_DHCPV6_IANA_DESCRIPTORS_NO							4
@@ -838,6 +837,9 @@ extern "C" {
 #define DRV_ETHPHY_NEG_INIT_TMO                     1
 #define DRV_ETHPHY_NEG_DONE_TMO                     2000
 #define DRV_ETHPHY_RESET_CLR_TMO                    500
+
+
+#define TCPIP_STACK_NETWORK_INTERAFCE_COUNT  	1
 
 
 
