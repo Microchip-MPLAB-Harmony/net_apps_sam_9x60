@@ -58,7 +58,7 @@ static DHCPS_ICMP_PROCESS   dhcpsicmpProcessSteps = DHCPS_ICMP_IDLE;
 uint32_t                    dhcpsicmpStartTick;
 static TCPIP_NET_HANDLE     dhcpsicmpNetH = 0;
 static void TCPIP_DHCPS_EchoICMPRequestTask(void);
-static void                 DHCPSPingHandler(const  TCPIP_ICMP_ECHO_REQUEST* pEchoReq, TCPIP_ICMP_REQUEST_HANDLE iHandle, TCPIP_ICMP_ECHO_REQUEST_RESULT result);
+static void                 DHCPSPingHandler(const  TCPIP_ICMP_ECHO_REQUEST* pEchoReq, TCPIP_ICMP_REQUEST_HANDLE iHandle, TCPIP_ICMP_ECHO_REQUEST_RESULT result, const void* param);
 
 static IPV4_ADDR            dhcpsicmpTargetAddr;         // current target address
 static uint8_t              dhcpsicmpPingBuff[TCPIP_DHCPS_ICMP_ECHO_REQUEST_BUFF_SIZE];
@@ -2304,7 +2304,7 @@ bool TCPIP_DHCPS_Disable(TCPIP_NET_HANDLE hNet)
     _DHCPSrvClose(pNetIf,true);
     TCPIP_STACK_AddressServiceEvent(pNetIf, TCPIP_STACK_ADDRESS_SERVICE_DHCPS, TCPIP_STACK_ADDRESS_SERVICE_EVENT_USER_STOP);
     TCPIP_STACK_AddressServiceDefaultSet(pNetIf);
-    _TCPIPStackSetConfigAddress(pNetIf, 0, 0, true);
+    _TCPIPStackSetConfigAddress(pNetIf, 0, 0, 0, true);
      // Remove all the HASH entries
     _DHCPSRemoveCacheEntries(&gPdhcpsHashDcpt);
     return true;
@@ -2345,7 +2345,7 @@ static bool _DHCPS_StartOperation(TCPIP_NET_IF* pNetIf,DHCP_SRVR_DCPT* pDhcpsDcp
     }
 // Get the network interface from the network index and configure IP address,
 // Netmask and gateway and DNS
-    _TCPIPStackSetConfigAddress(pNetIf, &pDhcpsDcpt->intfAddrsConf.serverIPAddress, &pDhcpsDcpt->intfAddrsConf.serverMask, false);
+    _TCPIPStackSetConfigAddress(pNetIf, &pDhcpsDcpt->intfAddrsConf.serverIPAddress, &pDhcpsDcpt->intfAddrsConf.serverMask, 0, false);
     TCPIP_STACK_GatewayAddressSet(pNetIf, &pDhcpsDcpt->intfAddrsConf.serverIPAddress);
 #if defined(TCPIP_STACK_USE_DNS)
     if(pNetIf->Flags.bIsDNSServerAuto != 0)
@@ -2625,7 +2625,7 @@ static void TCPIP_DHCPS_EchoICMPRequestTask(void)
    
 }
 
-static void DHCPSPingHandler(const  TCPIP_ICMP_ECHO_REQUEST* pEchoReq, TCPIP_ICMP_REQUEST_HANDLE iHandle, TCPIP_ICMP_ECHO_REQUEST_RESULT result)
+static void DHCPSPingHandler(const  TCPIP_ICMP_ECHO_REQUEST* pEchoReq, TCPIP_ICMP_REQUEST_HANDLE iHandle, TCPIP_ICMP_ECHO_REQUEST_RESULT result, const void* param)
 {
     char debugBuf[128];
     

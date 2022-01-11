@@ -2,5 +2,14 @@ format_version: v1.0
 type: UniqueComponent
 attributes: {id: tcpipDhcpcv6}
 children:
+- type: Symbols
+  children:
+  - type: Integer
+    attributes: {id: TCPIP_DHCPCV6_HEAP_SIZE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: tcpipDhcpcv6, value: '6212'}
 - type: ElementPosition
   attributes: {x: '530', y: '180', id: tcpipDhcpcv6}
