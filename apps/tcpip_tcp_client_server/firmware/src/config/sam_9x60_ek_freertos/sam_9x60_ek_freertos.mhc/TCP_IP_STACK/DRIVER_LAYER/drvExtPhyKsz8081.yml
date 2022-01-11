@@ -5,6 +5,13 @@ children:
 - type: Symbols
   children:
   - type: String
+    attributes: {id: DRV_ETHPHY_MAC_NAME}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: drvExtPhyKsz8081, value: EMAC0}
+  - type: String
     attributes: {id: DRV_ETHPHY_RESET_CALLBACK}
     children:
     - type: Attributes
@@ -34,5 +41,20 @@ children:
       children:
       - type: Dynamic
         attributes: {id: drvExtPhyKsz8081, value: 'true'}
+- type: Attachments
+  children:
+  - type: DirectCapability
+    attributes: {id: libdrvExtPhyKsz8081}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: targetComponentID}
+        children:
+        - {type: Value, value: drvEmac0}
+      - type: String
+        attributes: {id: targetAttachmentID}
+        children:
+        - {type: Value, value: MAC_PHY_Dependency0}
 - type: ElementPosition
   attributes: {x: '420', y: '19', id: drvExtPhyKsz8081}
