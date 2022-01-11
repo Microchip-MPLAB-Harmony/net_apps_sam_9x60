@@ -28,14 +28,21 @@ children:
         children:
         - {type: Value, value: ../peripheral/dbgu_6059/templates/plib_dbgu_ring_buffer.h.ftl}
   - type: Boolean
+    attributes: {id: DBGU_INTERRUPT_MODE_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: dbgu, value: 'true'}
+  - type: Boolean
     attributes: {id: DBGU_MR_FILTER}
     children:
     - type: Values
       children:
       - type: User
         attributes: {value: 'true'}
-  - type: Boolean
-    attributes: {id: DBGU_RING_BUFFER_ENABLE}
+  - type: KeyValueSet
+    attributes: {id: DBGU_OPERATING_MODE}
     children:
     - type: Attributes
       children:
@@ -46,7 +53,36 @@ children:
     - type: Values
       children:
       - type: Dynamic
+        attributes: {id: dbgu, value: '2'}
+  - type: Boolean
+    attributes: {id: DBGU_RING_BUFFER_ENABLE}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: label}
+        children:
+        - {type: Value, value: '---'}
+    - type: Values
+      children:
+      - type: Dynamic
         attributes: {id: dbgu, value: 'true'}
+  - type: Boolean
+    attributes: {id: DBGU_RING_BUFFER_MODE_ENABLE}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: dbgu, value: 'true'}
+  - type: Comment
+    attributes: {id: DBGU_RING_BUFFER_SIZE_CONFIG}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
   - type: Integer
     attributes: {id: DBGU_RX_RING_BUFFER_SIZE}
     children:
@@ -87,10 +123,10 @@ children:
     children:
     - type: Attributes
       children:
-      - type: Boolean
-        attributes: {id: readOnly}
+      - type: String
+        attributes: {id: label}
         children:
-        - {type: Value, value: 'true'}
+        - {type: Value, value: '---'}
     - type: Values
       children:
       - type: Dynamic
