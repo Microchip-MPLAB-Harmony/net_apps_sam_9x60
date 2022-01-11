@@ -356,8 +356,6 @@
                     <state>$PROJ_DIR$\..\src</state>
                     <state>$PROJ_DIR$\..\src\config\sam_9x60_ek</state>
                     <state>$PROJ_DIR$\..\src\packs\SAM9X60_DFP</state>
-                    <state>$PROJ_DIR$\..\src\packs\CMSIS\CMSIS\Core\Include</state>
-                    <state>$PROJ_DIR$\..\src\packs\CMSIS</state>
                     <state>$PROJ_DIR$\..\src\third_party\wolfssl</state>
                     <state>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl</state>
                     <state>$PROJ_DIR$\..\..\firmware\src\config\sam_9x60_ek\library</state>
@@ -1451,8 +1449,6 @@
                     <state>$PROJ_DIR$\..\src</state>
                     <state>$PROJ_DIR$\..\src\config\sam_9x60_ek</state>
                     <state>$PROJ_DIR$\..\src\packs\SAM9X60_DFP</state>
-                    <state>$PROJ_DIR$\..\src\packs\CMSIS\CMSIS\Core\Include</state>
-                    <state>$PROJ_DIR$\..\src\packs\CMSIS</state>
                     <state>$PROJ_DIR$\..\src\third_party\wolfssl</state>
                     <state>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl</state>
                     <state>$PROJ_DIR$\..\..\firmware\src\config\sam_9x60_ek\library</state>
@@ -2273,6 +2269,12 @@
                             </file>
                         </group>
                         <group>
+                            <name>reset</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\reset\sys_reset.h</name>
+                            </file>
+                        </group>
+                        <group>
                             <name>debug</name>
                             <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\debug\sys_debug.h</name>
@@ -2355,6 +2357,27 @@
                                     <name>dynamic</name>
                                     <file>
                                         <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\miim\src\dynamic\drv_miim_mapping.h</name>
+                                    </file>
+                                </group>
+                            </group>
+                        </group>
+                        <group>
+                            <name>emac</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\drv_emac.h</name>
+                            </file>
+                            <group>
+                                <name>src</name>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\drv_emac_local.h</name>
+                                </file>
+                                <group>
+                                    <name>dynamic</name>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_dcpt_lists.h</name>
+                                    </file>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_lib.h</name>
                                     </file>
                                 </group>
                             </group>
@@ -2589,6 +2612,12 @@
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dhcps_private.h</name>
                                 </file>
                                 <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dhcp_server_manager.h</name>
+                                </file>
+                                <file>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\dhcp_server_private.h</name>
+                                </file>
+                                <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_helper.h</name>
                                 </file>
                                 <file>
@@ -2794,6 +2823,9 @@
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\dhcps.h</name>
                             </file>
                             <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\dhcp_server.h</name>
+                            </file>
+                            <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\zero_conf_link_local.h</name>
                             </file>
                             <file>
@@ -2895,6 +2927,9 @@
                         <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\definitions.h</name>
                     </file>
                     <file>
+                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\interrupts.h</name>
+                    </file>
+                    <file>
                         <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\config.h</name>
                     </file>
                     <group>
@@ -2911,45 +2946,6 @@
             <file>
                 <name>$PROJ_DIR$\..\src\http_net_print.h</name>
             </file>
-            <group>
-                <name>\</name>
-                <group>
-                    <name>driver</name>
-                    <group>
-                        <name>emac</name>
-                        <group>
-                            <name>config</name>
-                            <group>
-                                <name>sam_9x60_ek</name>
-                                <group>
-                                    <name>driver</name>
-                                    <group>
-                                        <name>emac</name>
-                                        <file>
-                                            <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\drv_emac.h</name>
-                                        </file>
-                                        <group>
-                                            <name>src</name>
-                                            <file>
-                                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\drv_emac_local.h</name>
-                                            </file>
-                                            <group>
-                                                <name>dynamic</name>
-                                                <file>
-                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_dcpt_lists.h</name>
-                                                </file>
-                                                <file>
-                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_lib.h</name>
-                                                </file>
-                                            </group>
-                                        </group>
-                                    </group>
-                                </group>
-                            </group>
-                        </group>
-                    </group>
-                </group>
-            </group>
             <group>
                 <name>packs</name>
                 <group>
@@ -3092,6 +3088,201 @@
                             <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\component\xdmac.h</name>
                         </file>
                     </group>
+                    <group>
+                        <name>instance</name>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\adc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\aes.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\aic.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\bsc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\can0.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\can1.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\classd.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\dbgu.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\emac0.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\emac1.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom0.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom1.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom10.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom11.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom12.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom2.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom3.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom4.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom5.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom6.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom7.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom8.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\flexcom9.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\gfx2d.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\gpbr.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\i2smcc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\isi.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\lcdc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\matrix.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\mpddrc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\otpc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\pioa.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\piob.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\pioc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\piod.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\pit.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\pit64b.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\pmc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\pmecc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\pmerrloc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\pwm.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\qspi.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\rstc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\rtc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\rtt.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\sckc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\sdmmc0.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\sdmmc1.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\sdramc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\sfr.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\sha.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\shdwc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\smc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\ssc.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\syscwp.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\tc0.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\tc1.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\tdes.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\trng.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\udphs.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\uhphs_ehci.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\uhphs_ohci.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\wdt.h</name>
+                        </file>
+                        <file>
+                            <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\instance\xdmac.h</name>
+                        </file>
+                    </group>
                     <file>
                         <name>$PROJ_DIR$\..\src\packs\SAM9X60_DFP\sam9x60.h</name>
                     </file>
@@ -3161,9 +3352,6 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\dsa.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\ecc.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\ed25519.h</name>
@@ -3253,6 +3441,9 @@
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\random.h</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\rc2.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\ripemd.h</name>
                 </file>
                 <file>
@@ -3278,9 +3469,6 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\tfm.h</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\types.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\visibility.h</name>
@@ -3501,6 +3689,12 @@
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\wc_port.h</name>
                 </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\ecc.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\types.h</name>
+                </file>
             </group>
         </group>
         <group>
@@ -3528,9 +3722,6 @@
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_link_local.c</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\zero_conf_multicast_dns.c</name>
-                                </file>
-                                <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\arp.c</name>
                                 </file>
                                 <file>
@@ -3546,10 +3737,10 @@
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\tftps.c</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\iperf.c</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ftpc.c</name>
                                 </file>
                                 <file>
-                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ftpc.c</name>
+                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\iperf.c</name>
                                 </file>
                                 <file>
                                     <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\library\tcpip\src\ipv4.c</name>
@@ -3662,6 +3853,12 @@
                             </file>
                         </group>
                         <group>
+                            <name>reset</name>
+                            <file>
+                                <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\reset\sys_reset.c</name>
+                            </file>
+                        </group>
+                        <group>
                             <name>fs</name>
                             <file>
                                 <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\system\fs\src\sys_fs.c</name>
@@ -3726,6 +3923,24 @@
                                     <name>dynamic</name>
                                     <file>
                                         <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\miim\src\dynamic\drv_miim.c</name>
+                                    </file>
+                                </group>
+                            </group>
+                        </group>
+                        <group>
+                            <name>emac</name>
+                            <group>
+                                <name>src</name>
+                                <group>
+                                    <name>dynamic</name>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac.c</name>
+                                    </file>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_statistics.c</name>
+                                    </file>
+                                    <file>
+                                        <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_lib_SAM9X60.c</name>
                                     </file>
                                 </group>
                             </group>
@@ -3973,42 +4188,6 @@
                     </file>
                 </group>
             </group>
-            <group>
-                <name>\</name>
-                <group>
-                    <name>driver</name>
-                    <group>
-                        <name>emac</name>
-                        <group>
-                            <name>config</name>
-                            <group>
-                                <name>sam_9x60_ek</name>
-                                <group>
-                                    <name>driver</name>
-                                    <group>
-                                        <name>emac</name>
-                                        <group>
-                                            <name>src</name>
-                                            <group>
-                                                <name>dynamic</name>
-                                                <file>
-                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac.c</name>
-                                                </file>
-                                                <file>
-                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_statistics.c</name>
-                                                </file>
-                                                <file>
-                                                    <name>$PROJ_DIR$\..\src\config\sam_9x60_ek\driver\emac\src\dynamic\drv_emac_lib_SAM9X60.c</name>
-                                                </file>
-                                            </group>
-                                        </group>
-                                    </group>
-                                </group>
-                            </group>
-                        </group>
-                    </group>
-                </group>
-            </group>
             <file>
                 <name>$PROJ_DIR$\..\src\main_sam_9x60.c</name>
             </file>
@@ -4064,9 +4243,6 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\dsa.c</name>
-                </file>
-                <file>
-                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\ecc.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\ecc_fp.c</name>
@@ -4142,6 +4318,9 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\rabbit.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\rc2.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\ripemd.c</name>
@@ -4286,6 +4465,9 @@
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sha512.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\ecc.c</name>
                 </file>
             </group>
         </group>

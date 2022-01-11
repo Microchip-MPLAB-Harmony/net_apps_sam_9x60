@@ -51,8 +51,10 @@
 #include "crypto/crypto.h"
 #include "system/time/sys_time.h"
 #include "system/int/sys_int.h"
+#include "system/reset/sys_reset.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
+#include "driver/miim/drv_miim.h"
 #include "net_pres/pres/net_pres.h"
 #include "net_pres/pres/net_pres_encryptionproviderapi.h"
 #include "net_pres/pres/net_pres_transportapi.h"
@@ -67,9 +69,8 @@
 #include "peripheral/dbgu/plib_dbgu.h"
 #include "bsp/bsp.h"
 #include "peripheral/tc/plib_tc0.h"
-#include "library/tcpip/tcpip.h"
 #include "driver/emac/drv_emac.h"
-#include "driver/miim/drv_miim.h"
+#include "library/tcpip/tcpip.h"
 #include "system/sys_time_h2_adapter.h"
 #include "system/sys_random_h2_adapter.h"
 #include "driver/sdmmc/drv_sdmmc.h"
@@ -92,6 +93,9 @@ extern "C" {
 
 #endif
 // DOM-IGNORE-END
+
+/* CPU clock frequency */
+#define CPU_CLOCK_FREQUENCY 600000000
 
 // *****************************************************************************
 // *****************************************************************************
@@ -185,22 +189,22 @@ void SYS_Tasks ( void );
 // Section: Type Definitions
 // *****************************************************************************
 // *****************************************************************************
-    
+
 // *****************************************************************************
 /* System Objects
-        
+
 Summary:
     Structure holding the system's object handles
-        
+
 Description:
     This structure contains the object handles for all objects in the
     MPLAB Harmony project's system configuration.
-        
+
 Remarks:
     These handles are returned from the "Initialize" functions for each module
     and must be passed into the "Tasks" function for each module.
 */
-        
+
 typedef struct
 {
     SYS_MODULE_OBJ  sysTime;
