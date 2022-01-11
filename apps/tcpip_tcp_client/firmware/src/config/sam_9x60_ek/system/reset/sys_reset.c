@@ -1,23 +1,22 @@
 /*******************************************************************************
-  Device Header File
+  Reset System Service Source File
 
   Company:
     Microchip Technology Inc.
 
   File Name:
-    device.h
+    sys_reset.c
 
   Summary:
-    This file includes the selected device from within the project.
-    The device will provide access to respective device packs.
+    Reset System Service source file.
 
   Description:
-    None
-
+    This source file contains the function implementations of the APIs
+    supported by the module.
 *******************************************************************************/
 
-// DOM-IGNORE-BEGIN
-/*******************************************************************************
+//DOM-IGNORE-BEGIN
+/******************************************************************************
 * Copyright (C) 2018 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
@@ -39,19 +38,22 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 *******************************************************************************/
-// DOM-IGNORE-END
+//DOM-IGNORE-END
 
-#ifndef DEVICE_H
-#define DEVICE_H
+#include "device.h"
+#include "system/reset/sys_reset.h"
 
-#ifndef DONT_USE_PREDEFINED_CORE_HANDLERS
-    #define DONT_USE_PREDEFINED_CORE_HANDLERS
-#endif //DONT_USE_PREDEFINED_CORE_HANDLERS
-#ifndef DONT_USE_PREDEFINED_PERIPHERALS_HANDLERS
-    #define DONT_USE_PREDEFINED_PERIPHERALS_HANDLERS
-#endif //DONT_USE_PREDEFINED_PERIPHERALS_HANDLERS
-#include "sam9x60.h"
-#include "device_cache.h"
-#include "toolchain_specifics.h"
+void __attribute__((noreturn)) SYS_RESET_SoftwareReset(void)
+{
+    /* Issue reset command */
+    RSTC_REGS->RSTC_CR = RSTC_CR_KEY_PASSWD | RSTC_CR_PROCRST_Msk;
+    /* Wait for command processing */
+    while( RSTC_REGS->RSTC_SR & (uint32_t)RSTC_SR_SRCMP_Msk );
 
-#endif //DEVICE_H
+    /* Prevent any unwanted code execution until reset occurs */
+    while(1);
+}
+
+/*******************************************************************************
+ End of File
+*/
