@@ -32,11 +32,11 @@ THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 #define macDrvrPAUSE_CPBL_MASK  (TCPIP_ETH_PAUSE_TYPE_ALL)
 
 /******************************************************************************/
-extern TCPIP_MAC_RES macDrvrStatisticsGet(              DRV_HANDLE                          hMac,
+extern TCPIP_MAC_RES EmacDrvrStatisticsGet(             MAC_DRIVER *                        pMacDrvr,
                                                         TCPIP_MAC_RX_STATISTICS *           pRxStatistics,
                                                         TCPIP_MAC_TX_STATISTICS *           pTxStatistics
                                                         );
-extern TCPIP_MAC_RES macDrvrRegisterStatisticsGet(      DRV_HANDLE                          hMac,
+extern TCPIP_MAC_RES EmacDrvrRegisterStatisticsGet(     MAC_DRIVER *                        pMacDrvr,
                                                         TCPIP_MAC_STATISTICS_REG_ENTRY *    pRegEntries,
                                                         int                                 nEntries,
                                                         int *                               pHwEntries
@@ -53,7 +53,7 @@ static SYS_MODULE_OBJ       macDrvrPhyInitialize(       MAC_DRIVER * pMacDrvr );
 static void                 macDrvrDeInit(              MAC_DRIVER * pMacDrvr );
 static void                 macDrvrTxAcknowledge(       MAC_DRIVER * pMacDrvr );
 static TCPIP_MAC_RES        macDrvrTxPendingPackets(    MAC_DRIVER * pMacDrvr );
-static void                 macDrvrTxAckAllPending(     MAC_DRIVER * pMacDrvr, TCPIP_MAC_PKT_ACK_RES ackRes );
+static void                 macDrvrTxGetAllPending(     MAC_DRIVER * pMacDrvr, MAC_DRVR_PACKET_LIST*  ackList );
 static void                 macDrvrTxPacketPoolReset(   MAC_DRIVER * pMacDrvr, TCPIP_MAC_PKT_ACK_RES ackRes );
 // MAC interface functions
 SYS_MODULE_OBJ              macDrvrInitialize(          const SYS_MODULE_INDEX index, const SYS_MODULE_INIT * const init );
@@ -70,8 +70,10 @@ static void                 macDrvrClose(               DRV_HANDLE hMac );
 static bool                 macDrvrLinkCheck(           DRV_HANDLE hMac );
 static bool                 macDrvrPowerMode(           DRV_HANDLE hMac, TCPIP_MAC_POWER_MODE pwrMode );
 static TCPIP_MAC_RES        macDrvrPacketTx(            DRV_HANDLE hMac, TCPIP_MAC_PACKET * pMacPacket );
-static TCPIP_MAC_PACKET *   macDrvrPacketRx (           DRV_HANDLE hMac, TCPIP_MAC_RES * pRes, const TCPIP_MAC_PACKET_RX_STAT ** ppPktStat );
+static TCPIP_MAC_PACKET *   macDrvrPacketRx (           DRV_HANDLE hMac, TCPIP_MAC_RES * pRes, TCPIP_MAC_PACKET_RX_STAT * pPktStat );
 static TCPIP_MAC_RES        macDrvrProcess(             DRV_HANDLE hMac );
+static TCPIP_MAC_RES        macDrvrStatisticsGet(DRV_HANDLE hMac, TCPIP_MAC_RX_STATISTICS* pRxStatistics, TCPIP_MAC_TX_STATISTICS* pTxStatistics);
+static TCPIP_MAC_RES        macDrvrRegisterStatisticsGet(DRV_HANDLE hMac, TCPIP_MAC_STATISTICS_REG_ENTRY* pRegEntries, int nEntries, int* pHwEntries);
 static TCPIP_MAC_RES        macDrvrParametersGet(       DRV_HANDLE hMac, TCPIP_MAC_PARAMETERS * pMacParams );
 static size_t               macDrvrConfigGet(           DRV_HANDLE hMac, void * configBuff, size_t buffSize, size_t * pConfigSize );
 static bool                 macDrvrEventMaskSet(        DRV_HANDLE hMac, TCPIP_MAC_EVENT tcpMacEvents, bool enable );
@@ -158,9 +160,10 @@ const TCPIP_MAC_OBJECT DRV_EMAC1_Object =
 
 // the embedded descriptor to support multiple instances.  Create an array/list
 // of MAC_DCPT structures or allocate dynamically
-static MAC_DRIVER macDrvrDescription[ 2 ];
+#define DRV_EMAC_INSTANCES      2
+static MAC_DRIVER macDrvrDescription[ DRV_EMAC_INSTANCES ];
 
-static const TCPIP_MAC_OBJECT* macDrvrObjects[ 2 ] = 
+static const TCPIP_MAC_OBJECT* macDrvrObjects[ DRV_EMAC_INSTANCES ] = 
 {
     &DRV_EMAC0_Object,
     &DRV_EMAC1_Object,
@@ -171,12 +174,45 @@ static __inline__ int __attribute__((always_inline)) macIdToIndex( TCPIP_MODULE_
 {
     int macIndex = macId - TCPIP_MODULE_MAC_SAM9X60;
 
-    if( macIndex >= 0 && macIndex < sizeof( macDrvrDescription )/sizeof( *macDrvrDescription ) )
+    if( macIndex >= 0 && macIndex < sizeof( macDrvrDescription ) / sizeof( *macDrvrDescription ) )
     {
         return macIndex;
     }
     return -1;
 }
+
+#if (DRV_EMAC_INSTANCES == 1)
+static __inline__ MAC_DRIVER* __attribute__((always_inline)) _EmacHandleToMacDrv(uintptr_t handle)
+{
+    MAC_DRIVER* pMacD = (MAC_DRIVER*)handle;
+    return pMacD == macDrvrDescription ? pMacD : 0;
+}
+#elif (DRV_EMAC_INSTANCES == 2)
+static __inline__ MAC_DRIVER* __attribute__((always_inline)) _EmacHandleToMacDrv(uintptr_t handle)
+{
+    MAC_DRIVER* pMacD = (MAC_DRIVER*)handle;
+    return (pMacD == macDrvrDescription || pMacD == macDrvrDescription + 1) ? pMacD : 0;
+}
+#else
+// multiple instances version
+static MAC_DRIVER* _EmacHandleToMacDrv(uintptr_t handle)
+{
+    MAC_DRIVER* pMacD = (MAC_DRIVER*)handle;
+    int macIx = pMacD - macDrvrDescription;
+
+    if( macIx >= 0 && macIx < sizeof( macDrvrDescription ) / sizeof( *macDrvrDescription ) )
+    {
+        if(pMacD == macDrvrDescription + macIx)
+        {
+            return pMacD;
+        }
+    }
+
+    return 0;
+}
+
+#endif
+
 
 /*******************************************************************************
  * Function:        macDrvrInitialize
@@ -215,8 +251,8 @@ SYS_MODULE_OBJ macDrvrInitialize(
     {   // have a client connected
         return SYS_MODULE_OBJ_INVALID;
     }
-    if( macControl->memH == 0 || macControl->segLoadOffset < sizeof(TCPIP_MAC_PACKET* ))
-    {     // not possible without dynamic memory or if there is no room to store the packet pointer!        
+    if( macControl->memH == 0)
+    {     // not possible without dynamic memory
         return SYS_MODULE_OBJ_INVALID;
     }
     if( initData == 0 )
@@ -265,7 +301,11 @@ SYS_MODULE_OBJ macDrvrInitialize(
     pMacDrvr->callBack.pktFreeF = macControl->pktFreeF;
     pMacDrvr->callBack.pktAckF = macControl->pktAckF;
     pMacDrvr->callBack.synchF = macControl->synchF;
-    pMacDrvr->_segLoadOffset = macControl->segLoadOffset;
+
+    pMacDrvr->_gapDcptOffset = macControl->gapDcptOffset;
+    pMacDrvr->_gapDcptSize = macControl->gapDcptSize;
+    pMacDrvr->_controlFlags = macControl->controlFlags;
+    pMacDrvr->_dataOffset = (macControl->controlFlags & TCPIP_MAC_CONTROL_PAYLOAD_OFFSET_2) ? 2 : 0;
 
     // copy the configuration data
     pMacDrvr->config = *initData;
@@ -340,18 +380,21 @@ SYS_MODULE_OBJ macDrvrInitialize(
  ******************************************************************************/
 void macDrvrDeInitialize( SYS_MODULE_OBJ object )
 {
-    MAC_DRIVER * pMacDrvr = (MAC_DRIVER *) object;
-    switch( pMacDrvr->sysStat )
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( object );
+    if(pMacDrvr != 0)
     {
-        case SYS_STATUS_BUSY:
-        case SYS_STATUS_READY:
-        case SYS_STATUS_ERROR:
-            macDrvrDeInit( pMacDrvr );
-            break;
-        case SYS_STATUS_ERROR_EXTENDED:
-        case SYS_STATUS_UNINITIALIZED:
-        default:
-            break;
+        switch( pMacDrvr->sysStat )
+        {
+            case SYS_STATUS_BUSY:
+            case SYS_STATUS_READY:
+            case SYS_STATUS_ERROR:
+                macDrvrDeInit( pMacDrvr );
+                break;
+            case SYS_STATUS_ERROR_EXTENDED:
+            case SYS_STATUS_UNINITIALIZED:
+            default:
+                break;
+        }
     }
 }
 
@@ -363,8 +406,13 @@ void macDrvrReInitialize( SYS_MODULE_OBJ object, const SYS_MODULE_INIT * const i
 
 SYS_STATUS macDrvrStatus( SYS_MODULE_OBJ object )
 {
-    MAC_DRIVER * pMacDrvr = (MAC_DRIVER *) object;
-    return pMacDrvr->sysStat;
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( object );
+    if(pMacDrvr != 0)
+    {
+        return pMacDrvr->sysStat;
+    }
+
+    return SYS_STATUS_ERROR;    
 }
 
 void macDrvrTasks( SYS_MODULE_OBJ object )
@@ -374,77 +422,83 @@ void macDrvrTasks( SYS_MODULE_OBJ object )
     DRV_HANDLE                      hPhyClient;
     DRV_ETHPHY_RESULT               phyInitRes;
     const DRV_ETHPHY_OBJECT_BASE *  pPhyBase;
-    MAC_DRIVER *                    pMacDrvr = (MAC_DRIVER *) object;
     static bool                     discardFlag = false;
 
-    if( !(DRV_ETHPHY_LINK_ST_UP & pMacDrvr->linkInfo.negResult.linkStatus) )
-    {
-        if( discardFlag == true )
-        {
-            pMacDrvr->txStat.linkLossResets++;
-            macDrvrTxPacketPoolReset( pMacDrvr, TCPIP_MAC_PKT_ACK_LINK_DOWN );
-            discardFlag = false;
-        }
-    }
-    else
-    {
-        discardFlag = true;
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( object );
+    if(pMacDrvr == 0 || ( SYS_STATUS_UNINITIALIZED == pMacDrvr->sysStat ))
+    {   // nothing to do
+        return;
     }
 
-    if( SYS_STATUS_UNINITIALIZED != pMacDrvr->sysStat )
+    pPhyBase = pMacDrvr->config.pPhyBase;
+
+    if((pMacDrvr->_controlFlags & TCPIP_MAC_CONTROL_NO_LINK_CHECK) == 0) 
     {
-        pPhyBase = pMacDrvr->config.pPhyBase;
         pPhyBase->DRV_ETHPHY_Tasks( pMacDrvr->hPhySysObject );
 
-        switch( pMacDrvr->sysStat )
+        if( !(DRV_ETHPHY_LINK_ST_UP & pMacDrvr->linkInfo.negResult.linkStatus) )
         {
-            case SYS_STATUS_BUSY:
-                // perform the PHY initialization
-                hPhyClient = pMacDrvr->hPhyClient;
-                phyStat = pPhyBase->DRV_ETHPHY_ClientStatus( hPhyClient );
-                if( phyStat == DRV_ETHPHY_CLIENT_STATUS_BUSY )
-                {   // wait some more
-                    break;
-                }
-
-                phyInitRes = pPhyBase->DRV_ETHPHY_ClientOperationResult( hPhyClient );
-                if ( phyInitRes != DRV_ETHPHY_RES_OK )
-                {
-                    macDrvrDeInit( pMacDrvr );
-                    // keep the error status though
-                    pMacDrvr->sysStat = SYS_STATUS_ERROR;
-                    SYS_ERROR_PRINT( SYS_ERROR_ERROR, "DRV PHY init failed: %d\r\n", phyInitRes );
-                    break;
-                }
-
-                // PHY was detected properly
-                pMacDrvr->macFlags._linkPresent = 1;
-                if( (pMacDrvr->config.ethFlags & TCPIP_ETH_OPEN_AUTO) != 0 )
-                {   // we'll just wait for the negotiation to be done
-                    pMacDrvr->macFlags._linkNegotiation = 1;       // performing the negotiation
-                }
-                else
-                {   // no need of negotiation results; just update the MAC
-                    pauseType = (pMacDrvr->config.ethFlags & TCPIP_ETH_OPEN_FDUPLEX) ? macDrvrPAUSE_CPBL_MASK : TCPIP_ETH_PAUSE_TYPE_NONE;
-                    macDrvrLibMacOpen( pMacDrvr, pMacDrvr->linkInfo.flags, pauseType );
-                }
-
-                pMacDrvr->linkInfo.upTick = SYS_TMR_TickCountGet();     // the initialization time
-                pMacDrvr->linkInfo.waitTick =
-                    ((SYS_TMR_TickCounterFrequencyGet() * pMacDrvr->config.linkInitDelay) + 999 ) / 1000;
-                pMacDrvr->linkInfo.checkState = MAC_DRVR_LINK_CHECK_START_LINK;
-
-                pMacDrvr->sysStat = SYS_STATUS_READY;
-                break;
-
-            case SYS_STATUS_ERROR_EXTENDED:
-            case SYS_STATUS_ERROR:
-            case SYS_STATUS_UNINITIALIZED:
-            case SYS_STATUS_READY:
-            case SYS_STATUS_READY_EXTENDED:
-            default:
-                break;
+            if( discardFlag == true )
+            {
+                pMacDrvr->txStat.linkLossResets++;
+                macDrvrTxPacketPoolReset( pMacDrvr, TCPIP_MAC_PKT_ACK_LINK_DOWN );
+                discardFlag = false;
+            }
         }
+        else
+        {
+            discardFlag = true;
+        }
+    }
+
+    switch( pMacDrvr->sysStat )
+    {
+        case SYS_STATUS_BUSY:
+            // perform the PHY initialization
+            hPhyClient = pMacDrvr->hPhyClient;
+            phyStat = pPhyBase->DRV_ETHPHY_ClientStatus( hPhyClient );
+            if( phyStat == DRV_ETHPHY_CLIENT_STATUS_BUSY )
+            {   // wait some more
+                break;
+            }
+
+            phyInitRes = pPhyBase->DRV_ETHPHY_ClientOperationResult( hPhyClient );
+            if ( phyInitRes != DRV_ETHPHY_RES_OK )
+            {
+                macDrvrDeInit( pMacDrvr );
+                // keep the error status though
+                pMacDrvr->sysStat = SYS_STATUS_ERROR;
+                SYS_ERROR_PRINT( SYS_ERROR_ERROR, "DRV PHY init failed: %d\r\n", phyInitRes );
+                break;
+            }
+
+            // PHY was detected properly
+            pMacDrvr->macFlags._linkPresent = 1;
+            if( (pMacDrvr->config.ethFlags & TCPIP_ETH_OPEN_AUTO) != 0 )
+            {   // we'll just wait for the negotiation to be done
+                pMacDrvr->macFlags._linkNegotiation = 1;       // performing the negotiation
+            }
+            else
+            {   // no need of negotiation results; just update the MAC
+                pauseType = (pMacDrvr->config.ethFlags & TCPIP_ETH_OPEN_FDUPLEX) ? macDrvrPAUSE_CPBL_MASK : TCPIP_ETH_PAUSE_TYPE_NONE;
+                macDrvrLibMacOpen( pMacDrvr, pMacDrvr->linkInfo.flags, pauseType );
+            }
+
+            pMacDrvr->linkInfo.upTick = SYS_TMR_TickCountGet();     // the initialization time
+            pMacDrvr->linkInfo.waitTick =
+                ((SYS_TMR_TickCounterFrequencyGet() * pMacDrvr->config.linkInitDelay) + 999 ) / 1000;
+            pMacDrvr->linkInfo.checkState = MAC_DRVR_LINK_CHECK_START_LINK;
+
+            pMacDrvr->sysStat = SYS_STATUS_READY;
+            break;
+
+        case SYS_STATUS_ERROR_EXTENDED:
+        case SYS_STATUS_ERROR:
+        case SYS_STATUS_UNINITIALIZED:
+        case SYS_STATUS_READY:
+        case SYS_STATUS_READY_EXTENDED:
+        default:
+            break;
     }
 }
 
@@ -455,19 +509,21 @@ size_t macDrvrConfigGet(
     size_t *    pConfigSize
     )
 {
-    MAC_DRIVER *    pMacDrvr = (MAC_DRIVER *) hMac;
     size_t          response = 0;
-
-    if( pConfigSize )
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    if(pMacDrvr != 0)
     {
-        *pConfigSize = sizeof( TCPIP_MODULE_MAC_SAM9X60_CONFIG );
-    }
-    if( configBuff && buffSize >= sizeof( TCPIP_MODULE_MAC_SAM9X60_CONFIG ) )
-    {   // can copy the data
-        TCPIP_MODULE_MAC_SAM9X60_CONFIG * pMacConfig = (TCPIP_MODULE_MAC_SAM9X60_CONFIG *) configBuff;
+        if( pConfigSize )
+        {
+            *pConfigSize = sizeof( TCPIP_MODULE_MAC_SAM9X60_CONFIG );
+        }
+        if( configBuff && buffSize >= sizeof( TCPIP_MODULE_MAC_SAM9X60_CONFIG ) )
+        {   // can copy the data
+            TCPIP_MODULE_MAC_SAM9X60_CONFIG * pMacConfig = (TCPIP_MODULE_MAC_SAM9X60_CONFIG *) configBuff;
 
-        *pMacConfig = pMacDrvr->config;
-        response = sizeof( TCPIP_MODULE_MAC_SAM9X60_CONFIG );
+            *pMacConfig = pMacDrvr->config;
+            response = sizeof( TCPIP_MODULE_MAC_SAM9X60_CONFIG );
+        }
     }
     return response;
 }
@@ -513,8 +569,11 @@ DRV_HANDLE macDrvrOpen(
 
 void macDrvrClose( DRV_HANDLE hMac )
 {
-    MAC_DRIVER * pMacDrvr = (MAC_DRIVER *) hMac;
-    pMacDrvr->macFlags._open = 0;
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    if(pMacDrvr != 0)
+    {
+        pMacDrvr->macFlags._open = 0;
+    }
 }
 
 /*******************************************************************************
@@ -529,7 +588,7 @@ uint32_t txGetValidPacketCount( TCPIP_MAC_PACKET * pMacPacket, MAC_DRIVER * pMac
     for( pTemp = pMacPacket; pTemp; pTemp = pTemp->next )
     {
         pSeg = pTemp->pDSeg;
-        if(pSeg == 0 || pSeg->segLen == 0 || pSeg->segLoadOffset < pMacDrvr->_segLoadOffset)
+        if(pSeg == 0 || pSeg->segLen == 0)
         {   // having data is the only integrity check for validity
             // one bad apple ruins the barrel
             packetCount = 0;
@@ -542,16 +601,23 @@ uint32_t txGetValidPacketCount( TCPIP_MAC_PACKET * pMacPacket, MAC_DRIVER * pMac
 
 TCPIP_MAC_RES macDrvrPacketTx( DRV_HANDLE hMac, TCPIP_MAC_PACKET * pMacPacket )
 {
-    MAC_DRIVER *        pMacDrvr = (MAC_DRIVER *) hMac;
     TCPIP_MAC_PACKET *  pTemp;
     TCPIP_MAC_RES       response = TCPIP_MAC_RES_PACKET_ERR;
     uint32_t            numPacketsToSend = 0;
 
-    macDrvrTxLock( pMacDrvr );
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    if(pMacDrvr == 0)
+    {
+        return TCPIP_MAC_RES_OP_ERR;
+    }
+    
     numPacketsToSend = txGetValidPacketCount( pMacPacket, pMacDrvr );
+
     if( numPacketsToSend )
     {
         response = TCPIP_MAC_RES_OK;
+
+        macDrvrTxLock( pMacDrvr );
         for( pTemp = pMacPacket; numPacketsToSend--; pTemp = pTemp->next )
         {   // Update pktFlags
             // packets are expected to have pDSeg updated with the packet pointer
@@ -562,9 +628,10 @@ TCPIP_MAC_RES macDrvrPacketTx( DRV_HANDLE hMac, TCPIP_MAC_PACKET * pMacPacket )
                                     pMacPacket
                                     );
         macDrvrTxPendingPackets( pMacDrvr );
+        macDrvrTxUnlock( pMacDrvr );
+
         macDrvrTxAcknowledge( pMacDrvr );
     }
-    macDrvrTxUnlock( pMacDrvr );
 
     return response;
 }
@@ -576,10 +643,15 @@ TCPIP_MAC_RES macDrvrPacketTx( DRV_HANDLE hMac, TCPIP_MAC_PACKET * pMacPacket )
 TCPIP_MAC_PACKET * macDrvrPacketRx(
     DRV_HANDLE                          hMac,
     TCPIP_MAC_RES *                     pRes,
-    const TCPIP_MAC_PACKET_RX_STAT **   ppPktStatus
+    TCPIP_MAC_PACKET_RX_STAT *   pPktStatus
     )
 {
-    MAC_DRIVER *            pMacDrvr = (MAC_DRIVER *) hMac;
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    if(pMacDrvr == 0)
+    {
+        return 0;
+    }
+
     TCPIP_MAC_PACKET *      pMacPacket = 0;
     MAC_DRVR_RXDCPT_STATUS  packetStatus = {.val = 0};
     TCPIP_MAC_RES           response = TCPIP_MAC_RES_PENDING;
@@ -596,7 +668,8 @@ TCPIP_MAC_PACKET * macDrvrPacketRx(
         // Reduce header length to get data segment length
         response = TCPIP_MAC_RES_OK;
         pMacDrvr->rxStat.nRxOkPackets++;
-        pMacPacket->pDSeg->segLen = pMacPacket->pDSeg->segLen - sizeof( TCPIP_MAC_ETHERNET_HEADER );
+        // set proper segment length
+        pMacPacket->pDSeg->segLen -= sizeof( TCPIP_MAC_ETHERNET_HEADER );
         // Note: re-set pMacLayer and pNetLayer; IPv6 changes these pointers inside the packet!
         pMacPacket->pMacLayer = pMacPacket->pDSeg->segLoad;
         pMacPacket->pNetLayer = pMacPacket->pMacLayer + sizeof( TCPIP_MAC_ETHERNET_HEADER );
@@ -622,9 +695,9 @@ TCPIP_MAC_PACKET * macDrvrPacketRx(
     {
         *pRes = response;
     }
-    if( ppPktStatus )
+    if( pPktStatus )
     {
-        memcpy( (void *) *ppPktStatus, (TCPIP_MAC_PACKET_RX_STAT *) &packetStatus, sizeof( TCPIP_MAC_PACKET_RX_STAT ) );
+        memcpy(pPktStatus, (TCPIP_MAC_PACKET_RX_STAT_PIC32C*)&packetStatus, sizeof(TCPIP_MAC_PACKET_RX_STAT_PIC32C));
     }
 
     return pMacPacket;
@@ -671,7 +744,12 @@ TCPIP_MAC_RES macDrvrRxFilterHashTableEntrySet(
     const TCPIP_MAC_ADDR *  destMacAddr
     )
 {
-    MAC_DRIVER *    pMacDrvr = (MAC_DRIVER *) hMac;
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    if(pMacDrvr == 0)
+    {
+        return TCPIP_MAC_RES_OP_ERR;
+    }
+
     MAC_DRVR_HASH   hash;
     uint8_t         nullMacAddr[ 6 ] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
@@ -701,20 +779,30 @@ bool macDrvrPowerMode( DRV_HANDLE hMac, TCPIP_MAC_POWER_MODE pwrMode )
 
 TCPIP_MAC_RES macDrvrProcess( DRV_HANDLE hMac )
 {
-    MAC_DRIVER *    pMacDrvr = (MAC_DRIVER *) hMac;
-    TCPIP_MAC_RES   response;
+
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    if(pMacDrvr == 0)
+    {
+        return TCPIP_MAC_RES_OP_ERR;
+    }
 
     macDrvrTxLock( pMacDrvr );
-    response = macDrvrTxPendingPackets( pMacDrvr );
-    macDrvrTxAcknowledge( pMacDrvr );
+    TCPIP_MAC_RES response = macDrvrTxPendingPackets( pMacDrvr );
     macDrvrTxUnlock( pMacDrvr );
+
+    macDrvrTxAcknowledge( pMacDrvr );
 
     return response;
 }
 
 TCPIP_MAC_RES macDrvrParametersGet( DRV_HANDLE hMac, TCPIP_MAC_PARAMETERS * pMacParams )
 {
-    MAC_DRIVER *    pMacDrvr = (MAC_DRIVER *) hMac;
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    if(pMacDrvr == 0)
+    {
+        return TCPIP_MAC_RES_OP_ERR;
+    }
+
     TCPIP_MAC_RES   response = TCPIP_MAC_RES_IS_BUSY;
     if( pMacDrvr->sysStat == SYS_STATUS_READY )
     {
@@ -730,9 +818,23 @@ TCPIP_MAC_RES macDrvrParametersGet( DRV_HANDLE hMac, TCPIP_MAC_PARAMETERS * pMac
     return response;
 }
 
+static TCPIP_MAC_RES macDrvrStatisticsGet(DRV_HANDLE hMac, TCPIP_MAC_RX_STATISTICS* pRxStatistics, TCPIP_MAC_TX_STATISTICS* pTxStatistics)
+{
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    return (pMacDrvr != 0) ? EmacDrvrStatisticsGet(pMacDrvr, pRxStatistics, pTxStatistics) : TCPIP_MAC_RES_OP_ERR;
+}
+
+static TCPIP_MAC_RES macDrvrRegisterStatisticsGet(DRV_HANDLE hMac, TCPIP_MAC_STATISTICS_REG_ENTRY* pRegEntries, int nEntries, int* pHwEntries)
+{
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    return (pMacDrvr != 0) ?  EmacDrvrRegisterStatisticsGet(pMacDrvr, pRegEntries, nEntries, pHwEntries) : TCPIP_MAC_RES_OP_ERR; 
+}
+
+
 /*******************************************************************************
  * local functions and helpers
  */
+// TX should be locked!
 static TCPIP_MAC_RES macDrvrTxPendingPackets( MAC_DRIVER * pMacDrvr )
 {
     uint32_t                    segsAvailable;
@@ -770,11 +872,18 @@ static TCPIP_MAC_RES macDrvrTxPendingPackets( MAC_DRIVER * pMacDrvr )
     return TCPIP_MAC_RES_OK;
 }
 
+// TX should NOT be locked! performs lock/unlock as needed
 static void macDrvrTxAcknowledge( MAC_DRIVER * pMacDrvr )
 {
     TCPIP_MAC_PACKET *  pMacPacket;
     uint16_t            segmentsReady;
     uint16_t            extract;
+    MAC_DRVR_PACKET_LIST ackList, errList;
+
+    macDrvrPacketListInitialize(&ackList);
+    macDrvrPacketListInitialize(&errList);
+
+    macDrvrTxLock( pMacDrvr );
 
     // acknowledge when a complete segment is sent
     // only first segment has correct ownership setting -- emac does not update the others!
@@ -786,12 +895,17 @@ static void macDrvrTxAcknowledge( MAC_DRIVER * pMacDrvr )
         extract = pMacDrvr->txExtractPt;
         if( (EMAC_TX_ERR_BITS & pMacDrvr->pTxDesc[ extract ].status.val) )
         {   // transmit error: emac has restarted at base, descriptors should be reset
-            macDrvrTxAckAllPending( pMacDrvr, TCPIP_MAC_PKT_ACK_BUFFER_ERR );
+            macDrvrTxGetAllPending( pMacDrvr, &errList );
             macDrvrLibTxInit( pMacDrvr );
             break;
         }
-        // pull packet address from segment buffer
-        pMacPacket = *(TCPIP_MAC_PACKET **) ((EMAC_RX_ADDRESS_MASK & pMacDrvr->pTxDesc[ extract ].bufferAddress) - pMacDrvr->_segLoadOffset);
+
+        // get aligned buffer address from Tx Descriptor Buffer Address
+        uint8_t* pSegBuff = (uint8_t*)(EMAC_RX_ADDRESS_MASK & pMacDrvr->pTxDesc[ extract ].bufferAddress);
+        // get packet pointer from buffer gap descriptor
+        TCPIP_MAC_SEGMENT_GAP_DCPT* pGap = (TCPIP_MAC_SEGMENT_GAP_DCPT*)(pSegBuff + pMacDrvr->_gapDcptOffset);
+        pMacPacket = pGap->segmentPktPtr;
+        
         while( extract != pMacDrvr->txInsertPt )
         {
             ++segmentsReady;
@@ -803,8 +917,7 @@ static void macDrvrTxAcknowledge( MAC_DRIVER * pMacDrvr )
             else
             {   // complete segment sent
                 pMacDrvr->txExtractPt = moduloIncrement( extract, pMacDrvr->config.nTxDescCnt );
-                pMacPacket->pktFlags &= ~TCPIP_MAC_PKT_FLAG_QUEUED;
-                pMacDrvr->callBack.pktAckF( pMacPacket, TCPIP_MAC_PKT_ACK_TX_OK, pMacDrvr->pObj->macId );
+                macDrvrPacketListTailAdd(&ackList, pMacPacket);
                 pMacDrvr->txStat.nTxOkPackets++;
                 while( segmentsReady-- )
                 {   // backup and cleanup descriptors, leaving the appropriate bits in place
@@ -817,6 +930,20 @@ static void macDrvrTxAcknowledge( MAC_DRIVER * pMacDrvr )
                 break;      // inner loop finished with this packet; rise to outer loop now
             }
         }
+    }
+
+    macDrvrTxUnlock( pMacDrvr );
+
+    // acknowledge the finished packets
+    while( (pMacPacket = macDrvrPacketListHeadRemove(&ackList)) != 0 )
+    {
+        pMacDrvr->callBack.pktAckF( pMacPacket, TCPIP_MAC_PKT_ACK_TX_OK, pMacDrvr->pObj->macId );
+    }
+
+    // acknowledge the error packets
+    while( (pMacPacket = macDrvrPacketListHeadRemove(&errList)) != 0 )
+    {
+        pMacDrvr->callBack.pktAckF( pMacPacket, TCPIP_MAC_PKT_ACK_BUFFER_ERR, pMacDrvr->pObj->macId );
     }
 }
 
@@ -910,23 +1037,18 @@ static void macDrvrRxPacketPoolReset( MAC_DRIVER * pMacDrvr )
 }
 #endif
 
-static void macDrvrTxAckAllPending(
+// TX should be locked!
+static void macDrvrTxGetAllPending(
     MAC_DRIVER *            pMacDrvr,
-    TCPIP_MAC_PKT_ACK_RES   ackRes
+    MAC_DRVR_PACKET_LIST*  ackList
     )
-{   // remove and callback acknowledgment functions of packets in transmission queue
+{   // remove apackets in transmission queue and add to the supplied list
     TCPIP_MAC_PACKET * pMacPacket;
 
     while( pMacDrvr->txPendingList.nNodes )
     {   // release pending list packets
         pMacPacket = macDrvrPacketListHeadRemove( &pMacDrvr->txPendingList );
-        if( pMacDrvr->callBack.pktAckF )
-        {
-            pMacDrvr->callBack.pktAckF( pMacPacket,
-                                        ackRes,
-                                        pMacDrvr->pObj->macId
-                                        );
-        }
+        macDrvrPacketListTailAdd(ackList, pMacPacket);
     }
 }
 
@@ -935,12 +1057,26 @@ static void macDrvrTxPacketPoolReset(
     TCPIP_MAC_PKT_ACK_RES   ackRes
     )
 {
+    MAC_DRVR_PACKET_LIST txList;
+    macDrvrPacketListInitialize(&txList);
+
     // acknowledge packets the mac has in it's descriptors
     macDrvrTxAcknowledge( pMacDrvr );
+
     // remove the packets queued for transmission
-    macDrvrTxAckAllPending( pMacDrvr, ackRes );
+    macDrvrTxLock( pMacDrvr );
+    macDrvrTxGetAllPending( pMacDrvr, &txList );
     // everything should be recovered so now we can reset the tx
     macDrvrLibTxInit( pMacDrvr );       // also called at standard init
+    macDrvrTxUnlock( pMacDrvr );
+
+    // acknowledge
+    TCPIP_MAC_PACKET *  pMacPacket;
+    while( (pMacPacket = macDrvrPacketListHeadRemove(&txList)) != 0 )
+    {
+        pMacDrvr->callBack.pktAckF( pMacPacket, ackRes, pMacDrvr->pObj->macId );
+    }
+
 }
 
 /*******************************************************************************
@@ -1171,7 +1307,12 @@ bool macDrvrEventMaskSet(
     bool            enable
     )
 {
-    MAC_DRIVER *            pMacDrvr = (MAC_DRIVER *) hMac;
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    if(pMacDrvr == 0)
+    {
+        return false;
+    }
+
     MAC_DRVR_EVENT_DCPT *   pEventDescription = &pMacDrvr->eventDescription;
     emac_registers_t *      pMacRegs = (emac_registers_t *) pMacDrvr->config.ethModuleId;
     MAC_EVENTS              macEvents;
@@ -1256,19 +1397,24 @@ bool macDrvrEventMaskSet(
 *****************************************************************************/
 bool macDrvrEventAcknowledge( DRV_HANDLE hMac, TCPIP_MAC_EVENT tcpMacEvents )
 {
-    MAC_DRIVER *            pMacDrvr = (MAC_DRIVER *) hMac;
-    MAC_DRVR_EVENT_DCPT *   pEventDescription = &pMacDrvr->eventDescription;
-    MAC_EVENTS              macEvents;
-    bool                    previouslyActive, retval = false;
+    bool    retval = false;
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    if(pMacDrvr != 0)
+    {
 
-    if( pEventDescription->tcpMacEventsEnabled )
-    {   // already have some active
-        retval = true;
-        macEvents = translateTcpMacToMacEvent( pMacDrvr, tcpMacEvents );
-        previouslyActive = SYS_INT_SourceDisable( pMacDrvr->config.macIntSrc );    // stop ints for a while
-        pEventDescription->tcpMacEventsPending &= ~tcpMacEvents;    // no longer pending
-        pEventDescription->macEventsPending &= ~macEvents;          // no longer pending
-        SYS_INT_SourceRestore( pMacDrvr->config.macIntSrc, previouslyActive );     // re-enable
+        MAC_DRVR_EVENT_DCPT *   pEventDescription = &pMacDrvr->eventDescription;
+        MAC_EVENTS              macEvents;
+        bool                    previouslyActive;
+
+        if( pEventDescription->tcpMacEventsEnabled )
+        {   // already have some active
+            retval = true;
+            macEvents = translateTcpMacToMacEvent( pMacDrvr, tcpMacEvents );
+            previouslyActive = SYS_INT_SourceDisable( pMacDrvr->config.macIntSrc );    // stop ints for a while
+            pEventDescription->tcpMacEventsPending &= ~tcpMacEvents;    // no longer pending
+            pEventDescription->macEventsPending &= ~macEvents;          // no longer pending
+            SYS_INT_SourceRestore( pMacDrvr->config.macIntSrc, previouslyActive );     // re-enable
+        }
     }
     return retval;
 }
@@ -1319,8 +1465,8 @@ bool macDrvrEventAcknowledge( DRV_HANDLE hMac, TCPIP_MAC_EVENT tcpMacEvents )
 *****************************************************************************/
 TCPIP_MAC_EVENT macDrvrEventPendingGet( DRV_HANDLE hMac )
 {
-    MAC_DRIVER * pMacDrvr = (MAC_DRIVER *) hMac;
-    return pMacDrvr->eventDescription.tcpMacEventsPending;
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    return pMacDrvr != 0 ? pMacDrvr->eventDescription.tcpMacEventsPending : TCPIP_MAC_EV_NONE;
 }
 
 /*******************************************************************************
@@ -1428,11 +1574,13 @@ static const macDrvrLinkStateF macDrvrLinkStateTbl[] =
 
 bool macDrvrLinkCheck( DRV_HANDLE hMac )
 {   // verify the link status
-    MAC_DRIVER *    pMacDrvr = (MAC_DRIVER *) hMac;
     bool            retval = false;
-
-    if( pMacDrvr->macFlags._linkPresent )
+    MAC_DRIVER * pMacDrvr = _EmacHandleToMacDrv( hMac );
+    if(pMacDrvr != 0 && pMacDrvr->macFlags._linkPresent )
     {
+        const DRV_ETHPHY_OBJECT_BASE *  pPhyBase = pMacDrvr->config.pPhyBase;
+        pPhyBase->DRV_ETHPHY_Tasks( pMacDrvr->hPhySysObject );
+
         macDrvrLinkStateTbl[ pMacDrvr->linkInfo.checkState ]( pMacDrvr );
         if( pMacDrvr->macFlags._linkPrev )
         {
