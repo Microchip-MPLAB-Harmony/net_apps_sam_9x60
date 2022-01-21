@@ -110,7 +110,7 @@ extern "C" {
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
 #define SYS_CONSOLE_UART_MAX_INSTANCES 	   			1
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		0
-#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		200
+#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		2560
 
 
 
@@ -173,11 +173,40 @@ extern "C" {
 #define TCPIP_NBNS_TASK_TICK_RATE   110
 
 
+/******************************************************************************/
+/*wolfSSL TLS Layer Configuration*/
+/******************************************************************************/
+
+#define WOLFSSL_ALT_NAMES
+#define WOLFSSL_DER_LOAD
+#define KEEP_OUR_CERT
+#define KEEP_PEER_CERT
+#define HAVE_CRL_IO
+#define HAVE_IO_TIMEOUT
+#define TFM_NO_ASM
+#define WOLFSSL_NO_ASM
+#define SIZEOF_LONG_LONG 8
+#define WOLFSSL_USER_IO
+#define NO_WRITEV
+#define MICROCHIP_TCPIP
+#define HAVE_FFDHE_2048
+#define HAVE_FFDHE_3072
+#define HAVE_FFDHE_4096
+#define HAVE_FFDHE_6144
+#define HAVE_FFDHE_8192
+#define WOLFSSL_DTLS
+#define NO_PWDBASED
+#define HAVE_TLS_EXTENSIONS
+#define WOLFSSL_TLS13
+#define HAVE_SUPPORTED_CURVES
+#define NO_ERROR_STRINGS
+#define NO_OLD_TLS
+
 
 /*** TCP Configuration ***/
 #define TCPIP_TCP_MAX_SEG_SIZE_TX		        	1460
-#define TCPIP_TCP_SOCKET_DEFAULT_TX_SIZE			512
-#define TCPIP_TCP_SOCKET_DEFAULT_RX_SIZE			512
+#define TCPIP_TCP_SOCKET_DEFAULT_TX_SIZE			2500
+#define TCPIP_TCP_SOCKET_DEFAULT_RX_SIZE			2500
 #define TCPIP_TCP_DYNAMIC_OPTIONS             			true
 #define TCPIP_TCP_START_TIMEOUT_VAL		        	1000
 #define TCPIP_TCP_DELAYED_ACK_TIMEOUT		    		100
@@ -370,6 +399,24 @@ extern "C" {
 
 
 
+/*** SNTP Configuration ***/
+#define TCPIP_STACK_USE_SNTP_CLIENT
+#define TCPIP_NTP_DEFAULT_IF		        	"EMAC0"
+#define TCPIP_NTP_VERSION             			4
+#define TCPIP_NTP_DEFAULT_CONNECTION_TYPE   	IP_ADDRESS_TYPE_IPV4
+#define TCPIP_NTP_EPOCH		                	2208988800ul
+#define TCPIP_NTP_REPLY_TIMEOUT		        	6
+#define TCPIP_NTP_MAX_STRATUM		        	15
+#define TCPIP_NTP_TIME_STAMP_TMO				660
+#define TCPIP_NTP_SERVER		        		"pool.ntp.org"
+#define TCPIP_NTP_SERVER_MAX_LENGTH				30
+#define TCPIP_NTP_QUERY_INTERVAL				600
+#define TCPIP_NTP_FAST_QUERY_INTERVAL	    	14
+#define TCPIP_NTP_TASK_TICK_RATE				1100
+#define TCPIP_NTP_RX_QUEUE_LIMIT				2
+
+
+
 /*** announce Configuration ***/
 #define TCPIP_STACK_USE_ANNOUNCE
 #define TCPIP_ANNOUNCE_MAX_PAYLOAD 	512
@@ -404,11 +451,14 @@ extern "C" {
 #define NO_PWDBASED
 #define HAVE_MCAPI
 #define WOLF_CRYPTO_CB  // provide call-back support
-#define WOLFCRYPT_ONLY
 // ---------- FUNCTIONAL CONFIGURATION START ----------
 #define WOLFSSL_AES_SMALL_TABLES
 #define NO_MD4
 #define WOLFSSL_SHA224
+#define WOLFSSL_SHA384
+#define WOLFSSL_SHA512
+#define HAVE_SHA512
+#define HAVE_HKDF
 #define WOLFSSL_AES_128
 #define WOLFSSL_AES_192
 #define WOLFSSL_AES_256
@@ -417,17 +467,17 @@ extern "C" {
 #define HAVE_AES_ECB
 #define HAVE_AES_CBC
 #define WOLFSSL_AES_COUNTER
-#define WOLFSSL_AES_OFB
 #define HAVE_AESGCM
 #define HAVE_AESCCM
 #define NO_RC4
 #define NO_HC128
 #define NO_RABBIT
 #define HAVE_ECC
-#define NO_DH
+#define HAVE_DH
 #define NO_DSA
-#define FP_MAX_BITS 4096
+#define FP_MAX_BITS 16384
 #define USE_CERT_BUFFERS_2048
+#define WC_RSA_PSS
 #define NO_DEV_RANDOM
 #define HAVE_HASHDRBG
 #define WC_NO_HARDEN
@@ -436,6 +486,12 @@ extern "C" {
 #define NO_ERROR_STRINGS
 #define NO_WOLFSSL_MEMORY
 // ---------- FUNCTIONAL CONFIGURATION END ----------
+
+/* MPLAB Harmony Net Presentation Layer Definitions*/
+#define NET_PRES_NUM_INSTANCE 1
+#define NET_PRES_NUM_SOCKETS 10
+
+
 
 
 #define TCPIP_INTMAC_PHY_CONFIG_FLAGS              	( 0 \

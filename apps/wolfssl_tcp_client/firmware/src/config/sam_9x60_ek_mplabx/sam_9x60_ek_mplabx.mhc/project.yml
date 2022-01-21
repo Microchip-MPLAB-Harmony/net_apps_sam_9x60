@@ -111,6 +111,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3CE4C71D88CF5F5F75B869029CA51255
+- generatedChecksum: 345624AF3359C519F067EA8A3922DB84
+  logicalPath: wolfssl
+  name: crl.c
+  physicalPath: ../../third_party/wolfssl/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 345624AF3359C519F067EA8A3922DB84
 - generatedChecksum: 5ED064BCF98915FC9DFA9C3B24D926FB
   logicalPath: wolfcrypt/port
   name: crypt_aes_sam6149.c
@@ -482,13 +489,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 62951755A45BA873C9775C77F461A8DF
-- generatedChecksum: 5BB460CEE9BCDD8EFB84808ABAB88CF2
+- generatedChecksum: 13C42235EE76A70A0A6997D71567B5B6
   logicalPath: config/sam_9x60_ek_mplabx
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 5BB460CEE9BCDD8EFB84808ABAB88CF2
+  userChecksum: 13C42235EE76A70A0A6997D71567B5B6
 - generatedChecksum: 479A727027F5AD9CBBDC717FD86D8B5E
   logicalPath: wolfcrypt
   name: integer.c
@@ -496,6 +503,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 479A727027F5AD9CBBDC717FD86D8B5E
+- generatedChecksum: 220A2225F19A59FAAA55DA070644B444
+  logicalPath: wolfssl
+  name: internal.c
+  physicalPath: ../../third_party/wolfssl/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 220A2225F19A59FAAA55DA070644B444
 - generatedChecksum: 89026878659FC424B87F24AA238AF4D7
   logicalPath: config/sam_9x60_ek_mplabx
   name: interrupts.c
@@ -510,13 +524,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 519D48597914943C70DCEF6B6D591192
+- generatedChecksum: CBAF0F878E6CDF39AA78EC88E8AE5410
+  logicalPath: wolfssl
+  name: keys.c
+  physicalPath: ../../third_party/wolfssl/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: CBAF0F878E6CDF39AA78EC88E8AE5410
 - generatedChecksum: EC7D138490803EC5E5AB6AA691A6ADE2
   logicalPath: wolfcrypt
   name: logging.c
   physicalPath: ../../third_party/wolfssl/wolfssl/wolfcrypt/src
   security: NON_SECURE
   type: SOURCE
-  userChecksum: EC7D138490803EC5E5AB6AA691A6ADE2
+  userChecksum: 513914F48DA1CF2941F68D85D82E7D49
 - generatedChecksum: null
   logicalPath: ''
   name: main_sam_9x60.c
@@ -559,6 +580,27 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 3D1FBA1F5B3DFFA1B419A579EA0D8600
+- generatedChecksum: 349243C5EF50D83FFB1B84CB265F66D8
+  logicalPath: config/sam_9x60_ek_mplabx/net_pres/pres/src
+  name: net_pres.c
+  physicalPath: net_pres/pres/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 349243C5EF50D83FFB1B84CB265F66D8
+- generatedChecksum: 98FBCDAE8D08055A4805E0C0DB104767
+  logicalPath: config/sam_9x60_ek_mplabx/net_pres/pres
+  name: net_pres_cert_store.c
+  physicalPath: net_pres/pres
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 98FBCDAE8D08055A4805E0C0DB104767
+- generatedChecksum: 73C0C8A07BF786EC9F9C8689CA156ED6
+  logicalPath: config/sam_9x60_ek_mplabx/net_pres/pres
+  name: net_pres_enc_glue.c
+  physicalPath: net_pres/pres
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 73C0C8A07BF786EC9F9C8689CA156ED6
 - generatedChecksum: 38E04B82DD4C8CCB7E85D66976CE7071
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
   name: oahash.c
@@ -566,6 +608,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 38E04B82DD4C8CCB7E85D66976CE7071
+- generatedChecksum: 6694E3C4C6D7826F9546713775119B84
+  logicalPath: wolfssl
+  name: ocsp.c
+  physicalPath: ../../third_party/wolfssl/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 6694E3C4C6D7826F9546713775119B84
 - generatedChecksum: 257FD8DA385CB8BD2ECBD68395BB7D76
   logicalPath: wolfcrypt/port
   name: pic32mz-crypt.c
@@ -713,6 +762,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: F7DCE8E1E0044ED31AC79B2794F40502
+- generatedChecksum: 8F3A39B8CD900D10A5066E1A28B55D81
+  logicalPath: wolfssl
+  name: sniffer.c
+  physicalPath: ../../third_party/wolfssl/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 8F3A39B8CD900D10A5066E1A28B55D81
+- generatedChecksum: FE249D86453E82583972319043926EA9
+  logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
+  name: sntp.c
+  physicalPath: library/tcpip/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: FE249D86453E82583972319043926EA9
 - generatedChecksum: 161756D43AE899EF1056D4C69E185A50
   logicalPath: wolfcrypt
   name: sp_arm32.c
@@ -783,6 +846,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 9623CA5186E14AC2A2EAC7C250682BFC
+- generatedChecksum: EBDCB29A49EBD9C1AF7BD6FA0178E954
+  logicalPath: wolfssl
+  name: ssl.c
+  physicalPath: ../../third_party/wolfssl/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: EBDCB29A49EBD9C1AF7BD6FA0178E954
 - generatedChecksum: 2B6EF5AAF13176F5A5E93B547721DB50
   logicalPath: config/sam_9x60_ek_mplabx/system/cache
   name: sys_cache.c
@@ -881,13 +951,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: F849420C740D2B32346B4B4D9F46C136
-- generatedChecksum: 1AF251F4B14568FD93E237C714BFAD46
+- generatedChecksum: 4CF619027C2452D3FBB650CC5AF82215
   logicalPath: config/sam_9x60_ek_mplabx
   name: tasks.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 1AF251F4B14568FD93E237C714BFAD46
+  userChecksum: 4CF619027C2452D3FBB650CC5AF82215
 - generatedChecksum: B8810AC22D73CE43E5661105B6D3C8EB
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
   name: tcp.c
@@ -958,6 +1028,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 7456AECE16D5C2AB16D083034728BDD0
+- generatedChecksum: 97B96A854FF7808651F567F015658EE2
+  logicalPath: wolfssl
+  name: tls.c
+  physicalPath: ../../third_party/wolfssl/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 97B96A854FF7808651F567F015658EE2
+- generatedChecksum: 3540F78A9086FE2C48E475CC87580A0D
+  logicalPath: wolfssl
+  name: tls13.c
+  physicalPath: ../../third_party/wolfssl/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 3540F78A9086FE2C48E475CC87580A0D
 - generatedChecksum: DB55FAE083880B4E709ED38EFB14CF98
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
   name: udp.c
@@ -1007,6 +1091,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 9C097D0AA1849F8BF60A0435EB8B7C1A
+- generatedChecksum: C77E34737104E3D4A743FF8B6906BE28
+  logicalPath: wolfssl
+  name: wolfio.c
+  physicalPath: ../../third_party/wolfssl/src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: C77E34737104E3D4A743FF8B6906BE28
 - generatedChecksum: A4F262C0B95BF2714B89A586661ED450
   logicalPath: wolfcrypt
   name: wolfmath.c
@@ -1434,6 +1525,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: EB084D75FD6CA590C5600D08D5B711CB
+- generatedChecksum: DA722D342A3309C4C2E21818C3A21BCD
+  logicalPath: wolfssl
+  name: callbacks.h
+  physicalPath: ../../third_party/wolfssl/wolfssl
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: DA722D342A3309C4C2E21818C3A21BCD
 - generatedChecksum: 6A2D8077684062A5B8364D9A2A34AA9D
   logicalPath: wolfcrypt
   name: camellia.h
@@ -1463,7 +1561,7 @@ files:
   type: HEADER
   userChecksum: F2DEA80F20C4F7EED5285448673B13A8
 - generatedChecksum: B9F0833F454CE1CCB41CB863EFA451BF
-  logicalPath: wolfcrypt
+  logicalPath: wolfssl
   name: certs_test.h
   physicalPath: ../../third_party/wolfssl/wolfssl
   security: NON_SECURE
@@ -1525,13 +1623,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 15AB6693CC2E1EE7AB845EE42A6AC762
-- generatedChecksum: C70EBBE40B20DD81A9F897995C6B002D
+- generatedChecksum: 2A684D73236C262504F32EA91F8E8E88
   logicalPath: config/sam_9x60_ek_mplabx
   name: configuration.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: C70EBBE40B20DD81A9F897995C6B002D
+  userChecksum: 2A684D73236C262504F32EA91F8E8E88
 - generatedChecksum: 8B35997040E0D61B0C62411FF7C4E9C1
   logicalPath: config/sam_9x60_ek_mplabx/peripheral/mmu
   name: cp15.h
@@ -1546,6 +1644,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 66CDC9B1DAB0393100A835676816E8BF
+- generatedChecksum: 6AE4D6CA8EFC5B7E3D5715229141E18B
+  logicalPath: wolfssl
+  name: crl.h
+  physicalPath: ../../third_party/wolfssl/wolfssl
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 6AE4D6CA8EFC5B7E3D5715229141E18B
 - generatedChecksum: B0EA96907330C52D7AAF105D31330A75
   logicalPath: wolfcrypt/port
   name: crypt_aes_hw.h
@@ -1763,13 +1868,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 7959E2B94CEE186632B984636D40C252
-- generatedChecksum: 68586CDE551C22CEC9C8CF4DC745402B
+- generatedChecksum: 7E03D3D799C801FBBF17C7145A2581CC
   logicalPath: config/sam_9x60_ek_mplabx
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 68586CDE551C22CEC9C8CF4DC745402B
+  userChecksum: 7E03D3D799C801FBBF17C7145A2581CC
 - generatedChecksum: A751C19ADEECD5B90ADA51DD19DB417D
   logicalPath: wolfcrypt
   name: des3.h
@@ -2071,6 +2176,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 188EADA7D228A161C8FF7BFD0337AB71
+- generatedChecksum: 9A481B7E3822C94527EDDE5DC6247992
+  logicalPath: wolfssl
+  name: error-ssl.h
+  physicalPath: ../../third_party/wolfssl/wolfssl
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 9A481B7E3822C94527EDDE5DC6247992
 - generatedChecksum: 3D4AFD7F081219EE8D4455F548324CDC
   logicalPath: wolfcrypt
   name: fe_448.h
@@ -2428,6 +2540,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: C492FEAFD776B304917664DD0F4F8C11
+- generatedChecksum: D73336EBD144EC8DA7CC6FA337463BB2
+  logicalPath: wolfssl
+  name: internal.h
+  physicalPath: ../../third_party/wolfssl/wolfssl
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: D73336EBD144EC8DA7CC6FA337463BB2
 - generatedChecksum: 4CF4A86296482D5331331BA301C20BB2
   logicalPath: config/sam_9x60_ek_mplabx
   name: interrupts.h
@@ -2687,6 +2806,34 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 9C7B93F14DCA9A65FFBCCC11A746F42C
+- generatedChecksum: EAF3E7458B04813DFB158666690E65CA
+  logicalPath: config/sam_9x60_ek_mplabx/net_pres/pres
+  name: net_pres_certstore.h
+  physicalPath: net_pres/pres
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: EAF3E7458B04813DFB158666690E65CA
+- generatedChecksum: F5AF1302EC5DF3BA360B1FF61BFA367C
+  logicalPath: config/sam_9x60_ek_mplabx/net_pres/pres
+  name: net_pres_enc_glue.h
+  physicalPath: net_pres/pres
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: F5AF1302EC5DF3BA360B1FF61BFA367C
+- generatedChecksum: 510172705D6CDAC183C642DED5A1555B
+  logicalPath: config/sam_9x60_ek_mplabx/net_pres/pres
+  name: net_pres_encryptionproviderapi.h
+  physicalPath: net_pres/pres
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 510172705D6CDAC183C642DED5A1555B
+- generatedChecksum: 42B97A2C6FA6CBF712077A348ABE4874
+  logicalPath: config/sam_9x60_ek_mplabx/net_pres/pres/src
+  name: net_pres_local.h
+  physicalPath: net_pres/pres/src
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 42B97A2C6FA6CBF712077A348ABE4874
 - generatedChecksum: 311078E799B0E84F215551B723990BCC
   logicalPath: config/sam_9x60_ek_mplabx/net_pres/pres
   name: net_pres_socketapi.h
@@ -2701,6 +2848,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 5C1F40CF3CAA8303928880AE9B70D613
+- generatedChecksum: 49A48E22747D17062EF09B0458744E2F
+  logicalPath: config/sam_9x60_ek_mplabx/net_pres/pres
+  name: net_pres_transportapi.h
+  physicalPath: net_pres/pres
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 49A48E22747D17062EF09B0458744E2F
 - generatedChecksum: 45C4C4D08709EDD0770476830B1ABB4D
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
   name: oahash.h
@@ -2708,6 +2862,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 45C4C4D08709EDD0770476830B1ABB4D
+- generatedChecksum: 5427487A122797141058639A06EF825E
+  logicalPath: wolfssl
+  name: ocsp.h
+  physicalPath: ../../third_party/wolfssl/wolfssl
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 5427487A122797141058639A06EF825E
 - generatedChecksum: F0AD88762263B7CB89B02AB4F5876059
   logicalPath: config/sam_9x60_ek_mplabx/osal
   name: osal.h
@@ -3254,6 +3415,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: D4D661DE4353D67F4763BE692178A078
+- generatedChecksum: 6F2DED9ACC97BB31731844A8D2A09300
+  logicalPath: wolfssl
+  name: sniffer.h
+  physicalPath: ../../third_party/wolfssl/wolfssl
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 6F2DED9ACC97BB31731844A8D2A09300
+- generatedChecksum: 1BDC5CBCB8876B6C61F881655AE4243F
+  logicalPath: wolfssl
+  name: sniffer_error.h
+  physicalPath: ../../third_party/wolfssl/wolfssl
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 1BDC5CBCB8876B6C61F881655AE4243F
 - generatedChecksum: 1225171B7AFDAC2F2FBFDD3E19B54488
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip
   name: snmp.h
@@ -3338,6 +3513,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 62F09764499CF4D251473AC5FE38FE00
+- generatedChecksum: 7FC136253FF41A08E1DEDA11C868FCEE
+  logicalPath: wolfssl
+  name: ssl.h
+  physicalPath: ../../third_party/wolfssl/wolfssl
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 7FC136253FF41A08E1DEDA11C868FCEE
 - generatedChecksum: AFAAF7D896D57569CA4CF73BB3339481
   logicalPath: config/sam_9x60_ek_mplabx/system/cache
   name: sys_cache.h
@@ -3520,13 +3702,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: B08B1392542365A5E9A327B6C21155EC
-- generatedChecksum: 81108EB94AB4EB240AFF172997CE6F35
+- generatedChecksum: 60598E1AF424B6F66FF4E210380423C9
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip
   name: tcpip.h
   physicalPath: library/tcpip
   security: NON_SECURE
   type: HEADER
-  userChecksum: 81108EB94AB4EB240AFF172997CE6F35
+  userChecksum: 60598E1AF424B6F66FF4E210380423C9
 - generatedChecksum: 60B94F95E8C1F65E61E54288D55B0319
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip
   name: tcpip_announce.h
@@ -3667,13 +3849,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 3DBAA4F039E31AF2D181FA01A817E728
-- generatedChecksum: 9E43E1B9BA17713FBB3D7864ADE12205
+- generatedChecksum: 55B44193DFD013FDD84999160253E550
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip/src
   name: tcpip_private.h
   physicalPath: library/tcpip/src
   security: NON_SECURE
   type: HEADER
-  userChecksum: 9E43E1B9BA17713FBB3D7864ADE12205
+  userChecksum: 55B44193DFD013FDD84999160253E550
 - generatedChecksum: 1359095D6A60712C36D5DA1C8DC53BE3
   logicalPath: config/sam_9x60_ek_mplabx/library/tcpip
   name: tcpip_reboot.h
@@ -3723,6 +3905,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 44B46E07175370FD1301244348BA5FF1
+- generatedChecksum: F73607743870983E5A18136777F2B6BF
+  logicalPath: wolfssl
+  name: test.h
+  physicalPath: ../../third_party/wolfssl/wolfssl
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: F73607743870983E5A18136777F2B6BF
 - generatedChecksum: 205C08FE4CF210D501B92DBD44FE61FA
   logicalPath: wolfcrypt
   name: tfm.h
@@ -3870,6 +4059,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: null
+- generatedChecksum: C2E03F0EDC541FFF59760CD5013A1374
+  logicalPath: wolfssl
+  name: version.h
+  physicalPath: ../../third_party/wolfssl/wolfssl
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: C2E03F0EDC541FFF59760CD5013A1374
 - generatedChecksum: 3144F84B824DCBB3D2DDFD94665867BD
   logicalPath: wolfcrypt
   name: visibility.h
@@ -3919,6 +4115,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 7BA0E120CC2D9C1FC867F4C211D47BF3
+- generatedChecksum: 4CA57DEDF1B3A1012BDBB0F895A5E25A
+  logicalPath: wolfssl
+  name: wolfio.h
+  physicalPath: ../../third_party/wolfssl/wolfssl
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 4CA57DEDF1B3A1012BDBB0F895A5E25A
 - generatedChecksum: 84E33D6EBF8BB265721E3947E19B9DC2
   logicalPath: wolfcrypt
   name: wolfmath.h
@@ -3975,13 +4178,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CFA727A2AB910B5B462D51A388146811
-- generatedChecksum: B3D63DA589AEF21C35FB54591D31174F
+- generatedChecksum: 3FCA45A3D27581D9990AD6546ED09236
   logicalPath: config/sam_9x60_ek_mplabx
   name: ddram.ld
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: B3D63DA589AEF21C35FB54591D31174F
+  userChecksum: 3FCA45A3D27581D9990AD6546ED09236
 - generatedChecksum: D0A155C957A5AB326FFCFB27C332B88A
   logicalPath: wolfcrypt
   name: evp.c
@@ -4040,7 +4243,7 @@ settings:
   delimiter: ''
   key: heap-size
   security: NON_SECURE
-  value: '402400'
+  value: '750000'
 - append: false
   category: C32-LD
   delimiter: ''
