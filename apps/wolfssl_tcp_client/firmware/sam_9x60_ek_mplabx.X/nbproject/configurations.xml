@@ -976,7 +976,7 @@
         <ScriptingSetting key="boot.use" value="true"/>
         <ScriptingSetting key="boot.entry_adr" value=""/>
         <ScriptingSetting key="boot.path"
-                          value="D:\isp\git\h3\net_apps_sam_9x60\apps\at91bootstrap.elf"/>
+                          value="D:\isp\git\h3\net_apps_sam_9x60\apps\binaries\at91bootstrap.elf"/>
         <ScriptingSetting key="boot.prj" value=""/>
       </ScriptingSettings>
       <compileType>
@@ -1697,7 +1697,7 @@
       <Tool>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="communication.autoselectspeed" value="true"/>
-        <property key="communication.interface" value="swd"/>
+        <property key="communication.interface" value="4wire"/>
         <property key="communication.speed" value="4"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
@@ -1726,7 +1726,7 @@
       <jlink>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="communication.autoselectspeed" value="true"/>
-        <property key="communication.interface" value="swd"/>
+        <property key="communication.interface" value="4wire"/>
         <property key="communication.speed" value="4"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
