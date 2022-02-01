@@ -2446,7 +2446,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '4096'}
+        attributes: {value: '16384'}
   - type: Setting
     attributes: {id: XC32_HEAP}
     children:
@@ -2471,7 +2471,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '4096'}
+        attributes: {value: '16384'}
   - type: Integer
     attributes: {id: XC32_UND_STACK_SIZE}
     children:
@@ -2485,7 +2485,7 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '32768'}
+        attributes: {value: '65536'}
   - type: KeyValueSet
     attributes: {id: XDMAC_INTERRUPT_PRIORITY}
     children:

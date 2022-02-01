@@ -16,12 +16,12 @@ MEMORY
 	rom         (LRX) : ORIGIN = 0, LENGTH = 0
 }
 
-C_STACK_SIZE   = 4096;
-IRQ_STACK_SIZE = 96;
-FIQ_STACK_SIZE = 96;
-SVC_STACK_SIZE = 4096;
-ABT_STACK_SIZE = 64;
-UND_STACK_SIZE = 64;
+C_STACK_SIZE   = 32768;
+IRQ_STACK_SIZE = 8192;
+FIQ_STACK_SIZE = 8192;
+SVC_STACK_SIZE = 8192;
+ABT_STACK_SIZE = 8192;
+UND_STACK_SIZE = 8192;
 
 /* Section Definitions */
 SECTIONS
@@ -123,7 +123,7 @@ SECTIONS
 	.region_nocache (NOLOAD) :
 	{
 		. = ALIGN(4);
-		*(.region_nocache)
+        *(.region_nocache.region_nocache.*)
 	} >ram_nocache
 
 	/* .bss section which is used for uninitialized data */

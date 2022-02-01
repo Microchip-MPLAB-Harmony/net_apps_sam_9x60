@@ -537,7 +537,7 @@ files:
   physicalPath: ../../third_party/wolfssl/wolfssl/wolfcrypt/src
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 513914F48DA1CF2941F68D85D82E7D49
+  userChecksum: EC7D138490803EC5E5AB6AA691A6ADE2
 - generatedChecksum: null
   logicalPath: ''
   name: main_sam_9x60.c
@@ -923,13 +923,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 0C37A819935B90919687FC878956B6BA
-- generatedChecksum: A55C4DC5FB124C0761604EA758D4627D
+- generatedChecksum: 6E907D9AEFDAE88D8E9B23F0668846C6
   logicalPath: config/sam_9x60_ek_mplabx/system
   name: sys_random_h2_adapter.c
   physicalPath: system
   security: NON_SECURE
   type: SOURCE
-  userChecksum: A55C4DC5FB124C0761604EA758D4627D
+  userChecksum: 6E907D9AEFDAE88D8E9B23F0668846C6
 - generatedChecksum: 19CCAA67D71908C979CF54CD41CD947B
   logicalPath: config/sam_9x60_ek_mplabx/system/reset
   name: sys_reset.c
@@ -4178,13 +4178,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CFA727A2AB910B5B462D51A388146811
-- generatedChecksum: 3FCA45A3D27581D9990AD6546ED09236
+- generatedChecksum: E0604D753680C424087AD15170EAE5FF
   logicalPath: config/sam_9x60_ek_mplabx
   name: ddram.ld
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: 3FCA45A3D27581D9990AD6546ED09236
+  userChecksum: 7DE5CB3C282C5BB35DEE4A4353A7F2A1
 - generatedChecksum: D0A155C957A5AB326FFCFB27C332B88A
   logicalPath: wolfcrypt
   name: evp.c

@@ -16,9 +16,9 @@ MEMORY
 	rom         (LRX) : ORIGIN = 0, LENGTH = 0
 }
 
-C_STACK_SIZE   = 32768;
-IRQ_STACK_SIZE = 4096;
-FIQ_STACK_SIZE = 4096;
+C_STACK_SIZE   = 65536;
+IRQ_STACK_SIZE = 16384;
+FIQ_STACK_SIZE = 16384;
 SVC_STACK_SIZE = 4096;
 ABT_STACK_SIZE = 1024;
 UND_STACK_SIZE = 1024;
@@ -123,7 +123,7 @@ SECTIONS
 	.region_nocache (NOLOAD) :
 	{
 		. = ALIGN(4);
-		*(.region_nocache)
+        *(.region_nocache.region_nocache.*)
 	} >ram_nocache
 
 	/* .bss section which is used for uninitialized data */
