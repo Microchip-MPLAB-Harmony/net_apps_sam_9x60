@@ -2473,6 +2473,13 @@ children:
       - type: User
         attributes: {value: '16384'}
   - type: Integer
+    attributes: {id: XC32_SVC_STACK_SIZE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '16384'}
+  - type: Integer
     attributes: {id: XC32_UND_STACK_SIZE}
     children:
     - type: Values

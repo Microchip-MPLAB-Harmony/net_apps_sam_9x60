@@ -4178,13 +4178,13 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: CFA727A2AB910B5B462D51A388146811
-- generatedChecksum: E0604D753680C424087AD15170EAE5FF
+- generatedChecksum: 45B11EC1B699E659C4B8D6624689B348
   logicalPath: config/sam_9x60_ek_mplabx
   name: ddram.ld
   physicalPath: ''
   security: NON_SECURE
   type: LINKER
-  userChecksum: 7DE5CB3C282C5BB35DEE4A4353A7F2A1
+  userChecksum: D7C3876698763BCF7F651F05462365EF
 - generatedChecksum: D0A155C957A5AB326FFCFB27C332B88A
   logicalPath: wolfcrypt
   name: evp.c
