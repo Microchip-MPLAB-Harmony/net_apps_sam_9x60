@@ -812,6 +812,7 @@
       </logicalFolder>
       <itemPath>Makefile</itemPath>
       <itemPath>../src/config/sam_9x60_ek_mplabx/harmony-manifest-success.yml</itemPath>
+      <itemPath>tcpip_tcp_client_server.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
