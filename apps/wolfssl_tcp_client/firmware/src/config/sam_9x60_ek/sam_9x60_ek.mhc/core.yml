@@ -528,14 +528,14 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '1024'}
+        attributes: {value: '8192'}
   - type: Integer
     attributes: {id: IAR_FIQ_STACK_SIZE}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '1024'}
+        attributes: {value: '8192'}
   - type: Integer
     attributes: {id: IAR_HEAP_SIZE}
     children:
@@ -549,21 +549,28 @@ children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '4096'}
+        attributes: {value: '8192'}
+  - type: Integer
+    attributes: {id: IAR_SVC_STACK_SIZE}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '8192'}
   - type: Integer
     attributes: {id: IAR_UND_STACK_SIZE}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '1024'}
+        attributes: {value: '8192'}
   - type: Integer
     attributes: {id: IAR_USR_STACK_SIZE}
     children:
     - type: Values
       children:
       - type: User
-        attributes: {value: '16384'}
+        attributes: {value: '32768'}
   - type: Boolean
     attributes: {id: INSTRUCTION_CACHE_ENABLE}
     children:
@@ -2469,4 +2476,4 @@ children:
       - type: Dynamic
         attributes: {id: core, value: '0'}
 - type: ElementPosition
-  attributes: {x: '240', y: '20', id: core}
+  attributes: {x: '239', y: '20', id: core}
