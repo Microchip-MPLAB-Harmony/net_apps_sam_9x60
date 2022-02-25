@@ -538,13 +538,9 @@
             <logicalFolder name="f3" displayName="emac" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <logicalFolder name="drv_emac_lib_SAM9X60.c"
-                                 displayName="drv_emac_lib_SAM9X60.c"
-                                 projectFiles="true">
-                    <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_lib_sam9x60.c</itemPath>
-                  </logicalFolder>
                   <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac.c</itemPath>
                   <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_statistics.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_lib_SAM9X60.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
