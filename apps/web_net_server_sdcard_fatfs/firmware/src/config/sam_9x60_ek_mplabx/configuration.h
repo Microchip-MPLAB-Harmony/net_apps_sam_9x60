@@ -615,7 +615,7 @@ extern "C" {
 #define EMAC_MIN_TX_DESCRIPTORS                     1       // needed to accommodate zero copy and TCP traffic
 #define TCPIP_INTMAC_PERIPHERAL_CLK                 200000000
 #define TCPIP_INTMAC_MAX_NUMBER_OF_QUEUES           1
-#define TCPIP_INTMAC_MAX_RX_PACKET_POINTERS         1024
+#define TCPIP_INTMAC_MAX_RX_PACKET_POINTERS         100
 #define DRV_EMAC0_BASE_ADDRESS                      EMAC0_BASE_ADDRESS
 #define TCPIP_INTMAC_MODULE_ID                                           EMAC0_BASE_ADDRESS
 #define DRV_EMAC0_CLIENTS_NUMBER                    1
@@ -833,7 +833,7 @@ extern "C" {
 #define TCPIP_INTMAC_PHY_LINK_INIT_DELAY            500
 #define TCPIP_INTMAC_PHY_ADDRESS                    0
 #define DRV_ETHPHY_INSTANCES_NUMBER                 1
-#define DRV_ETHPHY_CLIENTS_NUMBER                   2
+#define DRV_ETHPHY_CLIENTS_NUMBER                   1
 #define DRV_ETHPHY_INDEX                            1
 #define DRV_ETHPHY_PERIPHERAL_ID                    1
 #define DRV_ETHPHY_NEG_INIT_TMO                     1
