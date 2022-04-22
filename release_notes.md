@@ -8,6 +8,48 @@ nav_order: 99
 
 # Microchip MPLABÂ® Harmony 3 Release Notes
 
+## Harmony 3 Network application examples for SAM9X60 family  v3.8.0
+
+### New Features
+New features added in this release are as follows:
+
+- Applications migrated from MHC to MCC
+- Migration of select applications to the Net Plugin (beta)
+- Ported the IAR projects to MPLABX
+
+### KNOWN ISSUES
+
+The current known issues are as follows:
+* IAR projects are not supported in this release
+* When regenerationg the SAM9X60 demos do not overwrite the mpfs_net_img.c file.
+    - The symbols used in this automatically generated file are not present in the project.
+* The SAM9x60 MPLABX should not overwrite the linker script ddram.ld when regenerated.
+    - Otherwise the EMAC descriptors: EMAC0_DcptArray will not be placed in the '.region_nocache'
+
+
+
+
+### Development Tools
+
+- [MPLAB® X IDE v6.00](https://www.microchip.com/mplab/mplab-x-ide) or later
+- [MPLAB® XC32 C/C++ Compiler v4.00](https://www.microchip.com/mplab/compilers) or later
+- [Harmony net repository, 3.8.0](https://github.com/Microchip-MPLAB-Harmony/net/tree/v3.8.0)
+- [Harmony net_apps_sam_9x60 demo apps repositories, 3.8.0](https://github.com/Microchip-MPLAB-Harmony/net_apps_sam_9x60/tree/v3.8.0)
+
+
+#### Development Kit Support
+
+This release supports applications for the following development kits
+
+| Development Kits |
+| --- |
+| [SAM9X60-EK Evaluation Kit](https://www.microchip.com/developmenttools/ProductDetails/DT100126) |
+
+
+## Full release notes
+
+- See the full [Net 3.8.0 Release notes](https://github.com/Microchip-MPLAB-Harmony/net/tree/v3.8.0)
+
 ## Harmony 3 Network application examples for SAM9X60 family  v3.7.0
 
 ### New Features
