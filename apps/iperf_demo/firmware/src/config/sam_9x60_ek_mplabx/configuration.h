@@ -123,7 +123,7 @@ extern "C" {
 /*** MIIM Driver Configuration ***/
 #define DRV_MIIM_ETH_MODULE_ID_0                EMAC0_BASE_ADDRESS
 #define DRV_MIIM_DRIVER_INDEX_0                 0
-#define DRV_MIIM_INSTANCES_NUMBER           0
+#define DRV_MIIM_INSTANCES_NUMBER           1
 #define DRV_MIIM_INSTANCE_OPERATIONS        4
 #define DRV_MIIM_INSTANCE_CLIENTS           2
 #define DRV_MIIM_CLIENT_OP_PROTECTION   false
@@ -377,7 +377,7 @@ extern "C" {
 #define TCPIP_STACK_EXTERN_PACKET_PROCESS   false
 #define TCPIP_STACK_RUN_TIME_INIT   false
 
-#define TCPIP_STACK_INTMAC_COUNT           0
+#define TCPIP_STACK_INTMAC_COUNT           1
 
 
 
