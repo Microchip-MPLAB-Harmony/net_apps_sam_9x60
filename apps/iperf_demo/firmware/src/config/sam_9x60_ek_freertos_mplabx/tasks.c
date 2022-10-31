@@ -96,7 +96,9 @@ void _DRV_MIIM_Task(  void *pvParameters  )
     while(1)
     {
        
-        DRV_MIIM_Tasks(sysObj.drvMiim_0);
+       
+       DRV_MIIM_Tasks(sysObj.drvMiim_0);
+       
        
        
         vTaskDelay(1 / portTICK_PERIOD_MS);
