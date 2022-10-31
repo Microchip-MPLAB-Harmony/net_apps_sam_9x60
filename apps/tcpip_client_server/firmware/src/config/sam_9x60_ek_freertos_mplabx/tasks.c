@@ -77,6 +77,51 @@ void _APP_Tasks(  void *pvParameters  )
     while(1)
     {
         APP_Tasks();
+        vTaskDelay(2 / portTICK_PERIOD_MS);
+    }
+}
+/* Handle for the APP1_Tasks. */
+TaskHandle_t xAPP1_Tasks;
+
+void _APP1_Tasks(  void *pvParameters  )
+{   
+    while(1)
+    {
+        APP1_Tasks();
+        vTaskDelay(2 / portTICK_PERIOD_MS);
+    }
+}
+/* Handle for the APP2_Tasks. */
+TaskHandle_t xAPP2_Tasks;
+
+void _APP2_Tasks(  void *pvParameters  )
+{   
+    while(1)
+    {
+        APP2_Tasks();
+        vTaskDelay(2 / portTICK_PERIOD_MS);
+    }
+}
+/* Handle for the APP3_Tasks. */
+TaskHandle_t xAPP3_Tasks;
+
+void _APP3_Tasks(  void *pvParameters  )
+{   
+    while(1)
+    {
+        APP3_Tasks();
+        vTaskDelay(2 / portTICK_PERIOD_MS);
+    }
+}
+/* Handle for the APP4_Tasks. */
+TaskHandle_t xAPP4_Tasks;
+
+void _APP4_Tasks(  void *pvParameters  )
+{   
+    while(1)
+    {
+        APP4_Tasks();
+        vTaskDelay(2 / portTICK_PERIOD_MS);
     }
 }
 
@@ -95,8 +140,14 @@ void _DRV_MIIM_Task(  void *pvParameters  )
 {
     while(1)
     {
-        DRV_MIIM_Tasks(sysObj.drvMiim);
+       
+       
+       DRV_MIIM_Tasks(sysObj.drvMiim_0);
+       
+       
+       
         vTaskDelay(1 / portTICK_PERIOD_MS);
+       
     }
 }
 
@@ -165,6 +216,38 @@ void SYS_Tasks ( void )
                 NULL,
                 1,
                 &xAPP_Tasks);
+
+    /* Create OS Thread for APP1_Tasks. */
+    xTaskCreate((TaskFunction_t) _APP1_Tasks,
+                "APP1_Tasks",
+                1024,
+                NULL,
+                1,
+                &xAPP1_Tasks);
+
+    /* Create OS Thread for APP2_Tasks. */
+    xTaskCreate((TaskFunction_t) _APP2_Tasks,
+                "APP2_Tasks",
+                1024,
+                NULL,
+                1,
+                &xAPP2_Tasks);
+
+    /* Create OS Thread for APP3_Tasks. */
+    xTaskCreate((TaskFunction_t) _APP3_Tasks,
+                "APP3_Tasks",
+                1024,
+                NULL,
+                1,
+                &xAPP3_Tasks);
+
+    /* Create OS Thread for APP4_Tasks. */
+    xTaskCreate((TaskFunction_t) _APP4_Tasks,
+                "APP4_Tasks",
+                1024,
+                NULL,
+                1,
+                &xAPP4_Tasks);
 
 
 

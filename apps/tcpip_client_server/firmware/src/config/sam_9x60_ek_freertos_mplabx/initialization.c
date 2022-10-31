@@ -66,9 +66,8 @@
 const TCPIP_MODULE_MAC_SAM9X60_CONFIG tcpipEMAC0InitData;
 
 
-/* Forward declaration of MIIM initialization data */
-static const DRV_MIIM_INIT drvMiimInitData;
-
+/* Forward declaration of MIIM 0 initialization data */
+static const DRV_MIIM_INIT drvMiimInitData_0;
 
 /* Forward declaration of PHY initialization data */
 const DRV_ETHPHY_INIT tcpipPhyInitData_KSZ8081;
@@ -104,7 +103,7 @@ const TCPIP_MODULE_MAC_SAM9X60_CONFIG tcpipEMAC0InitData =
     .nRxBuffAllocCnt                   = DRV_EMAC0_RX_BUFF_ALLOC_COUNT_QUE0,
     .ethModuleId                       = DRV_EMAC0_BASE_ADDRESS,
     .ethFlags                          = DRV_EMAC0_ETH_OPEN_FLAGS,
-    .linkInitDelay                     = TCPIP_INTMAC_PHY_LINK_INIT_DELAY,
+    .linkInitDelay                     = DRV_KSZ8081_PHY_LINK_INIT_DELAY,
     .pPhyBase               = &DRV_ETHPHY_OBJECT_BASE_Default,
     .pPhyInit               = &tcpipPhyInitData_KSZ8081,
 };
@@ -222,7 +221,6 @@ TCPIP_STACK_HEAP_INTERNAL_CONFIG tcpipHeapConfig =
     .heapFlags = TCPIP_STACK_HEAP_USE_FLAGS,
     .heapUsage = TCPIP_STACK_HEAP_USAGE_CONFIG,
     .malloc_fnc = TCPIP_STACK_MALLOC_FUNC,
-    .calloc_fnc = TCPIP_STACK_CALLOC_FUNC,
     .free_fnc = TCPIP_STACK_FREE_FUNC,
     .heapSize = TCPIP_STACK_DRAM_SIZE,
 };
@@ -306,29 +304,34 @@ SYS_MODULE_OBJ TCPIP_STACK_Init(void)
 }
 // </editor-fold>
 
-/* MIIM Driver Configuration */
-static const DRV_MIIM_INIT drvMiimInitData =
+/*** MIIM Driver Instance 0 Configuration ***/
+static const DRV_MIIM_INIT drvMiimInitData_0 =
 {
-	.ethphyId = DRV_MIIM_ETH_MODULE_ID,
+   .ethphyId = DRV_MIIM_ETH_MODULE_ID_0,
 };
 
-
-    
-    
+/*** KSZ8081 PHY Driver Time-Out Initialization Data ***/
+DRV_ETHPHY_TMO drvksz8081Tmo = 
+{
+    .resetTmo = DRV_ETHPHY_KSZ8081_RESET_CLR_TMO,
+    .aNegDoneTmo = DRV_ETHPHY_KSZ8081_NEG_DONE_TMO,
+    .aNegInitTmo = DRV_ETHPHY_KSZ8081_NEG_INIT_TMO,    
+};
 
 /*** ETH PHY Initialization Data ***/
-extern void AppPhyResetFunction( const struct DRV_ETHPHY_OBJECT_BASE_TYPE* pBaseObj);
 const DRV_ETHPHY_INIT tcpipPhyInitData_KSZ8081 =
 {    
-    .ethphyId               = TCPIP_INTMAC_MODULE_ID,
-    .phyAddress             = TCPIP_INTMAC_PHY_ADDRESS,
-    .phyFlags               = TCPIP_INTMAC_PHY_CONFIG_FLAGS,
+    .ethphyId               = DRV_KSZ8081_PHY_PERIPHERAL_ID,
+    .phyAddress             = DRV_KSZ8081_PHY_ADDRESS,
+    .phyFlags               = DRV_KSZ8081_PHY_CONFIG_FLAGS,
     .pPhyObject             = &DRV_ETHPHY_OBJECT_KSZ8081,
-    .resetFunction          = AppPhyResetFunction,
+    .resetFunction          = 0,
+    .ethphyTmo              = &drvksz8081Tmo,
     .pMiimObject            = &DRV_MIIM_OBJECT_BASE_Default,
-    .pMiimInit              = &drvMiimInitData,
-    .miimIndex              = DRV_MIIM_DRIVER_INDEX,
+    .pMiimInit              = &drvMiimInitData_0,
+    .miimIndex              = 0,
 };
+
 
 
 
@@ -505,8 +508,8 @@ void SYS_Initialize ( void* data )
 
 
 
-    /* Initialize the MIIM Driver */
-    sysObj.drvMiim = DRV_MIIM_Initialize( DRV_MIIM_INDEX_0, (const SYS_MODULE_INIT *) &drvMiimInitData );
+   /* Initialize the MIIM Driver Instance 0*/
+   sysObj.drvMiim_0 = DRV_MIIM_Initialize(DRV_MIIM_DRIVER_INDEX_0, (const SYS_MODULE_INIT *) &drvMiimInitData_0); 
 
 
     sysObj.sysTime = SYS_TIME_Initialize(SYS_TIME_INDEX_0, (SYS_MODULE_INIT *)&sysTimeInitData);
@@ -519,14 +522,18 @@ void SYS_Initialize ( void* data )
 
 
 
-/* TCPIP Stack Initialization */
-sysObj.tcpip = TCPIP_STACK_Init();
-SYS_ASSERT(sysObj.tcpip != SYS_MODULE_OBJ_INVALID, "TCPIP_STACK_Init Failed" );
+   /* TCPIP Stack Initialization */
+   sysObj.tcpip = TCPIP_STACK_Init();
+   SYS_ASSERT(sysObj.tcpip != SYS_MODULE_OBJ_INVALID, "TCPIP_STACK_Init Failed" );
 
 
     CRYPT_WCCB_Initialize();
 
     APP_Initialize();
+    APP1_Initialize();
+    APP2_Initialize();
+    APP3_Initialize();
+    APP4_Initialize();
 
 
 

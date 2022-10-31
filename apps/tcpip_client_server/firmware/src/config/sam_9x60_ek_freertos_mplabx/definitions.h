@@ -75,6 +75,10 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "app.h"
+#include "app1.h"
+#include "app2.h"
+#include "app3.h"
+#include "app4.h"
 
 
 
@@ -204,8 +208,8 @@ typedef struct
 
 
     SYS_MODULE_OBJ  tcpip;
+   SYS_MODULE_OBJ  drvMiim_0;
 
-    SYS_MODULE_OBJ  drvMiim;
     SYS_MODULE_OBJ  sysDebug;
 
 

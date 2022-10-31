@@ -58,8 +58,8 @@ THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
-#include "system_config.h"
-#include "system_definitions.h"
+#include "configuration.h"
+#include "definitions.h"
 
 // *****************************************************************************
 // *****************************************************************************
