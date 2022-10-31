@@ -197,7 +197,6 @@ void APP_Tasks ( void )
                     SYS_CONSOLE_MESSAGE(TCPIP_STACK_NetNameGet(netH));
                     SYS_CONSOLE_MESSAGE(" IP Address: ");
                     SYS_CONSOLE_PRINT("%d.%d.%d.%d \r\n", ipAddr.v[0], ipAddr.v[1], ipAddr.v[2], ipAddr.v[3]);
-                    SYS_CONSOLE_MESSAGE("Waiting for command type: openurl <url>\r\n");
                 }
                 appData.state = APP_TCPIP_TRANSACT;                
             }
