@@ -68,13 +68,14 @@
 #include "peripheral/sdmmc/plib_sdmmc0.h"
 #include "peripheral/dbgu/plib_dbgu.h"
 #include "bsp/bsp.h"
+#include "peripheral/pit/plib_pit.h"
 #include "peripheral/tc/plib_tc0.h"
 #include "driver/emac/drv_emac.h"
 #include "library/tcpip/tcpip.h"
 #include "system/sys_time_h2_adapter.h"
 #include "system/sys_random_h2_adapter.h"
-#include "driver/sdmmc/drv_sdmmc.h"
 #include "system/command/sys_command.h"
+#include "driver/sdmmc/drv_sdmmc.h"
 #include "peripheral/mmu/plib_mmu.h"
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/pio/plib_pio.h"
@@ -82,6 +83,8 @@
 #include "wolfssl/wolfcrypt/port/pic32/crypt_wolfcryptcb.h"
 #include "system/console/sys_console.h"
 #include "system/console/src/sys_console_uart_definitions.h"
+#include "FreeRTOS.h"
+#include "task.h"
 #include "app.h"
 
 
@@ -210,8 +213,8 @@ typedef struct
     SYS_MODULE_OBJ  sysTime;
     SYS_MODULE_OBJ  sysConsole0;
 
+   SYS_MODULE_OBJ  drvMiim_0;
 
-    SYS_MODULE_OBJ  drvMiim;
     SYS_MODULE_OBJ  netPres;
 
 
