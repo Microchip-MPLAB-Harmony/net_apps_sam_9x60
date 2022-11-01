@@ -1,0 +1,71 @@
+format_version: v1.0
+type: UniqueComponent
+attributes: {id: drvExtPhyKsz8081}
+children:
+- type: Symbols
+  children:
+  - type: Integer
+    attributes: {id: DRV_ETHPHY_CLIENTS_NUMBER}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '2'}
+  - type: String
+    attributes: {id: DRV_ETHPHY_MAC_NAME}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: drvExtPhyKsz8081, value: EMAC0}
+  - type: String
+    attributes: {id: DRV_ETHPHY_RESET_CALLBACK}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: visible}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: AppPhyResetFunction}
+  - type: Boolean
+    attributes: {id: DRV_ETHPHY_USE_RESET_CALLBACK}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: 'true'}
+  - type: Integer
+    attributes: {id: TCPIP_INTMAC_PHY_ADDRESS}
+    children:
+    - type: Values
+      children:
+      - type: User
+        attributes: {value: '0'}
+  - type: Boolean
+    attributes: {id: TCPIP_INTMAC_PHY_CONFIG_RMII}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: drvExtPhyKsz8081, value: 'true'}
+- type: Attachments
+  children:
+  - type: DirectCapability
+    attributes: {id: libdrvExtPhyKsz8081}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: targetComponentID}
+        children:
+        - {type: Value, value: drvEmac0}
+      - type: String
+        attributes: {id: targetAttachmentID}
+        children:
+        - {type: Value, value: MAC_PHY_Dependency0}
+- type: ElementPosition
+  attributes: {x: '419', y: '18', id: drvExtPhyKsz8081}
