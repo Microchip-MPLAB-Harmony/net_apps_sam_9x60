@@ -1,8 +1,8 @@
 # TCP/IP iperf Demo
 
-The TCP iperf configuration demonstrates an iperf standard benchmark with the MPLAB Harmony TCP and UDP API.
+The iperf configuration demonstrates an iperf standard benchmark with the MPLAB Harmony TCP and UDP API.
 
-**TCP/IP TCP iperf Demo MHC Configuration**
+**TCP/IP iperf Demo MHC Configuration**
 
 The following Project Graph diagram shows the Harmony components included in the iperf Demo demonstration application.
 
@@ -35,6 +35,8 @@ The following Project Graph diagram shows the Harmony components included in the
     **DHCP Client** module to discover the IPv4 address from the nearest DHCP Server.
 
     **DNS Client** provides DNS resolution capabilities to the stack.
+
+    **iperf** provides the standard industry benchmark
 
     ![tcpip_sam9x60_project](../../docs/GUID-975873B7-BEC3-4B9B-9257-2D3223EC658C-low.png)
 
@@ -76,14 +78,14 @@ This table list the name and location of the MPLAB X IDE project folder for the 
 |------------|-------------|------------------------|-----------|
 |sam\_9x60\_ek\_mplabx.X|SAM 9X60|SAM9X60 Xplained Ultra + KSZ8081 PHY Daughter board|Demonstrates the TCP/IP iperf Demo on development board with SAM9X60 device and an on-board KSZ8081 PHY. This is a bare-metal \(non-RTOS\) implementation|
 
-This table lists the name and location of the IAR IDE project folder for the demonstration.
+This table lists the name and location of the MPLABX IDE project folder for the demonstration.
 
 |Project Name|Target Device|Target Development Board|Description|
 |------------|-------------|------------------------|-----------|
-|sam\_9x60\_ek.IAR|SAM 9X60|SAM9X60 Xplained Ultra + KSZ8081 PHY Daughter board|Demonstrates the TCP/IP iperf Demo on development board with SAM9X60 device and an on-board KSZ8081 PHY. This is a bare-metal \(non-RTOS\) implementation|
-|sam\_9x60\_ek \_freertos.IAR|SAM 9X60|SAM9X60 Xplained Ultra + KSZ8081 PHY Daughter board|Demonstrates the TCP/IP iperf Demo on development board with SAM9X60 device and an on-board KSZ8081 PHY. This implementation is based on FreeRTOS|
+|sam\_9x60\_ek\_mplabx.X|SAM 9X60|SAM9X60 Xplained Ultra + KSZ8081 PHY Daughter board|Demonstrates the TCP/IP iperf Demo on development board with SAM9X60 device and an on-board KSZ8081 PHY. This is a bare-metal \(non-RTOS\) implementation|
+|sam\_9x60\_ek \_freertos\_mplabx.X|SAM 9X60|SAM9X60 Xplained Ultra + KSZ8081 PHY Daughter board|Demonstrates the TCP/IP iperf Demo on development board with SAM9X60 device and an on-board KSZ8081 PHY. This implementation is based on FreeRTOS|
 
-1.  Build the demo by opening the project in the IAR Embedded Workbench
+1.  Build the demo by opening the project in the MPLABX IDE
 
 2.  Copy the project output, harmony.bin, to the SD card that is used to load the executable and run it on the SAM9X60-EK board. Note: the boot loader on the SD card, boot.bin, should be configured to load the harmony.bin image, not a uboot.bin image.
 
