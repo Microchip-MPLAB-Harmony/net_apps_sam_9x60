@@ -92,6 +92,11 @@ APP_LED_STATE LEDstate = APP_LED_STATE_OFF;
 static bool APP_FTPAuthHandler(const char* user, const char* password, const TCPIP_FTP_CONN_INFO* pInfo, const void* hParam);
 #endif
 
+#if defined TCPIP_STACK_USE_TELNET_SERVER
+static bool Telnet_AuthHandler(const char* user, const char* password, const TCPIP_TELNET_CONN_INFO* pInfo, const void* hParam);
+#endif  // defined TCPIP_STACK_USE_TELNET_SERVER
+
+
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Local Functions
@@ -207,6 +212,11 @@ void APP_Tasks ( void )
                     SYS_CONSOLE_MESSAGE("Failed to register FTP authentication handler!\r\n");
                 }
 #endif                  
+#if defined TCPIP_STACK_USE_TELNET_SERVER
+                TCPIP_TELNET_HANDLE telH = TCPIP_TELNET_AuthenticationRegister(Telnet_AuthHandler, 0);
+                SYS_CONSOLE_PRINT("telnet aythentication registration: %s\r\n", (telH == 0) ? "Failed!" : "success");
+
+#endif  // defined TCPIP_STACK_USE_TELNET_SERVER
                 appData.state = APP_TCPIP_TRANSACT;
             }
 
@@ -272,6 +282,22 @@ static bool APP_FTPAuthHandler(const char* user, const char* password, const TCP
 }
 #endif
 
+#if defined TCPIP_STACK_USE_TELNET_SERVER
+// simple authentication handler
+// replace with a stronger one
+static bool Telnet_AuthHandler(const char* user, const char* password, const TCPIP_TELNET_CONN_INFO* pInfo, const void* hParam)
+{
+    if(strcmp(user, "Microchip") == 0)
+    {
+        if(strcmp(password, "Harmony") == 0)
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+#endif  // defined TCPIP_STACK_USE_TELNET_SERVER
 /*******************************************************************************
  End of File
  */

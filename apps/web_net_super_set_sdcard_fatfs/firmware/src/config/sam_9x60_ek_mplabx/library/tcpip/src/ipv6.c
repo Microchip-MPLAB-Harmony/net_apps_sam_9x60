@@ -192,7 +192,7 @@ static void TCPIP_IPV6_EUI64(TCPIP_NET_IF* pNetIf, uint64_t* pRes);
 static uint16_t             TCPIP_IPV6_PacketPayload(IPV6_PACKET* pkt);
 static TCPIP_MAC_PACKET*    TCPIP_IPV6_MacPacketTxAllocate(IPV6_PACKET* pkt, uint16_t segLoadLen, TCPIP_MAC_PACKET_FLAGS flags);
 static void                 TCPIP_IPV6_MacPacketTxPutHeader(IPV6_PACKET* pkt, TCPIP_MAC_PACKET* pMacPkt, uint16_t pktType);
-static bool                 TCPIP_IPV6_MacPacketTxAck(TCPIP_MAC_PACKET* pkt,  const void* param);
+static void                 TCPIP_IPV6_MacPacketTxAck(TCPIP_MAC_PACKET* pkt,  const void* param);
 static void                 TCPIP_IPV6_MacPacketTxAddSegments(IPV6_PACKET* ptrPacket, TCPIP_MAC_PACKET* pMacPkt, uint16_t segFlags);
 
 // MAC API RX functions
@@ -3246,8 +3246,17 @@ static void TCPIP_IPV6_Process (TCPIP_NET_IF * pNetIf, TCPIP_MAC_PACKET* pRxPkt)
                 pRxPkt->totTransportLen = dataCount;
                 pRxPkt->ipv6PktData = extensionHeaderLen;
                 // forward this packet and signal
-                _TCPIPStackModuleRxInsert(TCPIP_MODULE_TCP, pRxPkt, true);
-                return;
+                if(_TCPIPStackModuleRxInsert(TCPIP_MODULE_TCP, pRxPkt, true))
+                {
+                    return;
+                }
+                else
+                {   // failed to insert
+                    cIPFrameType = IPV6_PROT_NONE;
+                    action = 0;
+                    pRxPkt->ipv6PktData = TCPIP_MAC_PKT_ACK_PROTO_DEST_ERR; 
+                    break;
+                }
 #else
                 cIPFrameType = IPV6_PROT_NONE;
                 action = 0;
@@ -3267,8 +3276,17 @@ static void TCPIP_IPV6_Process (TCPIP_NET_IF * pNetIf, TCPIP_MAC_PACKET* pRxPkt)
                 pRxPkt->totTransportLen = dataCount;
                 pRxPkt->ipv6PktData = extensionHeaderLen;
                 // forward this packet and signal
-                _TCPIPStackModuleRxInsert(TCPIP_MODULE_UDP, pRxPkt, true);
-                return;
+                if(_TCPIPStackModuleRxInsert(TCPIP_MODULE_UDP, pRxPkt, true))
+                {
+                    return;
+                }
+                else
+                {   // failed to insert
+                    cIPFrameType = IPV6_PROT_NONE;
+                    action = 0;
+                    pRxPkt->ipv6PktData = TCPIP_MAC_PKT_ACK_PROTO_DEST_ERR; 
+                    break;
+                }
 #else
                 cIPFrameType = IPV6_PROT_NONE;
                 action = 0;
@@ -3847,10 +3865,9 @@ static void TCPIP_IPV6_MacPacketTxAddSegments(IPV6_PACKET* ptrPacket, TCPIP_MAC_
 
 
 // TX packet acknowledge function
-static bool TCPIP_IPV6_MacPacketTxAck(TCPIP_MAC_PACKET* pMacPkt,  const void* param)
+static void TCPIP_IPV6_MacPacketTxAck(TCPIP_MAC_PACKET* pMacPkt,  const void* param)
 {
     TCPIP_PKT_PacketFree(pMacPkt);
-    return false;
 }
 
 static void TCPIP_IPV6_MacPacketTxPutHeader(IPV6_PACKET* pkt, TCPIP_MAC_PACKET* pMacPkt, uint16_t pktType)

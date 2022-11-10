@@ -201,7 +201,7 @@ static const NET_PRES_INST_DATA netPresCfgs[] =
     {
         .pTransObject_ss = &netPresTransObject0SS,
         .pTransObject_sc = &netPresTransObject0SC,
-        .pProvObject_ss = NULL,
+        .pProvObject_ss = &net_pres_EncProviderStreamServer0,
         .pProvObject_sc = &net_pres_EncProviderStreamClient0,
         .pProvObject_ds = NULL,
         .pProvObject_dc = NULL,
@@ -451,30 +451,57 @@ const TCPIP_TFTPS_MODULE_CONFIG tcpipTFTPSInitData =
     .mountPath              = TCPIP_TFTPS_MOUNT_POINT,
 };
 
-/*** DHCP server initialization data ***/
-TCPIP_DHCPS_ADDRESS_CONFIG DHCP_POOL_CONFIG[]=
+
+/*** DHCP Server v2 initialization data ***/
+
+TCPIP_DHCPS_CLIENT_OPTION_CONFIG dhcpsOptions0[] =
 {
     {
-        .interfaceIndex     = TCPIP_DHCP_SERVER_INTERFACE_INDEX_IDX0,
-        .poolIndex          = TCPIP_DHCP_SERVER_POOL_INDEX_IDX0,
-        .serverIPAddress    = TCPIP_DHCPS_DEFAULT_SERVER_IP_ADDRESS_IDX0,
-        .startIPAddRange    = TCPIP_DHCPS_DEFAULT_IP_ADDRESS_RANGE_START_IDX0,
-        .ipMaskAddress      = TCPIP_DHCPS_DEFAULT_SERVER_NETMASK_ADDRESS_IDX0,
-        .priDNS             = TCPIP_DHCPS_DEFAULT_SERVER_PRIMARY_DNS_ADDRESS_IDX0,
-        .secondDNS          = TCPIP_DHCPS_DEFAULT_SERVER_SECONDARY_DNS_ADDRESS_IDX0,
-        .poolEnabled        = TCPIP_DHCP_SERVER_POOL_ENABLED_IDX0,
+        .optType = TCPIP_DHCPS_CLIENT_OPTION_ROUTER,
+        .ipStr = TCPIP_DHCPS_ROUTER_IP_ADDR_IDX0,
     },
-};
-const TCPIP_DHCPS_MODULE_CONFIG tcpipDHCPSInitData =
-{
-    .enabled            = true,
-    .deleteOldLease     = TCPIP_DHCP_SERVER_DELETE_OLD_ENTRIES,
-    .dhcpServerCnt      = TCPIP_DHCPS_MAX_NUMBER_INSTANCES,
-    .leaseEntries       = TCPIP_DHCPS_LEASE_ENTRIES_DEFAULT,
-    .entrySolvedTmo     = TCPIP_DHCPS_LEASE_SOLVED_ENTRY_TMO,
-    .dhcpServer         = (TCPIP_DHCPS_ADDRESS_CONFIG*)DHCP_POOL_CONFIG,
+    {
+        .optType = TCPIP_DHCPS_CLIENT_OPTION_DNS,
+        .ipStr = TCPIP_DHCPS_DNS_IP_ADDR_IDX0,
+    },
+    {
+        .optType = TCPIP_DHCPS_CLIENT_OPTION_T1_RENEWAL,
+        .mult = TCPIP_DHCPS_T1RENEW_MULT_FACT_IDX0,
+        .div = TCPIP_DHCPS_T1RENEW_DIV_FACT_IDX0,
+    },
+    {
+        .optType = TCPIP_DHCPS_CLIENT_OPTION_T2_REBINDING,
+        .mult = TCPIP_DHCPS_T2REBIND_MULT_FACT_IDX0,
+        .div = TCPIP_DHCPS_T2REBIND_DIV_FACT_IDX0,
+    },
+
 };
 
+TCPIP_DHCPS_INTERFACE_CONFIG dhcpsIfConfig[] = 
+{
+    {
+        .ifIndex    = TCPIP_DHCPS_INTERFACE_INDEX_IDX0,
+        .configFlags = TCPIP_DHCPS_CONFIG_FLAG_IDX0,
+        .leaseEntries = TCPIP_DHCPS_MAX_LEASE_NUM_IDX0,
+        .leaseDuration = TCPIP_DHCPS_LEASEDURATION_DFLT_IDX0,
+        .minLeaseDuration = TCPIP_DHCPS_LEASEDURATION_MIN_IDX0,
+        .maxLeaseDuration = TCPIP_DHCPS_LEASEDURATION_MAX_IDX0,
+        .unreqOfferTmo = TCPIP_DHCPS_UNREQ_TMO_IDX0,
+        .serverIPAddress = TCPIP_DHCPS_SERVER_IP_ADDRESS_IDX0,
+        .startIPAddress = TCPIP_DHCPS_START_IP_ADDR_IDX0,
+        .prefixLen = TCPIP_DHCPS_MASK_PREFIX_NUM_IDX0,
+        .pOptConfig = dhcpsOptions0,
+        .nOptConfigs = sizeof(dhcpsOptions0) / sizeof(*dhcpsOptions0),
+    },
+};
+
+const TCPIP_DHCPS_MODULE_CONFIG tcpipDHCPSInitData =
+{
+    .pIfConfig          = dhcpsIfConfig,
+    .nConfigs           = sizeof(dhcpsIfConfig) / sizeof(*dhcpsIfConfig),
+    .nProbes            = TCPIP_DHCPS_ICMP_PROBES,
+    .conflictAttempts   = TCPIP_DHCPS_CONFLICT_ATTEMPTS,
+};
 /*** FTP Server Initialization Data ***/
 const TCPIP_FTP_MODULE_CONFIG tcpipFTPInitData =
 { 
@@ -662,13 +689,14 @@ DRV_ETHPHY_TMO drvksz8081Tmo =
 };
 
 /*** ETH PHY Initialization Data ***/
+extern void AppPhyResetFunction(const struct DRV_ETHPHY_OBJECT_BASE_TYPE* pBaseObj, DRV_HANDLE handle);
 const DRV_ETHPHY_INIT tcpipPhyInitData_KSZ8081 =
 {    
     .ethphyId               = DRV_KSZ8081_PHY_PERIPHERAL_ID,
     .phyAddress             = DRV_KSZ8081_PHY_ADDRESS,
     .phyFlags               = DRV_KSZ8081_PHY_CONFIG_FLAGS,
     .pPhyObject             = &DRV_ETHPHY_OBJECT_KSZ8081,
-    .resetFunction          = 0,
+    .resetFunction          = AppPhyResetFunction,
     .ethphyTmo              = &drvksz8081Tmo,
     .pMiimObject            = &DRV_MIIM_OBJECT_BASE_Default,
     .pMiimInit              = &drvMiimInitData_0,
@@ -823,6 +851,8 @@ static void SYSC_Disable( void )
 
 void SYS_Initialize ( void* data )
 {
+    /* MISRAC 2012 deviation block start */
+    /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
 
 	SYSC_Disable( );
 
@@ -886,6 +916,7 @@ void SYS_Initialize ( void* data )
 
 
 
+    /* MISRAC 2012 deviation block end */
 }
 
 

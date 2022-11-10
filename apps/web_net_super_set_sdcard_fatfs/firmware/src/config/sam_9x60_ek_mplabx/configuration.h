@@ -109,7 +109,7 @@ extern "C" {
 #define SYS_FS_CWD_STRING_LEN             1024
 
 
-#define SYS_FS_FAT_VERSION                "v0.14a"
+#define SYS_FS_FAT_VERSION                "v0.14b"
 #define SYS_FS_FAT_READONLY               false
 #define SYS_FS_FAT_CODE_PAGE              437
 #define SYS_FS_FAT_MAX_SS                 SYS_FS_MEDIA_MAX_BLOCK_SIZE
@@ -134,7 +134,7 @@ extern "C" {
 
 
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
-#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			2
+#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			1
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		0
 #define SYS_CONSOLE_PRINT_BUFFER_SIZE        		200
 
@@ -146,17 +146,15 @@ extern "C" {
 // Section: Driver Configuration
 // *****************************************************************************
 // *****************************************************************************
-
-
 /*** MIIM Driver Configuration ***/
-#define DRV_MIIM_ETH_MODULE_ID              EMAC0_BASE_ADDRESS
+#define DRV_MIIM_ETH_MODULE_ID_0                EMAC0_BASE_ADDRESS
+#define DRV_MIIM_DRIVER_INDEX_0                 0
 #define DRV_MIIM_INSTANCES_NUMBER           1
 #define DRV_MIIM_INSTANCE_OPERATIONS        4
 #define DRV_MIIM_INSTANCE_CLIENTS           2
 #define DRV_MIIM_CLIENT_OP_PROTECTION   false
 #define DRV_MIIM_COMMANDS   true
-#define DRV_MIIM_DRIVER_OBJECT              DRV_MIIM_OBJECT_BASE_Default
-#define DRV_MIIM_DRIVER_INDEX               DRV_MIIM_INDEX_0              
+#define DRV_MIIM_DRIVER_OBJECT              DRV_MIIM_OBJECT_BASE_Default            
 
 
 
@@ -192,7 +190,12 @@ extern "C" {
 #define TCPIP_ICMP_ECHO_REQUEST_TIMEOUT        500
 #define TCPIP_ICMP_TASK_TICK_RATE              33
 #define TCPIP_STACK_MAX_CLIENT_ECHO_REQUESTS   4
-#define TCPIP_ICMP_COMMAND_ENABLE              false
+#define TCPIP_ICMP_COMMAND_ENABLE              true
+#define TCPIP_STACK_COMMANDS_ICMP_ECHO_REQUESTS         4
+#define TCPIP_STACK_COMMANDS_ICMP_ECHO_REQUEST_DELAY    1000
+#define TCPIP_STACK_COMMANDS_ICMP_ECHO_TIMEOUT          5000
+#define TCPIP_STACK_COMMANDS_ICMP_ECHO_REQUEST_BUFF_SIZE    2000
+#define TCPIP_STACK_COMMANDS_ICMP_ECHO_REQUEST_DATA_SIZE    100
 
 /******************************************************************************/
 /*wolfSSL TLS Layer Configuration*/
@@ -270,7 +273,7 @@ extern "C" {
 #define TCPIP_ARP_GRATUITOUS_PROBE_COUNT			1
 #define TCPIP_ARP_TASK_PROCESS_RATE		        	2000
 #define TCPIP_ARP_PRIMARY_CACHE_ONLY		        	true
-#define TCPIP_ARP_COMMANDS false
+#define TCPIP_ARP_COMMANDS true
 
 
 
@@ -290,24 +293,24 @@ extern "C" {
 
 
 /* Network Configuration Index 0 */
-#define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0	"EMAC0"
+#define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0 "EMAC0"
 #define TCPIP_IF_EMAC0
 
-#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0				"SAM9X60_EK"
-#define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0				"00:04:25:1C:A0:03"
+#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_EK"
+#define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0               "00:04:25:1C:A0:03"
 
-#define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0			"192.168.100.14"
-#define TCPIP_NETWORK_DEFAULT_IP_MASK_IDX0			"255.255.255.0"
-#define TCPIP_NETWORK_DEFAULT_GATEWAY_IDX0			"192.168.100.1"
-#define TCPIP_NETWORK_DEFAULT_DNS_IDX0				"192.168.100.1"
-#define TCPIP_NETWORK_DEFAULT_SECOND_DNS_IDX0			"0.0.0.0"
-#define TCPIP_NETWORK_DEFAULT_POWER_MODE_IDX0			"full"
-#define TCPIP_NETWORK_DEFAULT_INTERFACE_FLAGS_IDX0			\
-													TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
-													TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
-													TCPIP_NETWORK_CONFIG_IP_STATIC
-													
-#define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0			DRV_EMAC0_Object
+#define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0         "192.168.100.14"
+#define TCPIP_NETWORK_DEFAULT_IP_MASK_IDX0            "255.255.255.0"
+#define TCPIP_NETWORK_DEFAULT_GATEWAY_IDX0            "192.168.100.1"
+#define TCPIP_NETWORK_DEFAULT_DNS_IDX0                "192.168.100.1"
+#define TCPIP_NETWORK_DEFAULT_SECOND_DNS_IDX0         "0.0.0.0"
+#define TCPIP_NETWORK_DEFAULT_POWER_MODE_IDX0         "full"
+#define TCPIP_NETWORK_DEFAULT_INTERFACE_FLAGS_IDX0            \
+                                                    TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_IP_STATIC
+                                                    
+#define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0         DRV_EMAC0_Object
 
 
 
@@ -392,7 +395,7 @@ extern "C" {
 #define TCPIP_IPV4_ARP_SLOTS                        10
 #define TCPIP_IPV4_EXTERN_PACKET_PROCESS   false
 
-#define TCPIP_IPV4_COMMANDS false
+#define TCPIP_IPV4_COMMANDS true
 
 #define TCPIP_IPV4_FORWARDING_ENABLE    false 
 
@@ -652,43 +655,64 @@ extern "C" {
 // *****************************************************************************
 
 
+/*** DHCP Server v2 Configuration ***/
+#define TCPIP_STACK_USE_DHCP_SERVER_V2
+#define TCPIP_DHCPS_MAX_LEASES              32
+#define TCPIP_DHCPS_ICMP_PROBES             1
+#define TCPIP_DHCPS_CONFLICT_ATTEMPTS       1
+#define TCPIP_DHCPS_TASK_PROCESS_RATE       200
+#define TCPIP_DHCPS_CLIENT_ID_MAX_SIZE      16
+#define TCPIP_DHCPS_ICMP_ECHO_DATA_SIZE     16
+#define TCPIP_DHCPS_ICMP_ECHO_RETRIES       2
+#define TCPIP_DHCPS_INTERFACE_COUNT    		1
+
+#define TCPIP_DHCPS_OPTION_ROUTER_VALUES        1
+#define TCPIP_DHCPS_OPTION_DNS_VALUES           2
+#define TCPIP_DHCPS_OPTION_TIME_SERVER_VALUES   1
+#define TCPIP_DHCPS_OPTION_NAME_SERVER_VALUES   1
+#define TCPIP_DHCPS_OPTION_NTP_SERVER_VALUES    1
+#define TCPIP_DHCPS_OPTION_T1_T2_SUPPRESS       false
+
+#define TCPIP_DHCPS_MAX_EVENT_REGISTRATIONS     1
+#define TCPIP_DHCPS_REPORT_ERROR_EVENT          true
+#define TCPIP_DHCPS_REPORT_CLIENT_EVENT         true
+#define TCPIP_DHCPS_ENABLE_STATISTICS           false
+#define TCPIP_DHCPS_DYNAMIC_DB_ACCESS           false
+#define TCPIP_DHCPS_MULTI_THREADED_ACCESS       false
+
+#define TCPIP_DHCPS_INTERFACE_INDEX_IDX0        0
+#define TCPIP_DHCPS_MAX_LEASE_NUM_IDX0          32
+#define TCPIP_DHCPS_LEASEDURATION_DFLT_IDX0     28800
+#define TCPIP_DHCPS_SERVER_IP_ADDRESS_IDX0      "192.168.1.1"
+#define TCPIP_DHCPS_START_IP_ADDR_IDX0          "192.168.1.100"
+#define TCPIP_DHCPS_MASK_PREFIX_NUM_IDX0      	24
+#define TCPIP_DHCPS_ROUTER_IP_ADDR_IDX0         "192.168.1.1"
+#define TCPIP_DHCPS_DNS_IP_ADDR_IDX0            "192.168.1.1"
+#define TCPIP_DHCPS_TIMESERVER_IP_ADDR_IDX0     ""
+#define TCPIP_DHCPS_NAMESERVER_IP_ADDR_IDX0     ""
+#define TCPIP_DHCPS_NTPSERVER_IP_ADDR_IDX0      ""
+#define TCPIP_DHCPS_CONFIG_FLAG_IDX0            \
+                                                0
+        
+#define TCPIP_DHCPS_LEASEDURATION_MIN_IDX0      60
+#define TCPIP_DHCPS_LEASEDURATION_MAX_IDX0      0
+#define TCPIP_DHCPS_UNREQ_TMO_IDX0              0
+        
+#define TCPIP_DHCPS_T1RENEW_MULT_FACT_IDX0      1
+#define TCPIP_DHCPS_T1RENEW_DIV_FACT_IDX0       2
+#define TCPIP_DHCPS_T2REBIND_MULT_FACT_IDX0     7
+#define TCPIP_DHCPS_T2REBIND_DIV_FACT_IDX0      8
+        
+
+
+
+
+
+
 /*** Berkeley API Configuration ***/
 #define TCPIP_STACK_USE_BERKELEY_API
 #define MAX_BSD_SOCKETS 					4
 #define TCPIP_STACK_USE_BERKELEY_API
-
-
-/*** DHCP Server Configuration ***/
-#define TCPIP_STACK_USE_DHCP_SERVER
-#define TCPIP_DHCPS_TASK_PROCESS_RATE                     	200
-#define TCPIP_DHCPS_MAX_NUMBER_INSTANCES					1
-#define TCPIP_DHCPS_LEASE_ENTRIES_DEFAULT                   15
-#define TCPIP_DHCPS_LEASE_SOLVED_ENTRY_TMO                  1200
-#define TCPIP_DHCPS_LEASE_REMOVED_BEFORE_ACK                5
-#define TCPIP_DHCP_SERVER_DELETE_OLD_ENTRIES              	true
-#define TCPIP_DHCPS_LEASE_DURATION	TCPIP_DHCPS_LEASE_SOLVED_ENTRY_TMO
-
-/*** DHCP Server Instance 0 Configuration ***/
-#define TCPIP_DHCPS_DEFAULT_IP_ADDRESS_RANGE_START_IDX0             "192.168.1.100"
-
-#define TCPIP_DHCPS_DEFAULT_SERVER_IP_ADDRESS_IDX0                  "192.168.1.1"
-
-#define TCPIP_DHCPS_DEFAULT_SERVER_NETMASK_ADDRESS_IDX0             "255.255.255.0"
-
-#define TCPIP_DHCPS_DEFAULT_SERVER_GATEWAY_ADDRESS_IDX0             "192.168.1.1"
-
-#define TCPIP_DHCPS_DEFAULT_SERVER_PRIMARY_DNS_ADDRESS_IDX0         "192.168.1.1"
-
-#define TCPIP_DHCPS_DEFAULT_SERVER_SECONDARY_DNS_ADDRESS_IDX0       "192.168.1.1"
-
-#define TCPIP_DHCP_SERVER_INTERFACE_INDEX_IDX0                      0
-
-#define TCPIP_DHCP_SERVER_POOL_ENABLED_IDX0                         true
-
-#define TCPIP_DHCP_SERVER_POOL_INDEX_IDX0								0
-
-
-
 
 
 /*** TCPIP Heap Configuration ***/
@@ -729,7 +753,8 @@ extern "C" {
 
 #define TCPIP_STACK_ALIAS_INTERFACE_SUPPORT   false
 
-#define TCPIP_PACKET_LOG_ENABLE     0
+#define TCPIP_PACKET_LOG_ENABLE                     1
+#define TCPIP_PKT_LOG_SIZE                          40
 
 /* TCP/IP stack event notification */
 #define TCPIP_STACK_USE_EVENT_NOTIFICATION
@@ -740,7 +765,9 @@ extern "C" {
 #define TCPIP_STACK_INTERFACE_CHANGE_SIGNALING   false
 #define TCPIP_STACK_CONFIGURATION_SAVE_RESTORE   true
 #define TCPIP_STACK_EXTERN_PACKET_PROCESS   false
+#define TCPIP_STACK_RUN_TIME_INIT   false
 
+#define TCPIP_STACK_INTMAC_COUNT           1
 
 
 
@@ -825,20 +852,16 @@ extern "C" {
 #define NO_WOLFSSL_MEMORY
 // ---------- FUNCTIONAL CONFIGURATION END ----------
 
-
-#define TCPIP_INTMAC_PHY_CONFIG_FLAGS              	( 0 \
+#define DRV_KSZ8081_PHY_CONFIG_FLAGS       ( 0 \
                                                     | DRV_ETHPHY_CFG_RMII \
                                                     )
-													
-#define TCPIP_INTMAC_PHY_LINK_INIT_DELAY            500
-#define TCPIP_INTMAC_PHY_ADDRESS                    0
-#define DRV_ETHPHY_INSTANCES_NUMBER                 1
-#define DRV_ETHPHY_CLIENTS_NUMBER                   1
-#define DRV_ETHPHY_INDEX                            1
-#define DRV_ETHPHY_PERIPHERAL_ID                    1
-#define DRV_ETHPHY_NEG_INIT_TMO                     1
-#define DRV_ETHPHY_NEG_DONE_TMO                     2000
-#define DRV_ETHPHY_RESET_CLR_TMO                    500
+                                                    
+#define DRV_KSZ8081_PHY_LINK_INIT_DELAY            500
+#define DRV_KSZ8081_PHY_ADDRESS                    0
+#define DRV_KSZ8081_PHY_PERIPHERAL_ID              EMAC0_BASE_ADDRESS
+#define DRV_ETHPHY_KSZ8081_NEG_INIT_TMO            1
+#define DRV_ETHPHY_KSZ8081_NEG_DONE_TMO            2000
+#define DRV_ETHPHY_KSZ8081_RESET_CLR_TMO           500
 
 
 #define TCPIP_STACK_NETWORK_INTERAFCE_COUNT  	1

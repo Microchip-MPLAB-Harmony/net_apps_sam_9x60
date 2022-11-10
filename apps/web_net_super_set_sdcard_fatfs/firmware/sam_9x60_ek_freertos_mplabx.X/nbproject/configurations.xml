@@ -689,7 +689,7 @@
                 <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/library/tcpip/src/sntp.c</itemPath>
                 <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/library/tcpip/src/tftpc.c</itemPath>
                 <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/library/tcpip/src/dhcpv6.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/library/tcpip/src/dhcps.c</itemPath>
+                <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/library/tcpip/src/dhcp_server.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
@@ -779,8 +779,8 @@
           <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/initialization.c</itemPath>
           <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/interrupts.c</itemPath>
           <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/cstartup.S</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/vectortrap.s</itemPath>
           <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/freertos_hooks.c</itemPath>
+          <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/fault_handlers.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
@@ -959,6 +959,7 @@
       <itemPath>../src/main_sam_9x60.c</itemPath>
       <itemPath>../src/http_net_print.c</itemPath>
       <itemPath>../src/custom_http_net_app.c</itemPath>
+      <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/pin_configurations.csv</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -1165,6 +1166,7 @@
       <C32>
         <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
         <property key="enable-symbols" value="true"/>
@@ -1222,6 +1224,7 @@
         <property key="additional-options-use-response-files" value="false"/>
         <property key="additional-options-write-sla" value="false"/>
         <property key="allocate-dinit" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="code-dinit" value="false"/>
         <property key="ebase-addr" value=""/>
         <property key="enable-check-sections" value="false"/>
@@ -1262,6 +1265,7 @@
       <C32CPP>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
+        <property key="appendMe" value=""/>
         <property key="check-new" value="false"/>
         <property key="eh-specs" value="true"/>
         <property key="enable-app-io" value="false"/>

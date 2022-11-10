@@ -711,7 +711,7 @@ typedef struct TCPIP_STACK_INIT
 #include "tcpip/tcp.h"
 #include "tcpip/udp.h"
 #include "tcpip/berkeley_api.h"
-#include "tcpip/dhcps.h"
+#include "tcpip/dhcp_server.h"
 #include "tcpip/zero_conf_link_local.h"
 #include "tcpip/zero_conf_multicast_dns.h"
 #include "tcpip/ftp.h"

@@ -650,7 +650,7 @@
                 <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/sntp.c</itemPath>
                 <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tftpc.c</itemPath>
                 <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcpv6.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcps.c</itemPath>
+                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcp_server.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
@@ -734,7 +734,7 @@
           <itemPath>../src/config/sam_9x60_ek_mplabx/initialization.c</itemPath>
           <itemPath>../src/config/sam_9x60_ek_mplabx/interrupts.c</itemPath>
           <itemPath>../src/config/sam_9x60_ek_mplabx/cstartup.S</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/vectortrap.s</itemPath>
+          <itemPath>../src/config/sam_9x60_ek_mplabx/fault_handlers.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f5" displayName="web_pages" projectFiles="true">
@@ -888,6 +888,7 @@
       <itemPath>../src/main_sam_9x60.c</itemPath>
       <itemPath>../src/http_net_print.c</itemPath>
       <itemPath>../src/custom_http_net_app.c</itemPath>
+      <itemPath>../src/config/sam_9x60_ek_mplabx/pin_configurations.csv</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -1029,11 +1030,11 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.00</languageToolchainVersion>
+        <languageToolchainVersion>4.20</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="SAM9X6_DFP" vendor="Microchip" version="1.7.65"/>
+        <pack name="SAM9X6_DFP" vendor="Microchip" version="1.7.64"/>
       </packs>
       <ScriptingSettings>
         <ScriptingSetting key="boot.load_adr" value=""/>
