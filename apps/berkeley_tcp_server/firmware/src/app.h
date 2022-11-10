@@ -57,7 +57,6 @@
 #include "configuration.h"
 #include "definitions.h"
 
-extern const uint8_t MPFS_IMAGE_DATA[];
 #define MAX_CLIENT (3)
 // *****************************************************************************
 // *****************************************************************************

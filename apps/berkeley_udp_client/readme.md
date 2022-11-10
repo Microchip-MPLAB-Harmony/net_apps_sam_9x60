@@ -102,21 +102,21 @@ This table lists the name and location of the MPLABX IDE project folder for the 
 
 3.  Execution :
 
-    **setudppacketoptions**, **getudppacketoptions** and **sendudppacket** are the UDP Berkeley client APP commands.
+    **setoptions**, **getoptions** and **sendpacket** are the UDP Berkeley client APP commands.
 
-    -   Set the UDP packet options by typing **setudppacketoptions** at the terminal console.
+    -   Set the UDP packet options by typing **setoptions** at the terminal console.
 
-    -   Verify the UDP packet settings by typing **getudppacketoptions** at the terminal console.
+    -   Verify the UDP packet settings by typing **getoptions** at the terminal console.
 
-    -   Send the UDP packet to the destination using the **sendudppacket** command.
+    -   Send the UDP packet to the destination using the **sendpacket** command.
 
-    -   After the **sendudppacket** command is input, the demonstration will make a DNS query to look up the host name and send a UDP packet to that host.
+    -   After the **sendpacket** command is input, the demonstration will make a DNS query to look up the host name and send a UDP packet to that host.
 
-    -   The output message will be received by the UDP server on the port that is configured by the command **setudppacketoptions**.
+    -   The output message will be received by the UDP server on the port that is configured by the command **setoptions**.
 
     -   For UDP Berkeley Client test, the UDP Server application is required to run on the computer \(SocketTest, Packet Sender etc\). This demonstration is tested with **SocketTest v3.0\(http://sockettest.sourceforge.net/\)** .
 
-        -   Open the **SocketTest** software and select UDP server for the configured port number as per the command **setudppacketoptions**.
+        -   Open the **SocketTest** software and select UDP server for the configured port number as per the command **setoptions**.
 
 
 **Parent topic:**[MPLAB® Harmony 3 TCP/IP Application for SAM 9X60 Family](../../docs/GUID-E9DE90C9-151B-4975-A6F1-B20C092FDE6A.md)
