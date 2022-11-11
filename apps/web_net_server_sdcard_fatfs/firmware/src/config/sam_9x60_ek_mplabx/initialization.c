@@ -62,9 +62,8 @@
 // Section: Driver Initialization Data
 // *****************************************************************************
 // *****************************************************************************
-/* Forward declaration of MIIM initialization data */
-static const DRV_MIIM_INIT drvMiimInitData;
-
+/* Forward declaration of MIIM 0 initialization data */
+static const DRV_MIIM_INIT drvMiimInitData_0;
 
 /* Forward declaration of MAC initialization data */
 const TCPIP_MODULE_MAC_SAM9X60_CONFIG tcpipEMAC0InitData;
@@ -138,10 +137,10 @@ SYSTEM_OBJECTS sysObj;
 // Section: Library/Stack Initialization Data
 // *****************************************************************************
 // *****************************************************************************
-/* MIIM Driver Configuration */
-static const DRV_MIIM_INIT drvMiimInitData =
+/*** MIIM Driver Instance 0 Configuration ***/
+static const DRV_MIIM_INIT drvMiimInitData_0 =
 {
-	.ethphyId = DRV_MIIM_ETH_MODULE_ID,
+   .ethphyId = DRV_MIIM_ETH_MODULE_ID_0,
 };
 
 /* Net Presentation Layer Data Definitions */
@@ -293,7 +292,7 @@ const TCPIP_MODULE_MAC_SAM9X60_CONFIG tcpipEMAC0InitData =
     .nRxBuffAllocCnt                   = DRV_EMAC0_RX_BUFF_ALLOC_COUNT_QUE0,
     .ethModuleId                       = DRV_EMAC0_BASE_ADDRESS,
     .ethFlags                          = DRV_EMAC0_ETH_OPEN_FLAGS,
-    .linkInitDelay                     = TCPIP_INTMAC_PHY_LINK_INIT_DELAY,
+    .linkInitDelay                     = DRV_KSZ8081_PHY_LINK_INIT_DELAY,
     .pPhyBase               = &DRV_ETHPHY_OBJECT_BASE_Default,
     .pPhyInit               = &tcpipPhyInitData_KSZ8081,
 };
@@ -457,7 +456,7 @@ TCPIP_DHCPS_ADDRESS_CONFIG DHCP_POOL_CONFIG[]=
 {
     {
         .interfaceIndex     = TCPIP_DHCP_SERVER_INTERFACE_INDEX_IDX0,
-		.poolIndex          = TCPIP_DHCP_SERVER_POOL_INDEX_IDX0,
+        .poolIndex          = TCPIP_DHCP_SERVER_POOL_INDEX_IDX0,
         .serverIPAddress    = TCPIP_DHCPS_DEFAULT_SERVER_IP_ADDRESS_IDX0,
         .startIPAddRange    = TCPIP_DHCPS_DEFAULT_IP_ADDRESS_RANGE_START_IDX0,
         .ipMaskAddress      = TCPIP_DHCPS_DEFAULT_SERVER_NETMASK_ADDRESS_IDX0,
@@ -556,7 +555,6 @@ TCPIP_STACK_HEAP_INTERNAL_CONFIG tcpipHeapConfig =
     .heapFlags = TCPIP_STACK_HEAP_USE_FLAGS,
     .heapUsage = TCPIP_STACK_HEAP_USAGE_CONFIG,
     .malloc_fnc = TCPIP_STACK_MALLOC_FUNC,
-    .calloc_fnc = TCPIP_STACK_CALLOC_FUNC,
     .free_fnc = TCPIP_STACK_FREE_FUNC,
     .heapSize = TCPIP_STACK_DRAM_SIZE,
 };
@@ -592,7 +590,7 @@ const TCPIP_STACK_MODULE_CONFIG TCPIP_STACK_MODULE_CONFIG_TBL [] =
     {TCPIP_MODULE_IPV6,             &tcpipIPv6InitData},            // TCPIP_MODULE_IPV6
     {TCPIP_MODULE_ICMPV6,           0},                             // TCPIP_MODULE_ICMPV6
     {TCPIP_MODULE_NDP,              0},                             // TCPIP_MODULE_NDP
-	{TCPIP_MODULE_DHCPV6_CLIENT,    &tcpipDhcpcv6InitData},         // TCPIP_MODULE_DHCPV6_CLEINT
+    {TCPIP_MODULE_DHCPV6_CLIENT,    &tcpipDhcpcv6InitData},         // TCPIP_MODULE_DHCPV6_CLEINT
     {TCPIP_MODULE_UDP,              &tcpipUDPInitData},             // TCPIP_MODULE_UDP
     {TCPIP_MODULE_TCP,              &tcpipTCPInitData},             // TCPIP_MODULE_TCP
     {TCPIP_MODULE_DHCP_CLIENT,      &tcpipDHCPInitData},            // TCPIP_MODULE_DHCP_CLIENT
@@ -655,23 +653,29 @@ SYS_MODULE_OBJ TCPIP_STACK_Init(void)
 }
 // </editor-fold>
 
-
-    
-    
+/*** KSZ8081 PHY Driver Time-Out Initialization Data ***/
+DRV_ETHPHY_TMO drvksz8081Tmo = 
+{
+    .resetTmo = DRV_ETHPHY_KSZ8081_RESET_CLR_TMO,
+    .aNegDoneTmo = DRV_ETHPHY_KSZ8081_NEG_DONE_TMO,
+    .aNegInitTmo = DRV_ETHPHY_KSZ8081_NEG_INIT_TMO,    
+};
 
 /*** ETH PHY Initialization Data ***/
-extern void AppPhyResetFunction( const struct DRV_ETHPHY_OBJECT_BASE_TYPE* pBaseObj);
+extern void AppPhyResetFunction(const struct DRV_ETHPHY_OBJECT_BASE_TYPE* pBaseObj, DRV_HANDLE handle);
 const DRV_ETHPHY_INIT tcpipPhyInitData_KSZ8081 =
 {    
-    .ethphyId               = TCPIP_INTMAC_MODULE_ID,
-    .phyAddress             = TCPIP_INTMAC_PHY_ADDRESS,
-    .phyFlags               = TCPIP_INTMAC_PHY_CONFIG_FLAGS,
+    .ethphyId               = DRV_KSZ8081_PHY_PERIPHERAL_ID,
+    .phyAddress             = DRV_KSZ8081_PHY_ADDRESS,
+    .phyFlags               = DRV_KSZ8081_PHY_CONFIG_FLAGS,
     .pPhyObject             = &DRV_ETHPHY_OBJECT_KSZ8081,
     .resetFunction          = AppPhyResetFunction,
+    .ethphyTmo              = &drvksz8081Tmo,
     .pMiimObject            = &DRV_MIIM_OBJECT_BASE_Default,
-    .pMiimInit              = &drvMiimInitData,
-    .miimIndex              = DRV_MIIM_DRIVER_INDEX,
+    .pMiimInit              = &drvMiimInitData_0,
+    .miimIndex              = 0,
 };
+
 
 
 
@@ -828,6 +832,8 @@ static void SYSC_Disable( void )
 
 void SYS_Initialize ( void* data )
 {
+    /* MISRAC 2012 deviation block start */
+    /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
 
 	SYSC_Disable( );
 
@@ -856,8 +862,8 @@ void SYS_Initialize ( void* data )
 
 
 
-    /* Initialize the MIIM Driver */
-    sysObj.drvMiim = DRV_MIIM_Initialize( DRV_MIIM_INDEX_0, (const SYS_MODULE_INIT *) &drvMiimInitData );
+   /* Initialize the MIIM Driver Instance 0*/
+   sysObj.drvMiim_0 = DRV_MIIM_Initialize(DRV_MIIM_DRIVER_INDEX_0, (const SYS_MODULE_INIT *) &drvMiimInitData_0); 
 
 
     sysObj.drvSDMMC0 = DRV_SDMMC_Initialize(DRV_SDMMC_INDEX_0,(SYS_MODULE_INIT *)&drvSDMMC0InitData);
@@ -876,11 +882,11 @@ void SYS_Initialize ( void* data )
     SYS_FS_Initialize( (const void *) sysFSInit );
 
 
-/* Network Presentation Layer Initialization */
-sysObj.netPres = NET_PRES_Initialize(0, (SYS_MODULE_INIT*)&netPresInitData);
-/* TCPIP Stack Initialization */
-sysObj.tcpip = TCPIP_STACK_Init();
-SYS_ASSERT(sysObj.tcpip != SYS_MODULE_OBJ_INVALID, "TCPIP_STACK_Init Failed" );
+   /* Network Presentation Layer Initialization */
+   sysObj.netPres = NET_PRES_Initialize(0, (SYS_MODULE_INIT*)&netPresInitData);
+   /* TCPIP Stack Initialization */
+   sysObj.tcpip = TCPIP_STACK_Init();
+   SYS_ASSERT(sysObj.tcpip != SYS_MODULE_OBJ_INVALID, "TCPIP_STACK_Init Failed" );
 
 
     CRYPT_WCCB_Initialize();
@@ -889,6 +895,7 @@ SYS_ASSERT(sysObj.tcpip != SYS_MODULE_OBJ_INVALID, "TCPIP_STACK_Init Failed" );
 
 
 
+    /* MISRAC 2012 deviation block end */
 }
 
 

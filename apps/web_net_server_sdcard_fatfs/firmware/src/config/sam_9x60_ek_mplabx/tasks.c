@@ -87,7 +87,7 @@ DRV_SDMMC_Tasks(sysObj.drvSDMMC0);
 
 
     /* Maintain Device Drivers */
-    DRV_MIIM_Tasks(sysObj.drvMiim);
+       DRV_MIIM_Tasks(sysObj.drvMiim_0);
 
 
 
@@ -98,7 +98,7 @@ NET_PRES_Tasks(sysObj.netPres);
 
 
 
-TCPIP_STACK_Task(sysObj.tcpip);
+   TCPIP_STACK_Task(sysObj.tcpip);
 
 
 

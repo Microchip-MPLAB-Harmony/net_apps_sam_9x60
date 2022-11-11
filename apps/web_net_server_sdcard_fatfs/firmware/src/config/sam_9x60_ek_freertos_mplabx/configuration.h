@@ -112,7 +112,7 @@ extern "C" {
 #define SYS_FS_STACK_SIZE                 2048
 #define SYS_FS_PRIORITY                   1
 
-#define SYS_FS_FAT_VERSION                "v0.14a"
+#define SYS_FS_FAT_VERSION                "v0.14b"
 #define SYS_FS_FAT_READONLY               false
 #define SYS_FS_FAT_CODE_PAGE              437
 #define SYS_FS_FAT_MAX_SS                 SYS_FS_MEDIA_MAX_BLOCK_SIZE
@@ -174,7 +174,7 @@ extern "C" {
 /*** SDMMC Driver Instance 0 Configuration ***/
 #define DRV_SDMMC_INDEX_0                                0
 #define DRV_SDMMC_CLIENTS_NUMBER_IDX0                    1
-#define DRV_SDMMC_QUEUE_SIZE_IDX0                        2
+#define DRV_SDMMC_QUEUE_SIZE_IDX0                        1
 #define DRV_SDMMC_PROTOCOL_SUPPORT_IDX0                  DRV_SDMMC_PROTOCOL_SD
 #define DRV_SDMMC_CONFIG_SPEED_MODE_IDX0                 DRV_SDMMC_SPEED_MODE_DEFAULT
 #define DRV_SDMMC_CONFIG_BUS_WIDTH_IDX0                  DRV_SDMMC_BUS_WIDTH_4_BIT
@@ -378,6 +378,15 @@ extern "C" {
 
 
 
+/*** FTPC Configuration ***/
+#define TCPIP_STACK_USE_FTP_CLIENT
+#define TCPIP_FTPC_TASK_TICK_RATE        5
+#define TCPIP_FTPC_TMO                   2
+#define TCPIP_FTPC_MAX_NUM_CLIENT        3
+#define TCPIP_FTPC_DATA_SKT_TX_BUFF_SIZE_DFLT        0
+#define TCPIP_FTPC_DATA_SKT_RX_BUFF_SIZE_DFLT        0
+
+
 /*** iperf Configuration ***/
 #define TCPIP_STACK_USE_IPERF
 #define TCPIP_IPERF_TX_BUFFER_SIZE		16384
@@ -388,15 +397,6 @@ extern "C" {
 #define TCPIP_IPERF_MAX_INSTANCES       1
 #define TCPIP_IPERF_TX_BW_LIMIT  		1
 
-
-
-/*** FTPC Configuration ***/
-#define TCPIP_STACK_USE_FTP_CLIENT
-#define TCPIP_FTPC_TASK_TICK_RATE        5
-#define TCPIP_FTPC_TMO                   2
-#define TCPIP_FTPC_MAX_NUM_CLIENT        3
-#define TCPIP_FTPC_DATA_SKT_TX_BUFF_SIZE_DFLT        0
-#define TCPIP_FTPC_DATA_SKT_RX_BUFF_SIZE_DFLT        0
 
 
 /*** IPv4 Configuration ***/
@@ -543,12 +543,6 @@ extern "C" {
 
 
 
-/*** NBNS Configuration ***/
-#define TCPIP_STACK_USE_NBNS
-#define TCPIP_NBNS_TASK_TICK_RATE   110
-
-
-
 /*** HTTP NET Configuration ***/
 #define TCPIP_STACK_USE_HTTP_NET_SERVER
 #define TCPIP_HTTP_NET_MAX_HEADER_LEN		    		15
@@ -595,6 +589,12 @@ extern "C" {
 #define TCPIP_HTTP_NET_MALLOC_FUNC                  malloc
 #define TCPIP_HTTP_NET_FREE_FUNC                    free
 #define TCPIP_HTTP_NET_CONSOLE_CMD           		true
+
+
+
+/*** NBNS Configuration ***/
+#define TCPIP_STACK_USE_NBNS
+#define TCPIP_NBNS_TASK_TICK_RATE   110
 
 
 

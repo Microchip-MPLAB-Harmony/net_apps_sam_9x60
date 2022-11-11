@@ -662,13 +662,14 @@ DRV_ETHPHY_TMO drvksz8081Tmo =
 };
 
 /*** ETH PHY Initialization Data ***/
+extern void AppPhyResetFunction(const struct DRV_ETHPHY_OBJECT_BASE_TYPE* pBaseObj, DRV_HANDLE handle);
 const DRV_ETHPHY_INIT tcpipPhyInitData_KSZ8081 =
 {    
     .ethphyId               = DRV_KSZ8081_PHY_PERIPHERAL_ID,
     .phyAddress             = DRV_KSZ8081_PHY_ADDRESS,
     .phyFlags               = DRV_KSZ8081_PHY_CONFIG_FLAGS,
     .pPhyObject             = &DRV_ETHPHY_OBJECT_KSZ8081,
-    .resetFunction          = 0,
+    .resetFunction          = AppPhyResetFunction,
     .ethphyTmo              = &drvksz8081Tmo,
     .pMiimObject            = &DRV_MIIM_OBJECT_BASE_Default,
     .pMiimInit              = &drvMiimInitData_0,
@@ -823,6 +824,8 @@ static void SYSC_Disable( void )
 
 void SYS_Initialize ( void* data )
 {
+    /* MISRAC 2012 deviation block start */
+    /* MISRA C-2012 Rule 2.2 deviated in this file.  Deviation record ID -  H3_MISRAC_2012_R_2_2_DR_1 */
 
 	SYSC_Disable( );
 
@@ -886,6 +889,7 @@ void SYS_Initialize ( void* data )
 
 
 
+    /* MISRAC 2012 deviation block end */
 }
 
 

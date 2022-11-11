@@ -109,7 +109,7 @@ extern "C" {
 #define SYS_FS_CWD_STRING_LEN             1024
 
 
-#define SYS_FS_FAT_VERSION                "v0.14a"
+#define SYS_FS_FAT_VERSION                "v0.14b"
 #define SYS_FS_FAT_READONLY               false
 #define SYS_FS_FAT_CODE_PAGE              437
 #define SYS_FS_FAT_MAX_SS                 SYS_FS_MEDIA_MAX_BLOCK_SIZE
@@ -146,17 +146,15 @@ extern "C" {
 // Section: Driver Configuration
 // *****************************************************************************
 // *****************************************************************************
-
-
 /*** MIIM Driver Configuration ***/
-#define DRV_MIIM_ETH_MODULE_ID              EMAC0_BASE_ADDRESS
+#define DRV_MIIM_ETH_MODULE_ID_0                EMAC0_BASE_ADDRESS
+#define DRV_MIIM_DRIVER_INDEX_0                 0
 #define DRV_MIIM_INSTANCES_NUMBER           1
 #define DRV_MIIM_INSTANCE_OPERATIONS        4
 #define DRV_MIIM_INSTANCE_CLIENTS           2
 #define DRV_MIIM_CLIENT_OP_PROTECTION   false
 #define DRV_MIIM_COMMANDS   true
-#define DRV_MIIM_DRIVER_OBJECT              DRV_MIIM_OBJECT_BASE_Default
-#define DRV_MIIM_DRIVER_INDEX               DRV_MIIM_INDEX_0              
+#define DRV_MIIM_DRIVER_OBJECT              DRV_MIIM_OBJECT_BASE_Default            
 
 
 
@@ -290,24 +288,24 @@ extern "C" {
 
 
 /* Network Configuration Index 0 */
-#define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0	"EMAC0"
+#define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0 "EMAC0"
 #define TCPIP_IF_EMAC0
 
-#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0				"SAM9X60_EK"
-#define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0				"00:04:25:1C:A0:03"
+#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_EK"
+#define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0               "00:04:25:1C:A0:03"
 
-#define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0			"192.168.100.14"
-#define TCPIP_NETWORK_DEFAULT_IP_MASK_IDX0			"255.255.255.0"
-#define TCPIP_NETWORK_DEFAULT_GATEWAY_IDX0			"192.168.100.1"
-#define TCPIP_NETWORK_DEFAULT_DNS_IDX0				"192.168.100.1"
-#define TCPIP_NETWORK_DEFAULT_SECOND_DNS_IDX0			"0.0.0.0"
-#define TCPIP_NETWORK_DEFAULT_POWER_MODE_IDX0			"full"
-#define TCPIP_NETWORK_DEFAULT_INTERFACE_FLAGS_IDX0			\
-													TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
-													TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
-													TCPIP_NETWORK_CONFIG_IP_STATIC
-													
-#define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0			DRV_EMAC0_Object
+#define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0         "192.168.100.14"
+#define TCPIP_NETWORK_DEFAULT_IP_MASK_IDX0            "255.255.255.0"
+#define TCPIP_NETWORK_DEFAULT_GATEWAY_IDX0            "192.168.100.1"
+#define TCPIP_NETWORK_DEFAULT_DNS_IDX0                "192.168.100.1"
+#define TCPIP_NETWORK_DEFAULT_SECOND_DNS_IDX0         "0.0.0.0"
+#define TCPIP_NETWORK_DEFAULT_POWER_MODE_IDX0         "full"
+#define TCPIP_NETWORK_DEFAULT_INTERFACE_FLAGS_IDX0            \
+                                                    TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_IP_STATIC
+                                                    
+#define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0         DRV_EMAC0_Object
 
 
 
@@ -367,15 +365,6 @@ extern "C" {
 
 
 
-/*** FTPC Configuration ***/
-#define TCPIP_STACK_USE_FTP_CLIENT
-#define TCPIP_FTPC_TASK_TICK_RATE        5
-#define TCPIP_FTPC_TMO                   2
-#define TCPIP_FTPC_MAX_NUM_CLIENT        3
-#define TCPIP_FTPC_DATA_SKT_TX_BUFF_SIZE_DFLT        0
-#define TCPIP_FTPC_DATA_SKT_RX_BUFF_SIZE_DFLT        0
-
-
 /*** iperf Configuration ***/
 #define TCPIP_STACK_USE_IPERF
 #define TCPIP_IPERF_TX_BUFFER_SIZE		16384
@@ -386,6 +375,15 @@ extern "C" {
 #define TCPIP_IPERF_MAX_INSTANCES       1
 #define TCPIP_IPERF_TX_BW_LIMIT  		1
 
+
+
+/*** FTPC Configuration ***/
+#define TCPIP_STACK_USE_FTP_CLIENT
+#define TCPIP_FTPC_TASK_TICK_RATE        5
+#define TCPIP_FTPC_TMO                   2
+#define TCPIP_FTPC_MAX_NUM_CLIENT        3
+#define TCPIP_FTPC_DATA_SKT_TX_BUFF_SIZE_DFLT        0
+#define TCPIP_FTPC_DATA_SKT_RX_BUFF_SIZE_DFLT        0
 
 
 /*** IPv4 Configuration ***/
@@ -527,12 +525,6 @@ extern "C" {
 
 
 
-/*** NBNS Configuration ***/
-#define TCPIP_STACK_USE_NBNS
-#define TCPIP_NBNS_TASK_TICK_RATE   110
-
-
-
 /*** HTTP NET Configuration ***/
 #define TCPIP_STACK_USE_HTTP_NET_SERVER
 #define TCPIP_HTTP_NET_MAX_HEADER_LEN		    		15
@@ -579,6 +571,12 @@ extern "C" {
 #define TCPIP_HTTP_NET_MALLOC_FUNC                  malloc
 #define TCPIP_HTTP_NET_FREE_FUNC                    free
 #define TCPIP_HTTP_NET_CONSOLE_CMD           		true
+
+
+
+/*** NBNS Configuration ***/
+#define TCPIP_STACK_USE_NBNS
+#define TCPIP_NBNS_TASK_TICK_RATE   110
 
 
 
@@ -740,7 +738,9 @@ extern "C" {
 #define TCPIP_STACK_INTERFACE_CHANGE_SIGNALING   false
 #define TCPIP_STACK_CONFIGURATION_SAVE_RESTORE   true
 #define TCPIP_STACK_EXTERN_PACKET_PROCESS   false
+#define TCPIP_STACK_RUN_TIME_INIT   false
 
+#define TCPIP_STACK_INTMAC_COUNT           1
 
 
 
@@ -825,20 +825,16 @@ extern "C" {
 #define NO_WOLFSSL_MEMORY
 // ---------- FUNCTIONAL CONFIGURATION END ----------
 
-
-#define TCPIP_INTMAC_PHY_CONFIG_FLAGS              	( 0 \
+#define DRV_KSZ8081_PHY_CONFIG_FLAGS       ( 0 \
                                                     | DRV_ETHPHY_CFG_RMII \
                                                     )
-													
-#define TCPIP_INTMAC_PHY_LINK_INIT_DELAY            500
-#define TCPIP_INTMAC_PHY_ADDRESS                    0
-#define DRV_ETHPHY_INSTANCES_NUMBER                 1
-#define DRV_ETHPHY_CLIENTS_NUMBER                   1
-#define DRV_ETHPHY_INDEX                            1
-#define DRV_ETHPHY_PERIPHERAL_ID                    1
-#define DRV_ETHPHY_NEG_INIT_TMO                     1
-#define DRV_ETHPHY_NEG_DONE_TMO                     2000
-#define DRV_ETHPHY_RESET_CLR_TMO                    500
+                                                    
+#define DRV_KSZ8081_PHY_LINK_INIT_DELAY            500
+#define DRV_KSZ8081_PHY_ADDRESS                    0
+#define DRV_KSZ8081_PHY_PERIPHERAL_ID              EMAC0_BASE_ADDRESS
+#define DRV_ETHPHY_KSZ8081_NEG_INIT_TMO            1
+#define DRV_ETHPHY_KSZ8081_NEG_DONE_TMO            2000
+#define DRV_ETHPHY_KSZ8081_RESET_CLR_TMO           500
 
 
 #define TCPIP_STACK_NETWORK_INTERAFCE_COUNT  	1

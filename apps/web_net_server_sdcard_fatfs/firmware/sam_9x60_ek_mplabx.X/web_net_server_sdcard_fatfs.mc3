@@ -840,8 +840,8 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TCP/IP STACK" name="harmonyGroupAttachments"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;Attachments&gt;
   &lt;Attachments dnOrder=&quot;0&quot;&gt;
-    &lt;Attachment dnOrder=&quot;0&quot; id=&quot;net_Pres:Net_Pres_Crypto_Dependency&quot; namespace=&quot;PRESENTATION LAYER&quot; targetAttachmentID=&quot;lib_wolfssl&quot; targetComponentID=&quot;lib_wolfssl&quot;/&gt;
-    &lt;Attachment dnOrder=&quot;1&quot; id=&quot;tcpipStack:Core_SysConsole_Dependency&quot; namespace=&quot;BASIC CONFIGURATION&quot; targetAttachmentID=&quot;sys_console&quot; targetComponentID=&quot;sys_console_0&quot;/&gt;
+    &lt;Attachment dnOrder=&quot;0&quot; id=&quot;tcpipStack:Core_SysConsole_Dependency&quot; namespace=&quot;BASIC CONFIGURATION&quot; targetAttachmentID=&quot;sys_console&quot; targetComponentID=&quot;sys_console_0&quot;/&gt;
+    &lt;Attachment dnOrder=&quot;1&quot; id=&quot;net_Pres:Net_Pres_Crypto_Dependency&quot; namespace=&quot;PRESENTATION LAYER&quot; targetAttachmentID=&quot;lib_wolfssl&quot; targetComponentID=&quot;lib_wolfssl&quot;/&gt;
   &lt;/Attachments&gt;
 &lt;/Attachments&gt;
 </value>
@@ -862,47 +862,29 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;ComponentGraph dnOrder=&quot;0&quot; id=&quot;TCP/IP STACK&quot;&gt;
+    &lt;GraphSettings canvasHeight=&quot;588&quot; canvasWidth=&quot;729&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
-        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;APPLICATION LAYER&quot; x=&quot;20&quot; y=&quot;25&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;BASIC CONFIGURATION&quot; x=&quot;366&quot; y=&quot;94&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;DATA LINK LAYER&quot; x=&quot;390&quot; y=&quot;40&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;NETWORK LAYER&quot; x=&quot;197&quot; y=&quot;178&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;PRESENTATION LAYER&quot; x=&quot;200&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;TRANSPORT LAYER&quot; x=&quot;197&quot; y=&quot;138&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BSP_SAM_9X60_Evaluation_Kit&quot; x=&quot;340&quot; y=&quot;21&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;HarmonyCore&quot; x=&quot;342&quot; y=&quot;62&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;TCP/IP STACK&quot; x=&quot;575&quot; y=&quot;23&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;core&quot; x=&quot;241&quot; y=&quot;19&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;dbgu&quot; x=&quot;13&quot; y=&quot;220&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;dfp&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;drv_sdmmc&quot; x=&quot;147&quot; y=&quot;364&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;lib_crypto&quot; x=&quot;561&quot; y=&quot;395&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;lib_wolfcrypt&quot; x=&quot;573&quot; y=&quot;244&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;9&quot; id=&quot;lib_wolfssl&quot; x=&quot;571&quot; y=&quot;140&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;sdmmc0&quot; x=&quot;0&quot; y=&quot;401&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;sys_command&quot; x=&quot;368&quot; y=&quot;302&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;sys_console&quot; x=&quot;187&quot; y=&quot;185&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;sys_debug&quot; x=&quot;343&quot; y=&quot;161&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;sys_fs&quot; x=&quot;328&quot; y=&quot;422&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;15&quot; id=&quot;sys_time&quot; x=&quot;185&quot; y=&quot;58&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;16&quot; id=&quot;tc0&quot; x=&quot;23&quot; y=&quot;77&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
-    &lt;GraphSettings canvasHeight=&quot;588&quot; canvasWidth=&quot;729&quot; dnOrder=&quot;1&quot;/&gt;
-    &lt;ComponentGraph dnOrder=&quot;2&quot; id=&quot;PRESENTATION LAYER&quot;&gt;
-      &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
-        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;net_Pres&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
-      &lt;/ElementPositions&gt;
-    &lt;/ComponentGraph&gt;
-    &lt;ComponentGraph dnOrder=&quot;3&quot; id=&quot;BASIC CONFIGURATION&quot;&gt;
-      &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
-        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;tcpipCmd&quot; x=&quot;200&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;tcpipStack&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
-      &lt;/ElementPositions&gt;
-    &lt;/ComponentGraph&gt;
-    &lt;ComponentGraph dnOrder=&quot;4&quot; id=&quot;DATA LINK LAYER&quot;&gt;
-      &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
-        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;drvEmac0&quot; x=&quot;180&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;drvExtPhyKsz8081&quot; x=&quot;300&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;drvMiim&quot; x=&quot;420&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;tcpipNetConfig&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
-      &lt;/ElementPositions&gt;
-    &lt;/ComponentGraph&gt;
-    &lt;ComponentGraph dnOrder=&quot;5&quot; id=&quot;NETWORK LAYER&quot;&gt;
-      &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
-        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;tcpipArp&quot; x=&quot;307&quot; y=&quot;28&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;tcpipIPv4&quot; x=&quot;570&quot; y=&quot;21&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;tcpipIPv6&quot; x=&quot;700&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;tcpipIcmp&quot; x=&quot;438&quot; y=&quot;30&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;tcpipIcmpv6&quot; x=&quot;840&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;tcpipNdp&quot; x=&quot;30&quot; y=&quot;60&quot;/&gt;
-      &lt;/ElementPositions&gt;
-    &lt;/ComponentGraph&gt;
-    &lt;ComponentGraph dnOrder=&quot;6&quot; id=&quot;APPLICATION LAYER&quot;&gt;
+    &lt;ComponentGraph dnOrder=&quot;2&quot; id=&quot;APPLICATION LAYER&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;tcpipAnnounce&quot; x=&quot;30&quot; y=&quot;66&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;tcpipBerkeleyApi&quot; x=&quot;600&quot; y=&quot;20&quot;/&gt;
@@ -923,31 +905,49 @@
         &lt;ElementPosition dnOrder=&quot;16&quot; id=&quot;tcpipZeroConf&quot; x=&quot;870&quot; y=&quot;140&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
-    &lt;ComponentGraph dnOrder=&quot;7&quot; id=&quot;TRANSPORT LAYER&quot;&gt;
+    &lt;ComponentGraph dnOrder=&quot;3&quot; id=&quot;TRANSPORT LAYER&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;tcpipTcp&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;tcpipUdp&quot; x=&quot;300&quot; y=&quot;20&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
-    &lt;ComponentGraph dnOrder=&quot;8&quot; id=&quot;__ROOTVIEW&quot;&gt;
+    &lt;ComponentGraph dnOrder=&quot;4&quot; id=&quot;BASIC CONFIGURATION&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
-        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BSP_SAM_9X60_Evaluation_Kit&quot; x=&quot;340&quot; y=&quot;21&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;HarmonyCore&quot; x=&quot;342&quot; y=&quot;62&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;TCP/IP STACK&quot; x=&quot;575&quot; y=&quot;23&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;core&quot; x=&quot;241&quot; y=&quot;19&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;dbgu&quot; x=&quot;13&quot; y=&quot;220&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;dfp&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;drv_sdmmc&quot; x=&quot;147&quot; y=&quot;364&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;lib_crypto&quot; x=&quot;561&quot; y=&quot;395&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;lib_wolfcrypt&quot; x=&quot;573&quot; y=&quot;244&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;9&quot; id=&quot;lib_wolfssl&quot; x=&quot;571&quot; y=&quot;140&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;sdmmc0&quot; x=&quot;0&quot; y=&quot;401&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;sys_command&quot; x=&quot;368&quot; y=&quot;302&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;sys_console&quot; x=&quot;187&quot; y=&quot;185&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;sys_debug&quot; x=&quot;343&quot; y=&quot;161&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;14&quot; id=&quot;sys_fs&quot; x=&quot;328&quot; y=&quot;422&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;15&quot; id=&quot;sys_time&quot; x=&quot;185&quot; y=&quot;58&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;16&quot; id=&quot;tc0&quot; x=&quot;23&quot; y=&quot;77&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;tcpipCmd&quot; x=&quot;200&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;tcpipStack&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
+      &lt;/ElementPositions&gt;
+    &lt;/ComponentGraph&gt;
+    &lt;ComponentGraph dnOrder=&quot;5&quot; id=&quot;PRESENTATION LAYER&quot;&gt;
+      &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
+        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;net_Pres&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
+      &lt;/ElementPositions&gt;
+    &lt;/ComponentGraph&gt;
+    &lt;ComponentGraph dnOrder=&quot;6&quot; id=&quot;DATA LINK LAYER&quot;&gt;
+      &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
+        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;drvEmac0&quot; x=&quot;180&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;drvExtPhyKsz8081&quot; x=&quot;300&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;drvMiim&quot; x=&quot;420&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;tcpipNetConfig&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
+      &lt;/ElementPositions&gt;
+    &lt;/ComponentGraph&gt;
+    &lt;ComponentGraph dnOrder=&quot;7&quot; id=&quot;NETWORK LAYER&quot;&gt;
+      &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
+        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;tcpipArp&quot; x=&quot;307&quot; y=&quot;28&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;tcpipIPv4&quot; x=&quot;570&quot; y=&quot;21&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;tcpipIPv6&quot; x=&quot;700&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;tcpipIcmp&quot; x=&quot;438&quot; y=&quot;30&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;tcpipIcmpv6&quot; x=&quot;840&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;tcpipNdp&quot; x=&quot;30&quot; y=&quot;60&quot;/&gt;
+      &lt;/ElementPositions&gt;
+    &lt;/ComponentGraph&gt;
+    &lt;ComponentGraph dnOrder=&quot;8&quot; id=&quot;TCP/IP STACK&quot;&gt;
+      &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
+        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;APPLICATION LAYER&quot; x=&quot;20&quot; y=&quot;25&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;BASIC CONFIGURATION&quot; x=&quot;366&quot; y=&quot;94&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;DATA LINK LAYER&quot; x=&quot;390&quot; y=&quot;40&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;NETWORK LAYER&quot; x=&quot;197&quot; y=&quot;178&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;PRESENTATION LAYER&quot; x=&quot;200&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;TRANSPORT LAYER&quot; x=&quot;197&quot; y=&quot;138&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
   &lt;/UserData&gt;
@@ -5243,6 +5243,22 @@
 </value>
       </entry>
       <entry>
+         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="drvExtPhyKsz8081" name="DRV_ETHPHY_RESET_CALLBACK"/>
+         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;drvExtPhyKsz8081&gt;
+  &lt;drvExtPhyKsz8081 dnOrder=&quot;0&quot; id=&quot;DRV_ETHPHY_RESET_CALLBACK&quot;&gt;
+    &lt;Attributes dnOrder=&quot;0&quot;&gt;
+      &lt;Boolean dnOrder=&quot;0&quot; id=&quot;visible&quot;&gt;
+        &lt;Value dnOrder=&quot;0&quot;&gt;true&lt;/Value&gt;
+      &lt;/Boolean&gt;
+    &lt;/Attributes&gt;
+    &lt;Values dnOrder=&quot;1&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;AppPhyResetFunction&quot;/&gt;
+    &lt;/Values&gt;
+  &lt;/drvExtPhyKsz8081&gt;
+&lt;/drvExtPhyKsz8081&gt;
+</value>
+      </entry>
+      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="drvExtPhyKsz8081" name="DRV_ETHPHY_USE_RESET_CALLBACK"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;drvExtPhyKsz8081&gt;
   &lt;drvExtPhyKsz8081 dnOrder=&quot;0&quot; id=&quot;DRV_ETHPHY_USE_RESET_CALLBACK&quot;&gt;
@@ -8151,7 +8167,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\ipv6.c</file>
-         <hash>59d8ed84d14eb32556929a1fedf60b676d8a7e160b804cbc0804a3c57b262a6a</hash>
+         <hash>1f4d538a4624d525244259af69d6fca9dc0acfa95b017d1100a020dac7fad0d0</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\net_pres\pres\net_pres_enc_glue.c</file>
@@ -8174,10 +8190,6 @@
          <hash>51051a7aad5df3148a07b9e985f421b239f204e4cf441ca04b780abedb892473</hash>
       </entry>
       <entry>
-         <file>..\src\config\sam_9x60_ek_mplabx\vectortrap.s</file>
-         <hash>3d585f4a9a6c290556e7f5a32deea770510647323e11d31f16840ed743db661b</hash>
-      </entry>
-      <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\sp_c32.c</file>
          <hash>29552f08719237ef91053d6ecb0068e8a3f9c52bb2d3eedd13f69d7b2520c208</hash>
       </entry>
@@ -8187,7 +8199,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\time\src\sys_time.c</file>
-         <hash>ddec1a83e32b63552ae72f884dc849e376b60d411669554f7ec492fff180662f</hash>
+         <hash>b722ac0c5d955d289bd906609ab6f302342166c5ba66f87b30cac17ac6bfdcd9</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\poly1305.c</file>
@@ -8263,7 +8275,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\stdio\xc32_monitor.c</file>
-         <hash>26e5749db654ed433fd94f6c732ef8600d0cbf5196493374cf111877c02b694e</hash>
+         <hash>858f8710d4287200a5ee7f3b3ad7c24f505aed9c05c16956ab0ff9f7bb162a6a</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\tfm.h</file>
@@ -8303,11 +8315,11 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\fs\fat_fs\file_system\ff.c</file>
-         <hash>89210dcb75cae2c2c9cf5e835ccd0b5a8dd5860ac9f79661207076b9a4d709e0</hash>
+         <hash>ef75bad24073ec54d3e76b06b26c56b604bb4f063fe6bd9ebe7c80bae94fd6d5</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\fs\fat_fs\file_system\ff.h</file>
-         <hash>910fa58ceb264c7e03edce224b6484fc2fba3c8d6656975e3c01cd45cdc5d4b3</hash>
+         <hash>d7b45a8f01fcd9923e18f8618408613021f2d36f35c632de31edaf5f4acf6c6b</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\net_pres\pres\net_pres.h</file>
@@ -8327,7 +8339,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\command\sys_command.h</file>
-         <hash>c29ae3a018b8513dbdb95ee26b477c52d076ebe3c5a1eb168d3f101170e53077</hash>
+         <hash>8d8b4c4f428355afecc0771ff799785869386e7cfb079e327773628226ee2e2d</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\idea.c</file>
@@ -8343,7 +8355,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\ftpc.c</file>
-         <hash>fe640867896e5d7a21a6f0bdc01dcd7b15078d32057ef79cce6223ee68624b50</hash>
+         <hash>5b284bba2a6d6c90509b235e9cad28266027c19565458b431029614862a0e070</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\net_pres\pres\net_pres_socketapiconversion.h</file>
@@ -8379,11 +8391,11 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\oahash.c</file>
-         <hash>f8e65ee4421a5405e219e05f5a5ab875ab948b51e9aa035566b11e1060941af6</hash>
+         <hash>ee08304b337ad7d5d4e26f3261d83d7d1b639197aa2e1570960b2593abce7d40</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\tasks.c</file>
-         <hash>3245fb4b6b39f8e09ec05954c0ca804d191980cf0466435565f985f1bdae137f</hash>
+         <hash>7d7f72fd042e20b0d90e8e60423d9bbac4d5cbdfef29183445e97f2a74b81bca</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha256_sam6156.c</file>
@@ -8407,7 +8419,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\peripheral\dbgu\plib_dbgu.h</file>
-         <hash>a1e6225b8d4f0dd06bb11c3ef72a53d349c67ae79a2167a6895cef04e443dbd3</hash>
+         <hash>e347522d9a23f4f97fb60b3fa36df66b4002cd5b0f426c600359a4774d12a4aa</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\instance\syscwp.h</file>
@@ -8419,7 +8431,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\dhcpv6.h</file>
-         <hash>5efefda85407f8322df45a74c262c667acda882d49c8992b26a28d723927731f</hash>
+         <hash>1556a5bdc6ab281670d1eac3de606f9ee287a33c670e917c52b6eebb1ae7f236</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\sha256.h</file>
@@ -8443,7 +8455,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\peripheral\dbgu\plib_dbgu.c</file>
-         <hash>b33bc033d2bc9b23c42565e3ab9338d90d6efb6095dfba0c1fccfb2dc5f517e8</hash>
+         <hash>bbaceac39be0d143091e05b24cc644d06614256f36c5969e120199edc3961a20</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\instance\pioa.h</file>
@@ -8495,7 +8507,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\peripheral\mmu\plib_mmu.c</file>
-         <hash>dcb49e8ae138df521dac0430d7cb8e6f065fcf2c167febd3865f08f74eb6c69a</hash>
+         <hash>a7fb5bb0bac6b5e56a100b5673ac78308ffcadfa241710db8a15fb255af44e56</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\osal\osal.h</file>
@@ -8543,7 +8555,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\tcpip_mac.h</file>
-         <hash>c517aafb8c11f40bf01a702af6232251e3bc8ff922282c8799f3d8abad2cfb0e</hash>
+         <hash>37f04d8f893a220d9d027cf32889cd090e545aa8995766ad1e9b371860176759</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\snmp.h</file>
@@ -8643,7 +8655,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\initialization.c</file>
-         <hash>c49606492136b326d479033c1e6067df449f4fd13d2c4469c08b4fbdf869e8e2</hash>
+         <hash>e894bbdc27e98baaecd3fb1815dff41de36efc60534b0d53fd7708881d02aba5</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\camellia.h</file>
@@ -8667,7 +8679,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\peripheral\clk\plib_clk.c</file>
-         <hash>1d83e7efbad27166bfd9efb705d458f6920d8d942afa0ef969b37ce150f8016f</hash>
+         <hash>112f5227506c87e737e75e0957157307eed0c5a4c7e8d7ca54a352e8dd11582b</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\instance\flexcom0.h</file>
@@ -8719,11 +8731,11 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\tcpip_mac_object.h</file>
-         <hash>6656f0d0b7c54fc0bcd89962757e2d7f855e0c553f6ffe8e7d7ae1ea35258d1d</hash>
+         <hash>20a88a71ee17a4699f2dfb9b91d4f06d3ac40cbbd2873af66b31d957828a3214</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\definitions.h</file>
-         <hash>d471c2cafbc71c0cd21ea007ba7669119ba44a8e539d3336a4b5cf6b9cc91df4</hash>
+         <hash>045c60b1180868b929fc28876acb6032183434d15dd915e02c0901a12cf2f170</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\blake2b.c</file>
@@ -8895,7 +8907,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\peripheral\pio\plib_pio.c</file>
-         <hash>10fc8b1c6b4af1d23fa51b3841765694ce05a76b85ed9a349c23dcd1abe0e545</hash>
+         <hash>02b46140f45384c5b37446f130f0e41823cb0103f0a8e7d89c8f506349a0881b</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\telnet.c</file>
@@ -8907,7 +8919,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\peripheral\pio\plib_pio.h</file>
-         <hash>eccb0ae1859a09122882a02415ffe2313cd7f73c6fd55e7a7d32a69ef3f7b202</hash>
+         <hash>1360e770c71effb69ecc29b44f0a65cfd936ca14082e1f7e5ceff730fdaa2d18</hash>
       </entry>
       <entry>
          <file>..\src\web_pages\harmony.gif</file>
@@ -8939,7 +8951,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcpip_heap_internal.c</file>
-         <hash>d2889ab1b488c6fd010c9bceff88ac49dee94b7671c269d784b8f70b966864b2</hash>
+         <hash>0e6c0f45483dcf98b156c1c47d555b6386568b52dc1045e94c56a8c7fc4b58d4</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\driver\miim\src\drv_miim_local.h</file>
@@ -8991,7 +9003,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\udp_private.h</file>
-         <hash>5473b909c7f844b5362b8651704c651a5064e4df66f1cbf1ba67b8f727717f2e</hash>
+         <hash>a059c9d2feb6ede167acc5f653f4e42cb56e343fe78c436f26ba2c2bbc0bc08d</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\ed25519.h</file>
@@ -9023,7 +9035,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\dhcpv6_private.h</file>
-         <hash>1e7447f60fda2428ea2a164b5d44030678674187e0f868067a7ac9c5a9ae60a5</hash>
+         <hash>1f0d6831821cf03435d0c23e932a564b10ebdf4685e1c2c7840b44808330c289</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\console\src\sys_console_uart.c</file>
@@ -9051,7 +9063,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\driver\emac\src\dynamic\drv_emac_lib_SAM9X60.c</file>
-         <hash>9fb3ddfd2c6c8ca4073de488c560d1ba0a52341ce16c2efbed1e854230736b62</hash>
+         <hash>432f0d187a925db15d39e716ce3894f62c32be8c4e3c3b5c64cb5f94f1a9df85</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcpip_notify.h</file>
@@ -9067,7 +9079,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\driver\miim\src\dynamic\drv_miim_mapping.h</file>
-         <hash>0d73421e84ae91eae1439dc5eaed2e18c9c78f28cd7f04c0df256ad670f45500</hash>
+         <hash>6e2ed3c13cbd2d5d1506dae0deb22d210754ba83848a842016163a11ad444f5b</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\driver\emac\drv_emac.h</file>
@@ -9083,7 +9095,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\driver\ethphy\drv_ethphy.h</file>
-         <hash>2463933aa71c87ac4a293d4a38271f000cf59b10f854699d5a3abcd71e1dee1c</hash>
+         <hash>373a1a557816f1d4ccee024cd4c8df1f554f47281fafa4a2a7a57806e24bf061</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\chacha20_poly1305.h</file>
@@ -9111,7 +9123,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\tcpip_manager.h</file>
-         <hash>6d0ad761382702e8ebdeaedd4795ba08fcd6b671aa56550d9b1e2e8caedb695e</hash>
+         <hash>9d9bd4cb087b539129dc5a7c3ef62bd708de7de8064656632c788066d86e1416</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\component\emac.h</file>
@@ -9123,7 +9135,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\berkeley_manager.h</file>
-         <hash>73fd559a980ae6d078853405482dbf77f7b9fe36460c3ae08330c54f1884682f</hash>
+         <hash>5d41e5b0305f3b2d608cae3fe1d1d401dcae0b39b60f8f496894acd29ac5d32b</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_ZpEcDsa_pb.h</file>
@@ -9143,7 +9155,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\http_net.c</file>
-         <hash>ab62e9134ac1674db1bbaffd1e8f0ed3ce2d2e78a9769515b508356d56847462</hash>
+         <hash>87e14ada3832ef546c1da698fe6ff9e5c2dcc0a9b71fff6eaff0b35754fd068c</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Swap_pb.h</file>
@@ -9151,7 +9163,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\dhcpv6.c</file>
-         <hash>1ed4476eda3cb40f530c540c8ed12656792f8cb2eec2bffbcbf7c6e2cfbe24d1</hash>
+         <hash>dfa418280f6ddab2e72a58a11b393b0821e4e360be5a927ac99cdb4a9871d7ba</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_GF2NEccDbl_pb.h</file>
@@ -9163,7 +9175,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\http_net_private.h</file>
-         <hash>00d7d01ef11c16f50a884eb439c025d8c08088edeccaae1061a31d26ecf0c4f7</hash>
+         <hash>fb7bef3cb16f55bbcd0b7c6b2e54db3cfb3cc45f0c0135c6fc8c4ab87b5c8a41</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\component\i2smcc.h</file>
@@ -9311,7 +9323,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\console\sys_console.h</file>
-         <hash>f4a1d6e28347f9d6dcc091dc65032ef01f9b0651bc710001ba4b2eb4af29f4bb</hash>
+         <hash>e8a97986345fb2c80389834b113384eba523837ee43f7798d9b56be630a6e7b3</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\ed448.h</file>
@@ -9319,7 +9331,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcpip_manager.c</file>
-         <hash>1159559e437c574a27256913c02c4a242369eedde85b8957a79a30647c9d5801</hash>
+         <hash>f4b3eba77d17b0b442c07a75318949aaaa68ac7dd15bc46f1b8df92aab2c0068</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\peripheral\tc\plib_tc_common.h</file>
@@ -9359,7 +9371,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\peripheral\aic\plib_aic.c</file>
-         <hash>568ed06bb32c866260c835746f3ded1b1b705d2b10b13b77db53bb3348baa912</hash>
+         <hash>30e5b7f3a5259938cd4534624854beb942b8fccd9aa0f5d69175d8b663536abe</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\ftp_manager.h</file>
@@ -9387,7 +9399,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\driver\emac\src\dynamic\drv_emac.c</file>
-         <hash>1f1f7146950ac04e7f5560ba28419fc7ee232f315d9a85318b374ac17e06404e</hash>
+         <hash>019558b6190004eb32701bcfb9fde08dbad6326822f97b2d6bfb99dc855be4d0</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\pic32mz-crypt.c</file>
@@ -9487,11 +9499,11 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\arp.c</file>
-         <hash>e78a4e6b26d1f2cf65a8a0cae85ea725ee9f57d83b4f23c9ddc4dfbb2601715d</hash>
+         <hash>44676ad278362b0754996528828f0b5d4a8b4c4229fa8a18fab81ac15b764d2b</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\tcpip_heap.h</file>
-         <hash>7d50b7a89fec9891768f350fa93f572ab942dc8fb7c7c7b1c6ed661057e2c0cb</hash>
+         <hash>b9c186c2043025ad816ab9623b3b1ceee216d0ddb9822a3c3dc82b96f03daa63</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\instance\sfr.h</file>
@@ -9511,7 +9523,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\ddram.ld</file>
-         <hash>0e83e5b93e8293af77eafa906cdd90d4876d03564efe879e44bd9ca3f3243175</hash>
+         <hash>b54fb66f509f3f2830f2a385ab83cb12c7a96b009cbb77025bcb20902ddb4a1a</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\wolfevent.h</file>
@@ -9523,7 +9535,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcp.c</file>
-         <hash>0123c26c9ad61d3162fa18744ce99fe3370d76111fbd9c4c099223c50ab1f1fc</hash>
+         <hash>1148efa07f2be24791afb01d5b2204f1729e1a832185ccc703667c71173bc4f2</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\instance\pmc.h</file>
@@ -9555,7 +9567,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcpip_packet.h</file>
-         <hash>0005449ce8647772273618361a48eb2a199a936bda8fa6850747fc1944498bad</hash>
+         <hash>b2bab188e1344906cab66ae46de007bbe18c04e30bfd12aaece99552ddc9d568</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\pkcs11.h</file>
@@ -9571,7 +9583,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcpip_packet.c</file>
-         <hash>cf1cf4bf1be140c984989207f57cff8629483f07573b48d99e514730076c64e1</hash>
+         <hash>6f4388f6dd5a2983d261a38a987e68b167cb3e310030dce5ba333c272917e735</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\net_pres\pres\net_pres_socketapi.h</file>
@@ -9583,7 +9595,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\command\src\sys_command.c</file>
-         <hash>d1e9a128db653a24ba44efacb812861f6b0db9e444952f421cdc202a4db9ff7e</hash>
+         <hash>f6ffa260b5a6f1e0134c8845c405d0e21dcdc5fd02e95dcc7a4a5fccf1cb23ae</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\error-crypt.h</file>
@@ -9615,7 +9627,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcpip_heap_alloc.c</file>
-         <hash>78a3d59fd1fc9c50dc84c26b76f6e8bc6b784a6713e55bed8f733e5a656afdc2</hash>
+         <hash>e8b40b862134651ad7b7863b9b9f74a978f1497ee642134a06ca89eec4fa208d</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\crypto\src\crypto.c</file>
@@ -9627,7 +9639,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcpip_heap_alloc.h</file>
-         <hash>a346058d03249437d4d01797b4d507b8f2d5e24a138df422008a3bc39e4e7782</hash>
+         <hash>4c1a611db5566b4f664db82a64ae4d689e497305757eb4be777cf626fbf77cb8</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\tcp.h</file>
@@ -9635,7 +9647,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\driver\ethphy\src\dynamic\drv_extphy_regs.h</file>
-         <hash>58e2e52f2fe61465e5a6625047412fd37cba740de3e8cb15f04659ec68d3bc42</hash>
+         <hash>8817e5ba92d503570a448a14795ecd028be3770127e0c67f5c323dd3f410cb13</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\debug\src\sys_debug.c</file>
@@ -9651,7 +9663,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\configuration.h</file>
-         <hash>1d4acd16aafadeda72127af5d00f0b3275b293853f5223ae3ee1112bde996f2d</hash>
+         <hash>071e85e7c28300524a9469c8338b5beab47fd307ee6d308cdbeda73c72f6585b</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\arp.h</file>
@@ -9667,15 +9679,15 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\icmpv6.h</file>
-         <hash>7d91abc62414a9c626037aa21aec78b4f79bbbcd6ee82d43213329d7dac464c3</hash>
+         <hash>4773bf4089ddf7589768e9e866544887ba0ab58200a8a37e032ea66c8181e129</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\debug\sys_debug.h</file>
-         <hash>c17a266d85e3ed1dd692a96184193c0ebfea1099f6698ca073f82418d92d8b53</hash>
+         <hash>222cdc284bd651e83188b9641cc57c133cf86563dbeb5d5523766d4a36087165</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\udp.h</file>
-         <hash>6d1fa5692af3cef0125eb5581e1e7cb555ea6de98a82827e070b164e0c13ab76</hash>
+         <hash>12cb1679571904041d0e923802e237d8e4bf2cc409f9afcd29bffb1da491edc3</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\port\pic32\crypt_sha512_sam6156.c</file>
@@ -9695,7 +9707,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\ndp.h</file>
-         <hash>e363890987a39f7571c98f470f1bde8e3a9c1eb9475e8b45b8edcd67b3851ebd</hash>
+         <hash>7ac12bba991caf30c8457d4ba5902837a7d173b04700018ab6d40acf0edefdc6</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\component\uhphs.h</file>
@@ -9703,11 +9715,11 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\time\src\sys_time_local.h</file>
-         <hash>a761ad68ce0cbac8c326bd17e54cc01d10324ed8d5e120ef092856a21604b6a2</hash>
+         <hash>d3ef06b59d9a89efe9e8eb54fcf3b75120d56156cc21f6847ca4f9e902eb7c9d</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\tcpip_ethernet.h</file>
-         <hash>d81978f94f65edca3ac92655fa688395c796773ede6b7a17d347f6bb2620abda</hash>
+         <hash>267ed71fad31b234b2b424a234b257656bf4d2e52baac7eb343725ea16a44df3</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\component\bsc.h</file>
@@ -9775,7 +9787,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\udp.c</file>
-         <hash>f2f3ce399aaee365a5907bd607caa3ee46f73ef55e6fad9f04ecc670e83268e6</hash>
+         <hash>c301c9af85aec67547e54a4f8e6768e6f288c384145e57c8c81139ac68ab9d49</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\instance\tdes.h</file>
@@ -9787,7 +9799,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\fs\fat_fs\file_system\ffconf.h</file>
-         <hash>f20c8471706d39a918567c3d02b5fe321434e273b72e57f19c8fb26d9f49f0f4</hash>
+         <hash>1ffdc6fbe4f44baf287869735492e33c3f68ea79303e4f16c7a3867336773457</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\wc_encrypt.h</file>
@@ -9799,7 +9811,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\driver\ethphy\src\drv_ethphy_local.h</file>
-         <hash>2625a8225bbdfc0e16bedbbba4ccf23bd8407a478531ad64ebec2b5469ffaa26</hash>
+         <hash>03856082ee9cf050e710fd60a2edd162cc748b2cff5bea7b9ff889226afa47a3</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\fs\src\sys_fs_media_manager_local.h</file>
@@ -9807,7 +9819,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\icmp.c</file>
-         <hash>727d020f0077fe0b965a9627c7fb21afc146c807e60889a9bd7bdbfe8fc8525f</hash>
+         <hash>faef363331dfaa7f9942c839d0c882360f55e8c4e2ed2090b0716653de1206da</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\ndp.c</file>
@@ -9823,7 +9835,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\berkeley_api.c</file>
-         <hash>9d9c94b06f7330865e75e80cea5124bc47bbadbe5120ff61503edcff501d91a9</hash>
+         <hash>b5230b4f72e4c51e76eb3923775c0be8bd1dfa47d9ecb20a9e3d2d1046be3f38</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\component\smc.h</file>
@@ -9843,7 +9855,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcpip_commands.c</file>
-         <hash>1712afdb545445153a481c3c5e96bf6527df66e840e525800eff45825efdf05e</hash>
+         <hash>1500b0e122426f2f9f880cffd43054fc7e2f9362435a6abd72e821cd20d9f29d</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\fs\src\sys_fs.c</file>
@@ -9855,7 +9867,7 @@
       </entry>
       <entry>
          <file>..\src\custom_http_net_app.c</file>
-         <hash>65dc48685e7df010ac428973d4fcd9919f196cf58fe6ae98455649102516f26a</hash>
+         <hash>93df643c0d0d69c51a96587270859f13fcc4f7e096c3f1d56cc18f8dfe969196</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\md4.c</file>
@@ -9863,7 +9875,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\peripheral\dbgu\plib_dbgu_common.h</file>
-         <hash>030cf7f602dd49e7d307c2bbe7ad8c8e6d796cefa8049ae158a856cdfffb2dc0</hash>
+         <hash>38ba54965e21e645d68a373d3277c7a4571cabb3ed0ba7e93b7af32a08376e2f</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\crypt_pukcl_functions.h</file>
@@ -10023,7 +10035,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\ipv6.h</file>
-         <hash>2b3eacd12b24f4842cb08578f73c470b02be591e3039b89cd970969af9df571f</hash>
+         <hash>38abc96f8f8ac82db0532a99e8a1090f27d096fb04c82f08999afd4cdf0fd10f</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_mapping_pb.h</file>
@@ -10087,7 +10099,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\driver\ethphy\src\dynamic\drv_ethphy.c</file>
-         <hash>73b08390342c8c1543388854c6c7dec6197575de83e55ed7e8a533e1b032787e</hash>
+         <hash>968cbd8f026d82add35c8f6c26dd26a1cedb84fa544782dc535398b3016f8660</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\arp_manager.h</file>
@@ -10163,11 +10175,11 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\http_net_manager.h</file>
-         <hash>7ca773d29b611a4ae5211affb541819f619d3dbbac05ebf92ae5bf01b08a6024</hash>
+         <hash>836d9ae7f5802514475e5168cf5ad235aaee5d5e631ab1135a64271fc5c95aa5</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcpip_manager_control.h</file>
-         <hash>87b88b3cda8ff015aaf63432223c11c7d62cd45d39fcaf50cdb94ca2cc0feb90</hash>
+         <hash>1981cdeb145068acc380c51673fd50a4d1963231eb2c652182b2147fbfc71bae</hash>
       </entry>
       <entry>
          <file>..\src\web_pages\status.xml</file>
@@ -10227,7 +10239,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\tcpip.h</file>
-         <hash>0568aaddbc5f2d02c086c30960faf442d5875f18bcb9629f716f42b5bcd88209</hash>
+         <hash>fee5aa064386cb0af26c2c02f396c4c78becba479e6c182913553ffb64a5f7ad</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\src\tls.c</file>
@@ -10239,7 +10251,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\fs\sys_fs.h</file>
-         <hash>46a5946f727b22530f0e0945a33cad93077c7b92c1bb2811959709ba7be60e9c</hash>
+         <hash>c3bce19e69290a393dca6f7ddbdb103ed7cf21be40f492fdfea185eb85ecbb93</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\chacha20_poly1305.c</file>
@@ -10311,7 +10323,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\sys_random_h2_adapter.h</file>
-         <hash>f12e175e7261158adacd99331c8e3252491e309658e90aec6adb0ffeff5f5587</hash>
+         <hash>eee85e71f010ad5876f6d588c05c9c25dca7bcd13471f57930fc7d0cf0cf7d7f</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\srp.c</file>
@@ -10391,11 +10403,11 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\zero_conf_multicast_dns.h</file>
-         <hash>780613a6c52ae7169f93a5dafef2f8f33f8e83b5ef80c3ee932999f78919acb8</hash>
+         <hash>44c02a9395eec9326f4e57f1909dcd7c9935508c7a633127f986ccb5f3eb4117</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcpip_private.h</file>
-         <hash>691898680a5a36de89643a55790500fb4c2aa1b260ed10966453e10661129e8d</hash>
+         <hash>f2a8b05ecc0108e3345a5ffcea6a41608c4eda6d265edf3201582e2a822f55ef</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\component\aes.h</file>
@@ -10419,7 +10431,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\driver\ethphy\src\dynamic\drv_extphy_ksz8081.c</file>
-         <hash>bb4d8e0db323868d23d2336d4ab046d55c2b2e740890a438df4e36e08672149d</hash>
+         <hash>d9df0ef6b0f79c72381e7c4d20daec34560f1f894372434f41f5ca2155dbd1a4</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\cryptocb.c</file>
@@ -10431,7 +10443,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\ipv4_manager.h</file>
-         <hash>37212d108a389ce920454645118dbf435c74c74a8a53fe2e7991930ae923dba7</hash>
+         <hash>9c7fe96641effe2598b345320f39da9e064e300669105a76dd3db5a0d0da468a</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\console\src\sys_console_uart_definitions.h</file>
@@ -10466,8 +10478,12 @@
          <hash>906e5987bff60de12bf9df5e373d8d8a6d14f9c6e215a2b1c06e955a90b00135</hash>
       </entry>
       <entry>
+         <file>..\src\config\sam_9x60_ek_mplabx\pin_configurations.csv</file>
+         <hash>c319cac32ec4d11c27a1dd7cc5c5a39a41019aeb801fbe4bcc67e08cff85d0ab</hash>
+      </entry>
+      <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\ipv4.c</file>
-         <hash>584d4645ee0e3ee479e23ec48ae3399af38edb9f6f57b42ca3e8cea33ef3c619</hash>
+         <hash>d3b7d144e5d23a2a9d00f9a9d61df8f750ac84a171168f69fa8324b074171364</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\component\sdramc.h</file>
@@ -10519,7 +10535,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\fs\sys_fs_media_manager.h</file>
-         <hash>6cb6bdb605ca6e8b9e683671cffadbbc26a1f686e3eaedc74a6cba860e8ac3c4</hash>
+         <hash>29bda64831783de33b10c3841e1eb703dc9f5b04287c1e26af8f3b75b7197b39</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\src\pkcs12.c</file>
@@ -10598,6 +10614,10 @@
          <hash>f540c01656eadea69554c7113906d53ff504d04e4228672d7a55c6950cda6cae</hash>
       </entry>
       <entry>
+         <file>..\src\config\sam_9x60_ek_mplabx\fault_handlers.c</file>
+         <hash>34134ba54c0becfbe75cd670be15133f2a10dea081d9fa5fab75f17afc1109ba</hash>
+      </entry>
+      <entry>
          <file>..\src\packs\SAM9X60_DFP\component\adc.h</file>
          <hash>af09b5e8ba067d1894e4321ed4be4c448fab358f5a72c5ce0f4284615e1e20bf</hash>
       </entry>
@@ -10623,7 +10643,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\icmpv6.c</file>
-         <hash>db8bd90c7af4f87bfa89b11d687f37b59eb70364b1824ecdc6c2bbbb1027315a</hash>
+         <hash>508cf494affa872e4cc5b166ec5549f5dedf35e3057947b3c48ee5f9a64a3a86</hash>
       </entry>
       <entry>
          <file>..\src\packs\SAM9X60_DFP\instance\pmecc.h</file>
@@ -10647,7 +10667,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\iperf.c</file>
-         <hash>36e4e01382067f99a5e4fc3d8c3c42e00a01d52ffadc6c38972bfee8a388ccaa</hash>
+         <hash>63cf4acfa1d5867539b5344b3c813e303620239c587e0513d699773548d634d3</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\system\debug\src\sys_debug_local.h</file>
@@ -10687,7 +10707,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\library\tcpip\src\tcpip_module_manager.h</file>
-         <hash>32369900fd99e6778e516834612df9e62838f7538aee571c7e47c69a05de0968</hash>
+         <hash>a8f8c219551929f3e3ab7d120c9c099751e7c0f006af5a81e70bf3027fd40f96</hash>
       </entry>
       <entry>
          <file>..\src\web_pages\leds.cgi</file>
@@ -10727,7 +10747,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_ek_mplabx\driver\sdmmc\drv_sdmmc.h</file>
-         <hash>adfd11fa4fb647cbc17073c5e43c29875b46cef63c016b655ef8d6bed9d514e2</hash>
+         <hash>7521b2ccf0bf9505fa4180aa436c0bdf91511c8db534011ec2f3769fcc02cb76</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\wolfcrypt\port\pic32\CryptoLib_Square_pb.h</file>
