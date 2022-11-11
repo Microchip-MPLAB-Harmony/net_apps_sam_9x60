@@ -57,11 +57,11 @@ static void _APP_Commands_IPVersion(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
 
 static const SYS_CMD_DESCRIPTOR    appCmdTbl[]=
 {
-    {"sendpacket",     _APP_Commands_SendUDPPacket,     ": Sends the UDP Packet"},
-    {"getoptions",     _APP_Commands_GetOptions,        ": Gets the hostname, port and message"},
-    {"setoptions",     _APP_Commands_SetOptions,        ": Sets the current hostname, port, and message"},
+    {"sendudp",     _APP_Commands_SendUDPPacket,    ": Sends the UDP Packet"},
+    {"getopt",     _APP_Commands_GetOptions,        ": Gets the hostname, port and message"},
+    {"setopt",     _APP_Commands_SetOptions,        ": Sets the current hostname, port, and message"},
 #ifdef TCPIP_STACK_USE_IPV6
-    {"ipver",       _APP_Commands_IPVersion,            ": Changes the IP version to use"},
+    {"ipver",       _APP_Commands_IPVersion,        ": Changes the IP version to use"},
 #endif
 };
 
@@ -91,8 +91,8 @@ void _APP_Commands_SendUDPPacket(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
 
     if (argc != 1)
     {
-        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: sendpacket\r\n");
-        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: sendpacket\r\n");
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: sendudp\r\n");
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: sendudp\r\n");
         return;
     }
     APP_Send_Packet = true;
@@ -105,8 +105,8 @@ void _APP_Commands_SetOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv
 
     if (argc != 4)
     {
-        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: setoptions <hostname> <port> <message>\r\n");
-        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: setoptions 10.0.1.4 9760 Hello\r\n");
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: setopt <hostname> <port> <message>\r\n");
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: setopt 10.0.1.4 9760 Hello\r\n");
         return;
     }
 
@@ -123,8 +123,8 @@ void _APP_Commands_GetOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv
 
     if (argc != 1)
     {
-        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: getoptions\r\n");
-        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: getoptions\r\n");
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: getopt\r\n");
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: getopt\r\n");
         return;
     }
 
