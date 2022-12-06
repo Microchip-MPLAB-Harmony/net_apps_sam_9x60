@@ -4,7 +4,7 @@
 
 
 project: wolfssl_tcp_server
-creation_date: 2022-11-01T15:30:00.869-07:00[America/Phoenix]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2022-12-06T15:53:59.269-07:00[America/Phoenix]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mhc_mode: Standalone            # [IDE|Standalone|Headless]
 mhc_version: v3.8.2
@@ -13,12 +13,12 @@ plugin_version: NA        # if MPLAB X plugin only
 compiler: xc32
 
 modules:
-    - {name: "csp", version: "v3.11.1"}
-    - {name: "core", version: "v3.10.1"}
-    - {name: "dev_packs", version: "v3.11.1"}
+    - {name: "csp", version: "v3.14.0"}
+    - {name: "core", version: "v3.11.1"}
+    - {name: "dev_packs", version: "v3.14.0"}
     - {name: "wolfssl", version: "v4.7.0"}
     - {name: "net", version: "unknown"}
-    - {name: "bsp", version: "v3.11.1"}
-    - {name: "crypto", version: "unknown"}
+    - {name: "bsp", version: "v3.14.0"}
+    - {name: "crypto", version: "v3.7.6"}
     - {name: "CMSIS-FreeRTOS", version: "unknown"}
 
