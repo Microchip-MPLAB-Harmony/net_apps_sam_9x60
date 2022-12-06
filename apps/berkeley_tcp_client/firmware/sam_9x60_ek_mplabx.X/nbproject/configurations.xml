@@ -663,7 +663,7 @@
           <itemPath>../src/config/sam_9x60_ek_mplabx/initialization.c</itemPath>
           <itemPath>../src/config/sam_9x60_ek_mplabx/interrupts.c</itemPath>
           <itemPath>../src/config/sam_9x60_ek_mplabx/cstartup.S</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/vectortrap.s</itemPath>
+          <itemPath>../src/config/sam_9x60_ek_mplabx/fault_handlers.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f3" displayName="wolfcrypt" projectFiles="true">
@@ -764,6 +764,7 @@
       <itemPath>../src/app_commands.c</itemPath>
       <itemPath>../src/app.c</itemPath>
       <itemPath>../src/main_sam_9x60.c</itemPath>
+      <itemPath>../src/config/sam_9x60_ek_mplabx/pin_configurations.csv</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -847,11 +848,11 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.00</languageToolchainVersion>
+        <languageToolchainVersion>4.20</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="SAM9X6_DFP" vendor="Microchip" version="1.7.65"/>
+        <pack name="SAM9X6_DFP" vendor="Microchip" version="1.7.85"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
