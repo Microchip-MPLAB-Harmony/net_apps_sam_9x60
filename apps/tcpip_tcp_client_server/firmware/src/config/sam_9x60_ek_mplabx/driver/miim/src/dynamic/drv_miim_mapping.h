@@ -5,18 +5,18 @@
     Microchip Technology Inc.
 
   File Name:
-    drv_miim_local.h
+    drv_miim_mapping.h
 
   Summary:
-    MIIM driver local declarations and definitions.
+    MIIM driver mapping for different internal MACs.
 
   Description:
-    This file contains the MIIM driver's local declarations and definitions.
+    This file contains routines for MIIM driver register access.
 *******************************************************************************/
 
 //DOM-IGNORE-BEGIN
 /*****************************************************************************
- Copyright (C) 2013-2018 Microchip Technology Inc. and its subsidiaries.
+ Copyright (C) 2018-2022 Microchip Technology Inc. and its subsidiaries.
 
 Microchip Technology Inc. and its subsidiaries.
 
@@ -186,7 +186,7 @@ __attribute__((always_inline)) _DRV_MIIM_SCAN_DISABLE( uintptr_t ethPhyId )
 }
 static  __inline__ void __attribute__((always_inline)) _DRV_MIIM_SMI_CLOCK_SET(uintptr_t ethPhyId, uint32_t hostClock, uint32_t maxMIIMClock )
 { 
-	emac_registers_t *  macRegs = (emac_registers_t *) ethPhyId; // EMAC0_REGS or EMAC1_REGS
+    emac_registers_t *  macRegs = (emac_registers_t *) ethPhyId; // EMAC0_REGS or EMAC1_REGS
     uint32_t            tenRenSettings = macRegs->EMAC_NCR & (EMAC_NCR_RE_Msk | EMAC_NCR_TE_Msk);
     uint32_t            clockDivider;
     uint32_t            mdcDiv;
@@ -216,7 +216,7 @@ static  __inline__ void __attribute__((always_inline)) _DRV_MIIM_SMI_CLOCK_SET(u
         macRegs->EMAC_NCR &= ~tenRenSettings;
         macRegs->EMAC_NCFGR |= clockDivider;
         macRegs->EMAC_NCR |= tenRenSettings;
-    }	
+    }   
 } 
 
 

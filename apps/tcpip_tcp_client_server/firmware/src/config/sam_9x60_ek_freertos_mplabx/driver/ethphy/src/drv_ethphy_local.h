@@ -194,6 +194,9 @@ typedef enum
 {
     DRV_ETHPHY_NEG_RESULT_PHASE_IDLE = 0,
     DRV_ETHPHY_NEG_RESULT_PHASE_BMSTAT,
+    DRV_ETHPHY_NEG_RESULT_PHASE_EXTSTAT,
+    DRV_ETHPHY_NEG_RESULT_PHASE_1000BASECTRL,
+    DRV_ETHPHY_NEG_RESULT_PHASE_1000BASESTAT,
     DRV_ETHPHY_NEG_RESULT_PHASE_ANEXP,
     DRV_ETHPHY_NEG_RESULT_PHASE_ANLPAD,
     DRV_ETHPHY_NEG_RESULT_PHASE_ANAD,
@@ -343,7 +346,7 @@ typedef struct
                                               // - DRV_ETHPHY_SETUP_PHASE  for set up
                                               //
     uint16_t                    operSubPhase; // extra sub-phase counter
-    uint16_t                    operReg[3];   // scratch operation registers 
+    uint16_t                    operReg[4];   // scratch operation registers 
     uint32_t                    operTStamp;   // tick value for timing purposes 
     DRV_ETHPHY_RESULT           operRes;      // last operation result
     uintptr_t                   operParam;    // operation parameter
@@ -388,10 +391,11 @@ typedef struct _DRV_ETHPHY_INSTANCE
     DRV_ETHPHY_CONFIG_FLAGS     configFlags;    // ETHPHY MII/RMII configuration flags
     TCPIP_ETH_PAUSE_TYPE        macPauseType;   // MAC supported pause type
     int                         phyAddress;     // PHY SMI address
-    const DRV_ETHPHY_OBJECT*    pPhyObj; // PHY object, vendor specififc functions
+    const DRV_ETHPHY_OBJECT*    pPhyObj;    // PHY object, vendor specific functions	
     DRV_ETHPHY_CLIENT_OBJ       objClients[DRV_ETHPHY_CLIENTS_NUMBER]; // array of clients
     const DRV_MIIM_OBJECT_BASE* pMiimBase;  // MIIM driver base object to use   
     SYS_MODULE_INDEX            miimIndex;  // MIIM object index 
+    DRV_ETHPHY_TMO *            ethphyTmo;  //PHY Initialization Time-outs 
 } DRV_ETHPHY_INSTANCE;
 
 
