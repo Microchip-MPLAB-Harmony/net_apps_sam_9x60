@@ -111,7 +111,7 @@ extern "C" {
 
 
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
-#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			1
+#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			2
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		0
 #define SYS_CONSOLE_PRINT_BUFFER_SIZE        		2560
 
@@ -131,7 +131,7 @@ extern "C" {
 #define DRV_MIIM_INSTANCE_CLIENTS           2
 #define DRV_MIIM_CLIENT_OP_PROTECTION   false
 #define DRV_MIIM_COMMANDS   true
-#define DRV_MIIM_DRIVER_OBJECT              DRV_MIIM_OBJECT_BASE_Default
+#define DRV_MIIM_DRIVER_OBJECT              DRV_MIIM_OBJECT_BASE_Default            
 
 /* MIIM RTOS Configurations*/
 #define DRV_MIIM_RTOS_STACK_SIZE                1024
@@ -286,10 +286,10 @@ extern "C" {
 #define TCPIP_NETWORK_DEFAULT_SECOND_DNS_IDX0         "0.0.0.0"
 #define TCPIP_NETWORK_DEFAULT_POWER_MODE_IDX0         "full"
 #define TCPIP_NETWORK_DEFAULT_INTERFACE_FLAGS_IDX0            \
-													TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
-													TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
-													TCPIP_NETWORK_CONFIG_IP_STATIC
-													
+                                                    TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_IP_STATIC
+                                                    
 #define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0         DRV_EMAC0_Object
 
 
@@ -505,14 +505,14 @@ extern "C" {
 /* Net Pres RTOS Configurations*/
 #define NET_PRES_RTOS_STACK_SIZE                10240
 #define NET_PRES_RTOS_TASK_PRIORITY             1
-
+	
 #define FREERTOS
 
 
 #define DRV_KSZ8081_PHY_CONFIG_FLAGS       ( 0 \
                                                     | DRV_ETHPHY_CFG_RMII \
                                                     )
-													
+                                                    
 #define DRV_KSZ8081_PHY_LINK_INIT_DELAY            500
 #define DRV_KSZ8081_PHY_ADDRESS                    0
 #define DRV_KSZ8081_PHY_PERIPHERAL_ID              EMAC0_BASE_ADDRESS
