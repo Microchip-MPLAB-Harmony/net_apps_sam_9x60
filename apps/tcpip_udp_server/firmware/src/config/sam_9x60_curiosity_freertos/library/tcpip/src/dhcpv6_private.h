@@ -14,30 +14,28 @@
     This file provides the TCP/IP Stack DHCPV6 Private file API definitions.
 *******************************************************************************/
 // DOM-IGNORE-BEGIN
-/*****************************************************************************
- Copyright (C) 2012-2018 Microchip Technology Inc. and its subsidiaries.
+/*
+Copyright (C) 2012-2023, Microchip Technology Inc., and its subsidiaries. All rights reserved.
 
-Microchip Technology Inc. and its subsidiaries.
+The software and documentation is provided by microchip and its contributors
+"as is" and any express, implied or statutory warranties, including, but not
+limited to, the implied warranties of merchantability, fitness for a particular
+purpose and non-infringement of third party intellectual property rights are
+disclaimed to the fullest extent permitted by law. In no event shall microchip
+or its contributors be liable for any direct, indirect, incidental, special,
+exemplary, or consequential damages (including, but not limited to, procurement
+of substitute goods or services; loss of use, data, or profits; or business
+interruption) however caused and on any theory of liability, whether in contract,
+strict liability, or tort (including negligence or otherwise) arising in any way
+out of the use of the software and documentation, even if advised of the
+possibility of such damage.
 
-Subject to your compliance with these terms, you may use Microchip software 
-and any derivatives exclusively with Microchip products. It is your 
-responsibility to comply with third party license terms applicable to your 
-use of third party software (including open source software) that may 
-accompany Microchip software.
-
-THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
-EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
-WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR 
-PURPOSE.
-
-IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
-WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
-BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE 
-FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN 
-ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, 
-THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*****************************************************************************/
+Except as expressly permitted hereunder and subject to the applicable license terms
+for any third-party software incorporated in the software and any applicable open
+source software license terms, no license or other rights, whether express or
+implied, are granted under any patent or other intellectual property rights of
+Microchip or any third party.
+*/
 
 
 
@@ -248,7 +246,7 @@ typedef enum
                                                 // 
     
 
-    TCPIP_DHCPV6_MSG_TYPE_RENEW,            // (5) Client Renew message to the server that originally provided the client’s addresses;
+    TCPIP_DHCPV6_MSG_TYPE_RENEW,            // (5) Client Renew message to the server that originally provided the client?s addresses;
                                             // Client -> Server
 
     TCPIP_DHCPV6_MSG_TYPE_REBIND,           // (6) Client Rebind message to any available server to extend the lease lifetime;
@@ -357,7 +355,7 @@ typedef struct __attribute__((aligned(2), packed))
 typedef struct __attribute__((aligned(2), packed))
 {
     uint16_t    duid_type;      // == TCPIP_DHCPV6_DUID_TYPE_EN
-    uint32_t    ent_number;     // Vendor’s registered Private Enterprise Number as maintained by IANA
+    uint32_t    ent_number;     // Vendor?s registered Private Enterprise Number as maintained by IANA
     uint8_t     identifier[TCPIP_DHCPV6_DUID_EN_IDENTIFIER_LENGTH];   // variable length;
                                 
 
@@ -729,7 +727,7 @@ typedef struct __attribute__((aligned(1), packed))
 typedef struct __attribute__((aligned(1), packed))
 {
     uint32_t                iaid;       // The unique identifier for this IA_NA;
-                                        // the IAID must be unique among the identifiers for all of this client’s IA_NAs.
+                                        // the IAID must be unique among the identifiers for all of this client?s IA_NAs.
                                         // The number space for IA_NA IAIDs is separate from the number space for IA_TA IAIDs.
                                         // value == 0 is used to mark IAs as invalid!
     uint32_t                t1;         // The time at which the client contacts the server from which the addresses in the IA_NA
@@ -768,7 +766,7 @@ typedef struct __attribute__((aligned(1), packed))
 typedef struct __attribute__((aligned(1), packed))
 {
     uint32_t    iaid;       // The unique identifier for this IA_TA;
-                            // the IAID must be unique among the identifiers for all of this client’s IA_NAs.
+                            // the IAID must be unique among the identifiers for all of this client?s IA_NAs.
                             // The number space for IA_NA IAIDs is separate from the number space for IA_TA IAIDs.
                             // value == 0 is used to mark IAs as invalid!
                             //
@@ -972,7 +970,7 @@ typedef struct __attribute__((aligned(1), packed))
 {
     uint16_t                        optCode;            // = TCPIP_DHCPV6_OPT_CODE_VENDOR_CLASS
     uint16_t                        optLen;             // 4 + length of vendor class data field
-    uint32_t                        enterpriseNo;       // The vendor’s registered Enterprise Number as registered with IANA
+    uint32_t                        enterpriseNo;       // The vendor?s registered Enterprise Number as registered with IANA
     TCPIP_DHCPV6_VENDOR_CLASS_DATA  vendorClassData[];  // The hardware configuration of the host on which the client is running
 
 }TCPIP_DHCPV6_OPTION_VENDOR_CLASS;
@@ -997,7 +995,7 @@ typedef struct __attribute__((aligned(1), packed))
 {
     uint16_t                        optCode;            // = TCPIP_DHCPV6_OPT_CODE_VENDOR_OPTS
     uint16_t                        optLen;             // 4 + length of option-data field
-    uint32_t                        enterpriseNo;       // The vendor’s registered Enterprise Number as registered with IANA
+    uint32_t                        enterpriseNo;       // The vendor?s registered Enterprise Number as registered with IANA
     TCPIP_DHCPV6_VENDOR_OPTION_DATA vendorOptData[];    // The hardware configuration of the host on which the client is running
 
 }TCPIP_DHCPV6_OPTION_VENDOR_OPTS;
@@ -1010,7 +1008,7 @@ typedef struct __attribute__((aligned(1), packed))
     uint16_t                        optCode;            // = TCPIP_DHCPV6_OPT_CODE_INTERFACE_ID
     uint16_t                        optLen;             // Length of interface-id field
     uint8_t                         interfaceId[];      // An opaque value of arbitrary length generated by the relay agent to identify one of the
-                                                        // relay agent’s interfaces.
+                                                        // relay agent?s interfaces.
 }TCPIP_DHCPV6_OPTION_INTERFACE_ID;
 
 
@@ -1047,7 +1045,7 @@ typedef struct __attribute__((aligned(1), packed))
 // DNS Recursive Name Servers option
 // part of STATELESS DHCP!
 // Provides a list of one or more IPv6 addresses of DNS recursive name servers
-// to which a client’s DNS resolver MAY send DNS queries
+// to which a client?s DNS resolver MAY send DNS queries
 // The DNS servers are listed in the order of preference for use by the client resolver
 //
 typedef struct __attribute__((aligned(1), packed))
@@ -1068,10 +1066,10 @@ typedef struct __attribute__((aligned(1), packed))
 typedef struct __attribute__((aligned(1), packed))
 {
     uint16_t                        optCode;        // = TCPIP_DHCPV6_OPT_CODE_DOMAIN_LIST
-    uint16_t                        optLen;         // Length of the ’searchlist’ field in octets;
+    uint16_t                        optLen;         // Length of the ?searchlist? field in octets;
                                                     //
     uint8_t                         searchList[];   // The specification of the list of domain names in the Domain Search List
-                                                    // The list of domain names in the ’searchlist’ MUST be encoded as specified in section
+                                                    // The list of domain names in the ?searchlist? MUST be encoded as specified in section
                                                     // "Representation and use of domain names" of RFC 3315:
                                                     //      A domain name or a list of domain names is encoded using the technique described in
                                                     //      section 3.1 of RFC 1035 [10].
@@ -1310,7 +1308,7 @@ typedef struct _tag_TCPIP_DHCPV6_IA_DCPT
     //int16_t                                 nAddrs;     // how many addresses associated with this IA_NA
                                                         // Kame: "The primary goal of IAs is to define multiple identities
                                                         // within a single client, each of which is associated with a different IPv6 address.
-                                                        // For example, consider a client acting as “virtual hosts” which provide multiple services
+                                                        // For example, consider a client acting as ?virtual hosts? which provide multiple services
                                                         // with different IPv6 addresses.
                                                         // If the client wants to configure itself with these addresses using DHCPv6, it would
                                                         // associate each address with a separate IA!
