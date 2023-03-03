@@ -42,8 +42,6 @@
               </logicalFolder>
               <itemPath>../src/config/sam_9x60_curiosity/driver/miim/drv_miim.h</itemPath>
             </logicalFolder>
-            <itemPath>../src/config/sam_9x60_curiosity/driver/driver.h</itemPath>
-            <itemPath>../src/config/sam_9x60_curiosity/driver/driver_common.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f5" displayName="library" projectFiles="true">
             <logicalFolder name="f1" displayName="tcpip" projectFiles="true">
@@ -226,9 +224,6 @@
             <logicalFolder name="f2" displayName="int" projectFiles="true">
               <itemPath>../src/config/sam_9x60_curiosity/system/int/sys_int.h</itemPath>
               <itemPath>../src/config/sam_9x60_curiosity/system/int/sys_int_mapping.h</itemPath>
-            </logicalFolder>
-            <logicalFolder name="f4" displayName="reset" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity/system/reset/sys_reset.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="time" projectFiles="true">
               <itemPath>../src/config/sam_9x60_curiosity/system/time/sys_time.h</itemPath>
@@ -744,8 +739,8 @@
       </logicalFolder>
       <itemPath>../src/app.c</itemPath>
       <itemPath>../src/app_commands.c</itemPath>
-      <itemPath>../src/main_sam_9x60.c</itemPath>
       <itemPath>../src/config/sam_9x60_curiosity/pin_configurations.csv</itemPath>
+      <itemPath>../src/main_sam_9x60.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -829,7 +824,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.00</languageToolchainVersion>
+        <languageToolchainVersion>4.20</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
@@ -964,7 +959,7 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="heap-size" value="402400"/>
+        <property key="heap-size" value="1024"/>
         <property key="input-libraries" value=""/>
         <property key="kseg-length" value=""/>
         <property key="kseg-origin" value=""/>
