@@ -12,7 +12,7 @@ B5,PB15,,Available,In,,,,,,,,
 B6,PB23,,Available,In,,,,,,,,
 B7,PB22,,Available,In,,,,,,,,
 C1,PB1,,EMAC0_E0_RX1,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
-C2,PB12,LED_AH_PB12,LED_AH,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
+C2,PB12,LED_AH_PB12,Available,In,,,,,,,,
 C6,PB19,,Available,In,,,,,,,,
 D1,PB3,,EMAC0_E0_RXDV,n/a,n/a,Yes,Disabled,No,No,Disabled,No,Low
 D2,PB6,,EMAC0_E0_MDC,n/a,n/a,No,Disabled,No,No,Disabled,No,Low

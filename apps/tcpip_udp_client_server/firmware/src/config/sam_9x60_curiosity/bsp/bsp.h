@@ -64,10 +64,6 @@
 #define LED_AH_PB13_Toggle() (PIOB_REGS->PIO_ODSR ^= (1<<13))
 #define LED_AH_PB13_On() (PIOB_REGS->PIO_SODR = (1<<13))
 #define LED_AH_PB13_Off() (PIOB_REGS->PIO_CODR = (1<<13))
-/*** LED Macros for LED_AH_PB12 ***/
-#define LED_AH_PB12_Toggle() (PIOB_REGS->PIO_ODSR ^= (1<<12))
-#define LED_AH_PB12_On() (PIOB_REGS->PIO_SODR = (1<<12))
-#define LED_AH_PB12_Off() (PIOB_REGS->PIO_CODR = (1<<12))
 /*** LED Macros for LED_AH_PB11 ***/
 #define LED_AH_PB11_Toggle() (PIOB_REGS->PIO_ODSR ^= (1<<11))
 #define LED_AH_PB11_On() (PIOB_REGS->PIO_SODR = (1<<11))
