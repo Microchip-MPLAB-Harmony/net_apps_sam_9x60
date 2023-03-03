@@ -17,7 +17,7 @@
             </sourceRootList>
             <confList>
                 <confElem>
-                    <name>sam_9x60_ek_freertos_mplabx</name>
+                    <name>sam_9x60_curiosity_freertos</name>
                     <type>2</type>
                 </confElem>
             </confList>

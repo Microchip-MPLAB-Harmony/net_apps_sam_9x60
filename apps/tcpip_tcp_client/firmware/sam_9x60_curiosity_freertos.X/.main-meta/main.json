@@ -3,7 +3,7 @@
 	"category": "com.microchip.ide.project",
 	"content": {
 		"metaDataVersion": "1.1.0",
-		"name": "com.microchip.mcu32.mplabx.project.net_apps_sam_9x60_tcpip_tcp_client_sam_9x60_ek_freertos_mplabx",
+		"name": "com.microchip.mcu32.mplabx.project.net_apps_sam_9x60_tcpip_tcp_client_sam_9x60_curiosity_freertos",
 		"version": "3.7.0",
 		"displayName": "TCP/IP TCP Client Example for SAM 9x60 Family",
 		"projectName": "tcpip_tcp_client",

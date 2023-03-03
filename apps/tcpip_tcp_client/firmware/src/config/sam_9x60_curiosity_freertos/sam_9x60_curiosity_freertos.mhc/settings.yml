@@ -1,4 +1,4 @@
-configName: sam_9x60_ek_freertos_mplabx
+configName: sam_9x60_curiosity_freertos
 folderName: ''
 format_version: v1.0
 frameworkPath: ../../..

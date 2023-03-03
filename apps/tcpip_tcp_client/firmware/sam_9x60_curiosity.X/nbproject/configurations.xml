@@ -5,252 +5,252 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="config" projectFiles="true">
-        <logicalFolder name="f1" displayName="sam_9x60_ek_mplabx" projectFiles="true">
+        <logicalFolder name="f1" displayName="sam_9x60_curiosity" projectFiles="true">
           <logicalFolder name="f1" displayName="bsp" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_mplabx/bsp/bsp.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/bsp/bsp.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f8" displayName="crypto" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_mplabx/crypto/crypto.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/crypto/crypto.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f6" displayName="driver" projectFiles="true">
             <logicalFolder name="f3" displayName="emac" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_dcpt_lists.h</itemPath>
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_lib.h</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/dynamic/drv_emac_dcpt_lists.h</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/dynamic/drv_emac_lib.h</itemPath>
                 </logicalFolder>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/drv_emac_local.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/drv_emac_local.h</itemPath>
               </logicalFolder>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/drv_emac.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/driver/emac/drv_emac.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="ethphy" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/ethphy/src/dynamic/drv_extphy_regs.h</itemPath>
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/ethphy/src/dynamic/drv_extphy_ksz8081.h</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/src/dynamic/drv_extphy_regs.h</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/src/dynamic/drv_extphy_ksz8081.h</itemPath>
                 </logicalFolder>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/driver/ethphy/src/drv_ethphy_local.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/src/drv_ethphy_local.h</itemPath>
               </logicalFolder>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/driver/ethphy/drv_ethphy.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/drv_ethphy.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="miim" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/miim/src/dynamic/drv_miim_mapping.h</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/miim/src/dynamic/drv_miim_mapping.h</itemPath>
                 </logicalFolder>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/driver/miim/src/drv_miim_local.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/driver/miim/src/drv_miim_local.h</itemPath>
               </logicalFolder>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/driver/miim/drv_miim.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/driver/miim/drv_miim.h</itemPath>
             </logicalFolder>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/driver/driver.h</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/driver/driver_common.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/driver/driver.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/driver/driver_common.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f4" displayName="library" projectFiles="true">
             <logicalFolder name="f1" displayName="tcpip" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="common" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/common/helpers.h</itemPath>
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/common/sys_fs_shell.h</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/common/helpers.h</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/common/sys_fs_shell.h</itemPath>
                 </logicalFolder>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_heap_alloc.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ndp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ndp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ipv4_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ipv4_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ipv6_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ipv6_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/icmp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/icmpv6_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/arp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/arp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/udp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/udp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcps_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcps_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/zero_conf_helper.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/zero_conf_link_local_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/zero_conf_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dns_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dns_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dnss_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dnss_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ftp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ftp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ftpc_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ftpc_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/nbns_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ddns_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/telnet_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/smtp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/sntp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/http_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/http_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/http_net_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/http_net_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/snmp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/snmp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/snmpv3_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_announce_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/smtpc_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/smtpc_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/igmp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/igmp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tftpc_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tftpc_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tftps_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tftps_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_reboot_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/iperf_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_commands_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/hash_fnv.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/link_list.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/oahash.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_helpers_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_manager_control.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_module_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_notify.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_packet.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_types.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/berkeley_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcpv6_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcpv6_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/lldp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/lldp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/lldp_tlv.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_mac_bridge_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_mac_bridge_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcp_server_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcp_server_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_heap_alloc.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ndp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ndp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ipv4_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ipv4_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ipv6_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ipv6_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/icmp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/icmpv6_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/arp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/arp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/udp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/udp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcps_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcps_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/zero_conf_helper.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/zero_conf_link_local_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/zero_conf_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dns_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dns_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dnss_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dnss_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ftp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ftp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ftpc_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ftpc_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/nbns_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ddns_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/telnet_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/smtp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/sntp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/http_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/http_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/http_net_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/http_net_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/snmp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/snmp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/snmpv3_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_announce_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/smtpc_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/smtpc_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/igmp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/igmp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tftpc_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tftpc_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tftps_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tftps_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_reboot_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/iperf_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_commands_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/hash_fnv.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/link_list.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/oahash.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_helpers_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_manager_control.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_module_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_notify.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_packet.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_types.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/berkeley_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcpv6_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcpv6_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/lldp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/lldp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/lldp_tlv.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_mac_bridge_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_mac_bridge_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcp_server_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcp_server_private.h</itemPath>
               </logicalFolder>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_common_ports.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_mac.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_mac_object.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_manager.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_heap.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_helpers.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/ndp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/ipv4.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/ipv6.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/icmpv6.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/dhcpv6.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/arp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/udp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/berkeley_api.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/dhcp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/dhcps.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/zero_conf_link_local.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/zero_conf_multicast_dns.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/dns.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/dnss.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/ftp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/ftpc.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/icmp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/nbns.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/ddns.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/telnet.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/smtp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/sntp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/http.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/http_net.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/snmp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/snmpv3.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_announce.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/lldp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/smtpc.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/igmp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tftpc.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tftps.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_reboot.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/iperf.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_commands.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_ethernet.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/tcpip_mac_bridge.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/dhcp_server.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_common_ports.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_mac.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_mac_object.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_manager.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_heap.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_helpers.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ndp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ipv4.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ipv6.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/icmpv6.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dhcpv6.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/arp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/udp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/berkeley_api.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dhcp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dhcps.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/zero_conf_link_local.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/zero_conf_multicast_dns.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dns.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dnss.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ftp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ftpc.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/icmp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/nbns.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ddns.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/telnet.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/smtp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/sntp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/http.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/http_net.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/snmp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/snmpv3.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_announce.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/lldp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/smtpc.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/igmp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tftpc.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tftps.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_reboot.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/iperf.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_commands.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_ethernet.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_mac_bridge.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dhcp_server.h</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f5" displayName="net_pres" projectFiles="true">
             <logicalFolder name="f1" displayName="pres" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/net_pres/pres/net_pres.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/net_pres/pres/net_pres_socketapi.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/net_pres/pres/net_pres_socketapiconversion.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres_socketapi.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres_socketapiconversion.h</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f7" displayName="osal" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_mplabx/osal/osal.h</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/osal/osal_definitions.h</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/osal/osal_impl_basic.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/osal/osal.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/osal/osal_definitions.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/osal/osal_impl_basic.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="peripheral" projectFiles="true">
             <logicalFolder name="f5" displayName="aic" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/aic/plib_aic.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/aic/plib_aic.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="clk" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/clk/plib_clk.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/clk/plib_clk.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f6" displayName="dbgu" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/dbgu/plib_dbgu_common.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/dbgu/plib_dbgu.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/dbgu/plib_dbgu_common.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/dbgu/plib_dbgu.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="mmu" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/mmu/plib_mmu.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/mmu/cp15.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/mmu/plib_mmu.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/mmu/cp15.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="pio" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/pio/plib_pio.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/pio/plib_pio.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="tc" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/tc/plib_tc0.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/tc/plib_tc_common.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/tc/plib_tc0.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/tc/plib_tc_common.h</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f3" displayName="system" projectFiles="true">
             <logicalFolder name="f3" displayName="cache" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/cache/sys_cache.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/cache/sys_cache.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f5" displayName="command" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/command/sys_command.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/command/sys_command.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f6" displayName="console" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/console/sys_console.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/sys_console.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="debug" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/debug/sys_debug.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/debug/sys_debug.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="int" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/int/sys_int.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/int/sys_int_mapping.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/int/sys_int.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/int/sys_int_mapping.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f7" displayName="reset" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/reset/sys_reset.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/reset/sys_reset.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="time" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/time/sys_time.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/time/sys_time_definitions.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/time/src/sys_time_local.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/time/sys_time.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/time/sys_time_definitions.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/time/src/sys_time_local.h</itemPath>
             </logicalFolder>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/system/sys_time_h2_adapter.h</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/system/sys_random_h2_adapter.h</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/system/system.h</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/system/system_common.h</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/system/system_module.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/sys_time_h2_adapter.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/sys_random_h2_adapter.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/system.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/system_common.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/system_module.h</itemPath>
           </logicalFolder>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/device.h</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/system_config.h</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/system_definitions.h</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/user.h</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/configuration.h</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/device_cache.h</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/toolchain_specifics.h</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/definitions.h</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/config.h</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/interrupts.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/device.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/system_config.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/system_definitions.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/user.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/configuration.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/device_cache.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/toolchain_specifics.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/definitions.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/config.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/interrupts.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f3" displayName="packs" projectFiles="true">
@@ -517,8 +517,8 @@
                    displayName="Linker Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="config" projectFiles="true">
-        <logicalFolder name="f1" displayName="sam_9x60_ek_mplabx" projectFiles="true">
-          <itemPath>../src/config/sam_9x60_ek_mplabx/ddram.ld</itemPath>
+        <logicalFolder name="f1" displayName="sam_9x60_curiosity" projectFiles="true">
+          <itemPath>../src/config/sam_9x60_curiosity/ddram.ld</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
@@ -526,35 +526,35 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="config" projectFiles="true">
-        <logicalFolder name="f1" displayName="sam_9x60_ek_mplabx" projectFiles="true">
+        <logicalFolder name="f1" displayName="sam_9x60_curiosity" projectFiles="true">
           <logicalFolder name="f1" displayName="bsp" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_mplabx/bsp/bsp.c</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/bsp/bsp.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f7" displayName="crypto" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_mplabx/crypto/src/crypto.c</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/crypto/src/crypto.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f6" displayName="driver" projectFiles="true">
             <logicalFolder name="f3" displayName="emac" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac.c</itemPath>
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_statistics.c</itemPath>
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/emac/src/dynamic/drv_emac_lib_SAM9X60.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/dynamic/drv_emac.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/dynamic/drv_emac_statistics.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/dynamic/drv_emac_lib_SAM9X60.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="f2" displayName="ethphy" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/ethphy/src/dynamic/drv_ethphy.c</itemPath>
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/ethphy/src/dynamic/drv_extphy_ksz8081.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/src/dynamic/drv_ethphy.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/src/dynamic/drv_extphy_ksz8081.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
             <logicalFolder name="f1" displayName="miim" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/driver/miim/src/dynamic/drv_miim.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/miim/src/dynamic/drv_miim.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
@@ -563,87 +563,87 @@
             <logicalFolder name="f1" displayName="tcpip" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="common" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/helpers.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/helpers.c</itemPath>
                 </logicalFolder>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/icmp.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/nbns.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcp.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/arp.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_commands.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/ipv4.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_heap_alloc.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_heap_internal.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dhcp.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/dns.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/hash_fnv.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/oahash.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_helpers.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_manager.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_notify.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_packet.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/tcpip_announce.c</itemPath>
-                <itemPath>../src/config/sam_9x60_ek_mplabx/library/tcpip/src/udp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/icmp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/nbns.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/arp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_commands.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ipv4.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_heap_alloc.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_heap_internal.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dns.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/hash_fnv.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/oahash.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_helpers.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_manager.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_notify.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_packet.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_announce.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/udp.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f3" displayName="peripheral" projectFiles="true">
             <logicalFolder name="f5" displayName="aic" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/aic/plib_aic.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/aic/plib_aic.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="clk" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/clk/plib_clk.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/clk/plib_clk.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f6" displayName="dbgu" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/dbgu/plib_dbgu.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/dbgu/plib_dbgu.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="mmu" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/mmu/plib_mmu.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/mmu/plib_mmu.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f4" displayName="pio" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/pio/plib_pio.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/pio/plib_pio.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="tc" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/peripheral/tc/plib_tc0.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/tc/plib_tc0.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f5" displayName="stdio" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_mplabx/stdio/xc32_monitor.c</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
           <logicalFolder name="f4" displayName="system" projectFiles="true">
             <logicalFolder name="f4" displayName="cache" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/cache/sys_cache.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/cache/sys_cache.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f5" displayName="command" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/command/src/sys_command.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/command/src/sys_command.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f2" displayName="console" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/console/src/sys_console_uart.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/console/src/sys_console_uart_definitions.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/console/src/sys_console_uart.c</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/console/src/sys_console.c</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/console/src/sys_console_local.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/src/sys_console_uart.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/src/sys_console_uart_definitions.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/src/sys_console_uart.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/src/sys_console.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/src/sys_console_local.h</itemPath>
             </logicalFolder>
             <logicalFolder name="f6" displayName="debug" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/debug/src/sys_debug_local.h</itemPath>
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/debug/src/sys_debug.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/debug/src/sys_debug_local.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/debug/src/sys_debug.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f3" displayName="int" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/int/src/sys_int.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/int/src/sys_int.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f7" displayName="reset" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/reset/sys_reset.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/reset/sys_reset.c</itemPath>
             </logicalFolder>
             <logicalFolder name="f1" displayName="time" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_ek_mplabx/system/time/src/sys_time.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/time/src/sys_time.c</itemPath>
             </logicalFolder>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/system/sys_time_h2_adapter.c</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/system/sys_random_h2_adapter.c</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/sys_time_h2_adapter.c</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/sys_random_h2_adapter.c</itemPath>
           </logicalFolder>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/tasks.c</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/initialization.c</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/interrupts.c</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/cstartup.S</itemPath>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/fault_handlers.c</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/tasks.c</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/initialization.c</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/interrupts.c</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/cstartup.S</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/fault_handlers.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f3" displayName="wolfcrypt" projectFiles="true">
@@ -744,74 +744,74 @@
       <itemPath>../src/app_commands.c</itemPath>
       <itemPath>../src/app.c</itemPath>
       <itemPath>../src/main_sam_9x60.c</itemPath>
-      <itemPath>../src/config/sam_9x60_ek_mplabx/pin_configurations.csv</itemPath>
+      <itemPath>../src/config/sam_9x60_curiosity/pin_configurations.csv</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
       <logicalFolder name="f1"
-                     displayName="sam_9x60_ek_mplabx.mhc"
+                     displayName="sam_9x60_curiosity.mhc"
                      projectFiles="true">
         <logicalFolder name="f1" displayName="TCP_IP_STACK" projectFiles="true">
           <logicalFolder name="f1" displayName="APPLICATION_LAYER" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/APPLICATION_LAYER.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipAnnounce.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipDns.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipNbns.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpip_apps_config.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/APPLICATION_LAYER/APPLICATION_LAYER.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipAnnounce.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcp.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipDns.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipNbns.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpip_apps_config.yml</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="BASIC_CONFIGURATION" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/BASIC_CONFIGURATION.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipCmd.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipNetConfig.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipStack.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpip_basic_config.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/BASIC_CONFIGURATION.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipCmd.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipNetConfig.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipStack.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpip_basic_config.yml</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="DRIVER_LAYER" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/DRIVER_LAYER/DRIVER_LAYER.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/DRIVER_LAYER/drvEmac0.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/DRIVER_LAYER/drvExtPhyKsz8081.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/DRIVER_LAYER/drvMiim.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/DRIVER_LAYER/tcpip_driver_config.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/DRIVER_LAYER/DRIVER_LAYER.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/DRIVER_LAYER/drvEmac0.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/DRIVER_LAYER/drvExtPhyKsz8081.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/DRIVER_LAYER/drvMiim.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/DRIVER_LAYER/tcpip_driver_config.yml</itemPath>
           </logicalFolder>
           <logicalFolder name="f4" displayName="NETWORK_LAYER" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/NETWORK_LAYER.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipArp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipIcmp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipIPv4.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpip_network_config.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/NETWORK_LAYER/NETWORK_LAYER.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipArp.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipIcmp.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipIPv4.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpip_network_config.yml</itemPath>
           </logicalFolder>
           <logicalFolder name="f5" displayName="TRANSPORT_LAYER" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/TRANSPORT_LAYER/tcpipTcp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/TRANSPORT_LAYER/tcpipUdp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/TRANSPORT_LAYER/tcpip_transport_config.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/TRANSPORT_LAYER/TRANSPORT_LAYER.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/TRANSPORT_LAYER/tcpipTcp.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/TRANSPORT_LAYER/tcpipUdp.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/TRANSPORT_LAYER/tcpip_transport_config.yml</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/TRANSPORT_LAYER/TRANSPORT_LAYER.yml</itemPath>
           </logicalFolder>
-          <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/TCP_IP_STACK/TCP_IP_STACK.yml</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/TCP_IP_STACK/TCP_IP_STACK.yml</itemPath>
         </logicalFolder>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/BSP_SAM_9X60_Evaluation_Kit.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/core.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/dbgu.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/dfp.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/HarmonyCore.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/lib_crypto.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/lib_wolfcrypt.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/project.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/sys_command.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/sys_console.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/sys_debug.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/sys_time.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_mplabx/sam_9x60_ek_mplabx.mhc/tc0.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/BSP_SAM_9X60_Evaluation_Kit.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/core.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/dbgu.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/dfp.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/GraphSettings.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/HarmonyCore.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/lib_crypto.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/lib_wolfcrypt.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/project.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/settings.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/sys_command.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/sys_console.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/sys_debug.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/sys_time.yml</itemPath>
+        <itemPath>../src/config/sam_9x60_curiosity/sam_9x60_curiosity.mhc/tc0.yml</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="wolfcrypt" projectFiles="true">
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/misc.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/evp.c</itemPath>
       </logicalFolder>
       <itemPath>Makefile</itemPath>
-      <itemPath>../src/config/sam_9x60_ek_mplabx/harmony-manifest-success.yml</itemPath>
+      <itemPath>../src/config/sam_9x60_curiosity/harmony-manifest-success.yml</itemPath>
       <itemPath>tcpip_tcp_client.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
@@ -820,7 +820,7 @@
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="sam_9x60_ek_mplabx" type="2">
+    <conf name="sam_9x60_curiosity" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
         <targetDevice>SAM9X60</targetDevice>
@@ -895,7 +895,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/sam_9x60_ek_mplabx;../src/config/sam_9x60_ek_mplabx/library;../src/config/sam_9x60_ek_mplabx/library/tcpip/src;../src/config/sam_9x60_ek_mplabx/library/tcpip/src/common;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/SAM9X60_DFP;../src/third_party/wolfssl;../src/third_party/wolfssl/wolfssl"/>
+                  value="../src;../src/config/sam_9x60_curiosity;../src/config/sam_9x60_curiosity/library;../src/config/sam_9x60_curiosity/library/tcpip/src;../src/config/sam_9x60_curiosity/library/tcpip/src/common;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/SAM9X60_DFP;../src/third_party/wolfssl;../src/third_party/wolfssl/wolfssl"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -997,7 +997,7 @@
         <property key="exceptions" value="true"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/sam_9x60_ek_mplabx;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/SAM9X60_DFP"/>
+                  value="../src;../src/config/sam_9x60_curiosity;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/SAM9X60_DFP"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
