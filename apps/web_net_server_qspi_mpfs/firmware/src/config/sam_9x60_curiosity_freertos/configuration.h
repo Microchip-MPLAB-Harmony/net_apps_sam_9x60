@@ -135,7 +135,7 @@ extern "C" {
 
 
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
-#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			1
+#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			2
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		0
 #define SYS_CONSOLE_PRINT_BUFFER_SIZE        		2000
 
@@ -156,7 +156,7 @@ extern "C" {
 #define DRV_MIIM_INSTANCE_OPERATIONS        4
 #define DRV_MIIM_INSTANCE_CLIENTS           2
 #define DRV_MIIM_CLIENT_OP_PROTECTION   false
-#define DRV_MIIM_COMMANDS   true
+#define DRV_MIIM_COMMANDS   false
 #define DRV_MIIM_DRIVER_OBJECT              DRV_MIIM_OBJECT_BASE_Default            
 
 /* MIIM RTOS Configurations*/
@@ -554,12 +554,6 @@ extern "C" {
 
 
 
-/*** NBNS Configuration ***/
-#define TCPIP_STACK_USE_NBNS
-#define TCPIP_NBNS_TASK_TICK_RATE   110
-
-
-
 /*** HTTP NET Configuration ***/
 #define TCPIP_STACK_USE_HTTP_NET_SERVER
 #define TCPIP_HTTP_NET_MAX_HEADER_LEN		    		15
@@ -609,6 +603,12 @@ extern "C" {
 
 
 
+/*** NBNS Configuration ***/
+#define TCPIP_STACK_USE_NBNS
+#define TCPIP_NBNS_TASK_TICK_RATE   110
+
+
+
 /*** DHCP Configuration ***/
 #define TCPIP_STACK_USE_DHCP_CLIENT
 #define TCPIP_DHCP_TIMEOUT                          10
@@ -642,7 +642,7 @@ extern "C" {
 #define EMAC_MIN_TX_DESCRIPTORS                     1       // needed to accommodate zero copy and TCP traffic
 #define TCPIP_INTMAC_PERIPHERAL_CLK                 200000000
 #define TCPIP_INTMAC_MAX_NUMBER_OF_QUEUES           1
-#define TCPIP_INTMAC_MAX_RX_PACKET_POINTERS         1024
+#define TCPIP_INTMAC_MAX_RX_PACKET_POINTERS         100
 #define DRV_EMAC0_BASE_ADDRESS                      EMAC0_BASE_ADDRESS
 #define TCPIP_INTMAC_MODULE_ID                                           EMAC0_BASE_ADDRESS
 #define DRV_EMAC0_CLIENTS_NUMBER                    1
@@ -720,7 +720,7 @@ extern "C" {
 
 /*** TCPIP Heap Configuration ***/
 #define TCPIP_STACK_USE_INTERNAL_HEAP
-#define TCPIP_STACK_DRAM_SIZE                       524288
+#define TCPIP_STACK_DRAM_SIZE                       129250
 #define TCPIP_STACK_DRAM_RUN_LIMIT                  2048
 
 #define TCPIP_STACK_MALLOC_FUNC                     malloc
