@@ -1,7 +1,7 @@
 "Pin Number","Pin ID","Custom Name","Function","Direction","Latch","Open Drain","PIO Interrupt","Pull Up","Pull Down","Glitch/Debounce Filter",Slew Rate Control,Drive Strength
 A2,PB9,,EMAC0_E0_TX0,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
 A3,PB10,,EMAC0_E0_TX1,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
-A4,PB13,LED_AH_PB13,LED_AH,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
+A4,PB13,LED_AH_PB13,Available,In,,,,,,,,
 A5,PB7,,EMAC0_E0_TXEN,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
 A6,PB20,,QSPI_QCS,n/a,n/a,No,Disabled,Yes,No,Disabled,No,Low
 A7,PB21,,QSPI_QIO0,n/a,n/a,No,Disabled,Yes,No,Disabled,No,Low
@@ -12,12 +12,12 @@ B5,PB15,,Available,In,,,,,,,,
 B6,PB23,,QSPI_QIO2,n/a,n/a,No,Disabled,Yes,No,Disabled,No,Low
 B7,PB22,,QSPI_QIO1,n/a,n/a,No,Disabled,Yes,No,Disabled,No,Low
 C1,PB1,,EMAC0_E0_RX1,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
-C2,PB12,LED_AH_PB12,LED_AH,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
+C2,PB12,LED_AH_PB12,Available,In,,,,,,,,
 C6,PB19,,QSPI_QSCK,n/a,n/a,No,Disabled,No,Yes,Disabled,No,Low
 D1,PB3,,EMAC0_E0_RXDV,n/a,n/a,Yes,Disabled,No,No,Disabled,No,Low
 D2,PB6,,EMAC0_E0_MDC,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
 D3,PB2,,EMAC0_E0_RXER,n/a,n/a,No,Disabled,No,Yes,Disabled,No,Low
-D6,PB11,LED_AH_PB11,LED_AH,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
+D6,PB11,LED_AH_PB11,Available,In,,,,,,,,
 E1,PB5,,EMAC0_E0_MDIO,n/a,n/a,Yes,Disabled,No,No,Disabled,No,Low
 E2,PB25,nRST_PB25,GPIO,Out,High,No,Disabled,No,Yes,Disabled,No,Low
 E3,PB4,,EMAC0_E0_TXCK,n/a,n/a,No,Disabled,No,No,Disabled,No,Low

@@ -49,6 +49,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include "crypto/crypto.h"
+#include "bsp/bsp.h"
 #include "system/time/sys_time.h"
 #include "system/int/sys_int.h"
 #include "system/reset/sys_reset.h"
@@ -67,7 +68,6 @@
 #include "system/fs/fat_fs/hardware_access/diskio.h"
 #include "peripheral/sdmmc/plib_sdmmc0.h"
 #include "peripheral/dbgu/plib_dbgu.h"
-#include "bsp/bsp.h"
 #include "peripheral/tc/plib_tc0.h"
 #include "driver/emac/drv_emac.h"
 #include "library/tcpip/tcpip.h"

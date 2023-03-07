@@ -1099,9 +1099,9 @@
         <targetDevice>SAM9X60</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>jlink</platformTool>
+        <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.00</languageToolchainVersion>
+        <languageToolchainVersion>4.20</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
@@ -1183,7 +1183,7 @@
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
         <property key="preprocessor-macros"
-                  value="HAVE_CONFIG_H;WOLFSSL_IGNORE_FILE_WARN"/>
+                  value="HAVE_CONFIG_H;SAM_9X60_CURIOSITY;WOLFSSL_IGNORE_FILE_WARN"/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
         <property key="tentative-definitions" value="-fno-common"/>
@@ -1293,6 +1293,19 @@
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
       </C32CPP>
+      <C32Global>
+        <property key="common-include-directories" value=""/>
+        <property key="gp-relative-option" value=""/>
+        <property key="legacy-libc" value="false"/>
+        <property key="mdtcm" value=""/>
+        <property key="mitcm" value=""/>
+        <property key="mstacktcm" value="false"/>
+        <property key="omit-pack-options" value="1"/>
+        <property key="relaxed-math" value="false"/>
+        <property key="save-temps" value="false"/>
+        <property key="stack-smashing" value=""/>
+        <property key="wpo-lto" value="false"/>
+      </C32Global>
       <PICkit3PlatformTool>
         <property key="ADC 1" value="true"/>
         <property key="AutoSelectMemRanges" value="auto"/>
@@ -1821,11 +1834,13 @@
       </Simulator>
       <Tool>
         <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="communication.adaptivespeed" value="false"/>
         <property key="communication.autoselectspeed" value="true"/>
         <property key="communication.interface" value="swd"/>
         <property key="communication.speed" value="4"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="jlink.override" value=""/>
         <property key="lastid" value=""/>
         <property key="loader.board_file" value="${ProjectDir}/board.xboard"/>
         <property key="memories.bootflash" value="true"/>
@@ -1850,11 +1865,13 @@
       </Tool>
       <jlink>
         <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="communication.adaptivespeed" value="false"/>
         <property key="communication.autoselectspeed" value="true"/>
         <property key="communication.interface" value="swd"/>
         <property key="communication.speed" value="4"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="jlink.override" value=""/>
         <property key="lastid" value=""/>
         <property key="loader.board_file" value="${ProjectDir}/board.xboard"/>
         <property key="memories.bootflash" value="true"/>

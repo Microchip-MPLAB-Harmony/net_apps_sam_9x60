@@ -871,11 +871,11 @@ void SYS_Initialize ( void* data )
 
 
 
+	BSP_Initialize();
 	SDMMC0_Initialize();
 
     DBGU_Initialize();
 
-	BSP_Initialize();
  
     TC0_CH0_TimerInitialize(); 
      

@@ -140,7 +140,7 @@ extern "C" {
 
 
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
-#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			1
+#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			2
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		0
 #define SYS_CONSOLE_PRINT_BUFFER_SIZE        		2000
 
@@ -548,12 +548,6 @@ extern "C" {
 
 
 
-/*** NBNS Configuration ***/
-#define TCPIP_STACK_USE_NBNS
-#define TCPIP_NBNS_TASK_TICK_RATE   110
-
-
-
 /*** HTTP NET Configuration ***/
 #define TCPIP_STACK_USE_HTTP_NET_SERVER
 #define TCPIP_HTTP_NET_MAX_HEADER_LEN		    		15
@@ -600,6 +594,12 @@ extern "C" {
 #define TCPIP_HTTP_NET_MALLOC_FUNC                  malloc
 #define TCPIP_HTTP_NET_FREE_FUNC                    free
 #define TCPIP_HTTP_NET_CONSOLE_CMD           		true
+
+
+
+/*** NBNS Configuration ***/
+#define TCPIP_STACK_USE_NBNS
+#define TCPIP_NBNS_TASK_TICK_RATE   110
 
 
 

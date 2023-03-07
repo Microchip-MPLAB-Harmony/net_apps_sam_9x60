@@ -370,6 +370,15 @@ extern "C" {
 
 
 
+/*** FTPC Configuration ***/
+#define TCPIP_STACK_USE_FTP_CLIENT
+#define TCPIP_FTPC_TASK_TICK_RATE        5
+#define TCPIP_FTPC_TMO                   2
+#define TCPIP_FTPC_MAX_NUM_CLIENT        3
+#define TCPIP_FTPC_DATA_SKT_TX_BUFF_SIZE_DFLT        0
+#define TCPIP_FTPC_DATA_SKT_RX_BUFF_SIZE_DFLT        0
+
+
 /*** iperf Configuration ***/
 #define TCPIP_STACK_USE_IPERF
 #define TCPIP_IPERF_TX_BUFFER_SIZE		16384
@@ -380,15 +389,6 @@ extern "C" {
 #define TCPIP_IPERF_MAX_INSTANCES       1
 #define TCPIP_IPERF_TX_BW_LIMIT  		1
 
-
-
-/*** FTPC Configuration ***/
-#define TCPIP_STACK_USE_FTP_CLIENT
-#define TCPIP_FTPC_TASK_TICK_RATE        5
-#define TCPIP_FTPC_TMO                   2
-#define TCPIP_FTPC_MAX_NUM_CLIENT        3
-#define TCPIP_FTPC_DATA_SKT_TX_BUFF_SIZE_DFLT        0
-#define TCPIP_FTPC_DATA_SKT_RX_BUFF_SIZE_DFLT        0
 
 
 /*** IPv4 Configuration ***/
