@@ -4,276 +4,280 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <logicalFolder name="f1" displayName="config" projectFiles="true">
-        <logicalFolder name="f1"
-                       displayName="sam_9x60_curiosity_freertos"
+      <logicalFolder name="config" displayName="config" projectFiles="true">
+        <logicalFolder name="sam_9x60_curiosity"
+                       displayName="sam_9x60_curiosity"
                        projectFiles="true">
-          <logicalFolder name="f1" displayName="bsp" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/bsp/bsp.h</itemPath>
+          <logicalFolder name="bsp" displayName="bsp" projectFiles="true">
+            <itemPath>../src/config/sam_9x60_curiosity/bsp/bsp.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f8" displayName="crypto" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/crypto/crypto.h</itemPath>
+          <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+            <itemPath>../src/config/sam_9x60_curiosity/crypto/crypto.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f6" displayName="driver" projectFiles="true">
-            <logicalFolder name="f3" displayName="emac" projectFiles="true">
-              <logicalFolder name="f1" displayName="src" projectFiles="true">
-                <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/emac/src/dynamic/drv_emac_dcpt_lists.h</itemPath>
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/emac/src/dynamic/drv_emac_lib.h</itemPath>
+          <logicalFolder name="driver" displayName="driver" projectFiles="true">
+            <logicalFolder name="emac" displayName="emac" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <logicalFolder name="dynamic" displayName="dynamic" projectFiles="true">
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/dynamic/drv_emac_dcpt_lists.h</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/dynamic/drv_emac_lib.h</itemPath>
                 </logicalFolder>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/emac/src/drv_emac_local.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/drv_emac_local.h</itemPath>
               </logicalFolder>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/emac/drv_emac.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/driver/emac/drv_emac.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f2" displayName="ethphy" projectFiles="true">
-              <logicalFolder name="f1" displayName="src" projectFiles="true">
-                <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/ethphy/src/dynamic/drv_extphy_regs.h</itemPath>
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/ethphy/src/dynamic/drv_extphy_ksz8081.h</itemPath>
+            <logicalFolder name="ethphy" displayName="ethphy" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <logicalFolder name="dynamic" displayName="dynamic" projectFiles="true">
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/src/dynamic/drv_extphy_regs.h</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/src/dynamic/drv_extphy_ksz8081.h</itemPath>
                 </logicalFolder>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/ethphy/src/drv_ethphy_local.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/src/drv_ethphy_local.h</itemPath>
               </logicalFolder>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/ethphy/drv_ethphy.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/drv_ethphy.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f1" displayName="miim" projectFiles="true">
-              <logicalFolder name="f1" displayName="src" projectFiles="true">
-                <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/miim/src/dynamic/drv_miim_mapping.h</itemPath>
+            <logicalFolder name="miim" displayName="miim" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <logicalFolder name="dynamic" displayName="dynamic" projectFiles="true">
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/miim/src/dynamic/drv_miim_mapping.h</itemPath>
                 </logicalFolder>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/miim/src/drv_miim_local.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/driver/miim/src/drv_miim_local.h</itemPath>
               </logicalFolder>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/miim/drv_miim.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/driver/miim/drv_miim.h</itemPath>
             </logicalFolder>
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/driver.h</itemPath>
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/driver_common.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/driver/driver.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/driver/driver_common.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f4" displayName="library" projectFiles="true">
-            <logicalFolder name="f1" displayName="tcpip" projectFiles="true">
-              <logicalFolder name="f1" displayName="src" projectFiles="true">
-                <logicalFolder name="f1" displayName="common" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/common/helpers.h</itemPath>
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/common/sys_fs_shell.h</itemPath>
+          <logicalFolder name="library" displayName="library" projectFiles="true">
+            <logicalFolder name="tcpip" displayName="tcpip" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <logicalFolder name="common" displayName="common" projectFiles="true">
+                  <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/common/helpers.h</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/common/sys_fs_shell.h</itemPath>
                 </logicalFolder>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_heap_alloc.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ndp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ndp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ipv4_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ipv4_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ipv6_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ipv6_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/icmp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/icmpv6_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/arp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/arp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/udp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/udp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dhcp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dhcp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dhcps_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dhcps_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/zero_conf_helper.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/zero_conf_link_local_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/zero_conf_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dns_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dns_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dnss_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dnss_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ftp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ftp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ftpc_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ftpc_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/nbns_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ddns_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/telnet_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/smtp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/sntp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/http_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/http_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/http_net_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/http_net_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/snmp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/snmp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/snmpv3_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_announce_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/smtpc_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/smtpc_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/igmp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/igmp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tftpc_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tftpc_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tftps_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tftps_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_reboot_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/iperf_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_commands_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/hash_fnv.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/link_list.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/oahash.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_helpers_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_manager_control.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_module_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_notify.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_packet.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_types.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/berkeley_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dhcpv6_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dhcpv6_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/lldp_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/lldp_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/lldp_tlv.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_mac_bridge_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_mac_bridge_private.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dhcp_server_manager.h</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dhcp_server_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/telnet_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tftpc_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ftp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/hash_fnv.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/igmp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/nbns_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/http_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/zero_conf_link_local_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/arp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcps_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/smtpc_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/icmpv6_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcpv6_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tftps_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcps_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ndp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dnss_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_mac_bridge_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_notify.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ftpc_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/sntp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/snmp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/arp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ipv6_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_manager_control.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_heap_alloc.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ipv4_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_helpers_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcp_server_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/udp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/zero_conf_helper.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_packet.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/smtpc_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/lldp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_announce_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dns_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/snmp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcpv6_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_commands_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/http_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tftpc_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/http_net_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/zero_conf_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dnss_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ftpc_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/oahash.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/berkeley_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ndp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tftps_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/snmpv3_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/smtp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/http_net_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_types.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ipv4_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_module_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ipv6_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/lldp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_mac_bridge_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dns_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_reboot_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/igmp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/link_list.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcp_server_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/icmp_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ddns_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ftp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/lldp_tlv.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcp_private.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/iperf_manager.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/udp_manager.h</itemPath>
               </logicalFolder>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip_common_ports.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip_mac.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip_mac_object.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip_manager.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip_heap.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip_helpers.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/ndp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/ipv4.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/ipv6.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/icmpv6.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/dhcpv6.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/arp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/udp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/berkeley_api.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/dhcp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/dhcps.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/zero_conf_link_local.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/zero_conf_multicast_dns.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/dns.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/dnss.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/ftp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/ftpc.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/icmp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/nbns.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/ddns.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/telnet.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/smtp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/sntp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/http.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/http_net.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/snmp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/snmpv3.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip_announce.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/lldp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/smtpc.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/igmp.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tftpc.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tftps.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip_reboot.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/iperf.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip_commands.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip_ethernet.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/tcpip_mac_bridge.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/dhcp_server.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_mac.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_ethernet.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/iperf.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_helpers.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/lldp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/icmpv6.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ddns.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/telnet.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dnss.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_reboot.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/zero_conf_link_local.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dns.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/snmpv3.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/icmp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tftpc.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tftps.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/udp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/arp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ndp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_manager.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/sntp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_common_ports.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/http_net.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/smtp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dhcps.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dhcp_server.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/nbns.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/berkeley_api.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/http.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ftpc.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ipv6.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dhcpv6.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/snmp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_announce.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/smtpc.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_mac_object.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/igmp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/dhcp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ipv4.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_mac_bridge.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/ftp.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_commands.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/tcpip_heap.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/zero_conf_multicast_dns.h</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f5" displayName="net_pres" projectFiles="true">
-            <logicalFolder name="f1" displayName="pres" projectFiles="true">
-              <logicalFolder name="f1" displayName="src" projectFiles="true">
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/net_pres/pres/src/net_pres_local.h</itemPath>
+          <logicalFolder name="net_pres" displayName="net_pres" projectFiles="true">
+            <logicalFolder name="pres" displayName="pres" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/src/net_pres_local.h</itemPath>
               </logicalFolder>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/net_pres/pres/net_pres.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/net_pres/pres/net_pres_socketapi.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/net_pres/pres/net_pres_socketapiconversion.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/net_pres/pres/net_pres_certstore.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/net_pres/pres/net_pres_encryptionproviderapi.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/net_pres/pres/net_pres_transportapi.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/net_pres/pres/net_pres_enc_glue.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres_certstore.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres_encryptionproviderapi.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres_socketapiconversion.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres_transportapi.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres_socketapi.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres_enc_glue.h</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f7" displayName="osal" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/osal/osal.h</itemPath>
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/osal/osal_definitions.h</itemPath>
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/osal/osal_freertos.h</itemPath>
+          <logicalFolder name="osal" displayName="osal" projectFiles="true">
+            <itemPath>../src/config/sam_9x60_curiosity/osal/osal_freertos.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/osal/osal_definitions.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/osal/osal.h</itemPath>
           </logicalFolder>
-          <logicalFolder name="f2" displayName="peripheral" projectFiles="true">
-            <logicalFolder name="f5" displayName="aic" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/aic/plib_aic.h</itemPath>
+          <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="aic" displayName="aic" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/aic/plib_aic.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f3" displayName="clk" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/clk/plib_clk.h</itemPath>
+            <logicalFolder name="clk" displayName="clk" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/clk/plib_clk.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f6" displayName="dbgu" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/dbgu/plib_dbgu_common.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/dbgu/plib_dbgu.h</itemPath>
+            <logicalFolder name="dbgu" displayName="dbgu" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/dbgu/plib_dbgu.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/dbgu/plib_dbgu_common.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f2" displayName="mmu" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/mmu/plib_mmu.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/mmu/cp15.h</itemPath>
+            <logicalFolder name="mmu" displayName="mmu" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/mmu/cp15.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/mmu/plib_mmu.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f4" displayName="pio" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/pio/plib_pio.h</itemPath>
+            <logicalFolder name="pio" displayName="pio" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/pio/plib_pio.h</itemPath>
             </logicalFolder>
             <logicalFolder name="pit" displayName="pit" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/pit/plib_pit.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/pit/plib_pit.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f1" displayName="tc" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/tc/plib_tc0.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/tc/plib_tc_common.h</itemPath>
+            <logicalFolder name="tc" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/tc/plib_tc_common.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/tc/plib_tc0.h</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f3" displayName="system" projectFiles="true">
-            <logicalFolder name="f3" displayName="cache" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/cache/sys_cache.h</itemPath>
+          <logicalFolder name="system" displayName="system" projectFiles="true">
+            <logicalFolder name="cache" displayName="cache" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/cache/sys_cache.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f5" displayName="command" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/command/sys_command.h</itemPath>
+            <logicalFolder name="command" displayName="command" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/command/sys_command.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f6" displayName="console" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/console/sys_console.h</itemPath>
+            <logicalFolder name="console" displayName="console" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/src/sys_console_uart_definitions.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/src/sys_console_uart.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/sys_console.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/src/sys_console_local.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f4" displayName="debug" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/debug/sys_debug.h</itemPath>
+            <logicalFolder name="debug" displayName="debug" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/debug/src/sys_debug_local.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/debug/sys_debug.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f2" displayName="int" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/int/sys_int.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/int/sys_int_mapping.h</itemPath>
+            <logicalFolder name="int" displayName="int" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/int/sys_int_mapping.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/int/sys_int.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f7" displayName="reset" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/reset/sys_reset.h</itemPath>
+            <logicalFolder name="reset" displayName="reset" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/reset/sys_reset.h</itemPath>
             </logicalFolder>
-            <logicalFolder name="f1" displayName="time" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/time/sys_time.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/time/sys_time_definitions.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/time/src/sys_time_local.h</itemPath>
+            <logicalFolder name="time" displayName="time" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/time/src/sys_time_local.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/time/sys_time.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/time/sys_time_definitions.h</itemPath>
             </logicalFolder>
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/system/sys_time_h2_adapter.h</itemPath>
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/system/sys_random_h2_adapter.h</itemPath>
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/system/system.h</itemPath>
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/system/system_common.h</itemPath>
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/system/system_module.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/system.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/system_common.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/sys_time_h2_adapter.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/system_module.h</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/sys_random_h2_adapter.h</itemPath>
           </logicalFolder>
           <logicalFolder name="third_party_adapter"
                          displayName="third_party_adapter"
                          projectFiles="true">
             <logicalFolder name="wolfMQTT" displayName="wolfMQTT" projectFiles="true">
               <logicalFolder name="src" displayName="src" projectFiles="true">
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/third_party_adapter/wolfMQTT/src/mqtt_net_glue.h</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/third_party_adapter/wolfMQTT/src/mqtt_net_glue.h</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/device.h</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/system_config.h</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/system_definitions.h</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/user.h</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/configuration.h</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/device_cache.h</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/toolchain_specifics.h</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/definitions.h</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/config.h</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/interrupts.h</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/FreeRTOSConfig.h</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/user_settings.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/system_config.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/user_settings.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/system_definitions.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/config.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/user.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/interrupts.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/device_cache.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/toolchain_specifics.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/FreeRTOSConfig.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/configuration.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/device.h</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/definitions.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
@@ -597,11 +601,11 @@
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
-      <logicalFolder name="f1" displayName="config" projectFiles="true">
-        <logicalFolder name="f1"
-                       displayName="sam_9x60_curiosity_freertos"
+      <logicalFolder name="config" displayName="config" projectFiles="true">
+        <logicalFolder name="sam_9x60_curiosity"
+                       displayName="sam_9x60_curiosity"
                        projectFiles="true">
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/ddram.ld</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/ddram.ld</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
@@ -609,152 +613,162 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="config" projectFiles="true">
-        <logicalFolder name="f1"
-                       displayName="sam_9x60_curiosity_freertos"
+        <logicalFolder name="sam_9x60_curiosity"
+                       displayName="sam_9x60_curiosity"
                        projectFiles="true">
-          <logicalFolder name="f1" displayName="bsp" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/bsp/bsp.c</itemPath>
+          <logicalFolder name="bsp" displayName="bsp" projectFiles="true">
+            <itemPath>../src/config/sam_9x60_curiosity/bsp/bsp.c</itemPath>
           </logicalFolder>
-          <logicalFolder name="f7" displayName="crypto" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/crypto/src/crypto.c</itemPath>
+          <logicalFolder name="crypto" displayName="crypto" projectFiles="true">
+            <itemPath>../src/config/sam_9x60_curiosity/crypto/src/crypto.c</itemPath>
           </logicalFolder>
-          <logicalFolder name="f6" displayName="driver" projectFiles="true">
-            <logicalFolder name="f3" displayName="emac" projectFiles="true">
-              <logicalFolder name="f1" displayName="src" projectFiles="true">
-                <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/emac/src/dynamic/drv_emac.c</itemPath>
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/emac/src/dynamic/drv_emac_statistics.c</itemPath>
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/emac/src/dynamic/drv_emac_lib_SAM9X60.c</itemPath>
+          <logicalFolder name="driver" displayName="driver" projectFiles="true">
+            <logicalFolder name="emac" displayName="emac" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <logicalFolder name="dynamic" displayName="dynamic" projectFiles="true">
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/dynamic/drv_emac_lib_SAM9X60.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/dynamic/drv_emac_statistics.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/emac/src/dynamic/drv_emac.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder name="f2" displayName="ethphy" projectFiles="true">
-              <logicalFolder name="f1" displayName="src" projectFiles="true">
-                <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/ethphy/src/dynamic/drv_ethphy.c</itemPath>
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/ethphy/src/dynamic/drv_extphy_ksz8081.c</itemPath>
+            <logicalFolder name="ethphy" displayName="ethphy" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <logicalFolder name="dynamic" displayName="dynamic" projectFiles="true">
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/src/dynamic/drv_extphy_ksz8081.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/ethphy/src/dynamic/drv_ethphy.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
-            <logicalFolder name="f1" displayName="miim" projectFiles="true">
-              <logicalFolder name="f1" displayName="src" projectFiles="true">
-                <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/driver/miim/src/dynamic/drv_miim.c</itemPath>
+            <logicalFolder name="miim" displayName="miim" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <logicalFolder name="dynamic" displayName="dynamic" projectFiles="true">
+                  <itemPath>../src/config/sam_9x60_curiosity/driver/miim/src/dynamic/drv_miim.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f2" displayName="library" projectFiles="true">
-            <logicalFolder name="f1" displayName="tcpip" projectFiles="true">
-              <logicalFolder name="f1" displayName="src" projectFiles="true">
-                <logicalFolder name="f1" displayName="common" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/helpers.c</itemPath>
+          <logicalFolder name="library" displayName="library" projectFiles="true">
+            <logicalFolder name="tcpip" displayName="tcpip" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <logicalFolder name="common" displayName="common" projectFiles="true">
+                  <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/helpers.c</itemPath>
                 </logicalFolder>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/icmp.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/nbns.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcp.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/arp.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_commands.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/ipv4.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_heap_alloc.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_heap_internal.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dhcp.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/dns.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/hash_fnv.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/oahash.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_helpers.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_manager.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_notify.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_packet.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/tcpip_announce.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/udp.c</itemPath>
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/sntp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/hash_fnv.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_heap_internal.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/sntp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dhcp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/ipv4.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/dns.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/udp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_notify.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_commands.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_heap_alloc.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_manager.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_packet.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/icmp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_helpers.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/oahash.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/tcpip_announce.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/arp.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/library/tcpip/src/nbns.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f8" displayName="net_pres" projectFiles="true">
-            <logicalFolder name="f1" displayName="pres" projectFiles="true">
-              <logicalFolder name="f1" displayName="src" projectFiles="true">
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/net_pres/pres/src/net_pres.c</itemPath>
+          <logicalFolder name="net_pres" displayName="net_pres" projectFiles="true">
+            <logicalFolder name="pres" displayName="pres" projectFiles="true">
+              <logicalFolder name="src" displayName="src" projectFiles="true">
+                <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/src/net_pres.c</itemPath>
               </logicalFolder>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/net_pres/pres/net_pres_enc_glue.c</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/net_pres/pres/net_pres_cert_store.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres_cert_store.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/net_pres/pres/net_pres_enc_glue.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="osal" displayName="osal" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/osal/osal_freertos.c</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/osal/osal_freertos.c</itemPath>
           </logicalFolder>
-          <logicalFolder name="f3" displayName="peripheral" projectFiles="true">
-            <logicalFolder name="f5" displayName="aic" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/aic/plib_aic.c</itemPath>
+          <logicalFolder name="peripheral" displayName="peripheral" projectFiles="true">
+            <logicalFolder name="aic" displayName="aic" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/aic/plib_aic.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f3" displayName="clk" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/clk/plib_clk.c</itemPath>
+            <logicalFolder name="clk" displayName="clk" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/clk/plib_clk.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f6" displayName="dbgu" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/dbgu/plib_dbgu.c</itemPath>
+            <logicalFolder name="dbgu" displayName="dbgu" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/dbgu/plib_dbgu.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f2" displayName="mmu" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/mmu/plib_mmu.c</itemPath>
+            <logicalFolder name="mmu" displayName="mmu" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/mmu/plib_mmu.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f4" displayName="pio" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/pio/plib_pio.c</itemPath>
+            <logicalFolder name="pio" displayName="pio" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/pio/plib_pio.c</itemPath>
             </logicalFolder>
             <logicalFolder name="pit" displayName="pit" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/pit/plib_pit.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/pit/plib_pit.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f1" displayName="tc" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/peripheral/tc/plib_tc0.c</itemPath>
+            <logicalFolder name="tc" displayName="tc" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/peripheral/tc/plib_tc0.c</itemPath>
             </logicalFolder>
           </logicalFolder>
-          <logicalFolder name="f5" displayName="stdio" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/stdio/xc32_monitor.c</itemPath>
+          <logicalFolder name="stdio" displayName="stdio" projectFiles="true">
+            <itemPath>../src/config/sam_9x60_curiosity/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
-          <logicalFolder name="f4" displayName="system" projectFiles="true">
-            <logicalFolder name="f4" displayName="cache" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/cache/sys_cache.c</itemPath>
+          <logicalFolder name="system" displayName="system" projectFiles="true">
+            <logicalFolder name="cache" displayName="cache" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/cache/sys_cache.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f5" displayName="command" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/command/src/sys_command.c</itemPath>
+            <logicalFolder name="command" displayName="command" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/command/src/sys_command.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f2" displayName="console" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/console/src/sys_console_uart.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/console/src/sys_console_uart_definitions.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/console/src/sys_console_uart.c</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/console/src/sys_console.c</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/console/src/sys_console_local.h</itemPath>
+            <logicalFolder name="console" displayName="console" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/src/sys_console_uart.c</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity/system/console/src/sys_console.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f6" displayName="debug" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/debug/src/sys_debug_local.h</itemPath>
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/debug/src/sys_debug.c</itemPath>
+            <logicalFolder name="debug" displayName="debug" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/debug/src/sys_debug.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f3" displayName="int" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/int/src/sys_int.c</itemPath>
+            <logicalFolder name="int" displayName="int" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/int/src/sys_int.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f7" displayName="reset" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/reset/sys_reset.c</itemPath>
+            <logicalFolder name="reset" displayName="reset" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/reset/sys_reset.c</itemPath>
             </logicalFolder>
-            <logicalFolder name="f1" displayName="time" projectFiles="true">
-              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/time/src/sys_time.c</itemPath>
+            <logicalFolder name="time" displayName="time" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity/system/time/src/sys_time.c</itemPath>
             </logicalFolder>
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/system/sys_time_h2_adapter.c</itemPath>
-            <itemPath>../src/config/sam_9x60_curiosity_freertos/system/sys_random_h2_adapter.c</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/sys_time_h2_adapter.c</itemPath>
+            <itemPath>../src/config/sam_9x60_curiosity/system/sys_random_h2_adapter.c</itemPath>
           </logicalFolder>
           <logicalFolder name="third_party_adapter"
                          displayName="third_party_adapter"
                          projectFiles="true">
             <logicalFolder name="wolfMQTT" displayName="wolfMQTT" projectFiles="true">
               <logicalFolder name="src" displayName="src" projectFiles="true">
-                <itemPath>../src/config/sam_9x60_curiosity_freertos/third_party_adapter/wolfMQTT/src/mqtt_net_glue.c</itemPath>
+                <itemPath>../src/config/sam_9x60_curiosity/third_party_adapter/wolfMQTT/src/mqtt_net_glue.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/tasks.c</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/initialization.c</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/interrupts.c</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/cstartup.S</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/freertos_hooks.c</itemPath>
-          <itemPath>../src/config/sam_9x60_curiosity_freertos/fault_handlers.c</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/cstartup.S</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/freertos_hooks.c</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/fault_handlers.c</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/interrupts.c</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/initialization.c</itemPath>
+          <itemPath>../src/config/sam_9x60_curiosity/tasks.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f1"
+                       displayName="sam_9x60_curiosity_freertos"
+                       projectFiles="true">
+          <logicalFolder name="f4" displayName="system" projectFiles="true">
+            <logicalFolder name="f2" displayName="console" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/console/src/sys_console_uart.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/console/src/sys_console_uart_definitions.h</itemPath>
+              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/console/src/sys_console_local.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="f6" displayName="debug" projectFiles="true">
+              <itemPath>../src/config/sam_9x60_curiosity_freertos/system/debug/src/sys_debug_local.h</itemPath>
+            </logicalFolder>
+          </logicalFolder>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
@@ -901,7 +915,7 @@
       <itemPath>../src/main_sam_9x60.c</itemPath>
       <itemPath>../src/app_mqtt_task.c</itemPath>
       <itemPath>../src/app_mqtt_commands.c</itemPath>
-      <itemPath>../src/config/sam_9x60_curiosity_freertos/pin_configurations.csv</itemPath>
+      <itemPath>../src/config/sam_9x60_curiosity/pin_configurations.csv</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -1050,7 +1064,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.00</languageToolchainVersion>
+        <languageToolchainVersion>4.20</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
@@ -1219,6 +1233,8 @@
           <property key="use-iar" value="false"/>
           <property key="use-indirect-calls" value="false"/>
         </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <AtmelIceTool>
         <property key="AutoSelectMemRanges" value="auto"/>
@@ -1254,7 +1270,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/sam_9x60_curiosity_freertos;../src/config/sam_9x60_curiosity_freertos/library;../src/config/sam_9x60_curiosity_freertos/library/tcpip/src;../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/common;../src/config/sam_9x60_curiosity_freertos/third_party_adapter/wolfMQTT/src/;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/SAM9X60_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/XC32/SAM/ARM926;../src/third_party/wolfMQTT;../src/third_party/wolfssl;../src/third_party/wolfssl/wolfssl"/>
+                  value="../src;../src/config/sam_9x60_curiosity;../src/config/sam_9x60_curiosity/library;../src/config/sam_9x60_curiosity/library/tcpip/src;../src/config/sam_9x60_curiosity/library/tcpip/src/common;../src/config/sam_9x60_curiosity/third_party_adapter/wolfMQTT/src/;../src/config/sam_9x60_curiosity_freertos;../src/config/sam_9x60_curiosity_freertos/library;../src/config/sam_9x60_curiosity_freertos/library/tcpip/src;../src/config/sam_9x60_curiosity_freertos/library/tcpip/src/common;../src/config/sam_9x60_curiosity_freertos/third_party_adapter/wolfMQTT/src/;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/SAM9X60_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/XC32/SAM/ARM926;../src/third_party/wolfMQTT;../src/third_party/wolfssl;../src/third_party/wolfssl/wolfssl"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -1356,7 +1372,7 @@
         <property key="exceptions" value="true"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/config/sam_9x60_curiosity_freertos;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/SAM9X60_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/XC32/SAM/ARM926"/>
+                  value="../src;../src/config/sam_9x60_curiosity;../src/config/sam_9x60_curiosity_freertos;../src/packs/CMSIS/;../src/packs/CMSIS/CMSIS/Core/Include;../src/packs/SAM9X60_DFP;../src/third_party/rtos/FreeRTOS/Source/include;../src/third_party/rtos/FreeRTOS/Source/portable/XC32/SAM/ARM926"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -1374,6 +1390,19 @@
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
       </C32CPP>
+      <C32Global>
+        <property key="common-include-directories" value=""/>
+        <property key="gp-relative-option" value=""/>
+        <property key="legacy-libc" value="false"/>
+        <property key="mdtcm" value=""/>
+        <property key="mitcm" value=""/>
+        <property key="mstacktcm" value="false"/>
+        <property key="omit-pack-options" value="1"/>
+        <property key="relaxed-math" value="false"/>
+        <property key="save-temps" value="false"/>
+        <property key="stack-smashing" value=""/>
+        <property key="wpo-lto" value="false"/>
+      </C32Global>
       <PICkit3PlatformTool>
         <property key="ADC 1" value="true"/>
         <property key="AutoSelectMemRanges" value="auto"/>

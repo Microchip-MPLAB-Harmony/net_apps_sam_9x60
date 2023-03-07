@@ -1,4 +1,4 @@
-configName: sam_9x60_curiosity_freertos
+configName: sam_9x60_curiosity
 folderName: ''
 format_version: v1.0
 frameworkPath: ../../..

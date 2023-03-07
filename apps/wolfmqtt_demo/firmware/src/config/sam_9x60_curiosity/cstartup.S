@@ -68,7 +68,7 @@ resetVector:
 /* Undefined Instruction */
 	ldr     pc, =undefined_instruction_irq_handler
 /* Software Interrupt */
-	ldr     pc, =software_interrupt_irq_handler
+	ldr     pc, =FreeRTOS_SWI_Handler
 /* Prefetch Abort */
 	ldr     pc, =prefetch_abort_irq_handler
 /* Data Abort */
@@ -76,7 +76,7 @@ resetVector:
 /* Reserved for future use */
 	.word   0
 /* Interrupt */
-	ldr     pc, =irqHandler
+	ldr     pc, =FreeRTOS_IRQ_Handler
 /* Fast interrupt */
 	ldr     pc, =fiqHandler
 
