@@ -123,21 +123,6 @@ extern "C" {
 // Section: Driver Configuration
 // *****************************************************************************
 // *****************************************************************************
-/*** MIIM Driver Configuration ***/
-#define DRV_MIIM_ETH_MODULE_ID_0                EMAC0_BASE_ADDRESS
-#define DRV_MIIM_DRIVER_INDEX_0                 0
-#define DRV_MIIM_INSTANCES_NUMBER           1
-#define DRV_MIIM_INSTANCE_OPERATIONS        4
-#define DRV_MIIM_INSTANCE_CLIENTS           2
-#define DRV_MIIM_CLIENT_OP_PROTECTION   false
-#define DRV_MIIM_COMMANDS   true
-#define DRV_MIIM_DRIVER_OBJECT              DRV_MIIM_OBJECT_BASE_Default            
-
-/* MIIM RTOS Configurations*/
-#define DRV_MIIM_RTOS_STACK_SIZE                1024
-#define DRV_MIIM_RTOS_TASK_PRIORITY             1
-
-
 
 
 // *****************************************************************************
@@ -272,72 +257,6 @@ extern "C" {
 
 
 
-/* Network Configuration Index 0 */
-#define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0 "EMAC0"
-#define TCPIP_IF_EMAC0
-
-#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_EK"
-#define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0               "00:04:25:1C:A0:03"
-
-#define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0         "192.168.100.14"
-#define TCPIP_NETWORK_DEFAULT_IP_MASK_IDX0            "255.255.255.0"
-#define TCPIP_NETWORK_DEFAULT_GATEWAY_IDX0            "192.168.100.1"
-#define TCPIP_NETWORK_DEFAULT_DNS_IDX0                "192.168.100.1"
-#define TCPIP_NETWORK_DEFAULT_SECOND_DNS_IDX0         "0.0.0.0"
-#define TCPIP_NETWORK_DEFAULT_POWER_MODE_IDX0         "full"
-#define TCPIP_NETWORK_DEFAULT_INTERFACE_FLAGS_IDX0            \
-                                                    TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
-                                                    TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
-                                                    TCPIP_NETWORK_CONFIG_IP_STATIC
-                                                    
-#define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0         DRV_EMAC0_Object
-
-
-// *****************************************************************************
-// EMAC0 -- as produced from drv_intmac.h.ftl
-
-#define EMAC_MIN_RX_SIZE                            64      // always multiple of 16!, 
-                                                            // less than 64 creates excessive fragmentation
-#define EMAC_MIN_TX_DESCRIPTORS                     1       // needed to accommodate zero copy and TCP traffic
-#define TCPIP_INTMAC_PERIPHERAL_CLK                 200000000
-#define TCPIP_INTMAC_MAX_NUMBER_OF_QUEUES           1
-#define TCPIP_INTMAC_MAX_RX_PACKET_POINTERS         1024
-#define DRV_EMAC0_BASE_ADDRESS                      EMAC0_BASE_ADDRESS
-#define TCPIP_INTMAC_MODULE_ID                                           EMAC0_BASE_ADDRESS
-#define DRV_EMAC0_CLIENTS_NUMBER                    1
-#define DRV_EMAC0_NUMBER_OF_QUEUES                  1
-#define DRV_EMAC0_INTERRUPT_SOURCE                  EMAC0_IRQn
-#define DRV_EMAC0_RMII_MODE                         1
-
-/*** MAC QUEUE 0 Configuration ***/
-#define DRV_EMAC0_TX_DESCRIPTORS_COUNT_QUE0         80
-#define DRV_EMAC0_TX_BUFF_SIZE_QUE0                 1536
-#define DRV_EMAC0_RX_DEVICE_MAX_DESCRIPTORS0        1024
-#define DRV_EMAC0_RX_DESCRIPTORS_COUNT_QUE0         100
-#define DRV_EMAC0_RX_BUFF_SIZE_QUE0                 128
-#define DRV_EMAC0_RX_BUFF_STATIC_COUNT_QUE0         0
-#define DRV_EMAC0_RX_BUFF_COUNT_THRESHOLD_QUE0      15
-#define DRV_EMAC0_RX_BUFF_ALLOC_COUNT_QUE0          30
-
-#define DRV_EMAC0_RX_FILTERS                        ( 0\
-                                                    | TCPIP_MAC_RX_FILTER_TYPE_BCAST_ACCEPT\
-                                                    | TCPIP_MAC_RX_FILTER_TYPE_MCAST_ACCEPT\
-                                                    | TCPIP_MAC_RX_FILTER_TYPE_UCAST_ACCEPT\
-                                                    | TCPIP_MAC_RX_FILTER_TYPE_CRC_ERROR_REJECT\
-                                                    )
-#define DRV_EMAC0_ETH_OPEN_FLAGS                    ( 0\
-                                                    | TCPIP_ETH_OPEN_AUTO\
-                                                    | TCPIP_ETH_OPEN_FDUPLEX\
-                                                    | TCPIP_ETH_OPEN_HDUPLEX\
-                                                    | TCPIP_ETH_OPEN_100\
-                                                    | TCPIP_ETH_OPEN_10\
-                                                    | TCPIP_ETH_OPEN_MDIX_AUTO\
-                                                    | TCPIP_ETH_OPEN_RMII\
-                                                    )
-
-// *****************************************************************************
-
-
 /*** IPv4 Configuration ***/
 #define TCPIP_IPV4_ARP_SLOTS                        10
 #define TCPIP_IPV4_EXTERN_PACKET_PROCESS   false
@@ -378,29 +297,6 @@ extern "C" {
 // *****************************************************************************
 // *****************************************************************************
 
-#define TCPIP_STACK_USE_IPV4
-#define TCPIP_STACK_USE_TCP
-#define TCPIP_STACK_USE_UDP
-
-#define TCPIP_STACK_TICK_RATE		        		5
-#define TCPIP_STACK_SECURE_PORT_ENTRIES             10
-
-#define TCPIP_STACK_ALIAS_INTERFACE_SUPPORT   false
-
-#define TCPIP_PACKET_LOG_ENABLE     0
-
-/* TCP/IP stack event notification */
-#define TCPIP_STACK_USE_EVENT_NOTIFICATION
-#define TCPIP_STACK_USER_NOTIFICATION   false
-#define TCPIP_STACK_DOWN_OPERATION   true
-#define TCPIP_STACK_IF_UP_DOWN_OPERATION   true
-#define TCPIP_STACK_MAC_DOWN_OPERATION  true
-#define TCPIP_STACK_INTERFACE_CHANGE_SIGNALING   false
-#define TCPIP_STACK_CONFIGURATION_SAVE_RESTORE   true
-#define TCPIP_STACK_EXTERN_PACKET_PROCESS   false
-#define TCPIP_STACK_RUN_TIME_INIT   false
-
-#define TCPIP_STACK_INTMAC_COUNT           1
 
 
 
@@ -412,7 +308,7 @@ extern "C" {
 
 /*** SNTP Configuration ***/
 #define TCPIP_STACK_USE_SNTP_CLIENT
-#define TCPIP_NTP_DEFAULT_IF		        	"EMAC0"
+#define TCPIP_NTP_DEFAULT_IF		        	""
 #define TCPIP_NTP_VERSION             			4
 #define TCPIP_NTP_DEFAULT_CONNECTION_TYPE   	IP_ADDRESS_TYPE_IPV4
 #define TCPIP_NTP_EPOCH		                	2208988800ul
@@ -507,24 +403,6 @@ extern "C" {
 #define NET_PRES_RTOS_TASK_PRIORITY             1
 	
 #define FREERTOS
-
-
-#define DRV_KSZ8081_PHY_CONFIG_FLAGS       ( 0 \
-                                                    | DRV_ETHPHY_CFG_RMII \
-                                                    )
-                                                    
-#define DRV_KSZ8081_PHY_LINK_INIT_DELAY            500
-#define DRV_KSZ8081_PHY_ADDRESS                    0
-#define DRV_KSZ8081_PHY_PERIPHERAL_ID              EMAC0_BASE_ADDRESS
-#define DRV_ETHPHY_KSZ8081_NEG_INIT_TMO            1
-#define DRV_ETHPHY_KSZ8081_NEG_DONE_TMO            2000
-#define DRV_ETHPHY_KSZ8081_RESET_CLR_TMO           500
-
-
-#define TCPIP_STACK_NETWORK_INTERAFCE_COUNT  	1
-
-
-
 
 
 
