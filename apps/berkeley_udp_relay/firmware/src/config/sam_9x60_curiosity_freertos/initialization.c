@@ -313,7 +313,7 @@ SYS_MODULE_OBJ TCPIP_STACK_Init(void)
 /*** MIIM Driver Instance 0 Configuration ***/
 static const DRV_MIIM_INIT drvMiimInitData_0 =
 {
-   .miimId = DRV_MIIM_ETH_MODULE_ID_0,
+   .ethphyId = DRV_MIIM_ETH_MODULE_ID_0,
 };
 
 /* Net Presentation Layer Data Definitions */

@@ -4,7 +4,7 @@
 
 
 project: berkeley_udp_relay
-creation_date: 2023-02-28T14:32:21.526-07:00[America/Phoenix]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
+creation_date: 2023-03-08T14:39:48.488-07:00[America/Phoenix]    # ISO 8601 format: https://www.w3.org/TR/NOTE-datetime
 operating_system: Windows 10
 mhc_mode: Standalone            # [IDE|Standalone|Headless]
 mhc_version: v3.8.2
@@ -13,11 +13,11 @@ plugin_version: NA        # if MPLAB X plugin only
 compiler: xc32
 
 modules:
-    - {name: "csp", version: "v3.14.0"}
-    - {name: "core", version: "v3.11.1"}
-    - {name: "dev_packs", version: "v3.14.0"}
+    - {name: "csp", version: "v3.15.0"}
+    - {name: "core", version: "v3.12.0-E1"}
+    - {name: "dev_packs", version: "v3.15.1"}
     - {name: "wolfssl", version: "v4.7.0"}
-    - {name: "net", version: "unknown"}
-    - {name: "bsp", version: "v3.14.0"}
+    - {name: "net", version: "v3.9.1"}
+    - {name: "bsp", version: "v3.15.0"}
     - {name: "crypto", version: "v3.7.6"}
 
