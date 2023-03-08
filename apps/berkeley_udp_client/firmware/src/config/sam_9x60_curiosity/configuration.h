@@ -96,19 +96,19 @@ extern "C" {
 
 #define SYS_CMD_ENABLE
 #define SYS_CMD_DEVICE_MAX_INSTANCES       SYS_CONSOLE_DEVICE_MAX_INSTANCES
-#define SYS_CMD_PRINT_BUFFER_SIZE          2560
+#define SYS_CMD_PRINT_BUFFER_SIZE          1024
 #define SYS_CMD_BUFFER_DMA_READY
 
 
 
 #define SYS_DEBUG_ENABLE
-#define SYS_DEBUG_GLOBAL_ERROR_LEVEL       SYS_ERROR_INFO
+#define SYS_DEBUG_GLOBAL_ERROR_LEVEL       SYS_ERROR_DEBUG
 #define SYS_DEBUG_BUFFER_DMA_READY
 #define SYS_DEBUG_USE_CONSOLE
 
 
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
-#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			2
+#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			1
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		0
 #define SYS_CONSOLE_PRINT_BUFFER_SIZE        		200
 
@@ -276,6 +276,11 @@ extern "C" {
 // *****************************************************************************
 
 
+	/*** tcpip_cmd Configuration ***/
+	#define TCPIP_STACK_COMMAND_ENABLE
+
+
+
 /* Network Configuration Index 0 */
 #define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0 "EMAC0"
 #define TCPIP_IF_EMAC0
@@ -318,7 +323,7 @@ extern "C" {
 
 /*** TCPIP Heap Configuration ***/
 #define TCPIP_STACK_USE_INTERNAL_HEAP
-#define TCPIP_STACK_DRAM_SIZE                       124287
+#define TCPIP_STACK_DRAM_SIZE                       129250
 #define TCPIP_STACK_DRAM_RUN_LIMIT                  2048
 
 #define TCPIP_STACK_MALLOC_FUNC                     malloc
@@ -344,6 +349,29 @@ extern "C" {
 // *****************************************************************************
 // *****************************************************************************
 
+#define TCPIP_STACK_USE_IPV4
+#define TCPIP_STACK_USE_TCP
+#define TCPIP_STACK_USE_UDP
+
+#define TCPIP_STACK_TICK_RATE		        		5
+#define TCPIP_STACK_SECURE_PORT_ENTRIES             10
+
+#define TCPIP_STACK_ALIAS_INTERFACE_SUPPORT   false
+
+#define TCPIP_PACKET_LOG_ENABLE     0
+
+/* TCP/IP stack event notification */
+#define TCPIP_STACK_USE_EVENT_NOTIFICATION
+#define TCPIP_STACK_USER_NOTIFICATION   false
+#define TCPIP_STACK_DOWN_OPERATION   true
+#define TCPIP_STACK_IF_UP_DOWN_OPERATION   true
+#define TCPIP_STACK_MAC_DOWN_OPERATION  true
+#define TCPIP_STACK_INTERFACE_CHANGE_SIGNALING   false
+#define TCPIP_STACK_CONFIGURATION_SAVE_RESTORE   true
+#define TCPIP_STACK_EXTERN_PACKET_PROCESS   false
+#define TCPIP_STACK_RUN_TIME_INIT   false
+
+#define TCPIP_STACK_INTMAC_COUNT           1
 
 
 

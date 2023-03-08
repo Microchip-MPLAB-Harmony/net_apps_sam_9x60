@@ -325,7 +325,7 @@ SYS_MODULE_OBJ TCPIP_STACK_Init(void)
 /*** MIIM Driver Instance 0 Configuration ***/
 static const DRV_MIIM_INIT drvMiimInitData_0 =
 {
-   .miimId = DRV_MIIM_ETH_MODULE_ID_0,
+   .ethphyId = DRV_MIIM_ETH_MODULE_ID_0,
 };
 
 /* Net Presentation Layer Data Definitions */
@@ -673,6 +673,11 @@ void SYS_Initialize ( void* data )
 
 
 
+   /* Network Presentation Layer Initialization */
+   sysObj.netPres = NET_PRES_Initialize(0, (SYS_MODULE_INIT*)&netPresInitData);
+   /* TCPIP Stack Initialization */
+   sysObj.tcpip = TCPIP_STACK_Init();
+   SYS_ASSERT(sysObj.tcpip != SYS_MODULE_OBJ_INVALID, "TCPIP_STACK_Init Failed" );
 
 
     CRYPT_WCCB_Initialize();

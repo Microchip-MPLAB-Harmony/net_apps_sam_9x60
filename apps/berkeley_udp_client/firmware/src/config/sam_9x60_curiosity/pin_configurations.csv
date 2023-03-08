@@ -1,7 +1,7 @@
 "Pin Number","Pin ID","Custom Name","Function","Direction","Latch","Open Drain","PIO Interrupt","Pull Up","Pull Down","Glitch/Debounce Filter",Slew Rate Control,Drive Strength
 A2,PB9,,Available,In,,,,,,,,
 A3,PB10,,Available,In,,,,,,,,
-A4,PB13,LED_BLUE,LED_AH,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
+A4,PB13,,Available,In,,,,,,,,
 A5,PB7,,Available,In,,,,,,,,
 A6,PB20,,Available,In,,,,,,,,
 A7,PB21,,Available,In,,,,,,,,
@@ -12,14 +12,14 @@ B5,PB15,,Available,In,,,,,,,,
 B6,PB23,,Available,In,,,,,,,,
 B7,PB22,,Available,In,,,,,,,,
 C1,PB1,,Available,In,,,,,,,,
-C2,PB12,LED_GREEN,LED_AH,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
+C2,PB12,,Available,In,,,,,,,,
 C6,PB19,,Available,In,,,,,,,,
 D1,PB3,,Available,In,,,,,,,,
 D2,PB6,,Available,In,,,,,,,,
 D3,PB2,,Available,In,,,,,,,,
-D6,PB11,LED_RED,LED_AH,n/a,n/a,No,Disabled,No,No,Disabled,No,Low
+D6,PB11,,Available,In,,,,,,,,
 E1,PB5,,Available,In,,,,,,,,
-E2,PB25,,Available,In,,,,,,,,
+E2,PB25,nRST_PB25,GPIO,Out,Low,No,Disabled,No,No,Disabled,No,Low
 E3,PB4,,Available,In,,,,,,,,
 E4,PB18,,Available,In,,,,,,,,
 E6,PB8,,Available,In,,,,,,,,
@@ -66,7 +66,7 @@ L8,PC19,,Available,In,,,,,,,,
 L9,PC25,,Available,In,,,,,,,,
 L10,PC29,,Available,In,,,,,,,,
 L12,PD14,,Available,In,,,,,,,,
-L13,PD18,SW1,SWITCH_AL,n/a,n/a,No,Disabled,Yes,No,Disabled,No,Low
+L13,PD18,,Available,In,,,,,,,,
 L15,PD12,,Available,In,,,,,,,,
 L16,PD10,,Available,In,,,,,,,,
 M1,PA8,,Available,In,,,,,,,,
