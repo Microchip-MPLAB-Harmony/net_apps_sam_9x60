@@ -74,7 +74,7 @@ static PIT_OBJECT pit;
 void PIT_TimerInitialize(void)
 {
     PIT_REGS->PIT_PIVR;
-    PIT_REGS->PIT_MR = PIT_MR_PIV(12499U) | PIT_MR_PITIEN_Msk;
+    PIT_REGS->PIT_MR = PIT_MR_PIV(12499U) | PIT_MR_PITEN_Msk | PIT_MR_PITIEN_Msk;
 }
 
 void PIT_TimerRestart(void)
