@@ -3,7 +3,7 @@
 	"category": "com.microchip.ide.project",
 	"content": {
 		"metaDataVersion": "1.1.0",
-		"name": "com.microchip.mcu32.mplabx.project.net_apps_sam_9x60_berkeley_udp_client_sam_9x60_curiosity_freertos",
+		"name": "com.microchip.mcu32.mplabx.project.net_apps_sam_9x60_berkeley_udp_client_sam_9x60_ek_freertos_mplabx",
 		"version": "3.7.0",
 		"displayName": "TCP/IP TCP Client Example for SAM 9x60 Family",
 		"projectName": "berkeley_udp_client",
@@ -39,7 +39,7 @@
 		"author": "Microchip",
 		"subcategories": [
 			[
-				"Development Kit", "SAM9X60-EK Evaluation Kit"
+				"Development Kit", "SAM9X60-Curiosity"
 			],
 			[
 				"Harmony", "Middleware", "TCP/IP", "TCPIP_TCP_CLIENT"

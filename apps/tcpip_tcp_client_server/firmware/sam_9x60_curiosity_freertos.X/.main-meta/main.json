@@ -39,7 +39,7 @@
 		"author": "Microchip",
 		"subcategories": [
 			[
-				"Development Kit", "SAM9X60-EK Evaluation Kit"
+				"Development Kit", "SAM9X60-Curiosity"
 			],
 			[
 				"Harmony", "Middleware", "TCP/IP", "TCPIP_TCP_CLIENT"
