@@ -857,7 +857,7 @@
     <conf name="sam_9x60_ek_mplabx" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>SAM9X60</targetDevice>
+        <targetDevice>SAM9X60D1G</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>

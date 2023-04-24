@@ -623,13 +623,13 @@ void SYS_Initialize ( void* data )
 
 
 
-	BSP_Initialize();
 	PIT_TimerInitialize();
 
  
     TC0_CH0_TimerInitialize(); 
      
     
+	BSP_Initialize();
     MMU_Initialize();
 
     AIC_INT_Initialize();
