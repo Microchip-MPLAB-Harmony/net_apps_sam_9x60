@@ -111,7 +111,7 @@ extern "C" {
 
 
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
-#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			1
+#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			2
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		0
 #define SYS_CONSOLE_PRINT_BUFFER_SIZE        		200
 
@@ -260,28 +260,6 @@ extern "C" {
 	#define TCPIP_STACK_COMMAND_ENABLE
 
 
-
-/* Network Configuration Index 0 */
-#define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0 "EMAC0"
-#define TCPIP_IF_EMAC0
-
-#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_EK"
-#define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0               "00:04:25:1C:A0:03"
-
-#define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0         "192.168.100.14"
-#define TCPIP_NETWORK_DEFAULT_IP_MASK_IDX0            "255.255.255.0"
-#define TCPIP_NETWORK_DEFAULT_GATEWAY_IDX0            "192.168.100.1"
-#define TCPIP_NETWORK_DEFAULT_DNS_IDX0                "192.168.100.1"
-#define TCPIP_NETWORK_DEFAULT_SECOND_DNS_IDX0         "0.0.0.0"
-#define TCPIP_NETWORK_DEFAULT_POWER_MODE_IDX0         "full"
-#define TCPIP_NETWORK_DEFAULT_INTERFACE_FLAGS_IDX0            \
-                                                    TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
-                                                    TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
-                                                    TCPIP_NETWORK_CONFIG_IP_STATIC
-                                                    
-#define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0         DRV_EMAC0_Object
-
-
 // *****************************************************************************
 // EMAC0 -- as produced from drv_intmac.h.ftl
 
@@ -325,6 +303,28 @@ extern "C" {
                                                     )
 
 // *****************************************************************************
+
+
+/* Network Configuration Index 0 */
+#define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0 "EMAC0"
+#define TCPIP_IF_EMAC0
+
+#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_D1G"
+#define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0               "00:04:25:1C:A0:03"
+
+#define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0         "192.168.100.14"
+#define TCPIP_NETWORK_DEFAULT_IP_MASK_IDX0            "255.255.255.0"
+#define TCPIP_NETWORK_DEFAULT_GATEWAY_IDX0            "192.168.100.1"
+#define TCPIP_NETWORK_DEFAULT_DNS_IDX0                "192.168.100.1"
+#define TCPIP_NETWORK_DEFAULT_SECOND_DNS_IDX0         "0.0.0.0"
+#define TCPIP_NETWORK_DEFAULT_POWER_MODE_IDX0         "full"
+#define TCPIP_NETWORK_DEFAULT_INTERFACE_FLAGS_IDX0            \
+                                                    TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_IP_STATIC
+                                                    
+#define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0         DRV_EMAC0_Object
+
 
 
 
@@ -489,7 +489,7 @@ extern "C" {
 #define NO_DEV_RANDOM
 #define HAVE_HASHDRBG
 #define WC_NO_HARDEN
-#define SINGLE_THREADED
+#define FREERTOS
 #define NO_SIG_WRAPPER
 #define NO_ERROR_STRINGS
 #define NO_WOLFSSL_MEMORY
