@@ -7156,7 +7156,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="sys_command" name="SYS_COMMAND_MAX_CMD_ARGS"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;sys_command&gt;
   &lt;sys_command dnOrder=&quot;0&quot; id=&quot;SYS_COMMAND_MAX_CMD_ARGS&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;16&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/sys_command&gt;
 &lt;/sys_command&gt;
 </value>
@@ -13190,7 +13192,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\system\command\sys_command.h</file>
-         <hash>8d8b4c4f428355afecc0771ff799785869386e7cfb079e327773628226ee2e2d</hash>
+         <hash>f3d1db6894346da9ad061dc68e1fff87bd0de591ae655097bc09de44c143409e</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\ddram.ld</file>
