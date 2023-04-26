@@ -102,13 +102,13 @@ extern "C" {
 
 
 #define SYS_DEBUG_ENABLE
-#define SYS_DEBUG_GLOBAL_ERROR_LEVEL       SYS_ERROR_INFO
+#define SYS_DEBUG_GLOBAL_ERROR_LEVEL       SYS_ERROR_DEBUG
 #define SYS_DEBUG_BUFFER_DMA_READY
 #define SYS_DEBUG_USE_CONSOLE
 
 
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
-#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			1
+#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			2
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		0
 #define SYS_CONSOLE_PRINT_BUFFER_SIZE        		200
 
@@ -232,25 +232,8 @@ extern "C" {
 
 
 
-/* Network Configuration Index 0 */
-#define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0 "EMAC0"
-#define TCPIP_IF_EMAC0
-
-#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_EK"
-#define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0               "00:04:25:1C:A0:03"
-
-#define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0         "192.168.100.14"
-#define TCPIP_NETWORK_DEFAULT_IP_MASK_IDX0            "255.255.255.0"
-#define TCPIP_NETWORK_DEFAULT_GATEWAY_IDX0            "192.168.100.1"
-#define TCPIP_NETWORK_DEFAULT_DNS_IDX0                "192.168.100.1"
-#define TCPIP_NETWORK_DEFAULT_SECOND_DNS_IDX0         "0.0.0.0"
-#define TCPIP_NETWORK_DEFAULT_POWER_MODE_IDX0         "full"
-#define TCPIP_NETWORK_DEFAULT_INTERFACE_FLAGS_IDX0            \
-                                                    TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
-                                                    TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
-                                                    TCPIP_NETWORK_CONFIG_IP_STATIC
-                                                    
-#define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0         DRV_EMAC0_Object
+	/*** tcpip_cmd Configuration ***/
+	#define TCPIP_STACK_COMMAND_ENABLE
 
 
 // *****************************************************************************
@@ -298,8 +281,25 @@ extern "C" {
 // *****************************************************************************
 
 
-	/*** tcpip_cmd Configuration ***/
-	#define TCPIP_STACK_COMMAND_ENABLE
+/* Network Configuration Index 0 */
+#define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0 "EMAC0"
+#define TCPIP_IF_EMAC0
+
+#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_DIG"
+#define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0               "00:04:25:1C:A0:03"
+
+#define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0         "192.168.100.14"
+#define TCPIP_NETWORK_DEFAULT_IP_MASK_IDX0            "255.255.255.0"
+#define TCPIP_NETWORK_DEFAULT_GATEWAY_IDX0            "192.168.100.1"
+#define TCPIP_NETWORK_DEFAULT_DNS_IDX0                "192.168.100.1"
+#define TCPIP_NETWORK_DEFAULT_SECOND_DNS_IDX0         "0.0.0.0"
+#define TCPIP_NETWORK_DEFAULT_POWER_MODE_IDX0         "full"
+#define TCPIP_NETWORK_DEFAULT_INTERFACE_FLAGS_IDX0            \
+                                                    TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_IP_STATIC
+                                                    
+#define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0         DRV_EMAC0_Object
 
 
 
@@ -329,7 +329,7 @@ extern "C" {
 
 /*** TCPIP Heap Configuration ***/
 #define TCPIP_STACK_USE_INTERNAL_HEAP
-#define TCPIP_STACK_DRAM_SIZE                       39250
+#define TCPIP_STACK_DRAM_SIZE                       124287
 #define TCPIP_STACK_DRAM_RUN_LIMIT                  2048
 
 #define TCPIP_STACK_MALLOC_FUNC                     malloc
@@ -452,10 +452,11 @@ extern "C" {
 // ---------- FUNCTIONAL CONFIGURATION END ----------
 
 #define DRV_KSZ8081_PHY_CONFIG_FLAGS       ( 0 \
+                                                    | DRV_ETHPHY_CFG_RMII \
                                                     )
                                                     
 #define DRV_KSZ8081_PHY_LINK_INIT_DELAY            500
-#define DRV_KSZ8081_PHY_ADDRESS                    1
+#define DRV_KSZ8081_PHY_ADDRESS                    0
 #define DRV_KSZ8081_PHY_PERIPHERAL_ID              EMAC0_BASE_ADDRESS
 #define DRV_ETHPHY_KSZ8081_NEG_INIT_TMO            1
 #define DRV_ETHPHY_KSZ8081_NEG_DONE_TMO            2000
