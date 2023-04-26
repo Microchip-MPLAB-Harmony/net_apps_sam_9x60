@@ -153,6 +153,17 @@ const TCPIP_TCP_MODULE_CONFIG tcpipTCPInitData =
 
 
 
+/*** SNTP Client Initialization Data ***/
+const TCPIP_SNTP_MODULE_CONFIG tcpipSNTPInitData =
+{
+    .ntp_server             = TCPIP_NTP_SERVER,
+    .ntp_interface          = TCPIP_NTP_DEFAULT_IF,
+    .ntp_connection_type    = TCPIP_NTP_DEFAULT_CONNECTION_TYPE,
+    .ntp_reply_timeout      = TCPIP_NTP_REPLY_TIMEOUT,
+    .ntp_stamp_timeout      = TCPIP_NTP_TIME_STAMP_TMO,
+    .ntp_success_interval   = TCPIP_NTP_QUERY_INTERVAL,
+    .ntp_error_interval     = TCPIP_NTP_FAST_QUERY_INTERVAL,
+};
 
 
 
@@ -206,6 +217,13 @@ const TCPIP_DNS_CLIENT_MODULE_CONFIG tcpipDNSClientInitData =
 };
 
 
+/*** IPv6 Initialization Data ***/
+const TCPIP_IPV6_MODULE_CONFIG  tcpipIPv6InitData = 
+{
+    .rxfragmentBufSize      = TCPIP_IPV6_RX_FRAGMENTED_BUFFER_SIZE,
+    .fragmentPktRxTimeout   = TCPIP_IPV6_FRAGMENT_PKT_TIMEOUT,
+};
+
 
 /*** IPv4 Initialization Data ***/
 
@@ -258,12 +276,16 @@ const TCPIP_STACK_MODULE_CONFIG TCPIP_STACK_MODULE_CONFIG_TBL [] =
     {TCPIP_MODULE_ICMP,             0},                             // TCPIP_MODULE_ICMP
 
     {TCPIP_MODULE_ARP,              &tcpipARPInitData},             // TCPIP_MODULE_ARP
+    {TCPIP_MODULE_IPV6,             &tcpipIPv6InitData},            // TCPIP_MODULE_IPV6
+    {TCPIP_MODULE_ICMPV6,           0},                             // TCPIP_MODULE_ICMPV6
+    {TCPIP_MODULE_NDP,              0},                             // TCPIP_MODULE_NDP
     {TCPIP_MODULE_UDP,              &tcpipUDPInitData},             // TCPIP_MODULE_UDP
     {TCPIP_MODULE_TCP,              &tcpipTCPInitData},             // TCPIP_MODULE_TCP
     {TCPIP_MODULE_DHCP_CLIENT,      &tcpipDHCPInitData},            // TCPIP_MODULE_DHCP_CLIENT
     {TCPIP_MODULE_ANNOUNCE,         &tcpipAnnounceInitData},        // TCPIP_MODULE_ANNOUNCE
     {TCPIP_MODULE_DNS_CLIENT,       &tcpipDNSClientInitData},       // TCPIP_MODULE_DNS_CLIENT
     {TCPIP_MODULE_NBNS,             &tcpipNBNSInitData},            // TCPIP_MODULE_NBNS
+    {TCPIP_MODULE_SNTP,             &tcpipSNTPInitData},            // TCPIP_MODULE_SNTP
 
     {TCPIP_MODULE_BERKELEY,         &tcpipBerkeleyInitData},        // TCPIP_MODULE_BERKELEY
     { TCPIP_MODULE_MANAGER,         &tcpipHeapConfig },             // TCPIP_MODULE_MANAGER
