@@ -711,6 +711,7 @@ typedef struct TCPIP_STACK_INIT
 #include "tcpip/berkeley_api.h"
 #include "tcpip/icmp.h"
 #include "tcpip/nbns.h"
+#include "tcpip/sntp.h"
 #include "tcpip/tcpip_announce.h"
 #include "tcpip/lldp.h"
 #include "tcpip/tcpip_commands.h"
