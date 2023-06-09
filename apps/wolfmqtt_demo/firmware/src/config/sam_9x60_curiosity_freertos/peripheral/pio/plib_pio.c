@@ -65,7 +65,8 @@ void PIO_Initialize ( void )
     ((pio_registers_t*)PIO_PORT_A)->PIO_PER = ~0x1f8600;
     ((pio_registers_t*)PIO_PORT_A)->PIO_MDDR = 0xFFFFFFFFU;
     /* PORTA Pull Up Enable/Disable as per MHC selection */
-    ((pio_registers_t*)PIO_PORT_A)->PIO_PUDR = 0xFFFFFFFFU;
+    ((pio_registers_t*)PIO_PORT_A)->PIO_PUDR = ~0x20000000U;
+    ((pio_registers_t*)PIO_PORT_A)->PIO_PUER = 0x20000000;
     /* PORTA Pull Down Enable/Disable as per MHC selection */
     ((pio_registers_t*)PIO_PORT_A)->PIO_PPDDR = ~0x200U;
     ((pio_registers_t*)PIO_PORT_A)->PIO_PPDER = 0x200;
@@ -96,8 +97,8 @@ void PIO_Initialize ( void )
     /* PORTB Output Write Enable */
     ((pio_registers_t*)PIO_PORT_B)->PIO_OWER = PIO_OWER_Msk;
     /* PORTB Output Direction Enable */
-    ((pio_registers_t*)PIO_PORT_B)->PIO_OER = 0x2003800;
-    ((pio_registers_t*)PIO_PORT_B)->PIO_ODR = ~0x2003800U;
+    ((pio_registers_t*)PIO_PORT_B)->PIO_OER = 0x2002800;
+    ((pio_registers_t*)PIO_PORT_B)->PIO_ODR = ~0x2002800U;
     /* Initialize PORTB pin state */
     ((pio_registers_t*)PIO_PORT_B)->PIO_ODSR = 0x2000000;
     /* PORTB Slew rate control */
@@ -125,7 +126,9 @@ void PIO_Initialize ( void )
     ((pio_registers_t*)PIO_PORT_C)->PIO_DRIVER = 0x0;
 
     /************************ PIO D Initialization ************************/
-    ((pio_registers_t*)PIO_PORT_D)->PIO_PER = 0xFFFFFFFFU;
+    /* PORTD PIO Disable and Peripheral Enable*/
+    ((pio_registers_t*)PIO_PORT_D)->PIO_PDR = 0x20000;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_PER = ~0x20000;
     ((pio_registers_t*)PIO_PORT_D)->PIO_MDDR = 0xFFFFFFFFU;
     /* PORTD Pull Up Enable/Disable as per MHC selection */
     ((pio_registers_t*)PIO_PORT_D)->PIO_PUDR = 0xFFFFFFFFU;
@@ -134,8 +137,8 @@ void PIO_Initialize ( void )
     /* PORTD Output Write Enable */
     ((pio_registers_t*)PIO_PORT_D)->PIO_OWER = PIO_OWER_Msk;
     /* PORTD Output Direction Enable */
-    ((pio_registers_t*)PIO_PORT_D)->PIO_OER = 0x0;
-    ((pio_registers_t*)PIO_PORT_D)->PIO_ODR = ~0x0U;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_OER = 0x2a0000;
+    ((pio_registers_t*)PIO_PORT_D)->PIO_ODR = ~0x2a0000U;
     /* Initialize PORTD pin state */
     ((pio_registers_t*)PIO_PORT_D)->PIO_ODSR = 0x0;
     /* PORTD Slew rate control */
