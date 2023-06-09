@@ -60,18 +60,7 @@
 // Section: BSP Macros
 // *****************************************************************************
 // *****************************************************************************
-/*** LED Macros for LED_AH_PB13 ***/
-#define LED_AH_PB13_Toggle() (PIOB_REGS->PIO_ODSR ^= (1<<13))
-#define LED_AH_PB13_On() (PIOB_REGS->PIO_SODR = (1<<13))
-#define LED_AH_PB13_Off() (PIOB_REGS->PIO_CODR = (1<<13))
-/*** LED Macros for LED_AH_PB11 ***/
-#define LED_AH_PB11_Toggle() (PIOB_REGS->PIO_ODSR ^= (1<<11))
-#define LED_AH_PB11_On() (PIOB_REGS->PIO_SODR = (1<<11))
-#define LED_AH_PB11_Off() (PIOB_REGS->PIO_CODR = (1<<11))
-/*** SWITCH Macros for SWITCH_AL_PD18 ***/
-#define SWITCH_AL_PD18_Get() ((PIOD_REGS->PIO_PDSR >> 18) & 0x1)
-#define SWITCH_AL_PD18_STATE_PRESSED 0
-#define SWITCH_AL_PD18_STATE_RELEASED 1
+
 
 
 
