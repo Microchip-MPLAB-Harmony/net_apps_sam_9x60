@@ -18,30 +18,28 @@
   **************************************************************************/
 
 //DOM-IGNORE-BEGIN
-/*****************************************************************************
- Copyright (C) 2013-2018 Microchip Technology Inc. and its subsidiaries.
+/*
+Copyright (C) 2013-2023, Microchip Technology Inc., and its subsidiaries. All rights reserved.
 
-Microchip Technology Inc. and its subsidiaries.
+The software and documentation is provided by microchip and its contributors
+"as is" and any express, implied or statutory warranties, including, but not
+limited to, the implied warranties of merchantability, fitness for a particular
+purpose and non-infringement of third party intellectual property rights are
+disclaimed to the fullest extent permitted by law. In no event shall microchip
+or its contributors be liable for any direct, indirect, incidental, special,
+exemplary, or consequential damages (including, but not limited to, procurement
+of substitute goods or services; loss of use, data, or profits; or business
+interruption) however caused and on any theory of liability, whether in contract,
+strict liability, or tort (including negligence or otherwise) arising in any way
+out of the use of the software and documentation, even if advised of the
+possibility of such damage.
 
-Subject to your compliance with these terms, you may use Microchip software 
-and any derivatives exclusively with Microchip products. It is your 
-responsibility to comply with third party license terms applicable to your 
-use of third party software (including open source software) that may 
-accompany Microchip software.
-
-THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
-EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
-WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR 
-PURPOSE.
-
-IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
-WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
-BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE 
-FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN 
-ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, 
-THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*****************************************************************************/
+Except as expressly permitted hereunder and subject to the applicable license terms
+for any third-party software incorporated in the software and any applicable open
+source software license terms, no license or other rights, whether express or
+implied, are granted under any patent or other intellectual property rights of
+Microchip or any third party.
+*/
 
 //DOM-IGNORE-END
 
@@ -79,6 +77,62 @@ THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 // Section: Data Types
 // *****************************************************************************
 // *****************************************************************************
+
+
+// *****************************************************************************
+/* Ethernet PHY Driver Module Index Numbers
+
+  Summary:
+    Ethernet PHY driver index definitions.
+
+  Description:
+    These constants provide the Ethernet PHY driver index definitions.
+
+  Remarks:
+    These constants should be used in place of hard-coded numeric literals.
+
+    These values should be passed into the DRV_ETHPHY_Initialize and
+    DRV_ETHPHY_Open routines to identify the driver instance in use.
+*/
+
+#define DRV_ETHPHY_INDEX_0         0
+#define DRV_ETHPHY_INDEX_1         1
+
+// *****************************************************************************
+/* Ethernet PHY Driver Module Index Count
+
+  Summary:
+    Number of valid Ethernet PHY driver indices.
+
+  Description:
+    This constant identifies the number of valid Ethernet PHY driver indices.
+
+  Remarks:
+    This constant should be used in place of hard-coded numeric literals.
+
+    This value is derived from part-specific header files defined as part of the
+    peripheral libraries.
+*/
+
+#define DRV_ETHPHY_INDEX_COUNT     1
+        
+// *****************************************************************************
+/* Ethernet PHY Driver Module Instance Client Count
+
+  Summary:
+    Number of simultaneous Clients for Ethernet PHY driver instance.
+
+  Description:
+    This constant identifies the number of simultaneous Clients for an Ethernet PHY driver instance
+
+  Remarks:
+    This constant should be used in place of hard-coded numeric literals.
+
+    This value is derived from part-specific header files defined as part of the
+    peripheral libraries.
+*/
+#define DRV_ETHPHY_CLIENTS_NUMBER     1
+
 
 // *****************************************************************************
 /* Ethernet PHY Driver Operation Result
@@ -838,7 +892,7 @@ typedef struct
     
     // Do something
     
-    objectHandle = DRV_ETHPHY_Initialize(0, (SYS_MODULE_INIT*)&init);
+    objectHandle = DRV_ETHPHY_Initialize(DRV_ETHPHY_INDEX_0, (SYS_MODULE_INIT*)&init);
     if (SYS_MODULE_OBJ_INVALID == objectHandle)
     {
         // Handle error
@@ -1111,7 +1165,7 @@ void DRV_ETHPHY_Tasks( SYS_MODULE_OBJ object );
     <code>
     DRV_HANDLE  handle;
 
-    handle = DRV_ETHPHY_Open(0, 0);
+    handle = DRV_ETHPHY_Open(DRV_ETHPHY_INDEX_0, 0);
     if (DRV_HANDLE_INVALID == handle)
     {
         // Unable to open the driver
@@ -1734,10 +1788,10 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_VendorDataGet( DRV_HANDLE handle, uint32_t* pVendor
 	<p><b>Implementation:</b> Dynamic</p>
 
   Description:
-    This function sets the current value of the vendor data.
+    This function returns the current value of the vendor data.
     Each DRV_ETHPHY client object maintains data that could be used
     for vendor specific operations.
-    This routine allows setting of the vendor specific data.
+    This routine allows retrieving of the vendor specific data.
 
   Precondition:
     - The DRV_ETHPHY_Initialize routine must have been called.
@@ -1746,8 +1800,8 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_VendorDataGet( DRV_HANDLE handle, uint32_t* pVendor
     - DRV_ETHPHY_Setup must have been called to properly configure the PHY
 
   Parameters:
-    - handle        - Client's driver handle (returned from DRV_ETHPHY_Open)
-    - vendorData    - vendor specific data to be set
+    - handle  - Client's driver handle (returned from DRV_ETHPHY_Open)
+    - vendorData    - vendor specific data
 
   Returns:
     DRV_ETHPHY_RES_OK  - if the vendor data is stored in the client object
@@ -2058,7 +2112,6 @@ typedef struct DRV_ETHPHY_OBJECT_BASE_TYPE
 extern const DRV_ETHPHY_OBJECT_BASE  DRV_ETHPHY_OBJECT_BASE_Default;
 extern const DRV_ETHPHY_OBJECT_BASE  DRV_ETHPHY_OBJECT_BASE_smsc9303;
 extern const DRV_ETHPHY_OBJECT_BASE  DRV_ETHPHY_OBJECT_BASE_ksz8863;
-extern const DRV_ETHPHY_OBJECT_BASE  DRV_ETHPHY_OBJECT_BASE_lan9354;
 
 
 // *****************************************************************************
@@ -2083,7 +2136,6 @@ extern const DRV_ETHPHY_OBJECT  DRV_ETHPHY_OBJECT_KSZ8863;
 extern const DRV_ETHPHY_OBJECT  DRV_ETHPHY_OBJECT_LAN867x;
 extern const DRV_ETHPHY_OBJECT  DRV_ETHPHY_OBJECT_LAN8742A;
 extern const DRV_ETHPHY_OBJECT  DRV_ETHPHY_OBJECT_VSC8540;
-extern const DRV_ETHPHY_OBJECT  DRV_ETHPHY_OBJECT_LAN9354;
 
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus
