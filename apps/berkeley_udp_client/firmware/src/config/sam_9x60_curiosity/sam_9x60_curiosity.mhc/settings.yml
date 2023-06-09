@@ -1,7 +1,7 @@
 format_version: v1.0
 configName: sam_9x60_curiosity
 folderName: sam_9x60_curiosity
-frameworkPath: C:\microchip\h3
+frameworkPath: C:\harmony\h3
 processor: SAM9X60D1G
 projectName: sam_9x60_curiosity
 settings:
