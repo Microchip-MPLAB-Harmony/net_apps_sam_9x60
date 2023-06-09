@@ -111,7 +111,11 @@ void _TCPIPStack_Condition(bool cond, const char* fileName, const char* funcName
 #include "tcpip/src/tcpip_manager_control.h"
 
 #include "tcpip/src/tcpip_announce_manager.h"
+#include "tcpip/src/ndp_manager.h"
 #include "tcpip/src/ipv4_manager.h"
+#include "tcpip/src/ipv6_manager.h"
+#include "tcpip/src/icmpv6_manager.h"
+#include "tcpip/src/dhcpv6_manager.h"
 #include "tcpip/src/icmp_manager.h"
 #include "tcpip/src/dhcp_manager.h"
 #include "tcpip/src/arp_manager.h"

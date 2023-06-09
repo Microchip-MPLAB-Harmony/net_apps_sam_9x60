@@ -113,7 +113,7 @@ extern "C" {
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
 #define SYS_CONSOLE_UART_MAX_INSTANCES 	   			2
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		0
-#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		2560
+#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		200
 
 
 
@@ -123,6 +123,21 @@ extern "C" {
 // Section: Driver Configuration
 // *****************************************************************************
 // *****************************************************************************
+/*** MIIM Driver Configuration ***/
+#define DRV_MIIM_ETH_MODULE_ID_0                EMAC0_BASE_ADDRESS
+#define DRV_MIIM_DRIVER_INDEX_0                 0
+#define DRV_MIIM_INSTANCES_NUMBER           1
+#define DRV_MIIM_INSTANCE_OPERATIONS        4
+#define DRV_MIIM_INSTANCE_CLIENTS           2
+#define DRV_MIIM_CLIENT_OP_PROTECTION   false
+#define DRV_MIIM_COMMANDS   false
+#define DRV_MIIM_DRIVER_OBJECT              DRV_MIIM_OBJECT_BASE_Default            
+
+/* MIIM RTOS Configurations*/
+#define DRV_MIIM_RTOS_STACK_SIZE                1024
+#define DRV_MIIM_RTOS_TASK_PRIORITY             1
+
+
 
 
 // *****************************************************************************
@@ -178,24 +193,16 @@ extern "C" {
 #define WOLFSSL_USER_IO
 #define NO_WRITEV
 #define MICROCHIP_TCPIP
-#define HAVE_FFDHE_2048
-#define HAVE_FFDHE_3072
-#define HAVE_FFDHE_4096
-#define HAVE_FFDHE_6144
-#define HAVE_FFDHE_8192
 #define WOLFSSL_DTLS
 #define NO_PWDBASED
-#define HAVE_TLS_EXTENSIONS
-#define WOLFSSL_TLS13
-#define HAVE_SUPPORTED_CURVES
 #define NO_ERROR_STRINGS
 #define NO_OLD_TLS
 
 
 /*** TCP Configuration ***/
 #define TCPIP_TCP_MAX_SEG_SIZE_TX		        	1460
-#define TCPIP_TCP_SOCKET_DEFAULT_TX_SIZE			2500
-#define TCPIP_TCP_SOCKET_DEFAULT_RX_SIZE			2500
+#define TCPIP_TCP_SOCKET_DEFAULT_TX_SIZE			512
+#define TCPIP_TCP_SOCKET_DEFAULT_RX_SIZE			512
 #define TCPIP_TCP_DYNAMIC_OPTIONS             			true
 #define TCPIP_TCP_START_TIMEOUT_VAL		        	1000
 #define TCPIP_TCP_DELAYED_ACK_TIMEOUT		    		100
@@ -252,9 +259,115 @@ extern "C" {
 
 
 
+#define TCPIP_STACK_USE_ICMPV6_SERVER
+
+
+#define TCPIP_IPV6_NDP_MAX_RTR_SOLICITATION_DELAY 	1
+#define TCPIP_IPV6_NDP_RTR_SOLICITATION_INTERVAL 	4
+#define TCPIP_IPV6_NDP_MAX_RTR_SOLICITATIONS 		3
+#define TCPIP_IPV6_NDP_MAX_MULTICAST_SOLICIT 		3
+#define TCPIP_IPV6_NDP_MAX_UNICAST_SOLICIT 			3
+#define TCPIP_IPV6_NDP_MAX_ANYCAST_DELAY_TIME 		1
+#define TCPIP_IPV6_NDP_MAX_NEIGHBOR_ADVERTISEMENT 	3
+#define TCPIP_IPV6_NDP_REACHABLE_TIME 				30
+#define TCPIP_IPV6_NDP_RETRANS_TIMER 				1
+#define TCPIP_IPV6_NDP_DELAY_FIRST_PROBE_TIME 		5
+#define TCPIP_IPV6_NDP_VALID_LIFETIME_TWO_HOURS 	(60 * 60 * 2)
+#define TCPIP_IPV6_MTU_INCREASE_TIMEOUT 			600
+#define TCPIP_IPV6_NDP_TASK_TIMER_RATE 				32
+
+
 	/*** tcpip_cmd Configuration ***/
 	#define TCPIP_STACK_COMMAND_ENABLE
 
+
+// *****************************************************************************
+// EMAC0 -- as produced from drv_intmac.h.ftl
+
+#define EMAC_MIN_RX_SIZE                            64      // always multiple of 16!, 
+                                                            // less than 64 creates excessive fragmentation
+#define EMAC_MIN_TX_DESCRIPTORS                     1       // needed to accommodate zero copy and TCP traffic
+#define TCPIP_INTMAC_PERIPHERAL_CLK                 200000000
+#define TCPIP_INTMAC_MAX_NUMBER_OF_QUEUES           1
+#define TCPIP_INTMAC_MAX_RX_PACKET_POINTERS         100
+#define DRV_EMAC0_BASE_ADDRESS                      EMAC0_BASE_ADDRESS
+#define TCPIP_INTMAC_MODULE_ID                                           EMAC0_BASE_ADDRESS
+#define DRV_EMAC0_CLIENTS_NUMBER                    1
+#define DRV_EMAC0_NUMBER_OF_QUEUES                  1
+#define DRV_EMAC0_INTERRUPT_SOURCE                  EMAC0_IRQn
+#define DRV_EMAC0_RMII_MODE                         1
+
+/*** MAC QUEUE 0 Configuration ***/
+#define DRV_EMAC0_TX_DESCRIPTORS_COUNT_QUE0         80
+#define DRV_EMAC0_TX_BUFF_SIZE_QUE0                 1536
+#define DRV_EMAC0_RX_DEVICE_MAX_DESCRIPTORS0        1024
+#define DRV_EMAC0_RX_DESCRIPTORS_COUNT_QUE0         100
+#define DRV_EMAC0_RX_BUFF_SIZE_QUE0                 128
+#define DRV_EMAC0_RX_BUFF_STATIC_COUNT_QUE0         0
+#define DRV_EMAC0_RX_BUFF_COUNT_THRESHOLD_QUE0      15
+#define DRV_EMAC0_RX_BUFF_ALLOC_COUNT_QUE0          30
+
+#define DRV_EMAC0_RX_FILTERS                        ( 0\
+                                                    | TCPIP_MAC_RX_FILTER_TYPE_BCAST_ACCEPT\
+                                                    | TCPIP_MAC_RX_FILTER_TYPE_MCAST_ACCEPT\
+                                                    | TCPIP_MAC_RX_FILTER_TYPE_UCAST_ACCEPT\
+                                                    | TCPIP_MAC_RX_FILTER_TYPE_CRC_ERROR_REJECT\
+                                                    )
+#define DRV_EMAC0_ETH_OPEN_FLAGS                    ( 0\
+                                                    | TCPIP_ETH_OPEN_AUTO\
+                                                    | TCPIP_ETH_OPEN_FDUPLEX\
+                                                    | TCPIP_ETH_OPEN_HDUPLEX\
+                                                    | TCPIP_ETH_OPEN_100\
+                                                    | TCPIP_ETH_OPEN_10\
+                                                    | TCPIP_ETH_OPEN_MDIX_AUTO\
+                                                    | TCPIP_ETH_OPEN_RMII\
+                                                    )
+
+// *****************************************************************************
+
+
+/* Network Configuration Index 0 */
+#define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0 "EMAC0"
+#define TCPIP_IF_EMAC0
+
+#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_D1G"
+#define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0               "00:04:25:1C:A0:03"
+
+#define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0         "192.168.100.14"
+#define TCPIP_NETWORK_DEFAULT_IP_MASK_IDX0            "255.255.255.0"
+#define TCPIP_NETWORK_DEFAULT_GATEWAY_IDX0            "192.168.100.1"
+#define TCPIP_NETWORK_DEFAULT_DNS_IDX0                "192.168.100.1"
+#define TCPIP_NETWORK_DEFAULT_SECOND_DNS_IDX0         "0.0.0.0"
+#define TCPIP_NETWORK_DEFAULT_POWER_MODE_IDX0         "full"
+#define TCPIP_NETWORK_DEFAULT_INTERFACE_FLAGS_IDX0            \
+                                                    TCPIP_NETWORK_CONFIG_DHCP_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_DNS_CLIENT_ON |\
+                                                    TCPIP_NETWORK_CONFIG_IP_STATIC
+                                                    
+#define TCPIP_NETWORK_DEFAULT_MAC_DRIVER_IDX0         DRV_EMAC0_Object
+
+
+
+
+/*** IPv6 Configuration ***/
+#define TCPIP_IPV6_DEFAULT_ALLOCATION_BLOCK_SIZE 		64
+#define TCPIP_IPV6_MINIMUM_LINK_MTU 					1280
+#define TCPIP_IPV6_DEFAULT_LINK_MTU 					1500
+#define TCPIP_IPV6_DEFAULT_CUR_HOP_LIMIT 				64
+#define TCPIP_IPV6_DEFAULT_BASE_REACHABLE_TIME 			30
+#define TCPIP_IPV6_DEFAULT_RETRANSMIT_TIME 				1000
+#define TCPIP_IPV6_QUEUE_NEIGHBOR_PACKET_LIMIT 			1
+#define TCPIP_IPV6_NEIGHBOR_CACHE_ENTRY_STALE_TIMEOUT 	600
+#define TCPIP_IPV6_QUEUE_MCAST_PACKET_LIMIT 			4
+#define TCPIP_IPV6_QUEUED_MCAST_PACKET_TIMEOUT 			10
+#define TCPIP_IPV6_TASK_PROCESS_RATE 					1000
+#define TCPIP_IPV6_INIT_TASK_PROCESS_RATE 				32
+#define TCPIP_IPV6_ULA_GENERATE_ENABLE 					false
+#define TCPIP_IPV6_ULA_NTP_ACCESS_TMO 					12000
+#define TCPIP_IPV6_ULA_NTP_VALID_WINDOW 				1000
+#define TCPIP_IPV6_FRAGMENT_PKT_TIMEOUT 				60
+#define TCPIP_IPV6_RX_FRAGMENTED_BUFFER_SIZE 			1514
+#define TCPIP_IPV6_EXTERN_PACKET_PROCESS   false
 
 
 /*** IPv4 Configuration ***/
@@ -297,6 +410,30 @@ extern "C" {
 // *****************************************************************************
 // *****************************************************************************
 
+#define TCPIP_STACK_USE_IPV4
+#define TCPIP_STACK_USE_IPV6
+#define TCPIP_STACK_USE_TCP
+#define TCPIP_STACK_USE_UDP
+
+#define TCPIP_STACK_TICK_RATE		        		5
+#define TCPIP_STACK_SECURE_PORT_ENTRIES             10
+
+#define TCPIP_STACK_ALIAS_INTERFACE_SUPPORT   false
+
+#define TCPIP_PACKET_LOG_ENABLE     0
+
+/* TCP/IP stack event notification */
+#define TCPIP_STACK_USE_EVENT_NOTIFICATION
+#define TCPIP_STACK_USER_NOTIFICATION   false
+#define TCPIP_STACK_DOWN_OPERATION   true
+#define TCPIP_STACK_IF_UP_DOWN_OPERATION   true
+#define TCPIP_STACK_MAC_DOWN_OPERATION  true
+#define TCPIP_STACK_INTERFACE_CHANGE_SIGNALING   false
+#define TCPIP_STACK_CONFIGURATION_SAVE_RESTORE   true
+#define TCPIP_STACK_EXTERN_PACKET_PROCESS   false
+#define TCPIP_STACK_RUN_TIME_INIT   false
+
+#define TCPIP_STACK_INTMAC_COUNT           1
 
 
 
@@ -308,7 +445,7 @@ extern "C" {
 
 /*** SNTP Configuration ***/
 #define TCPIP_STACK_USE_SNTP_CLIENT
-#define TCPIP_NTP_DEFAULT_IF		        	""
+#define TCPIP_NTP_DEFAULT_IF		        	"EMAC0"
 #define TCPIP_NTP_VERSION             			4
 #define TCPIP_NTP_DEFAULT_CONNECTION_TYPE   	IP_ADDRESS_TYPE_IPV4
 #define TCPIP_NTP_EPOCH		                	2208988800ul
@@ -362,10 +499,6 @@ extern "C" {
 #define WOLFSSL_AES_SMALL_TABLES
 #define NO_MD4
 #define WOLFSSL_SHA224
-#define WOLFSSL_SHA384
-#define WOLFSSL_SHA512
-#define HAVE_SHA512
-#define HAVE_HKDF
 #define WOLFSSL_AES_128
 #define WOLFSSL_AES_192
 #define WOLFSSL_AES_256
@@ -374,17 +507,17 @@ extern "C" {
 #define HAVE_AES_ECB
 #define HAVE_AES_CBC
 #define WOLFSSL_AES_COUNTER
+#define WOLFSSL_AES_OFB
 #define HAVE_AESGCM
 #define HAVE_AESCCM
 #define NO_RC4
 #define NO_HC128
 #define NO_RABBIT
 #define HAVE_ECC
-#define HAVE_DH
+#define NO_DH
 #define NO_DSA
-#define FP_MAX_BITS 16384
+#define FP_MAX_BITS 4096
 #define USE_CERT_BUFFERS_2048
-#define WC_RSA_PSS
 #define NO_DEV_RANDOM
 #define HAVE_HASHDRBG
 #define WC_NO_HARDEN
@@ -399,10 +532,28 @@ extern "C" {
 #define NET_PRES_NUM_SOCKETS 10
 
 /* Net Pres RTOS Configurations*/
-#define NET_PRES_RTOS_STACK_SIZE                10240
+#define NET_PRES_RTOS_STACK_SIZE                8192
 #define NET_PRES_RTOS_TASK_PRIORITY             1
 	
 #define FREERTOS
+
+
+#define DRV_KSZ8081_PHY_CONFIG_FLAGS       ( 0 \
+                                                    | DRV_ETHPHY_CFG_RMII \
+                                                    )
+                                                    
+#define DRV_KSZ8081_PHY_LINK_INIT_DELAY            500
+#define DRV_KSZ8081_PHY_ADDRESS                    0
+#define DRV_KSZ8081_PHY_PERIPHERAL_ID              EMAC0_BASE_ADDRESS
+#define DRV_ETHPHY_KSZ8081_NEG_INIT_TMO            1
+#define DRV_ETHPHY_KSZ8081_NEG_DONE_TMO            2000
+#define DRV_ETHPHY_KSZ8081_RESET_CLR_TMO           500
+
+
+#define TCPIP_STACK_NETWORK_INTERAFCE_COUNT  	1
+
+
+
 
 
 
