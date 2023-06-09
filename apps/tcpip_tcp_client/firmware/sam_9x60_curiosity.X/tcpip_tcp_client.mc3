@@ -11420,7 +11420,7 @@
   &lt;tcpipNetConfig_0 dnOrder=&quot;0&quot; id=&quot;TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;tcpipNetConfig_0&quot; value=&quot;SAM9X60_EK&quot;/&gt;
-      &lt;User dnOrder=&quot;1&quot; value=&quot;SAM9X60_DIG&quot;/&gt;
+      &lt;User dnOrder=&quot;1&quot; value=&quot;SAM9X60_D1G&quot;/&gt;
     &lt;/Values&gt;
   &lt;/tcpipNetConfig_0&gt;
 &lt;/tcpipNetConfig_0&gt;
@@ -13904,7 +13904,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\configuration.h</file>
-         <hash>902261650dd3233f750a2cd6a2fa429b30b1d0a7177c9c5a46e8b36c67277ea9</hash>
+         <hash>6df090757263583161c1d1eb92571074bbd170b422ba2dbe774cae0085482f0a</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\library\tcpip\src\ndp.c</file>
@@ -14436,7 +14436,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\system\time\src\sys_time.c</file>
-         <hash>b722ac0c5d955d289bd906609ab6f302342166c5ba66f87b30cac17ac6bfdcd9</hash>
+         <hash>7e6aafa9e0d95093b7a04bf8a4515309eba402fe6ebe22a5581a9b693616abfb</hash>
       </entry>
       <entry>
          <file>..\src\third_party\wolfssl\wolfssl\certs_test.h</file>
