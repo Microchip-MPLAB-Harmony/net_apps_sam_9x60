@@ -49,15 +49,16 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include "crypto/crypto.h"
-#include "bsp/bsp.h"
 #include "peripheral/tc/plib_tc0.h"
 #include "system/time/sys_time.h"
 #include "driver/emac/drv_emac.h"
+#include "bsp/bsp.h"
 #include "library/tcpip/tcpip.h"
 #include "system/sys_time_h2_adapter.h"
 #include "system/sys_random_h2_adapter.h"
 #include "system/int/sys_int.h"
 #include "system/cache/sys_cache.h"
+#include "system/reset/sys_reset.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
 #include "system/command/sys_command.h"

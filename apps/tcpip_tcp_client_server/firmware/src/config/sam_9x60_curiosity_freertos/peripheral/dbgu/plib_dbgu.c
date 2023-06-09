@@ -49,7 +49,7 @@
 
 static DBGU_RING_BUFFER_OBJECT dbguObj;
 
-#define DBGU_READ_BUFFER_SIZE      128U
+#define DBGU_READ_BUFFER_SIZE      512U
 /* Disable Read, Overrun, Parity and Framing error interrupts */
 #define DBGU_RX_INT_DISABLE()      DBGU_REGS->DBGU_IDR = (DBGU_IDR_RXRDY_Msk | DBGU_IDR_FRAME_Msk | DBGU_IDR_PARE_Msk | DBGU_IDR_OVRE_Msk);
 /* Enable Read, Overrun, Parity and Framing error interrupts */
@@ -57,7 +57,7 @@ static DBGU_RING_BUFFER_OBJECT dbguObj;
 
 static uint8_t DBGU_ReadBuffer[DBGU_READ_BUFFER_SIZE];
 
-#define DBGU_WRITE_BUFFER_SIZE     128U
+#define DBGU_WRITE_BUFFER_SIZE     2560U
 #define DBGU_TX_INT_DISABLE()      DBGU_REGS->DBGU_IDR = DBGU_IDR_TXRDY_Msk;
 #define DBGU_TX_INT_ENABLE()       DBGU_REGS->DBGU_IER = DBGU_IER_TXRDY_Msk;
 
@@ -75,7 +75,7 @@ void DBGU_Initialize( void )
     DBGU_REGS->DBGU_MR = (DBGU_MR_BRSRCCK(0U) | (DBGU_MR_PAR_NO) | (0U << DBGU_MR_FILTER_Pos));
 
     /* Configure DBGU Baud Rate */
-    DBGU_REGS->DBGU_BRGR = DBGU_BRGR_CD(0U);
+    DBGU_REGS->DBGU_BRGR = DBGU_BRGR_CD(108U);
 
     /* Initialize instance object */
     dbguObj.rdCallback = NULL;
