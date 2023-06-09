@@ -454,7 +454,7 @@ void MMU_Initialize(void)
                       | TTB_TYPE_SECT;
 
     /* Remainder of the DRAM is configured as cacheable */
-    for (addr = 0x210; addr < 0x300; addr++)
+    for (addr = 0x210; addr < 0x280; addr++)
         trns_tbl[addr] = TTB_SECT_ADDR(addr << 20)
                       | TTB_SECT_AP_FULL_ACCESS
                       | TTB_SECT_DOMAIN(0xf)
