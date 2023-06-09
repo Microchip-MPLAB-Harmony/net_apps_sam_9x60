@@ -71,6 +71,11 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 /* TTB Section Descriptor: Section Base Address */
 #define TTB_SECT_ADDR(x)           ((x) & 0xFFF00000)
+/* L1 data cache line size, Number of ways and Number of sets */
+#define L1_DATA_CACHE_BYTES        32U
+#define L1_DATA_CACHE_WAYS         4U
+#define L1_DATA_CACHE_SETS         256U
+#define L1_DATA_CACHE_SETWAY(set, way) (((set) << 5) | ((way) << 30))
 
 __ALIGNED(16384) static uint32_t trns_tbl[4096];
 
@@ -112,6 +117,130 @@ static void mmu_enable(void)
         cp15_write_sctlr(control | CP15_SCTLR_M);
 }
 
+void icache_InvalidateAll(void)
+{
+    cp15_icache_invalidate();
+    __ISB();
+}
+
+void icache_Enable(void)
+{
+    uint32_t sctlr = cp15_read_sctlr();
+    if ((sctlr & CP15_SCTLR_I) == 0)
+    {
+        icache_InvalidateAll();
+        cp15_write_sctlr(sctlr | CP15_SCTLR_I);
+    }
+}
+
+void icache_Disable(void)
+{
+    uint32_t sctlr = cp15_read_sctlr();
+    if (sctlr & CP15_SCTLR_I)
+    {
+        cp15_write_sctlr(sctlr & ~CP15_SCTLR_I);
+        icache_InvalidateAll();
+    }
+}
+
+void dcache_InvalidateAll(void)
+{
+    uint32_t set, way;
+
+    for (way = 0; way < L1_DATA_CACHE_WAYS; way++)
+    {
+        for (set = 0; set < L1_DATA_CACHE_SETS; set++)
+        {
+            cp15_dcache_invalidate_setway(L1_DATA_CACHE_SETWAY(set, way));
+        }
+    }
+    __DSB();
+}
+
+void dcache_CleanAll(void)
+{
+    uint32_t set, way;
+
+    for (way = 0; way < L1_DATA_CACHE_WAYS; way++)
+    {
+        for (set = 0; set < L1_DATA_CACHE_SETS; set++)
+        {
+            cp15_dcache_clean_setway(L1_DATA_CACHE_SETWAY(set, way));
+        }
+    }
+    __DSB();
+}
+
+void dcache_CleanInvalidateAll(void)
+{
+    uint32_t set, way;
+
+    for (way = 0; way < L1_DATA_CACHE_WAYS; way++)
+    {
+        for (set = 0; set < L1_DATA_CACHE_SETS; set++)
+        {
+            cp15_dcache_clean_invalidate_setway(L1_DATA_CACHE_SETWAY(set, way));
+        }
+    }
+    __DSB();
+}
+
+void dcache_InvalidateByAddr (uint32_t *addr, uint32_t size)
+{
+    uint32_t mva = (uint32_t)addr & ~(L1_DATA_CACHE_BYTES - 1);
+
+    for ( ; mva < ((uint32_t)addr + size); mva += L1_DATA_CACHE_BYTES)
+    {
+        cp15_dcache_invalidate_mva(mva);
+        __DMB();
+    }
+    __DSB();
+}
+
+void dcache_CleanByAddr (uint32_t *addr, uint32_t size)
+{
+    uint32_t mva = (uint32_t)addr & ~(L1_DATA_CACHE_BYTES - 1);
+
+    for ( ; mva < ((uint32_t)addr + size); mva += L1_DATA_CACHE_BYTES)
+    {
+        cp15_dcache_clean_mva(mva);
+        __DMB();
+    }
+    __DSB();
+}
+
+void dcache_CleanInvalidateByAddr (uint32_t *addr, uint32_t size)
+{
+    uint32_t mva = (uint32_t)addr & ~(L1_DATA_CACHE_BYTES - 1);
+
+    for ( ; mva < ((uint32_t)addr + size); mva += L1_DATA_CACHE_BYTES)
+    {
+        cp15_dcache_clean_invalidate_mva((uint32_t)mva);
+        __DMB();
+    }
+    __DSB();
+}
+
+void dcache_Enable(void)
+{
+    uint32_t sctlr = cp15_read_sctlr();
+    if ((sctlr & CP15_SCTLR_C) == 0)
+    {
+        dcache_InvalidateAll();
+        cp15_write_sctlr(sctlr | CP15_SCTLR_C);
+    }
+}
+
+void dcache_Disable(void)
+{
+    uint32_t sctlr = cp15_read_sctlr();
+    if (sctlr & CP15_SCTLR_C)
+    {
+        dcache_CleanAll();
+        cp15_write_sctlr(sctlr & ~CP15_SCTLR_C);
+        dcache_InvalidateAll();
+    }
+}
 
 
 // *****************************************************************************
@@ -325,7 +454,7 @@ void MMU_Initialize(void)
                       | TTB_TYPE_SECT;
 
     /* Remainder of the DRAM is configured as cacheable */
-    for (addr = 0x210; addr < 0x300; addr++)
+    for (addr = 0x210; addr < 0x280; addr++)
         trns_tbl[addr] = TTB_SECT_ADDR(addr << 20)
                       | TTB_SECT_AP_FULL_ACCESS
                       | TTB_SECT_DOMAIN(0xf)
@@ -335,7 +464,9 @@ void MMU_Initialize(void)
 
     /* Enable MMU, I-Cache and D-Cache */
     mmu_configure(trns_tbl);
+    icache_Enable();
     mmu_enable();
+    dcache_Enable();
 
     // disable the processor alignment fault testing
     uint32_t sctlrValue = cp15_read_sctlr();

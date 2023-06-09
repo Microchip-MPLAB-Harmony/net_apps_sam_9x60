@@ -60,10 +60,22 @@
 // Section: BSP Macros
 // *****************************************************************************
 // *****************************************************************************
-/*** SWITCH Macros for SWITCH_AL_PD18 ***/
-#define SWITCH_AL_PD18_Get() ((PIOD_REGS->PIO_PDSR >> 18) & 0x1)
-#define SWITCH_AL_PD18_STATE_PRESSED 0
-#define SWITCH_AL_PD18_STATE_RELEASED 1
+/*** LED Macros for LED_AH_PD19 ***/
+#define LED_AH_PD19_Toggle() (PIOD_REGS->PIO_ODSR ^= (1<<19))
+#define LED_AH_PD19_On() (PIOD_REGS->PIO_SODR = (1<<19))
+#define LED_AH_PD19_Off() (PIOD_REGS->PIO_CODR = (1<<19))
+/*** LED Macros for LED_AH_PD21 ***/
+#define LED_AH_PD21_Toggle() (PIOD_REGS->PIO_ODSR ^= (1<<21))
+#define LED_AH_PD21_On() (PIOD_REGS->PIO_SODR = (1<<21))
+#define LED_AH_PD21_Off() (PIOD_REGS->PIO_CODR = (1<<21))
+/*** LED Macros for LED_AH_PD17 ***/
+#define LED_AH_PD17_Toggle() (PIOD_REGS->PIO_ODSR ^= (1<<17))
+#define LED_AH_PD17_On() (PIOD_REGS->PIO_SODR = (1<<17))
+#define LED_AH_PD17_Off() (PIOD_REGS->PIO_CODR = (1<<17))
+/*** SWITCH Macros for SWITCH_AH_PA29 ***/
+#define SWITCH_AH_PA29_Get() ((PIOA_REGS->PIO_PDSR >> 29) & 0x1)
+#define SWITCH_AH_PA29_STATE_PRESSED 1
+#define SWITCH_AH_PA29_STATE_RELEASED 0
 
 
 

@@ -63,21 +63,21 @@ extern "C" {
 
 #endif
 // DOM-IGNORE-END
-
-#ifdef __SAM9X60__
+    
+#ifdef __SAM9X60D1G__
 #if defined(SAM_9X60_CURIOSITY)
-#define LED_AH_PB11_Get() (0)
-#define LED_AH_PB12_Get() (0)
-#define LED_AH_PB13_Get() (0)
+#define LED_AH_PD17_Get()  (((PIOD_REGS->PIO_ODSR >> 17) & 0x1))
+#define LED_AH_PD19_Get()  (((PIOD_REGS->PIO_ODSR >> 19) & 0x1))
+#define LED_AH_PD21_Get()  (((PIOD_REGS->PIO_ODSR >> 21) & 0x1))
 
-#define APP_LED_2StateGet()         (0)
-#define APP_LED_3StateGet()         (0)
+#define APP_LED_2StateGet()         LED_AH_PD19_Get()
+#define APP_LED_3StateGet()         LED_AH_PD21_Get()
   
-#define APP_SWITCH_1StateGet()      (0)
-#define APP_LED_1StateGet()         (0)
-#define APP_LED_1StateSet()         
-#define APP_LED_1StateClear()       
-#define APP_LED_1StateToggle()      
+#define APP_SWITCH_1StateGet()      SWITCH_AH_PA29_Get()
+#define APP_LED_1StateGet()         LED_AH_PD17_Get()
+#define APP_LED_1StateSet()         LED_AH_PD17_On()
+#define APP_LED_1StateClear()       LED_AH_PD17_Off()
+#define APP_LED_1StateToggle()      LED_AH_PD17_Toggle()    
 #else
 #define LED_AH_PB11_Get() (PIOB_REGS->PIO_PDSR & (1<<11))
 #define LED_AH_PB12_Get() (PIOB_REGS->PIO_PDSR & (1<<12))
