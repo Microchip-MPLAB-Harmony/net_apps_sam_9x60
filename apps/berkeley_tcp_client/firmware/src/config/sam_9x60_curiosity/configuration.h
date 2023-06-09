@@ -215,6 +215,9 @@ extern "C" {
 
 
 
+#define TCPIP_STACK_USE_ICMPV6_SERVER
+
+
 /*** ARP Configuration ***/
 #define TCPIP_ARP_CACHE_ENTRIES                 		5
 #define TCPIP_ARP_CACHE_DELETE_OLD		        	true
@@ -230,9 +233,6 @@ extern "C" {
 #define TCPIP_ARP_PRIMARY_CACHE_ONLY		        	true
 #define TCPIP_ARP_COMMANDS false
 
-
-
-#define TCPIP_STACK_USE_ICMPV6_SERVER
 
 
 #define TCPIP_IPV6_NDP_MAX_RTR_SOLICITATION_DELAY 	1
@@ -303,7 +303,7 @@ extern "C" {
 #define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0 "EMAC0"
 #define TCPIP_IF_EMAC0
 
-#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_DIG"
+#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_D1G"
 #define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0               "00:04:25:1C:A0:03"
 
 #define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0         "192.168.100.14"
