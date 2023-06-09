@@ -74,6 +74,10 @@ void BSP_Initialize(void )
 {
 
 
+    /* Switch off LEDs */
+		LED_AH_PD19_Off(); 
+		LED_AH_PD21_Off(); 
+		LED_AH_PD17_Off(); 
 
 
 }

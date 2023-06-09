@@ -140,7 +140,7 @@ extern "C" {
 
 
 #define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
-#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			2
+#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			3
 #define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		0
 #define SYS_CONSOLE_PRINT_BUFFER_SIZE        		2000
 
@@ -174,7 +174,7 @@ extern "C" {
 /*** SDMMC Driver Instance 0 Configuration ***/
 #define DRV_SDMMC_INDEX_0                                0
 #define DRV_SDMMC_CLIENTS_NUMBER_IDX0                    1
-#define DRV_SDMMC_QUEUE_SIZE_IDX0                        1
+#define DRV_SDMMC_QUEUE_SIZE_IDX0                        2
 #define DRV_SDMMC_PROTOCOL_SUPPORT_IDX0                  DRV_SDMMC_PROTOCOL_SD
 #define DRV_SDMMC_CONFIG_SPEED_MODE_IDX0                 DRV_SDMMC_SPEED_MODE_DEFAULT
 #define DRV_SDMMC_CONFIG_BUS_WIDTH_IDX0                  DRV_SDMMC_BUS_WIDTH_4_BIT
@@ -309,7 +309,7 @@ extern "C" {
 #define TCPIP_NETWORK_DEFAULT_INTERFACE_NAME_IDX0 "EMAC0"
 #define TCPIP_IF_EMAC0
 
-#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_EK"
+#define TCPIP_NETWORK_DEFAULT_HOST_NAME_IDX0              "SAM9X60_D1G"
 #define TCPIP_NETWORK_DEFAULT_MAC_ADDR_IDX0               "00:04:25:1C:A0:03"
 
 #define TCPIP_NETWORK_DEFAULT_IP_ADDRESS_IDX0         "192.168.100.14"
@@ -556,7 +556,7 @@ extern "C" {
 #define TCPIP_HTTP_NET_MAX_CONNECTIONS		    		4
 #define TCPIP_HTTP_NET_DEFAULT_FILE		        		"index.htm"
 #define TCPIP_HTTP_NET_FILENAME_MAX_LEN			        25
-#define TCPIP_HTTP_NET_WEB_DIR		        		    "/mnt/mchpSite1/web_pages"
+#define TCPIP_HTTP_NET_WEB_DIR		        		    "/mnt/mchpSite1/"
 #define TCPIP_HTTP_NET_USE_POST
 #define TCPIP_HTTP_NET_USE_COOKIES
 #define TCPIP_HTTP_NET_USE_AUTHENTICATION
