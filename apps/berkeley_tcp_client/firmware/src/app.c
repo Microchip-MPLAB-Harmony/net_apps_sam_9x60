@@ -64,7 +64,6 @@
 int32_t _APP_ParseUrl(char *uri, char **host, char **path, uint16_t * port);
 int8_t _APP_PumpDNS(const char * hostname, IPV4_ADDR *ipv4Addr);
 
-bool gDataReceived=false;
 // *****************************************************************************
 // *****************************************************************************
 // Section: Global Data Definitions
@@ -291,18 +290,13 @@ void APP_Tasks(void) {
 
             recvBuffer[i] = '\0'; // Null terminate data
             SYS_CONSOLE_PRINT("%s", recvBuffer);
-			gDataReceived = true;
+
             if (appData.state == APP_BSD_OPERATION)
                 break;
         }
             break;
 
         case APP_BSD_CLOSE:
-        	if(gDataReceived)
-            {
-                SYS_CONSOLE_PRINT("\r\nConnection established with < %s > \r\n",appData.host);
-                gDataReceived = false;
-            }
             closesocket(appData.socket);
             SYS_CONSOLE_MESSAGE("\r\nConnection Closed\r\n");
             appData.state = APP_TCPIP_WAITING_FOR_COMMAND_INPUT;
