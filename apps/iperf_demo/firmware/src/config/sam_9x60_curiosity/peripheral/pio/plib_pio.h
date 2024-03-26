@@ -63,12 +63,12 @@
 
 
 /*** Macros for nRST_PB25 pin ***/
-#define nRST_PB25_Set()               (PIOB_REGS->PIO_SODR = (1<<25))
-#define nRST_PB25_Clear()             (PIOB_REGS->PIO_CODR = (1<<25))
-#define nRST_PB25_Toggle()            (PIOB_REGS->PIO_ODSR ^= (1<<25))
-#define nRST_PB25_OutputEnable()      (PIOB_REGS->PIO_OER = (1<<25))
-#define nRST_PB25_InputEnable()       (PIOB_REGS->PIO_ODR = (1<<25))
-#define nRST_PB25_Get()               ((PIOB_REGS->PIO_PDSR >> 25) & 0x1)
+#define nRST_PB25_Set()               (PIOB_REGS->PIO_SODR = ((uint32_t)1U<<25U))
+#define nRST_PB25_Clear()             (PIOB_REGS->PIO_CODR = ((uint32_t)1U<<25U))
+#define nRST_PB25_Toggle()            (PIOB_REGS->PIO_ODSR ^= ((uint32_t)1U<<25U))
+#define nRST_PB25_OutputEnable()      (PIOB_REGS->PIO_OER = ((uint32_t)1U<<25U))
+#define nRST_PB25_InputEnable()       (PIOB_REGS->PIO_ODR = ((uint32_t)1U<<25U))
+#define nRST_PB25_Get()               ((PIOB_REGS->PIO_PDSR >> 25U) & 0x1U)
 #define nRST_PB25_PIN                  PIO_PIN_PB25
 
 
