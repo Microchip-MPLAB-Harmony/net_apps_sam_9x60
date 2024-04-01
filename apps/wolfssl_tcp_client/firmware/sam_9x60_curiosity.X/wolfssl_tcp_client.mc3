@@ -138,10 +138,6 @@
          <string>class com.microchip.mcc.harmony.HarmonyModule</string>
       </entry>
       <entry>
-         <string>tcpipNbns</string>
-         <string>class com.microchip.mcc.harmony.HarmonyModule</string>
-      </entry>
-      <entry>
          <string>tcpipNdp</string>
          <string>class com.microchip.mcc.harmony.HarmonyModule</string>
       </entry>
@@ -3569,7 +3565,7 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="PRESENTATION LAYER" name="harmonyGroupAttachments"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;Attachments&gt;
   &lt;Attachments dnOrder=&quot;0&quot;&gt;
-    &lt;Attachment dnOrder=&quot;0&quot; id=&quot;Net_Pres_Crypto_Dependency&quot; namespace=&quot;net_Pres&quot;/&gt;
+    &lt;Attachment dnOrder=&quot;0&quot; id=&quot;Net_Pres_Crypto_Dependency&quot; namespace=&quot;net_Pres&quot; targetAttachmentID=&quot;TCP/IP STACK:net_Pres:Net_Pres_Crypto_Dependency&quot; targetComponentID=&quot;TCP/IP STACK&quot;/&gt;
   &lt;/Attachments&gt;
 &lt;/Attachments&gt;
 </value>
@@ -3586,7 +3582,7 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="TCP/IP STACK" name="harmonyGroupAttachments"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;Attachments&gt;
   &lt;Attachments dnOrder=&quot;0&quot;&gt;
-    &lt;Attachment dnOrder=&quot;0&quot; id=&quot;net_Pres:Net_Pres_Crypto_Dependency&quot; namespace=&quot;PRESENTATION LAYER&quot;/&gt;
+    &lt;Attachment dnOrder=&quot;0&quot; id=&quot;net_Pres:Net_Pres_Crypto_Dependency&quot; namespace=&quot;PRESENTATION LAYER&quot; targetAttachmentID=&quot;lib_wolfssl&quot; targetComponentID=&quot;lib_wolfssl&quot;/&gt;
     &lt;Attachment dnOrder=&quot;1&quot; id=&quot;tcpipStack:Core_SysConsole_Dependency&quot; namespace=&quot;BASIC CONFIGURATION&quot; targetAttachmentID=&quot;sys_console&quot; targetComponentID=&quot;sys_console_0&quot;/&gt;
   &lt;/Attachments&gt;
 &lt;/Attachments&gt;
@@ -3608,7 +3604,7 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;GraphSettings canvasHeight=&quot;156&quot; canvasWidth=&quot;180&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;GraphSettings canvasHeight=&quot;612&quot; canvasWidth=&quot;548&quot; dnOrder=&quot;0&quot;/&gt;
     &lt;PowerProfiles dnOrder=&quot;1&quot;&gt;
       &lt;Profile dnOrder=&quot;0&quot; id=&quot;profile0&quot; name=&quot;Main&quot;/&gt;
     &lt;/PowerProfiles&gt;
@@ -3617,8 +3613,7 @@
         &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;tcpipAnnounce&quot; x=&quot;340&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;tcpipDhcp&quot; x=&quot;500&quot; y=&quot;20&quot;/&gt;
         &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;tcpipDns&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;tcpipNbns&quot; x=&quot;175&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;tcpipSntp&quot; x=&quot;30&quot; y=&quot;120&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;tcpipSntp&quot; x=&quot;30&quot; y=&quot;120&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
     &lt;ComponentGraph dnOrder=&quot;3&quot; id=&quot;BASIC CONFIGURATION&quot;&gt;
@@ -3668,20 +3663,20 @@
     &lt;/ComponentGraph&gt;
     &lt;ComponentGraph dnOrder=&quot;9&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
-        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BSP_SAM_9X60_Curiosity&quot; x=&quot;204&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;HarmonyCore&quot; x=&quot;381&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;TCP/IP STACK&quot; x=&quot;400&quot; y=&quot;280&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;core&quot; x=&quot;30&quot; y=&quot;60&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;dbgu&quot; x=&quot;6&quot; y=&quot;300&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;dfp&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;lib_crypto&quot; x=&quot;560&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;lib_wolfcrypt&quot; x=&quot;558&quot; y=&quot;139&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;lib_wolfssl&quot; x=&quot;770&quot; y=&quot;207&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;9&quot; id=&quot;sys_command&quot; x=&quot;366&quot; y=&quot;146&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;sys_console&quot; x=&quot;181&quot; y=&quot;234&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;sys_debug&quot; x=&quot;384&quot; y=&quot;380&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;sys_time&quot; x=&quot;223&quot; y=&quot;86&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;tc0&quot; x=&quot;43&quot; y=&quot;138&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;BSP_SAM_9X60_Curiosity&quot; x=&quot;0&quot; y=&quot;15&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;HarmonyCore&quot; x=&quot;399&quot; y=&quot;89&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;TCP/IP STACK&quot; x=&quot;405&quot; y=&quot;298&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;core&quot; x=&quot;0&quot; y=&quot;70&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;dbgu&quot; x=&quot;0&quot; y=&quot;279&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;dfp&quot; x=&quot;0&quot; y=&quot;41&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;lib_crypto&quot; x=&quot;182&quot; y=&quot;494&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;lib_wolfcrypt&quot; x=&quot;0&quot; y=&quot;450&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;8&quot; id=&quot;lib_wolfssl&quot; x=&quot;195&quot; y=&quot;402&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;9&quot; id=&quot;sys_command&quot; x=&quot;401&quot; y=&quot;185&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;10&quot; id=&quot;sys_console&quot; x=&quot;197&quot; y=&quot;215&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;11&quot; id=&quot;sys_debug&quot; x=&quot;406&quot; y=&quot;396&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;12&quot; id=&quot;sys_time&quot; x=&quot;197&quot; y=&quot;75&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;13&quot; id=&quot;tc0&quot; x=&quot;0&quot; y=&quot;121&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
   &lt;/UserData&gt;
@@ -7206,6 +7201,16 @@
           &lt;/String&gt;
         &lt;/Attributes&gt;
       &lt;/DirectDependency&gt;
+      &lt;DirectCapability dnOrder=&quot;1&quot; id=&quot;lib_wolfssl&quot;&gt;
+        &lt;Attributes dnOrder=&quot;0&quot;&gt;
+          &lt;String dnOrder=&quot;0&quot; id=&quot;targetComponentID&quot;&gt;
+            &lt;Value dnOrder=&quot;0&quot;&gt;TCP/IP&amp;amp;#160;STACK&lt;/Value&gt;
+          &lt;/String&gt;
+          &lt;String dnOrder=&quot;1&quot; id=&quot;targetAttachmentID&quot;&gt;
+            &lt;Value dnOrder=&quot;0&quot;&gt;PRESENTATION&amp;amp;#160;LAYER:net_Pres:Net_Pres_Crypto_Dependency&lt;/Value&gt;
+          &lt;/String&gt;
+        &lt;/Attributes&gt;
+      &lt;/DirectCapability&gt;
     &lt;/Attachments&gt;
   &lt;/lib_wolfssl&gt;
 &lt;/lib_wolfssl&gt;
@@ -12090,35 +12095,6 @@
 </value>
       </entry>
       <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="tcpipNbns" name="!@#harmonyAttachmentState"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcpipNbns&gt;
-  &lt;tcpipNbns dnOrder=&quot;0&quot;/&gt;
-&lt;/tcpipNbns&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="tcpipNbns" name="#&amp;__MCC_Group_Parrent_id"/>
-         <value>APPLICATION LAYER</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="tcpipNbns" name="TCPIP_NBNS_TASK_TICK_RATE"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcpipNbns&gt;
-  &lt;tcpipNbns dnOrder=&quot;0&quot; id=&quot;TCPIP_NBNS_TASK_TICK_RATE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/tcpipNbns&gt;
-&lt;/tcpipNbns&gt;
-</value>
-      </entry>
-      <entry>
-         <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="tcpipNbns" name="TCPIP_USE_NBNS"/>
-         <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcpipNbns&gt;
-  &lt;tcpipNbns dnOrder=&quot;0&quot; id=&quot;TCPIP_USE_NBNS&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
-  &lt;/tcpipNbns&gt;
-&lt;/tcpipNbns&gt;
-</value>
-      </entry>
-      <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="tcpipNdp" name="!@#harmonyAttachmentState"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcpipNdp&gt;
   &lt;tcpipNdp dnOrder=&quot;0&quot;/&gt;
@@ -14472,7 +14448,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\configuration.h</file>
-         <hash>e010453e0408b9658fb5186e4ab314d6ba385f9ed85e60d94442e5609d92b382</hash>
+         <hash>225a2c579b25637666306e58e99426ac001ce4ff418287e9d65235a43ec5e9cd</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\crypto\crypto.h</file>
@@ -14588,7 +14564,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\initialization.c</file>
-         <hash>ced74f9e595a40341b678f3fe6732d90e44730a7bff12d388b900b7496328586</hash>
+         <hash>4679e81c9d6bf6b0af1fdab6a682173ec1329164e8069a95a0ab2b0279216cf5</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\interrupts.c</file>
@@ -14903,10 +14879,6 @@
          <hash>9630271cd5bdea8c31e41f1fb8e4a50c5d2942df7dafb04e33d3559915000810</hash>
       </entry>
       <entry>
-         <file>..\src\config\sam_9x60_curiosity\library\tcpip\src\nbns.c</file>
-         <hash>676b1fb53317631ea995b0739940c8596b109e3e0d1a29098eb918772d46cce7</hash>
-      </entry>
-      <entry>
          <file>..\src\config\sam_9x60_curiosity\library\tcpip\src\nbns_manager.h</file>
          <hash>97d2623aed56415b2a16f134bee4254687b29762c116c1d4cddc3a2c9f418060</hash>
       </entry>
@@ -15048,7 +15020,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\library\tcpip\src\tcpip_private.h</file>
-         <hash>a59f85cd5400658d0311e9f4db58ca26169276bcba578fccb6dc50a386f9d071</hash>
+         <hash>1e3e1de35ad68093c72fd8630e610ae709b6b6052a1daaf15fa682c7be23695d</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\library\tcpip\src\tcpip_reboot_manager.h</file>
@@ -15108,7 +15080,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\library\tcpip\tcpip.h</file>
-         <hash>c318305fe3cd368cd75a532ebd0ea930a7b55559e0f1bdcd5c3b0a77506f6cdf</hash>
+         <hash>d280d7cab8af9827542877feac14c5a0e29f599da8659c34976579d8717964c5</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\library\tcpip\tcpip_announce.h</file>
