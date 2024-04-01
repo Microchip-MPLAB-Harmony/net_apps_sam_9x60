@@ -96,7 +96,7 @@ extern "C" {
 
 #define SYS_CMD_ENABLE
 #define SYS_CMD_DEVICE_MAX_INSTANCES       SYS_CONSOLE_DEVICE_MAX_INSTANCES
-#define SYS_CMD_PRINT_BUFFER_SIZE          2560
+#define SYS_CMD_PRINT_BUFFER_SIZE          2560U
 #define SYS_CMD_BUFFER_DMA_READY
 
 
@@ -107,10 +107,10 @@ extern "C" {
 #define SYS_DEBUG_USE_CONSOLE
 
 
-#define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			1
-#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			3
-#define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		0
-#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		200
+#define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			(1U)
+#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			(1U)
+#define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		(0U)
+#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		(200U)
 
 
 
@@ -163,12 +163,6 @@ extern "C" {
 /*** ICMPv4 Server Configuration ***/
 #define TCPIP_STACK_USE_ICMP_SERVER
 #define TCPIP_ICMP_ECHO_ALLOW_BROADCASTS    false
-
-
-
-/*** NBNS Configuration ***/
-#define TCPIP_STACK_USE_NBNS
-#define TCPIP_NBNS_TASK_TICK_RATE   110
 
 
 /******************************************************************************/
@@ -364,6 +358,10 @@ extern "C" {
 #define TCPIP_IPV6_EXTERN_PACKET_PROCESS   false
 
 
+#define TCPIP_IPV6_G3_PLC_SUPPORT                       false
+
+
+
 /*** IPv4 Configuration ***/
 #define TCPIP_IPV4_ARP_SLOTS                        10
 #define TCPIP_IPV4_EXTERN_PACKET_PROCESS   false
@@ -411,6 +409,7 @@ extern "C" {
 
 #define TCPIP_STACK_TICK_RATE		        		5
 #define TCPIP_STACK_SECURE_PORT_ENTRIES             10
+#define TCPIP_STACK_LINK_RATE		        		333
 
 #define TCPIP_STACK_ALIAS_INTERFACE_SUPPORT   false
 

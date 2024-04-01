@@ -1,5 +1,23 @@
 /*******************************************************************************
-* Copyright (C) 2019 Microchip Technology Inc. and its subsidiaries.
+ System Tasks Header File
+
+  File Name:
+    sys_tasks.h
+
+  Summary:
+    This file contains declarations for task handles.
+
+  Description:
+    Task handles declared in this header file can be used by the application
+    to control the behavior of the tasks.
+
+  Remarks:
+    None
+ *******************************************************************************/
+
+// DOM-IGNORE-BEGIN
+/*******************************************************************************
+* Copyright (C) 2023 Microchip Technology Inc. and its subsidiaries.
 *
 * Subject to your compliance with these terms, you may use Microchip software
 * and any derivatives exclusively with Microchip products. It is your
@@ -20,43 +38,19 @@
 * ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
 * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
  *******************************************************************************/
-#include <stdint.h>
-#include <stdbool.h>
+// DOM-IGNORE-END
 
-void undefined_instruction_irq_handler (void);
-void software_interrupt_irq_handler(void);
-void data_abort_irq_handler(void);
-void prefetch_abort_irq_handler(void);
+#ifndef SYS_TASKS_H
+#define SYS_TASKS_H
 
-void __attribute((weak, noreturn)) undefined_instruction_irq_handler (void)
-{
-    while(true)
-    {
-        /* Spin forever */
-    }
-}
+// *****************************************************************************
+// *****************************************************************************
+// Section: Included Files
+// *****************************************************************************
+// *****************************************************************************
 
-void __attribute((weak, noreturn)) software_interrupt_irq_handler(void)
-{
-    while(true)
-    {
-        /* Spin forever */
-    }
-}
+#include "configuration.h"
+#include "definitions.h"
 
-void __attribute((weak, noreturn)) data_abort_irq_handler(void)
-{
-    while(true)
-    {
-        /* Spin forever */
-    }
-}
 
-void __attribute((weak, noreturn)) prefetch_abort_irq_handler(void)
-{
-    while(true)
-    {
-        /* Spin forever */
-    }
-}
-
+#endif //SYS_TASKS_H
