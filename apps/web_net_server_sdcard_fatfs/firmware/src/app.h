@@ -196,7 +196,7 @@ typedef struct
 {
     /* The application's current state */
     APP_STATES state;
-    TCPIP_FTP_HANDLE    ftpHandle;   
+    
     /* TODO: Define any additional data used by the application. */
 
 } APP_DATA;

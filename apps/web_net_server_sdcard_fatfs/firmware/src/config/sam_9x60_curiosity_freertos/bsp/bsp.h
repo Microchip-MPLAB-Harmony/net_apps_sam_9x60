@@ -40,8 +40,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _BSP_H
-#define _BSP_H
+#ifndef BSP_H
+#define BSP_H
 
 // *****************************************************************************
 // *****************************************************************************
@@ -60,18 +60,21 @@
 // Section: BSP Macros
 // *****************************************************************************
 // *****************************************************************************
+#define sam_9x60_curiosity
+#define BSP_NAME             "sam_9x60_curiosity"
+
 /*** LED Macros for LED_AH_PD19 ***/
-#define LED_AH_PD19_Toggle() (PIOD_REGS->PIO_ODSR ^= (1<<19))
-#define LED_AH_PD19_On() (PIOD_REGS->PIO_SODR = (1<<19))
-#define LED_AH_PD19_Off() (PIOD_REGS->PIO_CODR = (1<<19))
+#define LED_AH_PD19_Toggle() (PIOD_REGS->PIO_ODSR ^= (1UL<<19))
+#define LED_AH_PD19_On() (PIOD_REGS->PIO_SODR = (1UL<<19))
+#define LED_AH_PD19_Off() (PIOD_REGS->PIO_CODR = (1UL<<19))
 /*** LED Macros for LED_AH_PD21 ***/
-#define LED_AH_PD21_Toggle() (PIOD_REGS->PIO_ODSR ^= (1<<21))
-#define LED_AH_PD21_On() (PIOD_REGS->PIO_SODR = (1<<21))
-#define LED_AH_PD21_Off() (PIOD_REGS->PIO_CODR = (1<<21))
+#define LED_AH_PD21_Toggle() (PIOD_REGS->PIO_ODSR ^= (1UL<<21))
+#define LED_AH_PD21_On() (PIOD_REGS->PIO_SODR = (1UL<<21))
+#define LED_AH_PD21_Off() (PIOD_REGS->PIO_CODR = (1UL<<21))
 /*** LED Macros for LED_AH_PD17 ***/
-#define LED_AH_PD17_Toggle() (PIOD_REGS->PIO_ODSR ^= (1<<17))
-#define LED_AH_PD17_On() (PIOD_REGS->PIO_SODR = (1<<17))
-#define LED_AH_PD17_Off() (PIOD_REGS->PIO_CODR = (1<<17))
+#define LED_AH_PD17_Toggle() (PIOD_REGS->PIO_ODSR ^= (1UL<<17))
+#define LED_AH_PD17_On() (PIOD_REGS->PIO_SODR = (1UL<<17))
+#define LED_AH_PD17_Off() (PIOD_REGS->PIO_CODR = (1UL<<17))
 /*** SWITCH Macros for SWITCH_AH_PA29 ***/
 #define SWITCH_AH_PA29_Get() ((PIOA_REGS->PIO_PDSR >> 29) & 0x1)
 #define SWITCH_AH_PA29_STATE_PRESSED 1
@@ -109,7 +112,6 @@
 
   Example:
     <code>
-    //Initialize the BSP
     BSP_Initialize();
     </code>
 
@@ -119,7 +121,7 @@
 
 void BSP_Initialize(void);
 
-#endif // _BSP_H
+#endif // BSP_H
 
 /*******************************************************************************
  End of File

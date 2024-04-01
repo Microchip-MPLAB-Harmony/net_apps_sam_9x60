@@ -126,7 +126,6 @@ void _TCPIPStack_Condition(bool cond, const char* fileName, const char* funcName
 #include "tcpip/src/tcpip_commands_manager.h"
 #include "tcpip/src/udp_manager.h"
 #include "tcpip/src/sntp_manager.h"
-#include "tcpip/src/ftp_manager.h"
 #include "tcpip/src/lldp_manager.h"
 #include "tcpip/src/smtpc_manager.h"
 #include "tcpip/src/tcpip_packet.h"
