@@ -165,12 +165,6 @@ extern "C" {
 #define TCPIP_ICMP_ECHO_ALLOW_BROADCASTS    false
 
 
-
-/*** NBNS Configuration ***/
-#define TCPIP_STACK_USE_NBNS
-#define TCPIP_NBNS_TASK_TICK_RATE   110
-
-
 /******************************************************************************/
 /*wolfSSL TLS Layer Configuration*/
 /******************************************************************************/
