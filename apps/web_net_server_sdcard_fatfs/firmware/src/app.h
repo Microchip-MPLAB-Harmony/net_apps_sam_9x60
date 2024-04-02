@@ -105,11 +105,22 @@ extern "C" {
 #define APP_SWITCH_3StateGet()      SWITCH2_Get()
 #endif
 
+#ifdef __SAM9X60__
+#if defined(sam_9x60_ek)     
+#define LED1_Get()  ((PIOB_REGS->PIO_PDSR >> 11) & 0x1)
+
+#define APP_LED_1StateSet()         LED1_On()
+#define APP_LED_1StateGet()         LED1_Get()
+#define APP_LED_1StateClear()       LED1_Off()
+#define APP_LED_1StateToggle()      LED1_Toggle()
+#endif
+#else
 #define APP_LED_1StateSet()         LED1_Set()
 #define APP_LED_1StateGet()         LED1_Get()
 #define APP_LED_1StateClear()       LED1_Clear()
 #define APP_LED_1StateToggle()      LED1_Toggle()
-
+#endif
+    
 #if defined(__PIC32MZ__)
 #define APP_LED_2StateSet()         LED2_Set()
 #define APP_LED_2StateGet()         LED2_Get()
