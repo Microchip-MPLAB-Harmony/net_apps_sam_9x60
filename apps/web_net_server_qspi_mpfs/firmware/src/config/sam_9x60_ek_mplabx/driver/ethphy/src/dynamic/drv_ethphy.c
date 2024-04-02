@@ -15,34 +15,31 @@
     Ethernet PHY modules on Microchip microcontrollers.  This file Implements
     the core interface routines for the Ethernet PHY driver.
 
-    While building the driver from source, ALWAYS use this file in the build.
 *******************************************************************************/
 
 //DOM-IGNORE-BEGIN
-/*****************************************************************************
- Copyright (C) 2013-2018 Microchip Technology Inc. and its subsidiaries.
+/*
+Copyright (C) 2013-2023, Microchip Technology Inc., and its subsidiaries. All rights reserved.
 
-Microchip Technology Inc. and its subsidiaries.
+The software and documentation is provided by microchip and its contributors
+"as is" and any express, implied or statutory warranties, including, but not
+limited to, the implied warranties of merchantability, fitness for a particular
+purpose and non-infringement of third party intellectual property rights are
+disclaimed to the fullest extent permitted by law. In no event shall microchip
+or its contributors be liable for any direct, indirect, incidental, special,
+exemplary, or consequential damages (including, but not limited to, procurement
+of substitute goods or services; loss of use, data, or profits; or business
+interruption) however caused and on any theory of liability, whether in contract,
+strict liability, or tort (including negligence or otherwise) arising in any way
+out of the use of the software and documentation, even if advised of the
+possibility of such damage.
 
-Subject to your compliance with these terms, you may use Microchip software 
-and any derivatives exclusively with Microchip products. It is your 
-responsibility to comply with third party license terms applicable to your 
-use of third party software (including open source software) that may 
-accompany Microchip software.
-
-THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
-EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
-WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR 
-PURPOSE.
-
-IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
-WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
-BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE 
-FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN 
-ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, 
-THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*****************************************************************************/
+Except as expressly permitted hereunder and subject to the applicable license terms
+for any third-party software incorporated in the software and any applicable open
+source software license terms, no license or other rights, whether express or
+implied, are granted under any patent or other intellectual property rights of
+Microchip or any third party.
+*/
 
 //DOM-IGNORE-END
 
@@ -61,21 +58,23 @@ THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 // *****************************************************************************
 // Local Definitions
 //
-#define PROT_802_3  0x01    // IEEE 802.3 capability
+#define _PHY_PROT_802_3         0x01    // IEEE 802.3 capability
 // all comm capabilities our MAC supports
-#define PHY_STD_CPBL_MASK       (_BMSTAT_BASE10T_HDX_MASK | _BMSTAT_BASE10T_FDX_MASK | 			\
-                                _BMSTAT_BASE100TX_HDX_MASK |_BMSTAT_BASE100TX_FDX_MASK | 		\
+#define _PHY_STD_CPBL_MASK      (_BMSTAT_BASE10T_HDX_MASK | _BMSTAT_BASE10T_FDX_MASK |          \
+                                _BMSTAT_BASE100TX_HDX_MASK |_BMSTAT_BASE100TX_FDX_MASK |        \
                                 _BMSTAT_EXTSTAT_MASK)
-								
-#define PHY_EXT_CPBL_MASK  		(_EXTSTAT_1000BASEX_FDX_MASK | _EXTSTAT_1000BASEX_HDX_MASK | 	\
-								_EXTSTAT_1000BASET_FDX_MASK | _EXTSTAT_1000BASET_HDX_MASK)
+                                
+#define _PHY_EXT_CPBL_MASK          (_EXTSTAT_1000BASEX_FDX_MASK | _EXTSTAT_1000BASEX_HDX_MASK |    \
+                                _EXTSTAT_1000BASET_FDX_MASK | _EXTSTAT_1000BASET_HDX_MASK)
 
+
+#define _PHY_BMCON_DETECT_MASK  (_BMCON_LOOPBACK_MASK | _BMCON_DUPLEX_MASK) 
 
 // local prototypes
 // debug
 #if ((DRV_PHY_DEBUG_LEVEL & DRV_PHY_DEBUG_MASK_BASIC) != 0)
-volatile int _PhyStayAssertLoop = 0;
-static void _PhyAssertCond(bool cond, const char* message, int lineNo)
+static volatile int _PhyStayAssertLoop = 0;
+void _DRV_ETHPHY_AssertCond(bool cond, const char* message, int lineNo)
 {
     if(cond == false)
     {
@@ -84,7 +83,7 @@ static void _PhyAssertCond(bool cond, const char* message, int lineNo)
     }
 }
 // a debug condition, not really assertion
-volatile int _PhyStayCondLoop = 0;
+static volatile int _PhyStayCondLoop = 0;
 static void _PhyDebugCond(bool cond, const char* message, int lineNo)
 {
     if(cond == false)
@@ -95,12 +94,11 @@ static void _PhyDebugCond(bool cond, const char* message, int lineNo)
 }
 
 #else
-#define _PhyAssertCond(cond, message, lineNo)
 #define _PhyDebugCond(cond, message, lineNo)
 #endif  // (DRV_PHY_DEBUG_LEVEL & DRV_PHY_DEBUG_MASK_BASIC)
 
 #if ((DRV_PHY_DEBUG_LEVEL & DRV_PHY_DEBUG_MASK_DETECT_PHASE) != 0)
-static void _PhyDetectPhase(uint16_t detectPhase)
+void _DRV_ETHPHY_Dbg_DetectPhase(uint16_t detectPhase)
 {
     static uint16_t prevState = 0xffff;
     if(detectPhase != prevState)
@@ -109,17 +107,27 @@ static void _PhyDetectPhase(uint16_t detectPhase)
         SYS_CONSOLE_PRINT("PHY detect phase: %d\r\n", detectPhase);
     }
 }
-#else
-#define _PhyDetectPhase(detectPhase)
 #endif  // (DRV_PHY_DEBUG_LEVEL & DRV_PHY_DEBUG_MASK_DETECT_PHASE)
 
 #if ((DRV_PHY_DEBUG_LEVEL & DRV_PHY_DEBUG_MASK_DETECT_VALUES) != 0)
-static void _PhyDetectValue(uint16_t rVal, bool writeOp)
+void _DRV_ETHPHY_Dbg_DetectWriteValue(int rIx, uint16_t rVal)
 {
-    SYS_CONSOLE_PRINT("PHY detect value: %s 0x%04x\r\n", writeOp ? "write" : "read", rVal);
+    SYS_CONSOLE_PRINT("PHY detect write - reg: %d, val: 0x%04x\r\n", rIx, rVal);
 }
-#else
-#define _PhyDetectValue(rVal, writeOp)
+
+void _DRV_ETHPHY_Dbg_DetectReadValue(int rIx, uint16_t rVal, uint16_t valMask, uint16_t chkMask)
+{
+    uint16_t chkVal = rVal & valMask;   // keep only bits to be checked
+    uint16_t xorVal = chkVal ^ chkMask; 
+    if(xorVal == 0)
+    {
+        SYS_CONSOLE_PRINT("PHY detect read match - reg: %d, val: 0x%04x\r\n", rIx, rVal);
+    }
+    else
+    {
+        SYS_CONSOLE_PRINT("PHY detect read Fail - reg: %d, got: 0x%04x, fail mask: 0x%04x\r\n", rIx, rVal, xorVal);
+    }
+}
 #endif  // (DRV_PHY_DEBUG_LEVEL & DRV_PHY_DEBUG_MASK_DETECT_VALUES)
 
 
@@ -147,6 +155,7 @@ static const _DRV_PHY_OperPhaseF _DRV_PHY_ClientOpTbl[] =
 
 static void _DRV_ETHPHY_SetupPhaseIdle(DRV_ETHPHY_CLIENT_OBJ * hClientObj);
 static void _DRV_ETHPHY_SetupPhaseDetect(DRV_ETHPHY_CLIENT_OBJ * hClientObj);
+static void _DRV_ETHPHY_SetupPhaseReadId(DRV_ETHPHY_CLIENT_OBJ * hClientObj);
 static void _DRV_ETHPHY_SetupPhaseReset(DRV_ETHPHY_CLIENT_OBJ * hClientObj);
 static void _DRV_ETHPHY_SetupPhaseNegotiate(DRV_ETHPHY_CLIENT_OBJ * hClientObj);
 
@@ -156,6 +165,7 @@ static const _DRV_PHY_OperPhaseF _DRV_PHY_SetupPhasesTbl[] =
 {
     _DRV_ETHPHY_SetupPhaseIdle,
     _DRV_ETHPHY_SetupPhaseDetect,
+    _DRV_ETHPHY_SetupPhaseReadId,
     _DRV_ETHPHY_SetupPhaseReset,
     _DRV_ETHPHY_SetupPhaseNegotiate,
 };
@@ -169,9 +179,9 @@ static void _DRV_ETHPHY_LinkStatPhaseRefresh(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 
 static const _DRV_PHY_OperPhaseF _DRV_PHY_LinkStatPhasesTbl[] = 
 {
-    _DRV_ETHPHY_LinkStatPhaseIdle,
-    _DRV_ETHPHY_LinkStatPhaseRead,
-    _DRV_ETHPHY_LinkStatPhaseRefresh,
+    _DRV_ETHPHY_LinkStatPhaseIdle,      // DRV_ETHPHY_LINK_STAT_PHASE_IDLE
+    _DRV_ETHPHY_LinkStatPhaseRead,      // DRV_ETHPHY_LINK_STAT_PHASE_READ
+    _DRV_ETHPHY_LinkStatPhaseRefresh,   // DRV_ETHPHY_LINK_STAT_PHASE_REFRESH
 };
 
 
@@ -244,8 +254,6 @@ static const _DRV_PHY_OperPhaseF _DRV_PHY_ResetPhasesTbl[] =
 // local functions
 //
 
-static void _DRV_PHY_SetOperDoneResult(DRV_ETHPHY_CLIENT_OBJ * hClientObj, DRV_ETHPHY_RESULT res);
-
 static DRV_ETHPHY_RESULT _DRV_ETHPHY_DefaultDetect( const struct DRV_ETHPHY_OBJECT_BASE_TYPE* pBaseObj, DRV_HANDLE hClientObj);
 
 static DRV_ETHPHY_LINK_STATUS _Phy2LinkStat(__BMSTATbits_t phyStat)
@@ -264,10 +272,10 @@ static DRV_ETHPHY_LINK_STATUS _Phy2LinkStat(__BMSTATbits_t phyStat)
 
 // starts a read/write transfer
 // returns:
-//      - < 0 an error occurred
-//      - DRV_ETHPHY_SMI_TXFER_RES_BUSY: transaction needs to be retried
-//      - DRV_ETHPHY_SMI_TXFER_RES_SCHEDULED: transaction started (read)
-//      - DRV_ETHPHY_SMI_TXFER_RES_DONE: transaction done (simple write)
+//      - < 0 an error occurred;  smiTxferStatus unchanged (should be DRV_ETHPHY_SMI_TXFER_OP_NONE)
+//      - DRV_ETHPHY_SMI_TXFER_RES_BUSY: transaction needs to be retried; smiTxferStatus unchanged (should be DRV_ETHPHY_SMI_TXFER_OP_NONE)
+//      - DRV_ETHPHY_SMI_TXFER_RES_SCHEDULED: transaction started (read/write complete); smiTxferStatus == DRV_ETHPHY_SMI_TXFER_OP_WAIT_COMPLETE
+//      - DRV_ETHPHY_SMI_TXFER_RES_DONE: transaction done (simple write); smiTxferStatus == DRV_ETHPHY_SMI_TXFER_OP_NONE
 static DRV_ETHPHY_SMI_TXFER_RES _DRV_PHY_SMITransferStart(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     DRV_MIIM_OPERATION_HANDLE miimOpHandle;
@@ -304,7 +312,7 @@ static DRV_ETHPHY_SMI_TXFER_RES _DRV_PHY_SMITransferStart(DRV_ETHPHY_CLIENT_OBJ 
     }
     else
     {   // no other/scan operations allowed that take complete control of DRV_MIIM!
-        _PhyAssertCond(false, __func__, __LINE__);
+        _DRV_ETHPHY_AssertCond(false, __func__, __LINE__);
         return DRV_ETHPHY_SMI_TXFER_RES_ILLEGAL;
     }
 
@@ -341,11 +349,15 @@ static DRV_ETHPHY_SMI_TXFER_RES _DRV_PHY_SMITransferStart(DRV_ETHPHY_CLIENT_OBJ 
 //      - < 0 an error occurred
 //      - DRV_ETHPHY_SMI_TXFER_RES_WAIT: not yet complete, call again
 //      - DRV_ETHPHY_SMI_TXFER_RES_DONE: transaction completed succesfully
+// Note: this should be called only when (hClientObj->smiTxferStatus == DRV_ETHPHY_SMI_TXFER_OP_WAIT_COMPLETE
+//      i.e. when the SMI _DRV_PHY_SMITransferStart operation has been called with:
+//      DRV_ETHPHY_SMI_XFER_TYPE_READ or DRV_ETHPHY_SMI_XFER_TYPE_WRITE_COMPLETE
+//      For a simple DRV_ETHPHY_SMI_XFER_TYPE_WRITE operation, the result is discarded, so no wait is needed!
 static DRV_ETHPHY_SMI_TXFER_RES _DRV_PHY_SMITransferWaitComplete(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     DRV_ETHPHY_SMI_TXFER_RES txferRes;
     DRV_MIIM_RESULT miimRes;
-    uint16_t  opData;
+    uint32_t  opData;
 
     if(hClientObj->smiTxferStatus != DRV_ETHPHY_SMI_TXFER_OP_WAIT_COMPLETE)
     {   // nothing to wait for; but some functions may call this if a write operation was failed by MIIM and needs retry
@@ -355,11 +367,11 @@ static DRV_ETHPHY_SMI_TXFER_RES _DRV_PHY_SMITransferWaitComplete(DRV_ETHPHY_CLIE
 
     if(hClientObj->miimHandle == 0)
     {   // shouldn't happen
-        _PhyAssertCond(false, __func__, __LINE__);
+        _DRV_ETHPHY_AssertCond(false, __func__, __LINE__);
         return DRV_ETHPHY_SMI_TXFER_RES_ILLEGAL;
     } 
 
-    miimRes = DRV_MIIM_OperationResult(hClientObj->miimHandle, hClientObj->miimOpHandle, &opData);
+    miimRes = hClientObj->pMiimBase->DRV_MIIM_OperationResult(hClientObj->miimHandle, hClientObj->miimOpHandle, &opData);
     if(miimRes == DRV_MIIM_RES_PENDING)
     {   // wait op to complete
         return DRV_ETHPHY_SMI_TXFER_RES_WAIT;
@@ -375,7 +387,7 @@ static DRV_ETHPHY_SMI_TXFER_RES _DRV_PHY_SMITransferWaitComplete(DRV_ETHPHY_CLIE
         txferRes = DRV_ETHPHY_SMI_TXFER_RES_DONE; 
         if(hClientObj->smiTxferType == DRV_ETHPHY_SMI_XFER_TYPE_READ)
         {
-            hClientObj->smiData = opData; // set the read result
+            hClientObj->smiData = (uint16_t)opData; // set the read result
         }
     }
 
@@ -393,7 +405,7 @@ static bool _DRV_PHY_SMITransfer_Wait(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 
     if(opRes < 0)
     {   // error
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
         return false;
     }
     else if(opRes == DRV_ETHPHY_SMI_TXFER_RES_WAIT)
@@ -418,7 +430,7 @@ static bool _DRV_PHY_SMIReadStart(DRV_ETHPHY_CLIENT_OBJ * hClientObj, uint16_t r
 
     if(opRes < 0)
     {   // error
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
         return false;
     }
     else if(opRes == DRV_ETHPHY_SMI_TXFER_RES_BUSY)
@@ -455,7 +467,7 @@ static bool _DRV_PHY_SMIWriteStart(DRV_ETHPHY_CLIENT_OBJ * hClientObj, uint16_t 
 
     if(opRes < 0)
     {   // error
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
         return false;
     }
     else if(opRes == DRV_ETHPHY_SMI_TXFER_RES_BUSY)
@@ -467,11 +479,11 @@ static bool _DRV_PHY_SMIWriteStart(DRV_ETHPHY_CLIENT_OBJ * hClientObj, uint16_t 
     return true;
 }
 
-static DRV_ETHPHY_SMI_TXFER_RES _DRV_PHY_SMIWriteStartEx(DRV_ETHPHY_CLIENT_OBJ * hClientObj, uint16_t rIx, uint16_t wData, int phyAdd)
+static DRV_ETHPHY_SMI_TXFER_RES _DRV_PHY_SMIWriteStartEx(DRV_ETHPHY_CLIENT_OBJ * hClientObj, uint16_t rIx, uint16_t wData, int phyAdd, bool waitComplete)
 {
     hClientObj->smiTxferStatus = DRV_ETHPHY_SMI_TXFER_OP_START;
     hClientObj->smiRIx = rIx;
-    hClientObj->smiTxferType = DRV_ETHPHY_SMI_XFER_TYPE_WRITE;
+    hClientObj->smiTxferType = waitComplete ? DRV_ETHPHY_SMI_XFER_TYPE_WRITE_COMPLETE : DRV_ETHPHY_SMI_XFER_TYPE_WRITE;
     hClientObj->smiData =  wData;
     hClientObj->smiPhyAddress = phyAdd;
 
@@ -484,25 +496,6 @@ static void _DRV_PHY_SetOperPhase(DRV_ETHPHY_CLIENT_OBJ * hClientObj, uint16_t o
     hClientObj->operSubPhase = operSubPhase;
 }
 
-static void _DRV_PHY_SetOperDoneResult(DRV_ETHPHY_CLIENT_OBJ * hClientObj, DRV_ETHPHY_RESULT res)
-{
-    hClientObj->operPhase =  hClientObj->operSubPhase = 0;
-    hClientObj->operType = DRV_ETHPHY_CLIENT_OP_TYPE_NONE;
-    hClientObj->status = DRV_ETHPHY_CLIENT_STATUS_READY;
-    hClientObj->operRes = res;
-    if(res < 0)
-    {
-        SYS_CONSOLE_PRINT("DRV_PHY operation error: %d\r\n", res);
-    }
-}
-
-static void _DRV_PHY_SetOperStart(DRV_ETHPHY_CLIENT_OBJ * hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE opType, DRV_ETHPHY_RESULT res)
-{
-    hClientObj->operType = opType;
-    hClientObj->operPhase = hClientObj->operSubPhase = 0; 
-    hClientObj->status = DRV_ETHPHY_CLIENT_STATUS_BUSY; 
-    hClientObj->operRes = res;
-}
 
 
 // *****************************************************************************
@@ -519,19 +512,22 @@ static void _DRV_PHY_SetOperStart(DRV_ETHPHY_CLIENT_OBJ * hClientObj, DRV_ETHPHY
     Not all modes are available on all micro-controllers.
 */
 
-#define _DRV_ETHPHY_INSTANCES_NUMBER    TCPIP_STACK_INTMAC_COUNT
+#ifndef TCPIP_STACK_INTMAC_COUNT
+    #define _DRV_ETHPHY_INSTANCES_NUMBER    1
+#else
+    #define _DRV_ETHPHY_INSTANCES_NUMBER    TCPIP_STACK_INTMAC_COUNT
+#endif
 
 static DRV_ETHPHY_INSTANCE              gPhyDrvInst[_DRV_ETHPHY_INSTANCES_NUMBER];
 
 
 // *****************************************************************************
 // *****************************************************************************
-// Section: File Scope Functions
+// Section: Driver Function for derived objects
 // *****************************************************************************
 // *****************************************************************************
-
 #if (_DRV_ETHPHY_INSTANCES_NUMBER == 1)
-static __inline__ DRV_ETHPHY_INSTANCE* __attribute__((always_inline)) _DRVHandleToInst(void* handle)
+DRV_ETHPHY_INSTANCE* _DRV_ETHPHY_HandleToInst(void* handle)
 {
     DRV_ETHPHY_INSTANCE* pPhyInst = (DRV_ETHPHY_INSTANCE*)handle;
     return pPhyInst == gPhyDrvInst ? pPhyInst : 0;
@@ -539,7 +535,7 @@ static __inline__ DRV_ETHPHY_INSTANCE* __attribute__((always_inline)) _DRVHandle
 #else
 // multiple instances version
 // could be refined more
-static DRV_ETHPHY_INSTANCE* _DRVHandleToInst(void * handle)
+DRV_ETHPHY_INSTANCE* _DRV_ETHPHY_HandleToInst(void * handle)
 {
     DRV_ETHPHY_INSTANCE* pPhyInst = (DRV_ETHPHY_INSTANCE*)handle;
     int phyIx = (int)(pPhyInst - gPhyDrvInst);
@@ -555,25 +551,27 @@ static DRV_ETHPHY_INSTANCE* _DRVHandleToInst(void * handle)
 }
 #endif  // (_DRV_ETHPHY_INSTANCES_NUMBER == 1)
 
-
-
-static DRV_ETHPHY_CLIENT_OBJ * _DRV_ETHPHY_ClientObjectAllocate( DRV_ETHPHY_INSTANCE* phyInst, int* pCliIx )
+void _DRV_ETHPHY_SetOperDoneResult(DRV_ETHPHY_CLIENT_OBJ * hClientObj, DRV_ETHPHY_RESULT res)
 {
-    int ix;
-
-    DRV_ETHPHY_CLIENT_OBJ* pClientObj = phyInst->objClients;
-    for(ix = 0; ix < sizeof(phyInst->objClients) / sizeof(*phyInst->objClients); ix++, pClientObj++)
-    {
-        if(pClientObj->clientInUse == 0)
-        {   // available client
-            *pCliIx = ix;
-            return pClientObj;
-        }
+    hClientObj->operPhase =  hClientObj->operSubPhase = 0;
+    hClientObj->operType = DRV_ETHPHY_CLIENT_OP_TYPE_NONE;
+    hClientObj->status = DRV_ETHPHY_CLIENT_STATUS_READY;
+    hClientObj->operRes = res;
+    if(res < 0)
+    {   
+#if ((DRV_PHY_DEBUG_LEVEL & DRV_PHY_DEBUG_MASK_OP_FAIL) != 0)
+        SYS_CONSOLE_PRINT("DRV_PHY operation error: %d\r\n", res);
+#endif  // ((DRV_PHY_DEBUG_LEVEL & DRV_PHY_DEBUG_MASK_OP_FAIL) != 0)
     }
-
-    return 0;
 }
 
+void _DRV_ETHPHY_SetOperStart(DRV_ETHPHY_CLIENT_OBJ * hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE opType, DRV_ETHPHY_RESULT res)
+{
+    hClientObj->operType = opType;
+    hClientObj->operPhase = hClientObj->operSubPhase = 0; 
+    hClientObj->status = DRV_ETHPHY_CLIENT_STATUS_BUSY; 
+    hClientObj->operRes = res;
+}
 
 
 // *****************************************************************************
@@ -609,6 +607,7 @@ const DRV_ETHPHY_OBJECT_BASE  DRV_ETHPHY_OBJECT_BASE_Default =
      .DRV_ETHPHY_VendorSMIReadStart =     DRV_ETHPHY_VendorSMIReadStart,
      .DRV_ETHPHY_VendorSMIReadResultGet = DRV_ETHPHY_VendorSMIReadResultGet,
      .DRV_ETHPHY_VendorSMIWriteStart =    DRV_ETHPHY_VendorSMIWriteStart,
+     .DRV_ETHPHY_VendorSMIWriteWaitComplete = DRV_ETHPHY_VendorSMIWriteWaitComplete,
      .DRV_ETHPHY_VendorSMIOperationIsComplete = DRV_ETHPHY_VendorSMIOperationIsComplete,
 };
 
@@ -668,21 +667,26 @@ SYS_MODULE_OBJ DRV_ETHPHY_Initialize( const SYS_MODULE_INDEX  iModule,
     hSysObj->miimIndex = ethphyInit->miimIndex;
 
     hSysObj->objInUse = true;      // Set object to be in use
-    hSysObj->busInUse = 0;
-    hSysObj->numClients = 0;
     hSysObj->status = SYS_STATUS_READY; // Set module state
     hSysObj->iModule  = iModule;  // Store driver instance
     hSysObj->ethphyId = ethphyInit->ethphyId; // Store PLIB ID
 
     // Assign External PHY Service Functions
     hSysObj->pPhyObj = ethphyInit->pPhyObject;
+    hSysObj->pBaseObj = gDrvEthBaseObj;
     
     hSysObj->ethphyTmo = ethphyInit->ethphyTmo;
     
-    memset(hSysObj->objClients, 0, sizeof(hSysObj->objClients));
+    hSysObj->objClient.clientInUse = 0;
+    hSysObj->objClient.detectMask = hSysObj->pPhyObj->bmconDetectMask;
+    if(hSysObj->objClient.detectMask == 0)
+    {   // use a default value...
+       hSysObj->objClient.detectMask = _PHY_BMCON_DETECT_MASK;
+    }
+    hSysObj->objClient.capabMask = hSysObj->pPhyObj->bmstatCpblMask;
 
     // hush compiler warning
-    _PhyAssertCond(true, __func__, __LINE__);
+    _DRV_ETHPHY_AssertCond(true, __func__, __LINE__);
     _PhyDebugCond(true, __func__, __LINE__);
 
     /* Return the driver handle */
@@ -695,19 +699,18 @@ void DRV_ETHPHY_Reinitialize( SYS_MODULE_OBJ        object ,
                               const SYS_MODULE_INIT * const init )
 {
     /* Check for the valid driver object passed */
-    DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst((void*)object);
+    DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst((void*)object);
     if(phyInst != 0)
     {
         DRV_ETHPHY_INIT * ethphyInit = (DRV_ETHPHY_INIT *)init;
 
-        phyInst->numClients = 0;
         phyInst->status = SYS_STATUS_READY; // Set module state
         phyInst->ethphyId = ethphyInit->ethphyId; // Store PLIB ID
 
         // Assign External PHY Service Functions
         phyInst->pPhyObj = ethphyInit->pPhyObject;
 
-        memset(phyInst->objClients, 0, sizeof(phyInst->objClients));
+        phyInst->objClient.clientInUse = 0;
     }
 }
 
@@ -716,7 +719,7 @@ void DRV_ETHPHY_Reinitialize( SYS_MODULE_OBJ        object ,
 void DRV_ETHPHY_Deinitialize( SYS_MODULE_OBJ object )
 {
     /* Check for the valid driver object passed */
-    DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst((void*)object);
+    DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst((void*)object);
     if(phyInst != 0)
     {
         /* Set the Device Status */
@@ -734,7 +737,7 @@ void DRV_ETHPHY_Deinitialize( SYS_MODULE_OBJ object )
 SYS_STATUS DRV_ETHPHY_Status( SYS_MODULE_OBJ object )
 {
     /* Check for the valid driver object passed */
-    DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst((void*)object);
+    DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst((void*)object);
     if(phyInst != 0)
     {
         /* Return the status associated with the driver handle */
@@ -748,18 +751,14 @@ SYS_STATUS DRV_ETHPHY_Status( SYS_MODULE_OBJ object )
 void DRV_ETHPHY_Tasks( SYS_MODULE_OBJ object )
 {
     /* Check for the valid driver object passed */
-    DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst((void*)object);
+    DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst((void*)object);
     if(phyInst != 0)
     {
-        int ix;
-        DRV_ETHPHY_CLIENT_OBJ* hClientObj = phyInst->objClients;
+        DRV_ETHPHY_CLIENT_OBJ* hClientObj = &phyInst->objClient;
 
-        for(ix = 0; ix < sizeof(phyInst->objClients) / sizeof(*phyInst->objClients); ix++, hClientObj++)
-        {
-            if(hClientObj->clientInUse != 0)
-            {   // active client
-                (*_DRV_PHY_ClientOpTbl[hClientObj->operType])(hClientObj);
-            }
+        if(hClientObj->clientInUse != 0)
+        {   // active client
+            (*_DRV_PHY_ClientOpTbl[hClientObj->operType])(hClientObj);
         }
     }
 } 
@@ -778,7 +777,6 @@ DRV_HANDLE  DRV_ETHPHY_Open ( const SYS_MODULE_INDEX iModule,
     /* Multi client variables are removed from single client builds. */
     DRV_ETHPHY_INSTANCE * phyInst;
     DRV_ETHPHY_CLIENT_OBJ * hClientObj;
-    int  clientIx;
 
     /* Validate the driver index */
     /* If there is anything specific to the module & needs to be checked, should
@@ -797,8 +795,10 @@ DRV_HANDLE  DRV_ETHPHY_Open ( const SYS_MODULE_INDEX iModule,
 
     /* Setup client operations */
 
-    /* Allocate the client object and set the flag as in use */
-    hClientObj = _DRV_ETHPHY_ClientObjectAllocate(phyInst, &clientIx) ;
+    // Allocate the client object and set the flag as in use
+    // there's only one client: the MAC
+    hClientObj = phyInst->objClient.clientInUse == 0 ?  &phyInst->objClient : 0;
+
     while(hClientObj)
     {
         DRV_HANDLE miimHandle = phyInst->pMiimBase->DRV_MIIM_Open(phyInst->miimIndex, DRV_IO_INTENT_SHARED);
@@ -807,18 +807,34 @@ DRV_HANDLE  DRV_ETHPHY_Open ( const SYS_MODULE_INDEX iModule,
             _PhyDebugCond(false, __func__, __LINE__);
             break;
         }
+
+        // set the MIIM driver so it can be used by the PHY setup procedure
+        DRV_MIIM_SETUP  miimSetup;
+
+        miimSetup.hostClockFreq = (uint32_t)TCPIP_INTMAC_PERIPHERAL_CLK;
+
+
+        miimSetup.maxBusFreq = (*phyInst->pPhyObj->smiClockGet)(gDrvEthBaseObj, (DRV_HANDLE)hClientObj);
+        miimSetup.setupFlags = DRV_MIIM_SETUP_FLAG_NONE;
+
+        DRV_MIIM_RESULT miimRes = phyInst->pMiimBase->DRV_MIIM_Setup(miimHandle, &miimSetup); 
+        if(miimRes < 0)
+        {   // error occurred
+            phyInst->pMiimBase->DRV_MIIM_Close( miimHandle);
+            _PhyDebugCond(false, __func__, __LINE__);
+            return DRV_HANDLE_INVALID;
+        }
+
         hClientObj->pMiimBase = phyInst->pMiimBase;
         hClientObj->miimHandle = miimHandle;
         hClientObj->miimOpHandle = 0;
 
         hClientObj->clientInUse    = true;
-        hClientObj->clientIx = clientIx;
         hClientObj->hDriver  = phyInst;
         hClientObj->ethphyId = phyInst->ethphyId;
         hClientObj->operType = DRV_ETHPHY_CLIENT_OP_TYPE_NONE;
         hClientObj->smiTxferStatus = DRV_ETHPHY_SMI_TXFER_OP_NONE;
         _DRV_PHY_SetOperPhase(hClientObj, 0, 0);
-        phyInst->numClients++;
 
         /* Update the Client Status */
         hClientObj->status = DRV_ETHPHY_CLIENT_STATUS_READY;
@@ -857,14 +873,13 @@ void DRV_ETHPHY_Close( DRV_HANDLE handle )
 
     if(hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
             hClientObj->pMiimBase->DRV_MIIM_Close(hClientObj->miimHandle);
 
             /* Free the Client Instance */
             hClientObj->clientInUse = false ;
-            hClientObj->hDriver->numClients--;
 
             /* Update the Client Status */
             hClientObj->status = DRV_ETHPHY_CLIENT_STATUS_CLOSED;
@@ -884,7 +899,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_Setup( DRV_HANDLE handle, DRV_ETHPHY_SETUP* pSetUp,
         return DRV_ETHPHY_RES_HANDLE_ERR;
     }
 
-    DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+    DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
     if(phyInst == 0)
     {
         return DRV_ETHPHY_RES_HANDLE_ERR;
@@ -913,20 +928,6 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_Setup( DRV_HANDLE handle, DRV_ETHPHY_SETUP* pSetUp,
     {
         (*pSetUp->resetFunction)(gDrvEthBaseObj, handle);
     }
-    DRV_MIIM_SETUP  miimSetup;
-
-	miimSetup.hostClockFreq = (uint32_t)TCPIP_INTMAC_PERIPHERAL_CLK;
-
-
-    miimSetup.maxBusFreq = (*pPhyObj->smiClockGet)(gDrvEthBaseObj, handle);
-    miimSetup.setupFlags = DRV_MIIM_SETUP_FLAG_NONE;
-
-    DRV_MIIM_RESULT miimRes = hClientObj->pMiimBase->DRV_MIIM_Setup(hClientObj->miimHandle, &miimSetup); 
-    if(miimRes < 0)
-    {   // error occurred
-        _PhyDebugCond(false, __func__, __LINE__);
-        return DRV_ETHPHY_RES_MIIM_ERR;
-    }
 
     phyInst->phyAddress = pSetUp->phyAddress;
     phyInst->openFlags = pSetUp->openFlags;
@@ -934,20 +935,22 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_Setup( DRV_HANDLE handle, DRV_ETHPHY_SETUP* pSetUp,
     phyInst->macPauseType = pSetUp->macPauseType;
     
     hClientObj->operParam = (uintptr_t)pSetupFlags;
-    _DRV_PHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_SETUP, DRV_ETHPHY_RES_PENDING);
+    _DRV_ETHPHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_SETUP, DRV_ETHPHY_RES_PENDING);
 
     return DRV_ETHPHY_RES_PENDING;
 }
 
+// DRV_ETHPHY_CLIENT_OP_TYPE_NONE
 static void _DRV_ETHPHY_ClientOpNone(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
 }
 
+// DRV_ETHPHY_CLIENT_OP_TYPE_SETUP
 static void _DRV_ETHPHY_ClientOpSetup(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     if((unsigned int)hClientObj->operPhase >= sizeof(_DRV_PHY_SetupPhasesTbl)/sizeof(*_DRV_PHY_SetupPhasesTbl))
     {   // shouldn't happen
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
     }
     else
     {
@@ -982,7 +985,7 @@ static void _DRV_ETHPHY_SetupPhaseIdle(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 
         if((swFlags ^ hwFlags) != 0)
         {   // hw-sw configuration mismatch MII/RMII, ALT/DEF config
-            _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_CFG_ERR);
+            _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_CFG_ERR);
         }
     }
 #endif
@@ -1023,6 +1026,7 @@ static void _DRV_ETHPHY_SetupPhaseIdle(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 }
 
     
+
 static void _DRV_ETHPHY_SetupPhaseDetect(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     DRV_ETHPHY_VENDOR_DETECT detectF;
@@ -1052,31 +1056,35 @@ static void _DRV_ETHPHY_SetupPhaseDetect(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
             res =  hClientObj->vendorDetect(gDrvEthBaseObj, (DRV_HANDLE)hClientObj);
             if(res == DRV_ETHPHY_RES_OK)
             {   // everything seems to be fine
-                // initiate the PHY reset
-                _DRV_PHY_SetOperPhase(hClientObj, DRV_ETHPHY_SETUP_PHASE_RESET, 0);
+                // initiate the PHY ID Read
+                _DRV_PHY_SetOperPhase(hClientObj, DRV_ETHPHY_SETUP_PHASE_READ_ID, 0);
             }
             else if(res < 0)
             {   // failed 
-                _DRV_PHY_SetOperDoneResult(hClientObj, res);
+                _DRV_ETHPHY_SetOperDoneResult(hClientObj, res);
             }
             else
             {   // DRV_ETHPHY_RES_PENDING wait some more...
                 if(SYS_TMR_TickCountGet() >= hClientObj->operTStamp)
                 {   // tmo occurred
-                    _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_DTCT_TMO);
+                    _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_DTCT_TMO);
                 }
             }
             break;
 
         default:
             // shouldn't happen
-            _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+            _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
     }
 
 }
 
 
 // default PHY detection procedure
+// the DRV_ETHPHY_OBJECT can specify a BMCON detectMask
+//      if this mask == 0, then the default procedure will use the BMCON.RESET and BMCON.LOOPBACK bits
+//      i.e. the corresponding BMCON_LOOPBACK_MASK | _BMCON_DUPLEX_MASK BMCON mask
+// else the DRV_ETHPHY_OBJECT::bmconDetectMask will be used!
 static DRV_ETHPHY_RESULT _DRV_ETHPHY_DefaultDetect( const struct DRV_ETHPHY_OBJECT_BASE_TYPE* pBaseObj, DRV_HANDLE hClientObj)
 {
     union
@@ -1090,6 +1098,7 @@ static DRV_ETHPHY_RESULT _DRV_ETHPHY_DefaultDetect( const struct DRV_ETHPHY_OBJE
     }vendorData;
 
     __BMCONbits_t bmcon;
+    uint16_t    detectMask;
     uint16_t    phyReg = 0;
     uint16_t    detectPhase = 0;
     int         phyAddress = 0;
@@ -1105,7 +1114,7 @@ static DRV_ETHPHY_RESULT _DRV_ETHPHY_DefaultDetect( const struct DRV_ETHPHY_OBJE
 
     detectPhase = vendorData.low;
 
-    _PhyDetectPhase(detectPhase);
+    _DRV_ETHPHY_Dbg_DetectPhase(detectPhase);
 
     // try to detect the PHY and reset it
 
@@ -1143,7 +1152,7 @@ static DRV_ETHPHY_RESULT _DRV_ETHPHY_DefaultDetect( const struct DRV_ETHPHY_OBJE
 
             // got BMCON result
             bmcon.w =  phyReg;
-            _PhyDetectValue(bmcon.w, false);
+            _DRV_ETHPHY_Dbg_DetectReadValue(PHY_REG_BMCON, bmcon.w, _BMCON_RESET_MASK, 0);
             if(bmcon.RESET == 0)
             {   // all good;advance to the next phase
                 vendorData.low = ++detectPhase;
@@ -1160,10 +1169,9 @@ static DRV_ETHPHY_RESULT _DRV_ETHPHY_DefaultDetect( const struct DRV_ETHPHY_OBJE
 
         case 2:
             // try to see if we can write smth to the PHY
-            // we use BMCON::Loopback and duplex bits
-            bmcon.w = _BMCON_LOOPBACK_MASK | _BMCON_DUPLEX_MASK;
+            bmcon.w = ((DRV_ETHPHY_CLIENT_OBJ*)hClientObj)->detectMask;
             res = pBaseObj->DRV_ETHPHY_VendorSMIWriteStart(hClientObj, PHY_REG_BMCON, bmcon.w, phyAddress);
-            _PhyDetectValue(bmcon.w, true);
+            _DRV_ETHPHY_Dbg_DetectWriteValue(PHY_REG_BMCON, bmcon.w);
             if(res < 0)
             {   // some error
                 return res;
@@ -1206,8 +1214,9 @@ static DRV_ETHPHY_RESULT _DRV_ETHPHY_DefaultDetect( const struct DRV_ETHPHY_OBJE
             }
 
             bmcon.w = phyReg;
-            _PhyDetectValue(bmcon.w, false);
-            if( (bmcon.LOOPBACK == 0) || (bmcon.DUPLEX == 0) )
+            detectMask = ((DRV_ETHPHY_CLIENT_OBJ*)hClientObj)->detectMask;
+            _DRV_ETHPHY_Dbg_DetectReadValue(PHY_REG_BMCON, bmcon.w, detectMask, detectMask);
+            if((bmcon.w & detectMask) != detectMask)
             {   // failed to set
                 return DRV_ETHPHY_RES_DTCT_ERR; 
             }
@@ -1220,9 +1229,9 @@ static DRV_ETHPHY_RESULT _DRV_ETHPHY_DefaultDetect( const struct DRV_ETHPHY_OBJE
         case 5:
             // clear bits and write
             bmcon.w = vendorData.high;
-            bmcon.w ^= _BMCON_LOOPBACK_MASK | _BMCON_DUPLEX_MASK;
+            bmcon.w ^= ((DRV_ETHPHY_CLIENT_OBJ*)hClientObj)->detectMask;
             res = pBaseObj->DRV_ETHPHY_VendorSMIWriteStart(hClientObj, PHY_REG_BMCON, bmcon.w, phyAddress);
-            _PhyDetectValue(bmcon.w, true);
+            _DRV_ETHPHY_Dbg_DetectWriteValue(PHY_REG_BMCON, bmcon.w);
             if(res < 0)
             {   // some error
                 return res;
@@ -1265,8 +1274,9 @@ static DRV_ETHPHY_RESULT _DRV_ETHPHY_DefaultDetect( const struct DRV_ETHPHY_OBJE
             }
 
             bmcon.w = phyReg;
-            _PhyDetectValue(bmcon.w, false);
-            if(bmcon.LOOPBACK || bmcon.DUPLEX)
+            detectMask = ((DRV_ETHPHY_CLIENT_OBJ*)hClientObj)->detectMask;
+            _DRV_ETHPHY_Dbg_DetectReadValue(PHY_REG_BMCON, bmcon.w, detectMask, 0);
+            if((bmcon.w & detectMask) != 0)
             {   // failed to clear
                 return DRV_ETHPHY_RES_DTCT_ERR;
             }
@@ -1282,10 +1292,56 @@ static DRV_ETHPHY_RESULT _DRV_ETHPHY_DefaultDetect( const struct DRV_ETHPHY_OBJE
 }
 
 // performs the PHY reset
+static void _DRV_ETHPHY_SetupPhaseReadId(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
+{
+    switch(hClientObj->operSubPhase)
+    {
+        case 0:
+            // read the PHY Identifier 1 (2h) register
+            if(_DRV_PHY_SMIReadStart(hClientObj, PHY_REG_PHYID1))
+            {
+                _DRV_PHY_SetOperPhase(hClientObj, DRV_ETHPHY_SETUP_PHASE_READ_ID, 1);
+            }
+            break;
+        case 1:
+            // wait the register read to complete
+            if(!_DRV_PHY_SMITransfer_Wait(hClientObj))
+            {
+                break;
+            }     
+            hClientObj->phyId_1 = hClientObj->smiData;
+            
+            // read the PHY Identifier 2 (3h) register
+            if(_DRV_PHY_SMIReadStart(hClientObj, PHY_REG_PHYID2))
+            {
+                _DRV_PHY_SetOperPhase(hClientObj, DRV_ETHPHY_SETUP_PHASE_READ_ID, 2);
+            }
+            break;
+
+        case 2:
+            // wait the register read to complete
+            if(!_DRV_PHY_SMITransfer_Wait(hClientObj))
+            {
+                break;
+            }
+
+            hClientObj->phyId_2 = hClientObj->smiData;
+            _DRV_PHY_SetOperPhase(hClientObj, DRV_ETHPHY_SETUP_PHASE_RESET, 0);
+            break;
+
+        default:
+            // shouldn't happen
+            _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_DTCT_ERR);
+            break;
+    }
+
+}
+
+// performs the PHY reset
 static void _DRV_ETHPHY_SetupPhaseReset(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     __BMCONbits_t bmcon;
-    DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+    DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
     
     switch(hClientObj->operSubPhase)
     {
@@ -1322,7 +1378,7 @@ static void _DRV_ETHPHY_SetupPhaseReset(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
                 }
                 else
                 {
-                    _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_DTCT_ERR);
+                    _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_DTCT_ERR);
                 }
             }
             else
@@ -1333,7 +1389,7 @@ static void _DRV_ETHPHY_SetupPhaseReset(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 
         default:
             // shouldn't happen
-            _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_DTCT_ERR);
+            _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_DTCT_ERR);
             break;
     }
 
@@ -1390,10 +1446,11 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
     } 
     else
     {   // shouldn't happen
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
     }
 }
 
+// DRV_ETHPHY_SETUP_NEG_SUBPHASE_START
 static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Start(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     TCPIP_ETH_OPEN_FLAGS  openFlags;      // flags required at open time
@@ -1418,12 +1475,13 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Start(DRV_ETHPHY_CLIENT_OBJ
     }
 
 }
-
+    
+// DRV_ETHPHY_SETUP_NEG_SUBPHASE_READ_STD_STATUS
 static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Read_Std_Status(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     TCPIP_ETH_OPEN_FLAGS  openFlags;      // flags required at open time
     uint16_t  stdReqs = 0;
-    uint16_t  phyStdCpbl;
+    uint16_t  phyBmstatCpbl;
     uint16_t  matchStdCpbl = 0;
     
     // wait the BMCON PHY_REG_BMSTAT read to complete
@@ -1431,7 +1489,8 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Read_Std_Status(DRV_ETHPHY_
     {
         return;
     }
-    phyStdCpbl   = hClientObj->smiData;
+    phyBmstatCpbl = hClientObj->smiData; // BMSTAT value
+    phyBmstatCpbl |= hClientObj->capabMask; // use vendor bmstatCpblMask 
     
     // provide some defaults
     openFlags = hClientObj->hDriver->openFlags;
@@ -1484,11 +1543,12 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Read_Std_Status(DRV_ETHPHY_
         }
     }
 
-    matchStdCpbl = (stdReqs & (PHY_STD_CPBL_MASK | _BMSTAT_AN_ABLE_MASK)) & phyStdCpbl; // common features
+    // Standard Capabilities of PHY compared with Standard features Requested in configuration 
+    matchStdCpbl = ((stdReqs & (_PHY_STD_CPBL_MASK | _BMSTAT_AN_ABLE_MASK))| _BMSTAT_EXTSTAT_MASK | _BMSTAT_EXTEND_ABLE_MASK) & phyBmstatCpbl; 
     
-    if(!matchStdCpbl && !(phyStdCpbl & _BMSTAT_EXTSTAT_MASK) )
+    if(!matchStdCpbl && !(phyBmstatCpbl & _BMSTAT_EXTSTAT_MASK) )
     {   // no match?
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_CPBL_ERR);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_CPBL_ERR);
         return;
     }
 
@@ -1497,7 +1557,8 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Read_Std_Status(DRV_ETHPHY_
     hClientObj->operReg[0] = matchStdCpbl;
     hClientObj->vendorData = 0;
     
-    if (phyStdCpbl & _BMSTAT_EXTSTAT_MASK)
+    // Check Phy is extended register capable and extended status capable
+    if ((phyBmstatCpbl & _BMSTAT_EXTSTAT_MASK) && (phyBmstatCpbl & _BMSTAT_EXTEND_ABLE_MASK))
     {
         if(_DRV_PHY_SMIReadStart(hClientObj, PHY_REG_EXTSTAT))
         {
@@ -1511,6 +1572,8 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Read_Std_Status(DRV_ETHPHY_
 
 }
 
+
+// DRV_ETHPHY_SETUP_NEG_SUBPHASE_READ_EXT_STATUS
 static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Read_Ext_Status(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     TCPIP_ETH_OPEN_FLAGS  openFlags;      // flags required at open time
@@ -1549,7 +1612,7 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Read_Ext_Status(DRV_ETHPHY_
         }
     }
     
-    matchExtCpbl = (extReqs & PHY_EXT_CPBL_MASK) & phyExtCpbl;
+    matchExtCpbl = (extReqs & _PHY_EXT_CPBL_MASK) & phyExtCpbl;
     
     hClientObj->operReg[1] = matchExtCpbl;
     hClientObj->vendorData = 0;
@@ -1558,6 +1621,7 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Read_Ext_Status(DRV_ETHPHY_
 }
 
 // MII/RMII configuration phase
+// DRV_ETHPHY_SETUP_NEG_SUBPHASE_CONFIG_MII
 static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Config_MII(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     DRV_ETHPHY_INSTANCE *hDriver;
@@ -1574,13 +1638,14 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Config_MII(DRV_ETHPHY_CLIEN
     }
     else if(res != DRV_ETHPHY_RES_PENDING)
     {   // some error occurred
-        _DRV_PHY_SetOperDoneResult(hClientObj, res);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, res);
     }
 
 }
 
 
 // MDIX configure
+// DRV_ETHPHY_SETUP_NEG_SUBPHASE_CONFIG_MDIX
 static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Config_MDIX(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     DRV_ETHPHY_RESULT res;
@@ -1590,7 +1655,7 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Config_MDIX(DRV_ETHPHY_CLIE
 
     if(res < 0)
     {   // some error occurred
-        _DRV_PHY_SetOperDoneResult(hClientObj, res);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, res);
         return;
     }
     else if(res != DRV_ETHPHY_RES_OK)
@@ -1603,34 +1668,37 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Config_MDIX(DRV_ETHPHY_CLIE
 }
 
 
+// DRV_ETHPHY_SETUP_NEG_SUBPHASE_WRITE_ANAD
 static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Write_ANAD(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     DRV_ETHPHY_INSTANCE *hDriver = hClientObj->hDriver;
-
     // restore match capabilities
     uint16_t  matchStdCpbl = hClientObj->operReg[0];
-    uint16_t  matchExtCpbl = hClientObj->operReg[1];
     TCPIP_ETH_OPEN_FLAGS  openFlags = hClientObj->hDriver->openFlags;
 
     if((matchStdCpbl &_BMSTAT_AN_ABLE_MASK) && (openFlags & TCPIP_ETH_OPEN_AUTO))
     {   // ok, we can perform auto negotiation
-        uint16_t anadReg;
+        uint16_t anadReg = 0;
 
-        anadReg = (((matchStdCpbl >> _BMSTAT_CAPABILITY_POS) << _ANAD_CAPABLITY_POS) & _ANAD_NEGOTIATION_MASK) | PROT_802_3;
+        anadReg = (((matchStdCpbl >> _BMSTAT_CAPABILITY_POS) << _ANAD_CAPABLITY_POS) & _ANAD_NEGOTIATION_MASK) | _PHY_PROT_802_3;
         
         //Errata: Do not set asymmetric pause for KSZ9031 PHY        
         if(hDriver->macPauseType & TCPIP_ETH_PAUSE_TYPE_PAUSE)
         {
             anadReg |= _ANAD_PAUSE_MASK;
         }
-        if(hDriver->macPauseType & TCPIP_ETH_PAUSE_TYPE_ASM_DIR)
-        {
-            anadReg |= _ANAD_ASM_DIR_MASK;
-        }        
+        if (!((hClientObj->phyId_1 == KSZ9031_PHYID1) && (((hClientObj->phyId_2)&(KSZ9031_PHYID2)) == KSZ9031_PHYID2)))
+        {    
+            if(hDriver->macPauseType & TCPIP_ETH_PAUSE_TYPE_ASM_DIR)
+            {
+               anadReg |= _ANAD_ASM_DIR_MASK;
+            } 
+        }
 
+        // advertise our capabilities
         if(_DRV_PHY_SMIWriteStart(hClientObj, PHY_REG_ANAD, anadReg))
-        {   // advertise our capabilities
-            if (matchExtCpbl  && (openFlags & TCPIP_ETH_OPEN_1000))
+        {   // check for extended capabilities
+            if ((matchStdCpbl & _BMSTAT_EXTSTAT_MASK) && (matchStdCpbl & _BMSTAT_EXTEND_ABLE_MASK))
             {
                 _DRV_PHY_SetOperPhase(hClientObj, DRV_ETHPHY_SETUP_PHASE_NEGOTIATE, DRV_ETHPHY_SETUP_NEG_SUBPHASE_READ_1000B_CTRL);
             }
@@ -1669,19 +1737,17 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Write_ANAD(DRV_ETHPHY_CLIEN
 
 }
 
+// DRV_ETHPHY_SETUP_NEG_SUBPHASE_READ_1000B_CTRL
 static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Read_1000B_Ctrl(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
-    if(!_DRV_PHY_SMITransfer_Wait(hClientObj))
-    {
-        return;
-    }
-    
     if(_DRV_PHY_SMIReadStart(hClientObj, PHY_REG_1000BASECON))
     {
         _DRV_PHY_SetOperPhase(hClientObj, DRV_ETHPHY_SETUP_PHASE_NEGOTIATE, DRV_ETHPHY_SETUP_NEG_SUBPHASE_WRITE_1000B_CTRL);
     }    
     
 }
+
+// DRV_ETHPHY_SETUP_NEG_SUBPHASE_WRITE_1000B_CTRL
 static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Write_1000B_Ctrl(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     uint16_t ext1000baseCtrl = 0, matchExtStat = 0;
@@ -1717,16 +1783,10 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Write_1000B_Ctrl(DRV_ETHPHY
     
 }
 
-
-
 // advertise, negotiation restart phase
+// DRV_ETHPHY_SETUP_NEG_SUBPHASE_READ_AN_STATUS
 static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Read_AutoNeg_Status(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
-    if(!_DRV_PHY_SMITransfer_Wait(hClientObj))
-    {
-        return;
-    }
-    
     if(_DRV_PHY_SMIReadStart(hClientObj, PHY_REG_BMSTAT))
     {   // read capabilities initiate
         _DRV_PHY_SetOperPhase(hClientObj, DRV_ETHPHY_SETUP_PHASE_NEGOTIATE, DRV_ETHPHY_SETUP_NEG_SUBPHASE_START_AN);
@@ -1734,6 +1794,7 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Read_AutoNeg_Status(DRV_ETH
 }
     
 // auto-negotiation perform
+// DRV_ETHPHY_SETUP_NEG_SUBPHASE_START_AN
 static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Start_AutoNeg(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     // wait the PHY_REG_BMSTAT read to complete
@@ -1756,21 +1817,17 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Start_AutoNeg(DRV_ETHPHY_CL
     }
     else
     {   // no negotiation ability!
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_NEGOTIATION_UNABLE);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_NEGOTIATION_UNABLE);
     }
 }
 
 // final update stage
+// DRV_ETHPHY_SETUP_NEG_SUBPHASE_FINISH
 static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Finish(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     TCPIP_ETH_OPEN_FLAGS openFlags = TCPIP_ETH_OPEN_DEFAULT;
     uint16_t  matchStdCpbl = hClientObj->operReg[0];
     uint16_t  matchExtCpbl = hClientObj->operReg[1];
-    
-    if(!_DRV_PHY_SMITransfer_Wait(hClientObj))
-    {
-        return;
-    }
     
     // now update the open flags
     // the upper layer needs to know the PHY set-up to further set-up the MAC.
@@ -1818,7 +1875,7 @@ static void _DRV_ETHPHY_SetupPhaseNegotiate_SubPhase_Finish(DRV_ETHPHY_CLIENT_OB
     // deposit result
     TCPIP_ETH_OPEN_FLAGS* pSetUpFlags = (TCPIP_ETH_OPEN_FLAGS*)hClientObj->operParam;
     *pSetUpFlags = openFlags;
-     _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
+     _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
 
 } 
 
@@ -1829,7 +1886,7 @@ DRV_ETHPHY_CLIENT_STATUS DRV_ETHPHY_ClientStatus( DRV_HANDLE handle )
     /* Check for the Client validity */
     if( hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
             /* Return the client status associated with the handle passed */
@@ -1847,7 +1904,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_ClientOperationResult( DRV_HANDLE handle)
     /* Check for the Client validity */
     if( hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
             /* Return the client status associated with the handle passed */
@@ -1865,10 +1922,10 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_ClientOperationAbort( DRV_HANDLE handle)
     /* Check for the Client validity */
     if( hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
-            _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_ABORTED);
+            _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_ABORTED);
             return DRV_ETHPHY_RES_OK;
         }
     }
@@ -1888,7 +1945,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_PhyAddressGet( DRV_HANDLE handle, DRV_ETHPHY_INTERF
     DRV_ETHPHY_CLIENT_OBJ * hClientObj = (DRV_ETHPHY_CLIENT_OBJ *) handle;
     if( hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
             if(pPhyAddress)
@@ -1917,7 +1974,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_RestartNegotiation( DRV_HANDLE hClient, DRV_ETHPHY_
     /* Check for the Client validity */
     if(hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
 
@@ -1926,7 +1983,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_RestartNegotiation( DRV_HANDLE hClient, DRV_ETHPHY_
                 return DRV_ETHPHY_RES_NOT_READY_ERR;
             }
 
-            _DRV_PHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_NEG_RESTART, DRV_ETHPHY_RES_PENDING);
+            _DRV_ETHPHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_NEG_RESTART, DRV_ETHPHY_RES_PENDING);
             return DRV_ETHPHY_RES_PENDING;
         }
     }
@@ -1934,6 +1991,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_RestartNegotiation( DRV_HANDLE hClient, DRV_ETHPHY_
     return DRV_ETHPHY_RES_HANDLE_ERR;
 }
 
+// DRV_ETHPHY_CLIENT_OP_TYPE_NEG_RESTART
 static void _DRV_ETHPHY_ClientOpNegRestart(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
 
@@ -1943,7 +2001,7 @@ static void _DRV_ETHPHY_ClientOpNegRestart(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
     }
     else
     {   // shouldn't happen
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
     }
 }
 
@@ -1969,7 +2027,7 @@ static void _DRV_ETHPHY_NegRestartPhaseRead(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
     phyStdCpbl.w = hClientObj->smiData;
     if(phyStdCpbl.AN_ABLE == 0)
     {   // no negotiation ability!
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_NEGOTIATION_UNABLE);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_NEGOTIATION_UNABLE);
         return;
     }
 
@@ -1983,19 +2041,19 @@ static void _DRV_ETHPHY_NegRestartPhaseRead(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 
 static void _DRV_ETHPHY_NegRestartPhaseWrite(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
-    _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
+    _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
 }
 
 DRV_ETHPHY_RESULT DRV_ETHPHY_HWConfigFlagsGet( DRV_HANDLE handle, DRV_ETHPHY_CONFIG_FLAGS* pFlags )
 {
-	//#todo# remove direct MAC register access from this function 
+    //#todo# remove direct MAC register access from this function 
     DRV_ETHPHY_CONFIG_FLAGS hwFlags = DRV_ETHPHY_CFG_RMII;
     DRV_ETHPHY_RESULT ethRes = DRV_ETHPHY_RES_CFG_ERR;
 
     DRV_ETHPHY_CLIENT_OBJ * hClientObj = (DRV_ETHPHY_CLIENT_OBJ *) handle;
     if(hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
             // get the way the hw is configured
@@ -2027,7 +2085,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_HWConfigFlagsGet( DRV_HANDLE handle, DRV_ETHPHY_CON
             }
            
             ethRes = DRV_ETHPHY_RES_OK;
-#elif defined(TCPIP_IF_GMAC0) || defined(TCPIP_IF_GMAC1) || defined(TCPIP_IF_GMAC_SAM9X7)
+#elif defined(TCPIP_IF_GMAC0) || defined(TCPIP_IF_GMAC1)
             gmac_registers_t *  pGmacRegs = (gmac_registers_t *) hClientObj->ethphyId;
             if(pGmacRegs->GMAC_NCR & GMAC_NCR_MIIONRGMII_Msk)
             {
@@ -2049,7 +2107,19 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_HWConfigFlagsGet( DRV_HANDLE handle, DRV_ETHPHY_CON
                     hwFlags = DRV_ETHPHY_CFG_RMII;
                     ethRes = DRV_ETHPHY_RES_OK;
                 }
-            }     
+            }  
+#elif defined(TCPIP_IF_GMAC_SAM9X7)
+            gmac_registers_t *  pGmacRegs = (gmac_registers_t *) hClientObj->ethphyId;
+            if ((pGmacRegs->GMAC_UR & GMAC_UR_MIM_Msk) == GMAC_UR_MIM_RGMII)
+            {
+                hwFlags = DRV_ETHPHY_CFG_RGMII;
+                ethRes = DRV_ETHPHY_RES_OK;
+            }
+            else if ((pGmacRegs->GMAC_UR & GMAC_UR_MIM_Msk) == GMAC_UR_MIM_RMII)
+            {
+                hwFlags = DRV_ETHPHY_CFG_RMII;
+                ethRes = DRV_ETHPHY_RES_OK;
+            }            
 #elif defined(TCPIP_IF_EMAC0) || defined(TCPIP_IF_EMAC1)
             hwFlags = DRV_ETHPHY_CFG_RMII;
             ethRes = DRV_ETHPHY_RES_OK;
@@ -2079,7 +2149,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_NegotiationIsComplete( DRV_HANDLE hClient, DRV_ETHP
     /* Check for the Client validity */
     if(hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
             if(hClientObj->status != DRV_ETHPHY_CLIENT_STATUS_READY)
@@ -2088,7 +2158,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_NegotiationIsComplete( DRV_HANDLE hClient, DRV_ETHP
             }
 
             hClientObj->operParam = waitComplete;
-            _DRV_PHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_NEG_COMPLETE, DRV_ETHPHY_RES_PENDING);
+            _DRV_ETHPHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_NEG_COMPLETE, DRV_ETHPHY_RES_PENDING);
             return DRV_ETHPHY_RES_PENDING;
         }
     }
@@ -2096,6 +2166,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_NegotiationIsComplete( DRV_HANDLE hClient, DRV_ETHP
     return DRV_ETHPHY_RES_HANDLE_ERR;
 }
 
+// DRV_ETHPHY_CLIENT_OP_TYPE_NEG_COMPLETE
 static void _DRV_ETHPHY_ClientOpNegComplete(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
 
@@ -2105,7 +2176,7 @@ static void _DRV_ETHPHY_ClientOpNegComplete(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
     }
     else
     {   // shouldn't happen
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
     }
 }
 
@@ -2130,7 +2201,7 @@ static void _DRV_ETHPHY_NegCompletePhaseRead1(DRV_ETHPHY_CLIENT_OBJ * hClientObj
     phyBMCon.w = hClientObj->smiData;
     if(phyBMCon.AN_ENABLE == 0)
     {   // no negotiation is taking place; we're done
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_NEGOTIATION_INACTIVE);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_NEGOTIATION_INACTIVE);
         return;
     }
 
@@ -2143,7 +2214,7 @@ static void _DRV_ETHPHY_NegCompletePhaseRead1(DRV_ETHPHY_CLIENT_OBJ * hClientObj
 
 static void _DRV_ETHPHY_NegCompletePhaseRead2(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
-    DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+    DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
     // wait the BMCON read to complete
     if(!_DRV_PHY_SMITransfer_Wait(hClientObj))
     {
@@ -2175,7 +2246,7 @@ static void _DRV_ETHPHY_NegCompletePhaseRead2(DRV_ETHPHY_CLIENT_OBJ * hClientObj
 static void _DRV_ETHPHY_NegCompletePhaseAN_Restart(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     __BMCONbits_t   phyBMCon;
-    DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+    DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
     
     // wait the BMCON read to complete
     if(!_DRV_PHY_SMITransfer_Wait(hClientObj))
@@ -2203,7 +2274,7 @@ static void _DRV_ETHPHY_NegCompletePhaseAN_Restart(DRV_ETHPHY_CLIENT_OBJ * hClie
     }
     else
     {   // timeout
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_NEGOTIATION_NOT_STARTED);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_NEGOTIATION_NOT_STARTED);
     }
 }
 
@@ -2228,7 +2299,7 @@ static void _DRV_ETHPHY_NegCompletePhaseAN_Complete(DRV_ETHPHY_CLIENT_OBJ * hCli
         }
         else
         {   // timeout
-            _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_NEGOTIATION_ACTIVE);
+            _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_NEGOTIATION_ACTIVE);
         }
     }
     else
@@ -2278,7 +2349,7 @@ static void _DRV_PHY_NegCompleteSetOperResult(DRV_ETHPHY_CLIENT_OBJ * hClientObj
         res = (phyStat.AN_COMPLETE == 0) ? DRV_ETHPHY_RES_NEGOTIATION_ACTIVE : DRV_ETHPHY_RES_OK;    // active/tmo/ok
     }
 
-    _DRV_PHY_SetOperDoneResult(hClientObj, res);
+    _DRV_ETHPHY_SetOperDoneResult(hClientObj, res);
 }
 
 
@@ -2291,7 +2362,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_NegotiationResultGet( DRV_HANDLE handle, DRV_ETHPHY
     /* Check for the Client validity */
     if(hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
             if(hClientObj->status != DRV_ETHPHY_CLIENT_STATUS_READY)
@@ -2306,7 +2377,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_NegotiationResultGet( DRV_HANDLE handle, DRV_ETHPHY
             }
 
             hClientObj->operParam = (uintptr_t)pNegResult;
-            _DRV_PHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_NEG_RESULT, DRV_ETHPHY_RES_PENDING);
+            _DRV_ETHPHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_NEG_RESULT, DRV_ETHPHY_RES_PENDING);
 
             return DRV_ETHPHY_RES_PENDING;
         }
@@ -2316,6 +2387,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_NegotiationResultGet( DRV_HANDLE handle, DRV_ETHPHY
 }
 
 
+// DRV_ETHPHY_CLIENT_OP_TYPE_NEG_RESULT
 static void _DRV_ETHPHY_ClientOpNegResult(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     if((unsigned int)hClientObj->operPhase < sizeof(_DRV_PHY_NegResultPhasesTbl)/sizeof(*_DRV_PHY_NegResultPhasesTbl))
@@ -2324,7 +2396,7 @@ static void _DRV_ETHPHY_ClientOpNegResult(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
     }
     else
     {   // shouldn't happen
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
     }
 }
 
@@ -2602,7 +2674,7 @@ static void _DRV_PHY_NegResultSetOperResult(DRV_ETHPHY_CLIENT_OBJ* hClientObj, D
         pNegResult->pauseType = pauseType;
     }
 
-    _DRV_PHY_SetOperDoneResult(hClientObj, res);
+    _DRV_ETHPHY_SetOperDoneResult(hClientObj, res);
 }
 
 
@@ -2614,7 +2686,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_LinkStatusGet( DRV_HANDLE handle, DRV_ETHPHY_INTERF
     /* Check for the Client validity */
     if(hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
             if(hClientObj->status != DRV_ETHPHY_CLIENT_STATUS_READY)
@@ -2630,7 +2702,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_LinkStatusGet( DRV_HANDLE handle, DRV_ETHPHY_INTERF
 
             hClientObj->operParam = (uintptr_t)pLinkStat;
             hClientObj->operReg[0] = refresh;
-            _DRV_PHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_LINK_STAT, DRV_ETHPHY_RES_PENDING);
+            _DRV_ETHPHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_LINK_STAT, DRV_ETHPHY_RES_PENDING);
 
             return DRV_ETHPHY_RES_PENDING;
         }
@@ -2639,6 +2711,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_LinkStatusGet( DRV_HANDLE handle, DRV_ETHPHY_INTERF
     return DRV_ETHPHY_RES_HANDLE_ERR;
 }
  
+// DRV_ETHPHY_CLIENT_OP_TYPE_LINK_STAT
 static void _DRV_ETHPHY_ClientOpLinkStat(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
 
@@ -2648,10 +2721,11 @@ static void _DRV_ETHPHY_ClientOpLinkStat(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
     }
     else
     {   // shouldn't happen
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
     }
 }
 
+// DRV_ETHPHY_LINK_STAT_PHASE_IDLE
 static void _DRV_ETHPHY_LinkStatPhaseIdle(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     // read the link status: PHY_REG_BMSTAT
@@ -2662,6 +2736,7 @@ static void _DRV_ETHPHY_LinkStatPhaseIdle(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 }
 
 // read from PHY_REG_BMSTAT
+// DRV_ETHPHY_LINK_STAT_PHASE_READ
 static void _DRV_ETHPHY_LinkStatPhaseRead(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     __BMSTATbits_t  phyStat;
@@ -2681,7 +2756,7 @@ static void _DRV_ETHPHY_LinkStatPhaseRead(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
         {
             *pLinkStat = _Phy2LinkStat(phyStat);
         }
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
     }
     else
     {   // initiate another read
@@ -2693,6 +2768,7 @@ static void _DRV_ETHPHY_LinkStatPhaseRead(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 }
 
 // read from PHY_REG_BMSTAT
+// DRV_ETHPHY_LINK_STAT_PHASE_REFRESH
 static void _DRV_ETHPHY_LinkStatPhaseRefresh(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
     __BMSTATbits_t  phyStat;
@@ -2712,7 +2788,7 @@ static void _DRV_ETHPHY_LinkStatPhaseRefresh(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
         *pLinkStat = _Phy2LinkStat(phyStat);
     }
 
-    _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
+    _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
 }
 
 
@@ -2723,7 +2799,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_Reset( DRV_HANDLE handle, bool waitComplete )
     /* Check for the Client validity */
     if(hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
 
@@ -2733,7 +2809,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_Reset( DRV_HANDLE handle, bool waitComplete )
             }
 
             hClientObj->operParam = waitComplete;
-            _DRV_PHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_RESET, DRV_ETHPHY_RES_PENDING);
+            _DRV_ETHPHY_SetOperStart(hClientObj, DRV_ETHPHY_CLIENT_OP_TYPE_RESET, DRV_ETHPHY_RES_PENDING);
 
             return DRV_ETHPHY_RES_PENDING;
         }
@@ -2743,6 +2819,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_Reset( DRV_HANDLE handle, bool waitComplete )
 }
 
 
+// DRV_ETHPHY_CLIENT_OP_TYPE_RESET
 static void _DRV_ETHPHY_ClientOpReset(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
 
@@ -2752,7 +2829,7 @@ static void _DRV_ETHPHY_ClientOpReset(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
     }
     else
     {   // shouldn't happen
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
     }
 }
 
@@ -2767,10 +2844,10 @@ static void _DRV_ETHPHY_ResetPhaseIdle(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 
 static void _DRV_ETHPHY_ResetPhaseWrite(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
 {
-    DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+    DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
     if( hClientObj->operParam == 0)
     {   // no need to wait, we're done
-        _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
+        _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
     }
     else
     {   // read the BMCON
@@ -2809,18 +2886,18 @@ static void _DRV_ETHPHY_ResetPhaseRead(DRV_ETHPHY_CLIENT_OBJ * hClientObj)
                 }
                 else
                 {   // failed by timeout
-                    _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_DTCT_ERR);
+                    _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_DTCT_ERR);
                 }
             }
             else
             {   // reset cleared itself; success
-                _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
+                _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OK);
             }
             break;
 
         default:
             // shouldn't happen
-            _DRV_PHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
+            _DRV_ETHPHY_SetOperDoneResult(hClientObj, DRV_ETHPHY_RES_OPERATION_ERR);
     }
 }
 
@@ -2837,7 +2914,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_VendorDataGet( DRV_HANDLE handle, uint32_t* pVendor
 
     if(hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
             if(pVendorData)
@@ -2858,7 +2935,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_VendorDataSet( DRV_HANDLE handle, uint32_t vendorDa
 
     if(hClientObj != 0)
     {
-        DRV_ETHPHY_INSTANCE * phyInst = _DRVHandleToInst(hClientObj->hDriver);
+        DRV_ETHPHY_INSTANCE * phyInst = _DRV_ETHPHY_HandleToInst(hClientObj->hDriver);
         if(phyInst != 0)
         {
             hClientObj->vendorData = vendorData;
@@ -2876,7 +2953,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_VendorSMIReadStart( DRV_HANDLE handle, uint16_t rIx
     DRV_ETHPHY_SMI_TXFER_RES opRes;
     DRV_ETHPHY_CLIENT_OBJ * hClientObj = (DRV_ETHPHY_CLIENT_OBJ *) handle;
 
-    if(hClientObj == 0 || _DRVHandleToInst(hClientObj->hDriver) == 0)
+    if(hClientObj == 0 || _DRV_ETHPHY_HandleToInst(hClientObj->hDriver) == 0)
     {
         return DRV_ETHPHY_RES_HANDLE_ERR;
     }
@@ -2913,7 +2990,7 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_VendorSMIReadResultGet( DRV_HANDLE handle, uint16_t
 {
     DRV_ETHPHY_CLIENT_OBJ * hClientObj = (DRV_ETHPHY_CLIENT_OBJ *) handle;
 
-    if(hClientObj == 0 || _DRVHandleToInst(hClientObj->hDriver) == 0)
+    if(hClientObj == 0 || _DRV_ETHPHY_HandleToInst(hClientObj->hDriver) == 0)
     {
         return DRV_ETHPHY_RES_HANDLE_ERR;
     }
@@ -2950,13 +3027,13 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_VendorSMIReadResultGet( DRV_HANDLE handle, uint16_t
 
 }
 
-DRV_ETHPHY_RESULT DRV_ETHPHY_VendorSMIWriteStart( DRV_HANDLE handle, uint16_t rIx,  uint16_t wData, int phyAddress )
+static DRV_ETHPHY_RESULT DRV_ETHPHY_DoSMIWriteStart( DRV_HANDLE handle, uint16_t rIx,  uint16_t wData, int phyAddress, bool waitComplete )
 {
     DRV_ETHPHY_RESULT phyRes;
     DRV_ETHPHY_SMI_TXFER_RES opRes;
     DRV_ETHPHY_CLIENT_OBJ * hClientObj = (DRV_ETHPHY_CLIENT_OBJ *) handle;
 
-    if(hClientObj == 0 || _DRVHandleToInst(hClientObj->hDriver) == 0)
+    if(hClientObj == 0 || _DRV_ETHPHY_HandleToInst(hClientObj->hDriver) == 0)
     {
         return DRV_ETHPHY_RES_HANDLE_ERR;
     }
@@ -2974,7 +3051,8 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_VendorSMIWriteStart( DRV_HANDLE handle, uint16_t rI
         return DRV_ETHPHY_RES_OPERATION_ERR;
     }
 
-    opRes = _DRV_PHY_SMIWriteStartEx(hClientObj, rIx, wData, phyAddress);
+    opRes = _DRV_PHY_SMIWriteStartEx(hClientObj, rIx, wData, phyAddress, waitComplete);
+
     if(opRes < 0)
     {   // error
         return DRV_ETHPHY_RES_OPERATION_ERR;
@@ -2985,15 +3063,21 @@ DRV_ETHPHY_RESULT DRV_ETHPHY_VendorSMIWriteStart( DRV_HANDLE handle, uint16_t rI
         phyRes = DRV_ETHPHY_RES_PENDING;
     }
     else
-    {   // went through
+    {   // went through: smiTxferStatus == DRV_ETHPHY_SMI_TXFER_RES_SCHEDULED/DRV_ETHPHY_SMI_TXFER_RES_DONE
         phyRes = DRV_ETHPHY_RES_OK;
     }
 
-    hClientObj->smiTxferStatus = DRV_ETHPHY_SMI_TXFER_OP_NONE;
-
-
     return phyRes;
+}
 
+DRV_ETHPHY_RESULT DRV_ETHPHY_VendorSMIWriteStart( DRV_HANDLE handle, uint16_t rIx,  uint16_t wData, int phyAddress )
+{
+    return DRV_ETHPHY_DoSMIWriteStart(handle, rIx,  wData, phyAddress, false);
+}
+
+DRV_ETHPHY_RESULT DRV_ETHPHY_VendorSMIWriteWaitComplete( DRV_HANDLE handle, uint16_t rIx,  uint16_t wData, int phyAddress )
+{
+    return DRV_ETHPHY_DoSMIWriteStart(handle, rIx,  wData, phyAddress, true);
 }
 
 

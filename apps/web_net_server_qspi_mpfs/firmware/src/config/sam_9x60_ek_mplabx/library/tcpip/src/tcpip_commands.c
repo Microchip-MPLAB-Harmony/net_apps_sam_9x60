@@ -9,30 +9,28 @@
     Note, this module is based on system command parser
 *******************************************************************************/
 
-/*****************************************************************************
- Copyright (C) 2012-2020 Microchip Technology Inc. and its subsidiaries.
+/*
+Copyright (C) 2012-2023, Microchip Technology Inc., and its subsidiaries. All rights reserved.
 
-Microchip Technology Inc. and its subsidiaries.
+The software and documentation is provided by microchip and its contributors
+"as is" and any express, implied or statutory warranties, including, but not
+limited to, the implied warranties of merchantability, fitness for a particular
+purpose and non-infringement of third party intellectual property rights are
+disclaimed to the fullest extent permitted by law. In no event shall microchip
+or its contributors be liable for any direct, indirect, incidental, special,
+exemplary, or consequential damages (including, but not limited to, procurement
+of substitute goods or services; loss of use, data, or profits; or business
+interruption) however caused and on any theory of liability, whether in contract,
+strict liability, or tort (including negligence or otherwise) arising in any way
+out of the use of the software and documentation, even if advised of the
+possibility of such damage.
 
-Subject to your compliance with these terms, you may use Microchip software 
-and any derivatives exclusively with Microchip products. It is your 
-responsibility to comply with third party license terms applicable to your 
-use of third party software (including open source software) that may 
-accompany Microchip software.
-
-THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
-EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
-WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR 
-PURPOSE.
-
-IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
-WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
-BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE 
-FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN 
-ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, 
-THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*****************************************************************************/
+Except as expressly permitted hereunder and subject to the applicable license terms
+for any third-party software incorporated in the software and any applicable open
+source software license terms, no license or other rights, whether express or
+implied, are granted under any patent or other intellectual property rights of
+Microchip or any third party.
+*/
 
 
 
@@ -49,9 +47,21 @@ THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 #include "system/debug/sys_debug.h"
 #include "system/command/sys_command.h"
 
-#if defined(TCPIP_STACK_USE_HTTP_NET_SERVER)
+#if defined(TCPIP_STACK_USE_HTTP_NET_SERVER) && defined(TCPIP_HTTP_NET_CONSOLE_CMD)
 #include "net_pres/pres/net_pres_socketapi.h"
-#endif  // defined(TCPIP_STACK_USE_HTTP_NET_SERVER)
+#define _TCPIP_COMMANDS_HTTP_NET_SERVER 
+#elif defined(TCPIP_STACK_USE_HTTP_SERVER_V2) && defined(TCPIP_HTTP_CONSOLE_CMD)
+// HTTP server V2 commands
+#include "net_pres/pres/net_pres_socketapi.h"
+#if defined(HTTP_SERVER_V2_NET_COMPATIBILITY)
+// use backward HTTP_NET compatibility
+#include "tcpip/http_server_transl.h"
+#define _TCPIP_COMMANDS_HTTP_NET_SERVER 
+#else
+// new HTTP server commands
+#define _TCPIP_COMMANDS_HTTP_SERVER 
+#endif  // defined(HTTP_SERVER_V2_NET_COMPATIBILITY)
+#endif  // defined(TCPIP_STACK_USE_HTTP_NET_SERVER) && defined(TCPIP_HTTP_NET_CONSOLE_CMD)
 
 #if defined(TCPIP_STACK_COMMAND_ENABLE)
 
@@ -129,52 +139,52 @@ typedef enum
 }DNS_SERVICE_COMD_TYPE;
 typedef struct 
 {
-	const char *command;
-	DNS_SERVICE_COMD_TYPE  val;
+    const char *command;
+    DNS_SERVICE_COMD_TYPE  val;
 }DNSS_COMMAND_MAP;
 
 
 
 
-static int _Command_NetInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
-static int _Command_DefaultInterfaceSet (SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_NetInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_DefaultInterfaceSet (SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #if defined(TCPIP_STACK_USE_IPV4)
-static int _Command_AddressService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv, TCPIP_STACK_ADDRESS_SERVICE_TYPE svcType);
+static void _Command_AddressService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv, TCPIP_STACK_ADDRESS_SERVICE_TYPE svcType);
 #if defined(TCPIP_STACK_USE_DHCP_CLIENT)
-static int _CommandDhcpOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _CommandDhcpOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif 
-static int _Command_ZcllOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
-static int _Command_DNSAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_ZcllOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_DNSAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif  // defined(TCPIP_STACK_USE_IPV4)
-static int _Command_IPAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
-static int _Command_GatewayAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
-static int _Command_BIOSNameSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
-static int _Command_MACAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_IPAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_GatewayAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_BIOSNameSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_MACAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #if (TCPIP_STACK_IF_UP_DOWN_OPERATION != 0)
-static int _Command_NetworkOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_NetworkOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif  // (TCPIP_STACK_IF_UP_DOWN_OPERATION != 0)
 #if (TCPIP_STACK_DOWN_OPERATION != 0)
-static int _Command_StackOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_StackOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif  // (TCPIP_STACK_DOWN_OPERATION != 0)
-static int _Command_HeapInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_HeapInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #if defined(TCPIP_STACK_USE_IPV4)
 #if (TCPIP_ARP_COMMANDS != 0)
 static void _CommandArp(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif  // (TCPIP_ARP_COMMANDS != 0)
 #endif  // defined(TCPIP_STACK_USE_IPV4)
-static int _Command_MacInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_MacInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #if defined(TCPIP_STACK_USE_TFTP_CLIENT)
-static int _Command_TFTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_TFTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif
 #if defined(TCPIP_STACK_USE_DHCPV6_CLIENT)
 static void _CommandDhcpv6Options(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif
 #if defined(TCPIP_STACK_USE_TFTP_SERVER)
-static int _Command_TFTPServerOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_TFTPServerOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif
 #if defined(TCPIP_STACK_USE_DHCP_SERVER)
-static int _Command_DHCPSOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
-static int _Command_DHCPLeaseInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_DHCPSOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_DHCPLeaseInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #elif defined(TCPIP_STACK_USE_DHCP_SERVER_V2)
 static void _CommandDHCPsOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static bool _CommandDHCPsEnable(TCPIP_NET_HANDLE netH);
@@ -190,14 +200,14 @@ static void _Command_DHCPsConfigure(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
 #endif  //  defined(TCPIP_STACK_USE_DHCP_SERVER)
 #if defined(TCPIP_STACK_USE_DNS)
 static int _Command_DNSOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
-static int _Command_DNS_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_DNS_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static int _Command_ShowDNSResolvedInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif
 #if defined(TCPIP_STACK_USE_DNS_SERVER)
 static int _Command_DNSSOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static int _Command_AddDelDNSSrvAddress(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv,DNS_SERVICE_COMD_TYPE dnsCommand);
 static int _Command_ShowDNSServInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
-static int _Command_DnsServService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_DnsServService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif
 
 #if defined(TCPIP_STACK_USE_TFTP_CLIENT)
@@ -205,15 +215,22 @@ static char tftpServerHost[TCPIP_TFTPC_SERVERADDRESS_LEN];     // current target
 static char tftpcFileName[TCPIP_TFTPC_FILENAME_LEN]; // TFTP file name that will be for PUT and GET command
 #endif
 
-#if defined(TCPIP_STACK_USE_HTTP_NET_SERVER)
-static int _Command_HttpInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+#if defined(_TCPIP_COMMANDS_HTTP_NET_SERVER)
+static void _Command_HttpNetInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #if (TCPIP_HTTP_NET_SSI_PROCESS != 0)
-static int _Command_SsiInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_SsiNetInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+#endif
+#elif defined(_TCPIP_COMMANDS_HTTP_SERVER)
+static void _Command_HttpInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static size_t http_inst_ix  = 0;        // current HTTP instance number
+static size_t http_port_ix  = 0;        // current HTTP port number
+#if (TCPIP_HTTP_SSI_PROCESS != 0)
+static void _Command_SsiInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif
 #endif
 
 #if defined(TCPIP_STACK_USE_SMTPC) && defined(TCPIP_SMTPC_USE_MAIL_COMMAND)
-static int _CommandMail(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _CommandMail(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif  // defined(TCPIP_STACK_USE_SMTPC) && defined(TCPIP_SMTPC_USE_MAIL_COMMAND)
 
 
@@ -227,7 +244,7 @@ static void _Command_TcpTrace(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv
 #endif  // (TCPIP_TCP_COMMANDS)
 
 #if (TCPIP_PACKET_LOG_ENABLE)
-static int _Command_PktLog(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_PktLog(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static void _CommandPktLogInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static void _CommandPktLogClear(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static void _CommandPktLogReset(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
@@ -272,15 +289,15 @@ static const char* _CommandPktLogModuleNames[] =
 #endif  // (TCPIP_PACKET_LOG_ENABLE)
 
 #if defined(TCPIP_PACKET_ALLOCATION_TRACE_ENABLE)
-static int _Command_PktInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_PktInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif  // defined(TCPIP_PACKET_ALLOCATION_TRACE_ENABLE)
 
 #if defined(TCPIP_STACK_USE_INTERNAL_HEAP_POOL)
-static int _Command_HeapList(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_HeapList(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif  // defined(TCPIP_STACK_USE_INTERNAL_HEAP_POOL)
 
 #if defined(TCPIP_STACK_USE_IPV4) && defined(TCPIP_STACK_USE_ANNOUNCE)
-static int _Command_Announce(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_Announce(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif  // defined(TCPIP_STACK_USE_IPV4) && defined(TCPIP_STACK_USE_ANNOUNCE)
 
 #if defined(_TCPIP_STACK_COMMAND_TASK)
@@ -314,6 +331,8 @@ typedef enum
     TCPIP_PHY_READ,                 // read a PHY register command
     TCPIP_PHY_WRITE,                // write a PHY register command
     TCPIP_PHY_DUMP,                 // dump a range of PHY registers command
+    TCPIP_PHY_READ_SMI,             // read an extended SMI PHY register command
+    TCPIP_PHY_WRITE_SMI,            // write an extended SMI PHY register command
 
     // PPP echo status
     TCPIP_CMD_STAT_PPP_START,       // ppp echo start
@@ -359,7 +378,7 @@ static TCPIP_ICMP_REQUEST_HANDLE icmpReqHandle;     // current transaction handl
 #endif  // defined(_TCPIP_COMMAND_PING4)
 
 #if defined(_TCPIP_COMMAND_PING6)
-static int                  _Command_IPv6_Ping(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void                 _Command_IPv6_Ping(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 static void                 CommandPing6Handler(TCPIP_NET_HANDLE hNetIf,uint8_t type, const IPV6_ADDR * localIP,
                                                                     const IPV6_ADDR * remoteIP, void * data);
 static char                 icmpv6TargetAddrStr[42];
@@ -390,25 +409,33 @@ static TCPIP_NET_HANDLE     icmpNetH = 0;
 
 #if defined(_TCPIP_COMMANDS_MIIM)
 static void     TCPIPCmdMiimTask(void);
-static int      _CommandMiim(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
-static void     _CommandMiimOp(unsigned int rIx, SYS_CMD_DEVICE_NODE* pCmdIO, TCPIP_COMMANDS_STAT miimCmd);
+static void     _CommandMiim(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void     _CommandMiimOp(SYS_CMD_DEVICE_NODE* pCmdIO, uint16_t rIx, uint32_t wData, TCPIP_COMMANDS_STAT miimCmd);
 static void     _CommandMiimSetup(SYS_CMD_DEVICE_NODE* pCmdIO, const void* cmdIoParam);
 static DRV_HANDLE _MiimOpen(SYS_CMD_DEVICE_NODE* pCmdIO, const void* cmdIoParam);
 static void     _MiimClose(bool idleState);
 
 static const DRV_MIIM_OBJECT_BASE*  miimObj = 0;    // MIIM object associated with the PIC32INT MAC driver
-static SYS_MODULE_INDEX             miimObjIx = 0;  // MIIM object index
+static SYS_MODULE_INDEX             miimObjIx = 0;  // current MIIM object index
 
 static DRV_HANDLE           miimHandle = 0; // handle to the MIIM driver
 static DRV_MIIM_OPERATION_HANDLE miimOpHandle = 0;  // current operation
 static unsigned int         miimRegStart = 0; // start for a dump
 static unsigned int         miimRegEnd = 0;   // end for a dump
-static unsigned int         miimRegIx = 0;    // current Reg index to read
-static unsigned int         miimAdd = 0;    // PHY address
-static unsigned int         miimInt = 0;    // Network Interface Number
-static uint16_t             miimWrData = 0; // write data
+static uint16_t             miimRegIx = 0;    // current Reg index to read
+static uint16_t             miimAdd = 0;    // PHY address
+static unsigned int         miimNetIx = 0;    // Network Interface Number
 
 static const void*          miimCmdIoParam = 0;
+
+static const char*          miiOpName_Tbl[] = 
+{
+    "read",         // TCPIP_PHY_READ
+    "write",        // TCPIP_PHY_WRITE
+    "dump",         // TCPIP_PHY_DUMP
+    "read_smi",     // TCPIP_PHY_READ_SMI
+    "write_smi",    // TCPIP_PHY_WRITE_SMI
+};
 
 #define         TCPIP_MIIM_COMMAND_TASK_RATE  100   // milliseconds
 #endif  // defined(_TCPIP_COMMANDS_MIIM)
@@ -441,7 +468,7 @@ static int      pppEchoSize = TCPIP_STACK_COMMANDS_ICMP_ECHO_REQUEST_DATA_SIZE;
 
 
 #if defined(TCPIP_STACK_USE_FTP_CLIENT) && defined(TCPIP_FTPC_COMMANDS)
-static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
 #endif
 
 #if defined(TCPIP_STACK_USE_IPV4)  && defined(TCPIP_IPV4_COMMANDS) && (TCPIP_IPV4_COMMANDS != 0)
@@ -469,111 +496,132 @@ static void TCPIPCmd_PppEchoTask(void);
 #endif  // defined(_TCPIP_STACK_PPP_ECHO_COMMAND)
 #endif  // defined(_TCPIP_STACK_PPP_COMMANDS)
 
+#if defined(TCPIP_STACK_RUN_TIME_INIT) && (TCPIP_STACK_RUN_TIME_INIT != 0)
+static void _CommandModDeinit(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+static void _CommandModRunning(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+#endif  // defined(TCPIP_STACK_RUN_TIME_INIT) && (TCPIP_STACK_RUN_TIME_INIT != 0)
+
+#if defined(TCPIP_STACK_USE_SNMPV3_SERVER)  
+static void _Command_SNMPv3USMSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv);
+#endif
 // TCPIP stack command table
 static const SYS_CMD_DESCRIPTOR    tcpipCmdTbl[]=
 {
-    {"netinfo",     (SYS_CMD_FNC)_Command_NetInfo,              ": Get network information"},
-    {"defnet",      (SYS_CMD_FNC)_Command_DefaultInterfaceSet,  ": Set/Get default interface"},
+    {"netinfo",     _Command_NetInfo,              ": Get network information"},
+    {"defnet",      _Command_DefaultInterfaceSet,  ": Set/Get default interface"},
 #if defined(TCPIP_STACK_USE_IPV4)
 #if defined(TCPIP_STACK_USE_DHCP_CLIENT)
-    {"dhcp",        (SYS_CMD_FNC)_CommandDhcpOptions,           ": DHCP client commands"},
+    {"dhcp",        _CommandDhcpOptions,           ": DHCP client commands"},
 #endif
-    {"zcll",        (SYS_CMD_FNC)_Command_ZcllOnOff,            ": Turn ZCLL on/off"},
-    {"setdns",      (SYS_CMD_FNC)_Command_DNSAddressSet,        ": Set DNS address"},
+    {"zcll",        _Command_ZcllOnOff,            ": Turn ZCLL on/off"},
+    {"setdns",      _Command_DNSAddressSet,        ": Set DNS address"},
 #endif  // defined(TCPIP_STACK_USE_IPV4)
-    {"setip",       (SYS_CMD_FNC)_Command_IPAddressSet,         ": Set IP address and mask"},
-    {"setgw",       (SYS_CMD_FNC)_Command_GatewayAddressSet,    ": Set Gateway address"},
-    {"setbios",     (SYS_CMD_FNC)_Command_BIOSNameSet,          ": Set host's NetBIOS name"},
-    {"setmac",      (SYS_CMD_FNC)_Command_MACAddressSet,        ": Set MAC address"},
+    {"setip",       _Command_IPAddressSet,         ": Set IP address and mask"},
+    {"setgw",       _Command_GatewayAddressSet,    ": Set Gateway address"},
+    {"setbios",     _Command_BIOSNameSet,          ": Set host's NetBIOS name"},
+    {"setmac",      _Command_MACAddressSet,        ": Set MAC address"},
 #if (TCPIP_STACK_IF_UP_DOWN_OPERATION != 0)
-    {"if",          (SYS_CMD_FNC)_Command_NetworkOnOff,         ": Bring an interface up/down"},
+    {"if",          _Command_NetworkOnOff,         ": Bring an interface up/down"},
 #endif  // (TCPIP_STACK_IF_UP_DOWN_OPERATION != 0)
 #if (TCPIP_STACK_DOWN_OPERATION != 0)
-    {"stack",       (SYS_CMD_FNC)_Command_StackOnOff,           ": Stack turn on/off"},
+    {"stack",       _Command_StackOnOff,           ": Stack turn on/off"},
 #endif  // (TCPIP_STACK_DOWN_OPERATION != 0)
-    {"heapinfo",    (SYS_CMD_FNC)_Command_HeapInfo,             ": Check heap status"},
+    {"heapinfo",    _Command_HeapInfo,             ": Check heap status"},
 #if defined(TCPIP_STACK_USE_DHCP_SERVER)
-    {"dhcps",       (SYS_CMD_FNC)_Command_DHCPSOnOff,           ": Turn DHCP server on/off"},
-    {"dhcpsinfo",   (SYS_CMD_FNC)_Command_DHCPLeaseInfo,        ": Display DHCP Server Lease Details" },
+    {"dhcps",       _Command_DHCPSOnOff,           ": Turn DHCP server on/off"},
+    {"dhcpsinfo",   _Command_DHCPLeaseInfo,        ": Display DHCP Server Lease Details" },
 #elif defined(TCPIP_STACK_USE_DHCP_SERVER_V2)
-    {"dhcps",       _CommandDHCPsOptions,                       ": DHCP server commands"},
+    {"dhcps",       _CommandDHCPsOptions,          ": DHCP server commands"},
 #endif  //  defined(TCPIP_STACK_USE_DHCP_SERVER)
 #if defined(_TCPIP_COMMAND_PING4)
     {"ping",        _CommandPing,                  ": Ping an IP address"},
 #endif  // defined(_TCPIP_COMMAND_PING4)
 #if defined(_TCPIP_COMMAND_PING6)
-    {"ping6",       (SYS_CMD_FNC)_Command_IPv6_Ping,            ": Ping an IPV6 address"},
+    {"ping6",       _Command_IPv6_Ping,            ": Ping an IPV6 address"},
 #endif  // defined(_TCPIP_COMMAND_PING6)
 #if defined(TCPIP_STACK_USE_IPV4)
 #if (TCPIP_ARP_COMMANDS != 0)
-    {"arp",         _CommandArp,                                ": ARP commands"},
+    {"arp",         _CommandArp,                   ": ARP commands"},
 #endif  // (TCPIP_ARP_COMMANDS != 0)
 #endif  // defined(TCPIP_STACK_USE_IPV4)
 #if defined(TCPIP_STACK_USE_DNS_SERVER)
-    {"dnss",        (SYS_CMD_FNC)_Command_DnsServService,       ": DNS server commands"},
+    {"dnss",        _Command_DnsServService,       ": DNS server commands"},
 #endif
 #if defined(TCPIP_STACK_USE_DNS)
-    {"dnsc",        (SYS_CMD_FNC)_Command_DNS_Service,          ": DNS client commands"},
+    {"dnsc",        _Command_DNS_Service,          ": DNS client commands"},
 #endif
-    {"macinfo",     (SYS_CMD_FNC)_Command_MacInfo,              ": Check MAC statistics"},
+    {"macinfo",     _Command_MacInfo,              ": Check MAC statistics"},
 #if defined(TCPIP_STACK_USE_TFTP_CLIENT)
-    {"tftpc",       (SYS_CMD_FNC)_Command_TFTPC_Service,        ": TFTP client Service"},
+    {"tftpc",       _Command_TFTPC_Service,        ": TFTP client Service"},
 #endif
 #if defined(TCPIP_STACK_USE_TFTP_SERVER)
-    {"tftps",       (SYS_CMD_FNC)_Command_TFTPServerOnOff,        ": TFTP Server Service"},
+    {"tftps",       _Command_TFTPServerOnOff,      ": TFTP Server Service"},
 #endif
 #if defined(TCPIP_STACK_USE_DHCPV6_CLIENT)
-    {"dhcp6",      _CommandDhcpv6Options,                       ": DHCPV6 client commands"},
+    {"dhcp6",      _CommandDhcpv6Options,          ": DHCPV6 client commands"},
 #endif
-#if defined(TCPIP_STACK_USE_HTTP_NET_SERVER)
-    {"http",        (SYS_CMD_FNC)_Command_HttpInfo,             ": HTTP information"},
+#if defined(_TCPIP_COMMANDS_HTTP_NET_SERVER)
+    {"http",        _Command_HttpNetInfo,           ": HTTP information"},
 #if (TCPIP_HTTP_NET_SSI_PROCESS != 0)
-    {"ssi",         (SYS_CMD_FNC)_Command_SsiInfo,              ": SSI information"},
+    {"ssi",         _Command_SsiNetInfo,            ": SSI information"},
+#endif
+#elif defined(_TCPIP_COMMANDS_HTTP_SERVER)
+    {"http",        _Command_HttpInfo,              ": HTTP information"},
+#if (TCPIP_HTTP_SSI_PROCESS != 0)
+    {"ssi",         _Command_SsiInfo,               ": SSI information"},
 #endif
 #endif
 #if defined(TCPIP_STACK_USE_SMTPC) && defined(TCPIP_SMTPC_USE_MAIL_COMMAND)
-	{"mail", 	    (SYS_CMD_FNC)_CommandMail,			       ": Send Mail Message"},
+    {"mail",        _CommandMail,                  ": Send Mail Message"},
 #endif  // defined(TCPIP_STACK_USE_SMTPC) && defined(TCPIP_SMTPC_USE_MAIL_COMMAND)
 #if defined(_TCPIP_COMMANDS_MIIM)
-	{"miim", 	    (SYS_CMD_FNC)_CommandMiim,			       ": MIIM commands"},
+    {"miim",        _CommandMiim,                  ": MIIM commands"},
 #endif  // defined(_TCPIP_COMMANDS_MIIM)
 #if (TCPIP_UDP_COMMANDS)
-    {"udp",         _Command_Udp,                               ": UDP commands"},
+    {"udp",         _Command_Udp,                  ": UDP commands"},
 #endif  // (TCPIP_UDP_COMMANDS)
 #if (TCPIP_TCP_COMMANDS)
-    {"tcp",         _Command_Tcp,                               ": TCP commands"},
-    {"tcptrace",    _Command_TcpTrace,                          ": Enable TCP trace"},
+    {"tcp",         _Command_Tcp,                  ": TCP commands"},
+    {"tcptrace",    _Command_TcpTrace,             ": Enable TCP trace"},
 #endif  // (TCPIP_TCP_COMMANDS)
 #if (TCPIP_PACKET_LOG_ENABLE)
-    {"plog",        (SYS_CMD_FNC)_Command_PktLog,               ": PKT flight log"},
+    {"plog",        _Command_PktLog,               ": PKT flight log"},
 #endif  // (TCPIP_PACKET_LOG_ENABLE)
 #if defined(TCPIP_PACKET_ALLOCATION_TRACE_ENABLE)
-    {"pktinfo",   (SYS_CMD_FNC)_Command_PktInfo,                ": Check PKT allocation"},
+    {"pktinfo",     _Command_PktInfo,              ": Check PKT allocation"},
 #endif  // defined(TCPIP_PACKET_ALLOCATION_TRACE_ENABLE)
 #if defined(TCPIP_STACK_USE_INTERNAL_HEAP_POOL)
-    {"heaplist",    (SYS_CMD_FNC)_Command_HeapList,             ": List heap"},
+    {"heaplist",    _Command_HeapList,             ": List heap"},
 #endif  // defined(TCPIP_STACK_USE_INTERNAL_HEAP_POOL)
 #if defined(TCPIP_STACK_USE_IPV4) && defined(TCPIP_STACK_USE_ANNOUNCE)
-    {"announce",    (SYS_CMD_FNC)_Command_Announce,             ": Announce"},
+    {"announce",    _Command_Announce,             ": Announce"},
 #endif  // defined(TCPIP_STACK_USE_IPV4) && defined(TCPIP_STACK_USE_ANNOUNCE)
 #if defined(TCPIP_STACK_USE_FTP_CLIENT)  && defined(TCPIP_FTPC_COMMANDS)
-    {"ftpc", (SYS_CMD_FNC)_Command_FTPC_Service,   ": Connect FTP Client to Server"},
+    {"ftpc",        _Command_FTPC_Service,         ": Connect FTP Client to Server"},
 #endif  // (TCPIP_STACK_USE_FTP_CLIENT)    
 #if defined(TCPIP_STACK_USE_IPV4)  && defined(TCPIP_IPV4_COMMANDS) && (TCPIP_IPV4_COMMANDS != 0)
-    {"ip4", _CommandIpv4,   ": IPv4"},
+    {"ip4",         _CommandIpv4,                   ": IPv4"},
 #endif
 #if (TCPIP_PKT_ALLOC_COMMANDS != 0)
-    {"pkt", _CommandPacket,   ": IPv4"},
+    {"pkt",         _CommandPacket,                 ": pkt"},
 #endif  // (TCPIP_PKT_ALLOC_COMMANDS != 0)
 #if defined(TCPIP_STACK_USE_MAC_BRIDGE) && (TCPIP_STACK_MAC_BRIDGE_COMMANDS != 0)
-    {"bridge", _CommandBridge,   ": Bridge"},
+    {"bridge",      _CommandBridge,                 ": Bridge"},
 #endif // defined(TCPIP_STACK_USE_MAC_BRIDGE) && (TCPIP_STACK_MAC_BRIDGE_COMMANDS != 0)
 #if defined(_TCPIP_STACK_HDLC_COMMANDS)
-    {"hdlc", _CommandHdlc,   ": Hdlc"},
+    {"hdlc",        _CommandHdlc,                   ": Hdlc"},
 #endif  // defined(_TCPIP_STACK_HDLC_COMMANDS)
 #if defined(_TCPIP_STACK_PPP_COMMANDS)
-    {"ppp", _CommandPpp,   ": ppp"},
+    {"ppp",         _CommandPpp,                    ": ppp"},
 #endif  // defined(_TCPIP_STACK_PPP_COMMANDS)
+#if defined(TCPIP_STACK_RUN_TIME_INIT) && (TCPIP_STACK_RUN_TIME_INIT != 0)
+    {"deinit",         _CommandModDeinit,          ": deinit"},
+    {"runstat",       _CommandModRunning,          ": runstat"},
+#endif  // defined(TCPIP_STACK_RUN_TIME_INIT) && (TCPIP_STACK_RUN_TIME_INIT != 0)
+
+#if defined(TCPIP_STACK_USE_SNMPV3_SERVER)    
+    {"snmpv3",  _Command_SNMPv3USMSet,     ": snmpv3"},
+#endif    
 };
 
 bool TCPIP_Commands_Initialize(const TCPIP_STACK_MODULE_CTRL* const stackCtrl, const TCPIP_COMMAND_MODULE_CONFIG* const pCmdInit)
@@ -682,7 +730,7 @@ void TCPIP_Commands_Deinitialize(const TCPIP_STACK_MODULE_CTRL* const stackCtrl)
 }
 #endif  // (TCPIP_STACK_DOWN_OPERATION != 0)
 
-static int _Command_NetInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_NetInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     int i;
     TCPIP_NET_HANDLE netH;
@@ -708,7 +756,7 @@ static int _Command_NetInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: netinfo\r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: netinfo\r\n");
-        return false;
+        return;
     }
 
     for (i=0; i<initialNetIfs; i++)
@@ -851,11 +899,10 @@ static int _Command_NetInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
         (*pCmdIO->pCmdApi->print)(cmdIoParam, "Status: %s\r\n", TCPIP_STACK_NetIsReady(netH) ? "Ready" : "Not Ready");
 
     }
-    return true;
 }
 
 #if defined(TCPIP_STACK_USE_DHCP_SERVER)
-static int _Command_DHCPLeaseInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_DHCPLeaseInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     TCPIP_NET_HANDLE netH;
     TCPIP_DHCPS_LEASE_HANDLE  prevLease, nextLease;
@@ -867,17 +914,17 @@ static int _Command_DHCPLeaseInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** 
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: dhcpsinfo <interface> \r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: dhcpsinfo PIC32INT \r\n");
-        return false;
+        return;
     }
 
     netH = TCPIP_STACK_NetHandleGet(argv[1]);
     if (netH == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown interface specified \r\n");
-        return false;
+        return;
     }
 
-    (*pCmdIO->pCmdApi->print)(cmdIoParam,"MAC Address		IPAddress		RemainingLeaseTime \r\n",0);
+    (*pCmdIO->pCmdApi->print)(cmdIoParam,"MAC Address       IPAddress       RemainingLeaseTime \r\n",0);
 
     prevLease = 0;
     do
@@ -894,16 +941,12 @@ static int _Command_DHCPLeaseInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** 
             TCPIP_Helper_MACAddressToString(&leaseEntry.hwAdd, addrBuff, sizeof(addrBuff));
             (*pCmdIO->pCmdApi->print)(cmdIoParam, "%s", addrBuff);
             TCPIP_Helper_IPAddressToString(&leaseEntry.ipAddress, addrBuff, sizeof(addrBuff));
-            (*pCmdIO->pCmdApi->print)(cmdIoParam, "	%s ", addrBuff);
-            (*pCmdIO->pCmdApi->print)(cmdIoParam, "	%d Secs\r\n", leaseEntry.leaseTime/SYS_TMR_TickCounterFrequencyGet());
+            (*pCmdIO->pCmdApi->print)(cmdIoParam, " %s ", addrBuff);
+            (*pCmdIO->pCmdApi->print)(cmdIoParam, " %d Secs\r\n", leaseEntry.leaseTime/SYS_TMR_TickCounterFrequencyGet());
 
             prevLease = nextLease;
         }
     }while(nextLease != 0);
-
-
-    return true;
-
 }
 #elif defined(TCPIP_STACK_USE_DHCP_SERVER_V2)
 static void _CommandDHCPsOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
@@ -993,6 +1036,7 @@ static void _Command_DHCPsLeaseList(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
     }extLeaseInfo;
 
     const void* cmdIoParam = pCmdIO->cmdIoParam;
+    memset(&extLeaseInfo.leaseInfo, 0, sizeof(extLeaseInfo.leaseInfo));
 
     uint16_t nLeases;
     uint16_t usedLeases;
@@ -1263,7 +1307,7 @@ static void _Command_DHCPsConfigure(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
 
 #endif  //  defined(TCPIP_STACK_USE_DHCP_SERVER) defined(TCPIP_STACK_USE_DHCP_SERVER_V2)
 
-static int _Command_DefaultInterfaceSet (SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_DefaultInterfaceSet (SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     bool res;
     int nameSize;
@@ -1285,7 +1329,7 @@ static int _Command_DefaultInterfaceSet (SYS_CMD_DEVICE_NODE* pCmdIO, int argc, 
             if (netH == 0)
             {
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown interface specified \r\n");
-                return false;
+                return;
             }
             defaultOp = 1;
         }
@@ -1317,11 +1361,10 @@ static int _Command_DefaultInterfaceSet (SYS_CMD_DEVICE_NODE* pCmdIO, int argc, 
     }
 
 
-    return false;
 }
 
 #if defined(TCPIP_STACK_USE_IPV4) && defined(TCPIP_STACK_USE_DHCP_CLIENT)
-static int _CommandDhcpOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _CommandDhcpOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     TCPIP_NET_HANDLE netH;
     IPV4_ADDR       reqIpAddr;
@@ -1333,7 +1376,7 @@ static int _CommandDhcpOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** arg
     {
         (*pCmdIO->pCmdApi->print)(cmdIoParam, "Usage: %s <interface> <on/off/renew/request/info> \r\n", argv[0]);
         (*pCmdIO->pCmdApi->print)(cmdIoParam, "Ex: %s PIC32INT on \r\n", argv[0]);
-        return false;
+        return;
     }
 
     reqIpAddr.Val = 0;
@@ -1341,7 +1384,7 @@ static int _CommandDhcpOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** arg
     if (netH == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown interface\r\n");
-        return false;
+        return;
     }
 
     if (strcmp(argv[2], "on") == 0)
@@ -1362,13 +1405,13 @@ static int _CommandDhcpOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** arg
         if(argc < 4)
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Request needs an IP address\r\n");
-            return false;
+            return;
         }
 
         if (!TCPIP_Helper_StringToIPAddress(argv[3], &reqIpAddr))
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Invalid IP address string \r\n");
-            return false;
+            return;
         }
     }
     else if (strcmp(argv[2], "info") == 0)
@@ -1416,12 +1459,12 @@ static int _CommandDhcpOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** arg
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "DHCP: failed to get info\r\n");
         }
-        return false;
+        return;
     }
     else
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown option\r\n");
-        return false;
+        return;
     }
 
 
@@ -1450,7 +1493,6 @@ static int _CommandDhcpOptions(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** arg
 
     (*pCmdIO->pCmdApi->print)(cmdIoParam, "%s %s %s\r\n", argv[0], argv[2], dhcpRes ? "success" : "fail");
 
-    return true;
 }
 #endif  // defined(TCPIP_STACK_USE_IPV4) && defined(TCPIP_STACK_USE_DHCP_CLIENT)
 
@@ -1598,18 +1640,18 @@ static void _CommandDhcpv6Options(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** 
 
 #if defined(TCPIP_STACK_USE_IPV4)
 #if defined(TCPIP_STACK_USE_DHCP_SERVER)
-static int _Command_DHCPSOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_DHCPSOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
-    return _Command_AddressService(pCmdIO, argc, argv, TCPIP_STACK_ADDRESS_SERVICE_DHCPS);
+    _Command_AddressService(pCmdIO, argc, argv, TCPIP_STACK_ADDRESS_SERVICE_DHCPS);
 }
 #endif  // defined(TCPIP_STACK_USE_DHCP_SERVER)
 
-static int _Command_ZcllOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_ZcllOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
-    return _Command_AddressService(pCmdIO, argc, argv, TCPIP_STACK_ADDRESS_SERVICE_ZCLL);
+    _Command_AddressService(pCmdIO, argc, argv, TCPIP_STACK_ADDRESS_SERVICE_ZCLL);
 }
 
-static int _Command_AddressService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv, TCPIP_STACK_ADDRESS_SERVICE_TYPE svcType)
+static void _Command_AddressService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv, TCPIP_STACK_ADDRESS_SERVICE_TYPE svcType)
 { 
     typedef bool(*addSvcFnc)(TCPIP_NET_HANDLE hNet);
 
@@ -1623,14 +1665,14 @@ static int _Command_AddressService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char**
     {
         (*pCmdIO->pCmdApi->print)(cmdIoParam, "Usage: %s <interface> <on/off> \r\n", argv[0]);
         (*pCmdIO->pCmdApi->print)(cmdIoParam, "Ex: %s PIC32INT on \r\n", argv[0]);
-        return false;
+        return;
     }
 
     netH = TCPIP_STACK_NetHandleGet(argv[1]);
     if (netH == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown interface\r\n");
-        return false;
+        return;
     }
 
     if (memcmp(argv[2], "on", 2) == 0)
@@ -1644,7 +1686,7 @@ static int _Command_AddressService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char**
     else
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown option\r\n");
-        return false;
+        return;
     }
 
     switch(svcType)
@@ -1696,12 +1738,11 @@ static int _Command_AddressService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char**
         (*pCmdIO->pCmdApi->print)(cmdIoParam, "Unknown service %s\r\n", argv[0]);
     }
 
-    return true;
 }
 #endif  // defined(TCPIP_STACK_USE_IPV4)
 
 
-static int _Command_IPAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_IPAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     TCPIP_NET_HANDLE netH;
     TCPIP_NET_IF*   pNetIf;
@@ -1722,21 +1763,21 @@ static int _Command_IPAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: setip <interface> <ipv4/6 address> <ipv4mask/ipv6 prefix len>\r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: setip PIC32INT 192.168.0.8 255.255.255.0 \r\n");
-        return false;
+        return;
     }
 
     netH = TCPIP_STACK_NetHandleGet(argv[1]);
     if (netH == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown interface specified \r\n");
-        return false;
+        return;
     }
 
     pNetIf = _TCPIPStackHandleToNetUp(netH);
     if(pNetIf == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "No such interface is up\r\n");
-        return false;
+        return;
     }
 
 
@@ -1758,7 +1799,7 @@ static int _Command_IPAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
     if(addType == IP_ADDRESS_TYPE_ANY)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Invalid IP address string \r\n");
-        return false;
+        return;
     }
     
 
@@ -1768,7 +1809,7 @@ static int _Command_IPAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         if(_TCPIPStackAddressServiceIsRunning(pNetIf) != TCPIP_STACK_ADDRESS_SERVICE_NONE)
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "An address service is already running. Stop DHCP, ZCLL, etc. first\r\n");
-            return false;
+            return;
         }
 
         if(argc > 3)
@@ -1776,7 +1817,7 @@ static int _Command_IPAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
             if (!TCPIP_Helper_StringToIPAddress(argv[3], &ipMask))
             {
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Invalid IP mask string \r\n");
-                return false;
+                return;
             }
             pMask = &ipMask;
         }
@@ -1816,10 +1857,9 @@ static int _Command_IPAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
 
 
     (*pCmdIO->pCmdApi->msg)(cmdIoParam, success ? "Set ip address OK\r\n" : "Set ip address failed\r\n");
-    return false;
 }
 
-static int _Command_GatewayAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_GatewayAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     TCPIP_NET_HANDLE netH;
     IP_ADDRESS_TYPE addType;
@@ -1837,14 +1877,14 @@ static int _Command_GatewayAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, cha
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: setgw <interface> <ipv4/6 address> <validTime> \r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: setgw PIC32INT 192.168.0.1 \r\n");
-        return false;
+        return;
     }
 
     netH = TCPIP_STACK_NetHandleGet(argv[1]);
     if (netH == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown interface specified \r\n");
-        return false;
+        return;
     }
 
     addType = IP_ADDRESS_TYPE_ANY;
@@ -1865,7 +1905,7 @@ static int _Command_GatewayAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, cha
     if(addType == IP_ADDRESS_TYPE_ANY)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Invalid IP address string \r\n");
-        return false;
+        return;
     }
 
 
@@ -1893,12 +1933,10 @@ static int _Command_GatewayAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, cha
 
 
     (*pCmdIO->pCmdApi->msg)(cmdIoParam, success ? "Set gateway address OK\r\n" : "Set gateway address failed\r\n");
-    return false;
-
 }
 
 #if defined(TCPIP_STACK_USE_IPV4)
-static int _Command_DNSAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_DNSAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     TCPIP_NET_HANDLE netH;
     IPV4_ADDR ipDNS;
@@ -1908,37 +1946,36 @@ static int _Command_DNSAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** 
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: setdns 1/2 <interface> <x.x.x.x> \r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: setdns 1 eth0 255.255.255.0 \r\n");
-        return false;
+        return;
     }
 
     int dnsIx = atoi(argv[1]);
     if(dnsIx != 1 && dnsIx != 2)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown DNS index\r\n");
-        return false;
+        return;
     }
 
     netH = TCPIP_STACK_NetHandleGet(argv[2]);
     if (netH == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown interface specified \r\n");
-        return false;
+        return;
     }
 
     if (!TCPIP_Helper_StringToIPAddress(argv[3], &ipDNS))
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Invalid IP address string \r\n");
-        return false;
+        return;
     }
 
     bool res = dnsIx == 1 ? TCPIP_STACK_NetAddressDnsPrimarySet(netH, &ipDNS) : TCPIP_STACK_NetAddressDnsSecondSet(netH, &ipDNS); 
     (*pCmdIO->pCmdApi->print)(cmdIoParam, "Set DNS %d address %s\r\n", dnsIx, res ? "success" : "failed");
-    return true;
 }
 #endif  // defined(TCPIP_STACK_USE_IPV4)
 
 #if defined (TCPIP_STACK_USE_TFTP_CLIENT)
-static int _Command_TFTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_TFTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     const void* cmdIoParam = pCmdIO->cmdIoParam;
     TCPIP_TFTP_CMD_TYPE cmdType=TFTP_CMD_NONE;
@@ -1950,13 +1987,13 @@ static int _Command_TFTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** 
     if (argc != 4) {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: tftpc <server IP address> <command> <filename>\r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: Now only supports IPv4 Address\r\n");
-        return false;
+        return;
     }
     serverIPStrLen = strlen(argv[1]);
     if(serverIPStrLen >= sizeof(tftpServerHost))
     {
         (*pCmdIO->pCmdApi->msg)(pCmdIO->cmdIoParam, "TFTPC: Server name is too long. Retry.\r\n");
-        return true;
+        return;
     }
     strcpy(tftpServerHost, argv[1]);
     
@@ -1971,7 +2008,7 @@ static int _Command_TFTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** 
     else
     {
         (*pCmdIO->pCmdApi->msg)(pCmdIO->cmdIoParam, "TFTPC: Invalid Server IP address.\r\n");
-        return true;
+        return;
     }
     
     if(stricmp("put",argv[2])==0)
@@ -1985,7 +2022,7 @@ static int _Command_TFTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** 
     else
     {
         (*pCmdIO->pCmdApi->msg)(pCmdIO->cmdIoParam, "TFTPC:Command not found.\r\n");
-        return true;
+        return;
     }
 
     // Process file name
@@ -1997,15 +2034,14 @@ static int _Command_TFTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** 
     else
     {
         (*pCmdIO->pCmdApi->print)(pCmdIO->cmdIoParam, "TFTPC:File size should be less than [ %d ] .\r\n",sizeof(tftpcFileName)-1);
-        return true;
+        return;
     }
    
     if(TCPIP_TFTPC_SetCommand(&mAddr,ipType,cmdType,tftpcFileName) != TFTPC_ERROR_NONE)
-	{
-		(*pCmdIO->pCmdApi->msg)(pCmdIO->cmdIoParam, "TFTPC:Command processing error.\r\n");
-        return true;
-	}
-    return false;
+    {
+        (*pCmdIO->pCmdApi->msg)(pCmdIO->cmdIoParam, "TFTPC:Command processing error.\r\n");
+        return;
+    }
 }
 #endif
 #if defined(TCPIP_STACK_USE_DNS)
@@ -2088,7 +2124,7 @@ static int _Command_DNSOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     }
     return true;
 }
-static int _Command_DNS_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_DNS_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     uint8_t             *hostName;
     const void* cmdIoParam = pCmdIO->cmdIoParam;
@@ -2106,7 +2142,7 @@ static int _Command_DNS_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** ar
 
     if (argc < 2) {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: dnsc <del/info/on/off/lookup> \r\n");
-        return false;
+        return;
     }
     for(i=0;i<(sizeof(dnssComnd)/sizeof(DNSS_COMMAND_MAP));i++)
     {
@@ -2128,7 +2164,7 @@ static int _Command_DNS_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** ar
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Help: <type> : a or A for IPv4 address lookup\r\n");
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Help: <type> : aaaa or AAAA for IPv6 address lookup\r\n");
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Help: <type> : any for both IPv4 and IPv6 address lookup\r\n");
-                return false;
+                return;
             }
             _Command_DNSLookUP(pCmdIO,argv);
             break;
@@ -2137,14 +2173,14 @@ static int _Command_DNS_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** ar
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: dnsc del <hostName>|all \r\n");
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Help: <hostName>(URL) - Remove the entry if exists \r\n");
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Help: all - Remove all the resolved entry \r\n");
-                return false;
+                return;
             }
 
             hostName = (uint8_t*)argv[2];
             if (hostName == 0)
             {
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown option\r\n");
-                return false;
+                return;
             }
             if(strcmp((char*)hostName,(char*)"all")==0)
             {
@@ -2159,14 +2195,14 @@ static int _Command_DNS_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** ar
             {
                 case TCPIP_DNS_RES_NO_NAME_ENTRY:
                     (*pCmdIO->pCmdApi->print)(cmdIoParam, "[%s] not part of the DNS Cache entry \r\n",hostName);
-                    return false;
+                    return;
                 case TCPIP_DNS_RES_NO_SERVICE:
                     (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Incomplete command \r\n");
-                    return false;
+                    return;
                 case TCPIP_DNS_RES_OK:
-                    return false;
+                    return;
                 default:
-                    return false;
+                    return;
             }
             break;
         case DNS_SERVICE_COMD_INFO:
@@ -2174,9 +2210,8 @@ static int _Command_DNS_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** ar
             break;
         default:
             (*pCmdIO->pCmdApi->print)(cmdIoParam, "Invalid Input Command :[ %s ] \r\n", argv[1]);
-            return false;
+            return;
     }
-    return true;
 }
 
 
@@ -2354,7 +2389,7 @@ static int _Command_DNSSOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown option\r\n");
         return false;
     }
-	addFnc = svcEnable?TCPIP_DNSS_Enable:TCPIP_DNSS_Disable;
+    addFnc = svcEnable?TCPIP_DNSS_Enable:TCPIP_DNSS_Disable;
 
         msgOK   = svcEnable?"enabled":"disabled";
         msgFail = svcEnable?"enable":"disable";
@@ -2378,7 +2413,7 @@ static int _Command_AddDelDNSSrvAddress(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, c
     uint8_t             *hostName;
     IP_MULTI_ADDRESS    ipDNS;
     const void* cmdIoParam = pCmdIO->cmdIoParam;
-    uint32_t		entryTimeout=0;
+    uint32_t        entryTimeout=0;
 #if defined(TCPIP_STACK_USE_IPV6)
     uint8_t     addrBuf[44];
 #endif
@@ -2482,7 +2517,7 @@ static int _Command_AddDelDNSSrvAddress(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, c
     }
 }
 
-static int _Command_DnsServService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_DnsServService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     int i=0;
     const void* cmdIoParam = pCmdIO->cmdIoParam;
@@ -2494,11 +2529,11 @@ static int _Command_DnsServService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char**
                 {"del",DNS_SERVICE_COMD_DEL,},
                 {"info",DNS_SERVICE_COMD_INFO,},
             }; 
-	
-	
+    
+    
     if (argc < 2) {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: dnss <service/add/del/info> \r\n");
-         return false;
+         return;
     }
     
     for(i=0;i<(sizeof(dnssComnd)/sizeof(DNSS_COMMAND_MAP));i++)
@@ -2526,9 +2561,7 @@ static int _Command_DnsServService(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char**
             break;
         default:
             (*pCmdIO->pCmdApi->print)(cmdIoParam, "Invalid Input Command :[ %s ] \r\n", argv[1]);
-            return false;
     }
-    return true;
 }
 
 static int _Command_ShowDNSServInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
@@ -2555,7 +2588,7 @@ static int _Command_ShowDNSServInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
     hostName = (uint8_t*)argv[2];
     if(strcmp((char*)argv[2],"all")==0)
     {
-    	index = 0;
+        index = 0;
         (*pCmdIO->pCmdApi->msg)(cmdIoParam,"HostName        IPv4/IPv6Count\r\n");
 
         while(1)
@@ -2650,7 +2683,7 @@ static int _Command_ShowDNSServInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
 }
 #endif
 
-static int _Command_BIOSNameSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_BIOSNameSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     TCPIP_NET_HANDLE netH;
     const char* msg;
@@ -2660,14 +2693,14 @@ static int _Command_BIOSNameSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** ar
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: setbios <interface> <x.x.x.x> \r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: setbios PIC32INT MCHPBOARD_29 \r\n");
-        return false;
+        return;
     }
 
     netH = TCPIP_STACK_NetHandleGet(argv[1]);
     if (netH == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown interface specified \r\n");
-        return false;
+        return;
     }
 
     if(TCPIP_STACK_NetBiosNameSet(netH, argv[2]))
@@ -2680,10 +2713,9 @@ static int _Command_BIOSNameSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** ar
     }
 
     (*pCmdIO->pCmdApi->msg)(cmdIoParam, msg);
-    return true;
 }
 
-static int _Command_MACAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_MACAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     TCPIP_NET_HANDLE netH;
     TCPIP_MAC_ADDR macAddr;
@@ -2692,32 +2724,31 @@ static int _Command_MACAddressSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** 
     if (argc != 3) {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: setmac <interface> <x:x:x:x:x:x> \r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: setmac PIC32INT aa:bb:cc:dd:ee:ff \r\n");
-        return false;
+        return;
     }
 
     netH = TCPIP_STACK_NetHandleGet(argv[1]);
     if (netH == 0) {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown interface specified \r\n");
-        return false;
+        return;
     }
 
     (*pCmdIO->pCmdApi->print)(cmdIoParam, "argv[2]: %s\r\n", argv[2]);
 
     if (!TCPIP_Helper_StringToMACAddress(argv[2], macAddr.v)) {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Invalid MAC address string \r\n");
-        return false;
+        return;
     }
 
     if(!TCPIP_STACK_NetAddressMacSet(netH, &macAddr)) {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Set MAC address failed\r\n");
-        return false;
+        return;
     }
 
-    return true;
 }
 
 #if defined(TCPIP_STACK_USE_TFTP_SERVER)
-static int _Command_TFTPServerOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_TFTPServerOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     // tftps <interface> <start/stop> <add-type>
     // tftps status
@@ -2734,7 +2765,7 @@ static int _Command_TFTPServerOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
         if((strcmp(argv[1], "status") == 0))
         {
             (*pCmdIO->pCmdApi->print)(cmdIoParam, "TFTPS - Number of clients running: %d \r\n", TCPIP_TFTPS_ClientsNumber());
-            return true;
+            return;
         }
 
         if(argc < 3)
@@ -2746,7 +2777,7 @@ static int _Command_TFTPServerOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
         if (netH == 0)
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "TFTPS - Unknown interface\r\n");
-            return false;
+            return;
         }
 
         if (strcmp(argv[2], "start") == 0)
@@ -2754,7 +2785,7 @@ static int _Command_TFTPServerOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
             if(TCPIP_TFTPS_IsEnabled())
             {
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "TFTPS - already running\r\n");
-                return true;
+                return;
             }
 
             opCode = 1;
@@ -2764,7 +2795,7 @@ static int _Command_TFTPServerOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
             if(TCPIP_TFTPS_IsEnabled() == 0)
             {
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "TFTPS - already stopped\r\n");
-                return true;
+                return;
             }
             opCode = 2;
         }
@@ -2791,7 +2822,7 @@ static int _Command_TFTPServerOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
             else
             {
                 (*pCmdIO->pCmdApi->msg)(cmdIoParam, "TFTPS - Invalid address type\r\n");
-                return false;
+                return;
             }
         }
 
@@ -2822,13 +2853,11 @@ static int _Command_TFTPServerOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char*
         (*pCmdIO->pCmdApi->print)(cmdIoParam, "TFTPS - operation %s!\r\n", opRes ? "succesful" : "failed");
     }
 
-    return true;
-
 }
 #endif  
 
 #if (TCPIP_STACK_IF_UP_DOWN_OPERATION != 0)
-static int _Command_NetworkOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_NetworkOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     bool res = false;
     TCPIP_NET_HANDLE netH;
@@ -2846,7 +2875,7 @@ static int _Command_NetworkOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: if <interface> <down/up> \r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: if PIC32INT down \r\n");
-        return false;
+        return;
     }
 
     netH = TCPIP_STACK_NetHandleGet(argv[1]);
@@ -2854,7 +2883,7 @@ static int _Command_NetworkOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
     if (netH == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Unknown interface specified \r\n");
-        return false;
+        return;
     }
 
     net_ix = TCPIP_STACK_NetIndexGet(netH);
@@ -2864,7 +2893,7 @@ static int _Command_NetworkOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         if(TCPIP_STACK_NetIsUp(netH))
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "This interface already up\r\n");
-            return true;
+            return;
         }
 
         // get the data passed at initialization
@@ -2873,7 +2902,7 @@ static int _Command_NetworkOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         if(tcpip_init_data.pNetConf == 0)
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Operation failed. No configuration\r\n");
-            return true;
+            return;
         }
 
         pIfConf = &ifConf;
@@ -2906,7 +2935,7 @@ static int _Command_NetworkOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         if(TCPIP_STACK_NetIsUp(netH) == 0)
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "This interface already down\r\n");
-            return true;
+            return;
         }
 
 #if defined(_TCPIP_STACK_COMMANDS_STORAGE_ENABLE)
@@ -2926,7 +2955,7 @@ static int _Command_NetworkOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
     else
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Wrong parameter specified \r\n");
-        return false;
+        return;
     }
 
     if (res == true)
@@ -2938,12 +2967,11 @@ static int _Command_NetworkOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Operation failed!\r\n");
     }
 
-    return true;
 }
 #endif  // (TCPIP_STACK_IF_UP_DOWN_OPERATION != 0)
 
 #if (TCPIP_STACK_DOWN_OPERATION != 0)
-static int _Command_StackOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_StackOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
 #if defined(_TCPIP_STACK_COMMANDS_STORAGE_ENABLE)
     TCPIP_NET_HANDLE netH;
@@ -2960,7 +2988,7 @@ static int _Command_StackOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** arg
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: stack <up/down> <preserve>\r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: stack down preserve\r\n");
-        return false;
+        return;
     }
 
 
@@ -2971,13 +2999,13 @@ static int _Command_StackOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** arg
         if ( tcpipStackObj != SYS_MODULE_OBJ_INVALID)
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Stack already up!\r\n");
-            return true;
+            return;
         }
         // check the saved init data when the stack went down
         if(pCmdTcpipInitData == 0)
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Turn Stack down and then up!\r\n");
-            return true;
+            return;
         }
 
         // copy of the init data; use as default
@@ -3089,11 +3117,10 @@ static int _Command_StackOnOff(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** arg
         }
     }
 
-    return true;
 }
 #endif  // (TCPIP_STACK_DOWN_OPERATION != 0)
 
-static int _Command_HeapInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_HeapInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
 #if defined(TCPIP_STACK_DRAM_DEBUG_ENABLE)    
     int     ix, nEntries;
@@ -3121,7 +3148,7 @@ static int _Command_HeapInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
         if(hType == TCPIP_STACK_HEAP_TYPE_NONE || hType >= TCPIP_STACK_HEAP_TYPES)
         {
             (*pCmdIO->pCmdApi->print)(cmdIoParam, "Unknown heap type. Use: [1, %d]\r\n", TCPIP_STACK_HEAP_TYPES - 1);
-            return false;
+            return;
         }
         // valid
         startType = hType;
@@ -3224,10 +3251,9 @@ static int _Command_HeapInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 
     }
 
-    return true;
 }
 
-static int _Command_MacInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_MacInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     int                     netNo, netIx;
     TCPIP_NET_HANDLE        netH;
@@ -3244,7 +3270,7 @@ static int _Command_MacInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     if (argc != 1) {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: macinfo \r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: macinfo \r\n");
-        return false;
+        return;
     }
 
 
@@ -3292,7 +3318,6 @@ static int _Command_MacInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 
     }
 
-    return true;
 }
 
 #if defined(TCPIP_STACK_USE_DNS)
@@ -3583,7 +3608,7 @@ static void CommandPingHandler(const  TCPIP_ICMP_ECHO_REQUEST* pEchoReq, TCPIP_I
 #endif  // defined(_TCPIP_COMMAND_PING4)
 
 #if defined(_TCPIP_COMMAND_PING6)
-static int _Command_IPv6_Ping(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_IPv6_Ping(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     const void* cmdIoParam = pCmdIO->cmdIoParam;
     uint32_t size =0;
@@ -3593,14 +3618,14 @@ static int _Command_IPv6_Ping(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv
     if(tcpipCmdStat != TCPIP_CMD_STAT_IDLE)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "ping6: command in progress. Retry later.\r\n");
-        return true;
+        return;
     }
 
     if((argc < 2) ||(argc > 4))
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ping6 <net> <x::x:x:x:x> <size> \r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ping6 fe80::23:2222:3333:1234 1500\r\n");
-        return true;
+        return;
     }
  // check the 1st parameter type
     netH = TCPIP_STACK_NetHandleGet(argv[1]);
@@ -3616,7 +3641,7 @@ static int _Command_IPv6_Ping(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv
         if (argc < 3)
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ping6 <net> <x::x:x:x:x> <size> \r\n");
-            return true;
+            return;
         }
     }
 
@@ -3637,7 +3662,7 @@ static int _Command_IPv6_Ping(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv
         if(strlen(argv[argIx]) > sizeof(icmpTargetHost) - 1)
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "ping6: Host name too long. Retry.\r\n");
-            return true;
+            return;
         }
         strcpy(icmpTargetHost, argv[argIx]);
         tcpipCmdStat = TCPIP_PING6_CMD_DNS_GET;
@@ -3660,7 +3685,7 @@ static int _Command_IPv6_Ping(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv
         if((hIcmpv6 = TCPIP_ICMPV6_CallbackRegister(CommandPing6Handler)) == 0)
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "ping6: Failed to register ICMP handler\r\n");
-            return true;
+            return;
         }
     }
 
@@ -3689,8 +3714,6 @@ static int _Command_IPv6_Ping(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv
     icmpReqCount = 0;
 
     _TCPIPStackSignalHandlerSetParams(TCPIP_THIS_MODULE_ID, tcpipCmdSignalHandle, icmpReqDelay);
-    return true;
-
 }
 
 static void CommandPing6Handler(TCPIP_NET_HANDLE hNetIf,uint8_t type, const IPV6_ADDR * localIP, const IPV6_ADDR * remoteIP, void * data)
@@ -4011,7 +4034,7 @@ void TCPIP_COMMAND_Task(void)
         }
 #endif  // defined(TCPIP_STACK_USE_DNS)
 #if defined(_TCPIP_COMMANDS_MIIM)
-        if(TCPIP_PHY_READ <= tcpipCmdStat && tcpipCmdStat <= TCPIP_PHY_DUMP)
+        if(TCPIP_PHY_READ <= tcpipCmdStat && tcpipCmdStat <= TCPIP_PHY_WRITE_SMI)
         {
             TCPIPCmdMiimTask();
         }
@@ -4031,7 +4054,7 @@ void TCPIP_COMMAND_Task(void)
 #if (TCPIP_ARP_COMMANDS != 0)
 static void _CommandArp(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
-    // arp <interface> <req/query/del/list> <ipAddr>
+    // arp <interface> <req/query/del/list/insert> <ipAddr> <macAddr>\r\n");
     //
     TCPIP_NET_HANDLE netH;
     IPV4_ADDR ipAddr;
@@ -4149,20 +4172,42 @@ static void _CommandArp(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
             return;
         }
 
+        if (strcmp(argv[2], "insert") == 0)
+        {   // insert an address
+            if (argc < 5 || !TCPIP_Helper_StringToMACAddress(argv[4], macAddr.v))
+            {
+                (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Invalid MAC address string \r\n");
+                return;
+            }
+
+
+            arpRes = TCPIP_ARP_EntrySet(netH, &ipAddr, &macAddr, true);
+            if(arpRes >= 0)
+            {
+                (*pCmdIO->pCmdApi->print)(cmdIoParam, "arp: Added MAC address %s for %s (%d)\r\n", argv[4], argv[3], arpRes);
+            }
+            else
+            {
+                (*pCmdIO->pCmdApi->msg)(cmdIoParam, "arp: Failed to insert MAC address!\r\n");
+            }
+            return;
+        }
+
         break;
     }
 
     (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: arp interface list\r\n");
-    (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: arp interface req/query/del ipAddr\r\n");
+    (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: arp interface req/query/del/insert <ipAddr> <macAddr>\r\n");
     (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: arp eth0 req 192.168.1.105 \r\n");
 }
 #endif  // (TCPIP_ARP_COMMANDS != 0)
 #endif  // defined(TCPIP_STACK_USE_IPV4)
 
-#if defined(TCPIP_STACK_USE_HTTP_NET_SERVER)
-static int _Command_HttpInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+#if defined(_TCPIP_COMMANDS_HTTP_NET_SERVER)
+static void _Command_HttpNetInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
-    int     httpActiveConn, httpOpenConn, connIx, chunkIx;
+    int     httpActiveConn, connIx, chunkIx;
+    int httpOpenConn;
     TCPIP_HTTP_NET_CONN_INFO    httpInfo;
     TCPIP_HTTP_NET_CHUNK_INFO   httpChunkInfo[6];
     TCPIP_HTTP_NET_CHUNK_INFO*  pChunkInfo;
@@ -4172,7 +4217,7 @@ static int _Command_HttpInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     if (argc < 2)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: http info/stat/chunk/disconnect\r\n");
-        return false;
+        return;
     }
 
     httpActiveConn = TCPIP_HTTP_NET_ActiveConnectionCountGet(&httpOpenConn);
@@ -4218,10 +4263,15 @@ static int _Command_HttpInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     }
     else if(strcmp(argv[1], "stat") == 0)
     {
-        TCPIP_HTTP_NET_StatGet(&httpStat);
-        
-        (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP connections: %d, active: %d, open: %d\r\n", httpStat.nConns, httpStat.nActiveConns, httpStat.nOpenConns);
-        (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP pool empty: %d, max depth: %d, parse retries: %d\r\n", httpStat.dynPoolEmpty, httpStat.maxRecurseDepth, httpStat.dynParseRetry);
+        if(TCPIP_HTTP_NET_StatGet(&httpStat))
+        {
+            (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP connections: %d, active: %d, open: %d\r\n", httpStat.nConns, httpStat.nActiveConns, httpStat.nOpenConns);
+            (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP pool empty: %d, max depth: %d, parse retries: %d\r\n", httpStat.dynPoolEmpty, httpStat.maxRecurseDepth, httpStat.dynParseRetry);
+        }
+        else
+        {
+            (*pCmdIO->pCmdApi->msg)(cmdIoParam, "HTTP: Failed to get status!\r\n");
+        }
     }
     else if(strcmp(argv[1], "disconnect") == 0)
     {
@@ -4242,12 +4292,12 @@ static int _Command_HttpInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 
 
 
-    return false;
 }
 #if (TCPIP_HTTP_NET_SSI_PROCESS != 0)
-static int _Command_SsiInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_SsiNetInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
-    int nSSIVars, ssiEntries, ix;
+    int ssiEntries, ix;
+    int nSSIVars;
     const void* cmdIoParam = pCmdIO->cmdIoParam;
 
     const char* varStr;
@@ -4257,7 +4307,7 @@ static int _Command_SsiInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     if (argc < 2)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ssi info\r\n");
-        return false;
+        return;
     }
 
     if(strcmp(argv[1], "info") == 0)
@@ -4275,12 +4325,221 @@ static int _Command_SsiInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
             }
         }
     }
-
-    return false;
 }
 #endif  // (TCPIP_HTTP_NET_SSI_PROCESS != 0)
-#endif // defined(TCPIP_STACK_USE_HTTP_NET_SERVER)
+#endif // defined(_TCPIP_COMMANDS_HTTP_NET_SERVER)
 
+#if defined(_TCPIP_COMMANDS_HTTP_SERVER)
+static void _Command_HttpInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+    size_t argIx, argStep;
+    size_t instCount, portCount, ruleCount, instIx, ruleIx;
+    size_t httpActiveConn, connIx, chunkIx, httpOpenConn;
+    TCPIP_HTTP_CONN_INFO    httpInfo;
+    TCPIP_HTTP_CHUNK_INFO   httpChunkInfo[6];
+    TCPIP_HTTP_CHUNK_INFO*  pChunkInfo;
+    TCPIP_HTTP_STATISTICS   httpStat;
+    TCPIP_HTTP_ACCESS_RULE accRule;
+    const void* cmdIoParam = pCmdIO->cmdIoParam;
+
+    if (argc < 2)
+    {
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: http <inst n> <port n> info/stat/chunk/disconnect/rules\r\n");
+        return;
+    }
+
+    argIx = 1;
+    while(argIx < argc)
+    { 
+        char* cmd = argv[argIx];
+
+        if(strcmp(cmd, "inst") == 0 && (argIx + 1) < argc)
+        {
+            http_inst_ix = atoi(argv[argIx + 1]); 
+            (*pCmdIO->pCmdApi->print)(cmdIoParam, "http: Set the instance to: %d\r\n", http_inst_ix);
+            argStep = 2;
+        }
+        else if(strcmp(cmd, "port") == 0 && (argIx + 1) < argc)
+        {
+            http_port_ix = atoi(argv[argIx + 1]);
+            (*pCmdIO->pCmdApi->print)(cmdIoParam, "http: Set the port to: %d\r\n", http_port_ix);
+            argStep = 2;
+        }
+        else
+        {
+            httpActiveConn = TCPIP_HTTP_ActiveConnectionCountGet(http_inst_ix, http_port_ix, &httpOpenConn);
+
+            if(strcmp(cmd, "info") == 0)
+            {
+                instCount = TCPIP_HTTP_Instance_CountGet();
+                (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP instances: %d\r\n", instCount);
+                for(instIx = 0; instIx < instCount; instIx++)
+                {
+                    portCount = TCPIP_HTTP_Instance_PortCountGet(instIx); 
+                    (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP instance: %d, has %d port(s)\r\n", instIx, portCount);
+                }
+
+                (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP instance: %d, port: %d connections info - active: %d, open: %d\r\n", http_inst_ix, http_port_ix, httpActiveConn, httpOpenConn);
+
+                for(connIx = 0; connIx < httpOpenConn; connIx++)
+                {
+                    if(TCPIP_HTTP_InfoGet(http_inst_ix, http_port_ix, connIx, &httpInfo))
+                    {
+                        (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP conn: %d status: 0x%4x, port: %d, sm: 0x%4x, chunks: %d, chunk empty: %d, file empty: %d\r\n",
+                                connIx, httpInfo.httpStatus, httpInfo.listenPort, httpInfo.connStatus, httpInfo.nChunks, httpInfo.chunkPoolEmpty, httpInfo.fileBufferPoolEmpty);
+                    }
+                    else
+                    {
+                        (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP: failed to get info for conn: %d\r\n", connIx);
+                    }
+                }
+            }
+            else if(strcmp(cmd, "chunk") == 0)
+            {
+                (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP instance: %d, port: %d chunk info:\r\n", http_inst_ix, http_port_ix);
+                for(connIx = 0; connIx < httpOpenConn; connIx++)
+                {
+                    if(TCPIP_HTTP_InfoGet(http_inst_ix, http_port_ix, connIx, &httpInfo))
+                    {
+                        (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP conn: %d, chunks: %d\r\n",  connIx, httpInfo.nChunks);
+                        if(TCPIP_HTTP_ChunkInfoGet(http_inst_ix, http_port_ix, connIx, httpChunkInfo, sizeof(httpChunkInfo)/sizeof(*httpChunkInfo)))
+                        {
+                            pChunkInfo = httpChunkInfo;
+                            for(chunkIx = 0; chunkIx < httpInfo.nChunks; chunkIx++, pChunkInfo++)
+                            {
+                                (*pCmdIO->pCmdApi->print)(cmdIoParam, "\tHTTP chunk: %d flags: 0x%4x, status: 0x%4x, fName: %s\r\n", chunkIx, pChunkInfo->flags, pChunkInfo->status, pChunkInfo->chunkFName);
+                                (*pCmdIO->pCmdApi->print)(cmdIoParam, "\tHTTP chunk: dyn buffers: %d, var Name: %s\r\n", pChunkInfo->nDynBuffers, pChunkInfo->dynVarName);
+                            }
+                            continue;
+                        }
+                    }
+
+                    (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP: failed to get info for conn: %d\r\n", connIx);
+                }
+            }
+            else if(strcmp(cmd, "stat") == 0)
+            {
+                (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP instance: %d, port: %d statistics info:\r\n", http_inst_ix, http_port_ix);
+                if(TCPIP_HTTP_StatsticsGet(http_inst_ix, http_port_ix, &httpStat))
+                {
+                    (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP connections: %d, active: %d, open: %d\r\n", httpStat.nConns, httpStat.nActiveConns, httpStat.nOpenConns);
+                    (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP pool empty: %d, max depth: %d, parse retries: %d\r\n", httpStat.dynPoolEmpty, httpStat.maxRecurseDepth, httpStat.dynParseRetry);
+                }
+                else
+                {
+                    (*pCmdIO->pCmdApi->msg)(cmdIoParam, "HTTP: Failed to get status!\r\n");
+                }
+            }
+            else if(strcmp(cmd, "disconnect") == 0)
+            {
+                for(connIx = 0; connIx < httpOpenConn; connIx++)
+                {
+                    TCPIP_HTTP_CONN_HANDLE connHandle = TCPIP_HTTP_ConnectionHandleGet(http_inst_ix, http_port_ix, connIx);
+                    NET_PRES_SKT_HANDLE_T skt_h = TCPIP_HTTP_ConnectionSocketGet(connHandle);
+                    NET_PRES_SocketDisconnect(skt_h);
+                }
+
+                (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP instance %d, port %d, disconnected %d connections, active: %d\r\n", http_inst_ix, http_port_ix, httpOpenConn, httpActiveConn);
+            }
+            else if(strcmp(cmd, "rules") == 0)
+            {
+                ruleCount = TCPIP_HTTP_PortRules_CountGet(http_inst_ix, http_port_ix); 
+                (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP instance: %d, port: %d, rules: %d\r\n", http_inst_ix, http_port_ix, ruleCount);
+                for(ruleIx = 0; ruleIx < ruleCount; ruleIx++)
+                {
+                    if(TCPIP_HTTP_PortRuleGet(http_inst_ix, http_port_ix, ruleIx, &accRule))
+                    {
+                        (*pCmdIO->pCmdApi->print)(cmdIoParam, "rule: %d\r\n", ruleIx);
+                        (*pCmdIO->pCmdApi->print)(cmdIoParam, "\tinPort: %d, intIfIx: %d, addType: %d\r\n", accRule.inPort, accRule.inIfIx, accRule.inAddType);
+                        (*pCmdIO->pCmdApi->print)(cmdIoParam, "\taction: %d, ruleSize: %d\r\n", accRule.action, accRule.ruleSize);
+                        (*pCmdIO->pCmdApi->print)(cmdIoParam, "\tdir: %s\r\n", accRule.dir);
+                        if(accRule.action == TCPIP_HTTP_ACCESS_ACTION_REDIRECT)
+                        {
+                            (*pCmdIO->pCmdApi->print)(cmdIoParam, "\tredirURI: %s, redirServer: %s\r\n", accRule.redirURI, accRule.redirServer);
+                        }
+                    }
+                    else
+                    {
+                        (*pCmdIO->pCmdApi->print)(cmdIoParam, "Failed to get rule: %d\r\n", ruleIx);
+                    }
+                }
+            }
+            else
+            {
+                (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP: unknown parameter '%s'\r\n", cmd);
+            }
+
+            argStep = 1;
+        }
+        argIx += argStep;
+    }
+}
+#if (TCPIP_HTTP_SSI_PROCESS != 0)
+static void _Command_SsiInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+    size_t argIx, argStep;
+    size_t ssiEntries, ssiIx, nSSIVars;
+    const void* cmdIoParam = pCmdIO->cmdIoParam;
+
+    const char* varName;
+    TCPIP_HTTP_DYN_ARG_DCPT varDcpt;
+
+    if (argc < 2)
+    {
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ssi <inst n> info\r\n");
+        return;
+    }
+
+    argIx = 1;
+    argStep = 1;
+    while(argIx < argc)
+    { 
+        char* cmd = argv[argIx];
+
+        if(strcmp(cmd, "inst") == 0 && (argIx + 1) < argc)
+        {
+            http_inst_ix = atoi(argv[argIx + 1]); 
+            (*pCmdIO->pCmdApi->print)(cmdIoParam, "http: Set the instance to: %d\r\n", http_inst_ix);
+            argStep = 2;
+        }
+        else if(strcmp(cmd, "info") == 0)
+        {
+            ssiEntries = TCPIP_HTTP_SSIVariablesNumberGet(http_inst_ix, &nSSIVars);
+
+            (*pCmdIO->pCmdApi->print)(cmdIoParam, "HTTP instance %d SSI variable slots - active: %d, total: %d\r\n", http_inst_ix, ssiEntries, nSSIVars);
+
+            for(ssiIx = 0; ssiIx < nSSIVars; ssiIx++)
+            {
+                bool varRes = TCPIP_HTTP_SSIVariableGetByIndex(http_inst_ix, ssiIx, &varName, &varDcpt);
+                if(varRes)
+                {
+                    if(varDcpt.argType == TCPIP_HTTP_DYN_ARG_TYPE_INT32)
+                    {
+                        (*pCmdIO->pCmdApi->print)(cmdIoParam, "SSI variable %d name: %s, type: integer, value: %d\r\n", ssiIx, varName, varDcpt.argInt32);
+                    } 
+                    else
+                    {
+                        (*pCmdIO->pCmdApi->print)(cmdIoParam, "SSI variable %d name: %s, type: string, value: %s\r\n", ssiIx, varName, varDcpt.argStr);
+                    }
+                }
+                else
+                {
+                    (*pCmdIO->pCmdApi->print)(cmdIoParam, "SSI info - failed to get variable: %s\r\n", varName);
+                }
+            }
+            argStep = 1;
+        }
+        else
+        {   // ignore unknown command
+            (*pCmdIO->pCmdApi->print)(cmdIoParam, "SSI: unknown parameter '%s'\r\n", cmd);
+            argStep = 1;
+        }
+
+        argIx += argStep;
+    }
+}
+#endif  // (TCPIP_HTTP_SSI_PROCESS != 0)
+#endif // defined(_TCPIP_COMMANDS_HTTP_SERVER)
 
 #if defined(TCPIP_STACK_USE_SMTPC) && defined(TCPIP_SMTPC_USE_MAIL_COMMAND)
 
@@ -4449,7 +4708,7 @@ static void tcpipReplyCallback(TCPIP_SMTPC_MESSAGE_HANDLE messageHandle, TCPIP_S
     // SYS_CONSOLE_PRINT("app: Mail server reply - stat: %d, msg: %s\r\n", currStat, serverReply);
 }
 
-static int _CommandMail(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _CommandMail(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     int currIx;    
     const void* cmdIoParam = pCmdIO->cmdIoParam;
@@ -4465,7 +4724,7 @@ static int _CommandMail(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: mail <tls 0/1/2/3> <auth 0/1> <force 0/1> <helo 0/1>\r\n");
         (*pCmdIO->pCmdApi->print)(cmdIoParam, "mail tls: %d auth: %d forced auth: %d helo: %d\r\n", tcpipTlsFlag, tcpipAuthPlain, tcpipForceAuth, tcpipHeloGreet);
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: mail <send> <info>\r\n");
-        return false;
+        return;
     }
 
     if(strcmp(argv[1], "send") == 0)
@@ -4483,7 +4742,7 @@ static int _CommandMail(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
         {   // some error
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "mail send: failed!\r\n");
         }
-        return false;  // no more parameters
+        return;  // no more parameters
     }
     else if(strcmp(argv[1], "info") == 0)
     {
@@ -4497,7 +4756,7 @@ static int _CommandMail(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "mail info: failed!\r\n");
         }
-        return false;  // no more parameters
+        return;  // no more parameters
     }
 
 
@@ -4570,41 +4829,44 @@ static int _CommandMail(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 
 
 
-    return false;
 }
 
 #endif  // defined(TCPIP_STACK_USE_SMTPC) && defined(TCPIP_SMTPC_USE_MAIL_COMMAND)
 
 #if defined(_TCPIP_COMMANDS_MIIM)
-static int  _CommandMiim(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void  _CommandMiim(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
-    int rIx, currIx;    
+    int currIx;
+    TCPIP_COMMANDS_STAT writeCmd, readCmd;
+    uint16_t rIx;
+
     const void* cmdIoParam = pCmdIO->cmdIoParam;
 
     if(argc < 2)
     {
-        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim <int n> <add a> - Set the network interface and PHY address\r\n");
-        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim <start r> <end r> - Sets the start and end register for a dump op\r\n");
-        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim <wdata x> - Sets the data for a write op\r\n");
-        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim <read rix> - Reads register rix\r\n");
-        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim <write rix> - Writes register rix with data\r\n");
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim <netix n> <add a> - Set the network interface index and PHY address\r\n");
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim <start r> <end r> - Sets the start and end register (decimal) for a dump op\r\n");
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim <read rix> - Reads register rix (decimal)\r\n");
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim <write rix wdata> - Writes register rix (decimal) with 16 bit data (hex)\r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim <dump> - Dumps all registers [rStart, rEnd]\r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim <setup> - Performs the PHY setup\r\n");
-        return false;
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim write_smi rix wdata - Extended 32 bit SMI write using rix (hex) and wdata(hex)\r\n");
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: miim read_smi rix - Extended 32 bit SMI read using rix (hex)\r\n");
+        return;
     }
 
     // no parameter commands 
 
     if(strcmp(argv[1], "dump") == 0)
     {   // perform dump
-        _CommandMiimOp(0, pCmdIO, TCPIP_PHY_DUMP);
-        return false;  // no more parameters
+        _CommandMiimOp(pCmdIO, 0, 0, TCPIP_PHY_DUMP);
+        return;  // no more parameters
     }
 
     if(strcmp(argv[1], "setup") == 0)
     {   // perform setup
         _CommandMiimSetup(pCmdIO, cmdIoParam);
-        return false;  // no more parameters
+        return;  // no more parameters
     }
 
     // parameter commands 
@@ -4614,37 +4876,64 @@ static int  _CommandMiim(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
         char* param = argv[currIx];
         char* paramVal = argv[currIx + 1];
 
-        if(strcmp(argv[1], "read") == 0)
-        {   // read operation
-            rIx = atoi(paramVal);
-            _CommandMiimOp(rIx, pCmdIO, TCPIP_PHY_READ);
-            return false;  // no more parameters
+        readCmd = 0;
+        if(strcmp(param, "read") == 0)
+        {
+            rIx = (uint16_t)atoi(paramVal);
+            readCmd = TCPIP_PHY_READ;
+        }
+        else if(strcmp(param, "read_smi") == 0)
+        {
+            rIx = (uint16_t)strtoul(paramVal, 0, 16);
+            readCmd = TCPIP_PHY_READ_SMI;
         }
 
-        if(strcmp(argv[1], "write") == 0)
+        if(readCmd != 0)
         {   // read operation
-            rIx = atoi(paramVal);
-            _CommandMiimOp(rIx, pCmdIO, TCPIP_PHY_WRITE);
-            return false;  // no more parameters
+            _CommandMiimOp(pCmdIO, rIx, 0, readCmd);
+            return;  // no more parameters
         }
 
+        writeCmd = 0;
+        if(strcmp(param, "write") == 0)
+        {
+            rIx = (uint16_t)atoi(paramVal);
+            writeCmd = TCPIP_PHY_WRITE;
+        }
+        else if(strcmp(param, "write_smi") == 0)
+        {
+            rIx = (uint16_t)strtoul(paramVal, 0, 16);
+            writeCmd = TCPIP_PHY_WRITE_SMI;
+        }
         
+        if(writeCmd != 0)
+        {   // write operation
+            if(currIx + 2 >= argc)
+            {
+                (*pCmdIO->pCmdApi->print)(cmdIoParam, "miim write: missing wData\r\n");
+                return;
+            }
+            uint32_t wData =  (uint32_t)strtoul(argv[currIx + 2], 0, 16);
+            _CommandMiimOp(pCmdIO, rIx, wData, writeCmd);
+            return;  // no more parameters
+        }
+
         if(strcmp(param, "add") == 0)
         {
             miimAdd = atoi(paramVal);
             (*pCmdIO->pCmdApi->print)(cmdIoParam, "miim: Set Add to: %d\r\n", miimAdd);
         }
-        else if(strcmp(param, "int") == 0)
+        else if(strcmp(param, "netix") == 0)
         {
-            miimInt = atoi(paramVal);
-            if (miimInt >= DRV_MIIM_INSTANCES_NUMBER)
+            miimNetIx = atoi(paramVal);
+            if (miimNetIx >= DRV_MIIM_INSTANCES_NUMBER)
             {
-                (*pCmdIO->pCmdApi->msg)(cmdIoParam, "miim: Incorrect Interface Number \r\n");
+                (*pCmdIO->pCmdApi->msg)(cmdIoParam, "miim: Incorrect Interface index\r\n");
             }
             else
             {
-                miimObjIx = miimInt;
-                (*pCmdIO->pCmdApi->print)(cmdIoParam, "miim: Set Network Interface to: %d\r\n", miimInt);
+                miimNetIx = miimObjIx;
+                (*pCmdIO->pCmdApi->print)(cmdIoParam, "miim: Set Network Interface index to: %d\r\n", miimNetIx);
             }
         }
         else if(strcmp(param, "start") == 0)
@@ -4657,11 +4946,6 @@ static int  _CommandMiim(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
             miimRegEnd = atoi(paramVal);
             (*pCmdIO->pCmdApi->print)(cmdIoParam, "miim: Set End Reg to: %d\r\n", miimRegEnd);
         }
-        else if(strcmp(param, "wdata") == 0)
-        {
-            miimWrData = (uint16_t)atoi(paramVal);
-            (*pCmdIO->pCmdApi->print)(cmdIoParam, "miim: Set Wr Data to: 0x%4x\r\n", miimWrData);
-        }
         else
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "miim: Unknown option\r\n");
@@ -4670,16 +4954,13 @@ static int  _CommandMiim(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
         currIx += 2;
     }
 
-
-
-    return false;
 }
 
-static void _CommandMiimOp(unsigned int rIx, SYS_CMD_DEVICE_NODE* pCmdIO, TCPIP_COMMANDS_STAT miimCmd)
+static void _CommandMiimOp(SYS_CMD_DEVICE_NODE* pCmdIO, uint16_t rIx, uint32_t wData, TCPIP_COMMANDS_STAT miimCmd)
 {
-    DRV_MIIM_RESULT miimRes;
     DRV_MIIM_OPERATION_HANDLE opHandle;
-    const char* opMsg = "read"; 
+    DRV_MIIM_RESULT miimRes;
+    const char* opName = "unknown";
     const void* cmdIoParam = pCmdIO->cmdIoParam;
 
     if(tcpipCmdStat != TCPIP_CMD_STAT_IDLE || miimOpHandle != 0 || miimHandle != 0)
@@ -4693,22 +4974,41 @@ static void _CommandMiimOp(unsigned int rIx, SYS_CMD_DEVICE_NODE* pCmdIO, TCPIP_
         return;
     }
 
+    if(TCPIP_PHY_READ <= miimCmd && miimCmd <= TCPIP_PHY_WRITE_SMI)
+    {
+       opName = miiOpName_Tbl[miimCmd - TCPIP_PHY_READ];
+    }
+
     miimRegIx = rIx;
-    if(miimCmd == TCPIP_PHY_READ)
+
+    switch(miimCmd)
     {
-        opMsg = "read"; 
-        opHandle = miimObj->DRV_MIIM_Read(miimHandle, rIx, miimAdd, DRV_MIIM_OPERATION_FLAG_NONE, &miimRes);
+        case TCPIP_PHY_READ:
+            opHandle = miimObj->DRV_MIIM_Read(miimHandle, rIx, miimAdd, DRV_MIIM_OPERATION_FLAG_NONE, &miimRes);
+            break;
+
+        case TCPIP_PHY_WRITE:
+            opHandle = miimObj->DRV_MIIM_Write(miimHandle, rIx, miimAdd, (uint16_t)wData, DRV_MIIM_OPERATION_FLAG_NONE, &miimRes);
+            break;
+
+        case TCPIP_PHY_DUMP:
+            opHandle = miimObj->DRV_MIIM_Read(miimHandle, (miimRegIx = miimRegStart), miimAdd, DRV_MIIM_OPERATION_FLAG_NONE, &miimRes);
+            break;
+
+        case TCPIP_PHY_READ_SMI:
+            opHandle = miimObj->DRV_MIIM_ReadExt(miimHandle, rIx, miimAdd, DRV_MIIM_OPERATION_FLAG_EXT_SMI_SLAVE, &miimRes);
+            break;
+
+        case TCPIP_PHY_WRITE_SMI:
+            opHandle = miimObj->DRV_MIIM_WriteExt(miimHandle, rIx, miimAdd, wData, DRV_MIIM_OPERATION_FLAG_EXT_SMI_SLAVE, &miimRes);
+            break;
+
+        default:
+            opHandle = 0;
+            miimRes = DRV_MIIM_RES_OP_HANDLE_ERR;
+            break;
     }
-    else if(miimCmd == TCPIP_PHY_WRITE)
-    {
-        opMsg = "write"; 
-        opHandle = miimObj->DRV_MIIM_Write(miimHandle, rIx, miimAdd, miimWrData, DRV_MIIM_OPERATION_FLAG_NONE, &miimRes);
-    }
-    else
-    {
-        opMsg = "dump"; 
-        opHandle = miimObj->DRV_MIIM_Read(miimHandle, (miimRegIx = miimRegStart), miimAdd, DRV_MIIM_OPERATION_FLAG_NONE, &miimRes);
-    }
+
 
     if(opHandle != 0)
     {   // operation started
@@ -4721,7 +5021,7 @@ static void _CommandMiimOp(unsigned int rIx, SYS_CMD_DEVICE_NODE* pCmdIO, TCPIP_
     else
     {
         _MiimClose(true);
-        (*pCmdIO->pCmdApi->print)(cmdIoParam, "miim %s: an error occurred: %d!\r\n", opMsg, miimRes);
+        (*pCmdIO->pCmdApi->print)(cmdIoParam, "miim %s: an error occurred: %d!\r\n", opName, miimRes);
     }
         
 }
@@ -4762,7 +5062,7 @@ static void _CommandMiimSetup(SYS_CMD_DEVICE_NODE* pCmdIO, const void* cmdIoPara
 
 static DRV_HANDLE _MiimOpen(SYS_CMD_DEVICE_NODE* pCmdIO, const void* cmdIoParam)
 {
-    DRV_HANDLE hMiim = miimObj->DRV_MIIM_Open(miimObjIx, DRV_IO_INTENT_SHARED);
+    DRV_HANDLE hMiim = miimObj->DRV_MIIM_Open(miimNetIx, DRV_IO_INTENT_SHARED);
     if(hMiim == DRV_HANDLE_INVALID || hMiim == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "miim open: failed!\r\n");
@@ -4788,9 +5088,9 @@ static void _MiimClose(bool idleState)
 static void TCPIPCmdMiimTask(void)
 {
     DRV_MIIM_RESULT  opRes;
-    const char* opMsg;
+    const char* opName;
     bool    opContinue;
-    uint16_t opData;
+    uint32_t opData;
     
     opRes = miimObj->DRV_MIIM_OperationResult(miimHandle, miimOpHandle, &opData);
 
@@ -4800,11 +5100,28 @@ static void TCPIPCmdMiimTask(void)
     }
 
     opContinue = false;
-    opMsg = tcpipCmdStat == TCPIP_PHY_READ ? "Read Reg" : tcpipCmdStat == TCPIP_PHY_WRITE ? "Write Reg" : "Dump Reg";
+    if(TCPIP_PHY_READ <= tcpipCmdStat && tcpipCmdStat <= TCPIP_PHY_WRITE_SMI)
+    {
+       opName = miiOpName_Tbl[tcpipCmdStat - TCPIP_PHY_READ];
+    }
+    else
+    {
+        opName = "unknown";
+    }
 
     if(opRes == DRV_MIIM_RES_OK)
     {   // success
-        (*pTcpipCmdDevice->pCmdApi->print)(miimCmdIoParam, "Miim %s: %d, int: %d, add: %d, val: 0x%4x\r\n", opMsg, miimRegIx, miimInt, miimAdd, opData);
+        const char* fmtStr;
+        if(tcpipCmdStat == TCPIP_PHY_READ_SMI || tcpipCmdStat == TCPIP_PHY_WRITE_SMI)
+        {
+            fmtStr = "Miim %s: 0x%04x, netIx: %d, add: %d, val: 0x%08x\r\n"; 
+        }
+        else
+        {
+            fmtStr = "Miim %s: %d, netIx: %d, add: %d, val: 0x%4x\r\n"; 
+        }
+
+        (*pTcpipCmdDevice->pCmdApi->print)(miimCmdIoParam, fmtStr, opName, miimRegIx, miimNetIx, miimAdd, opData);
          
         if(tcpipCmdStat == TCPIP_PHY_DUMP)
         {
@@ -4818,7 +5135,7 @@ static void TCPIPCmdMiimTask(void)
 
     if(opRes < 0)
     {   // error occurred
-        (*pTcpipCmdDevice->pCmdApi->print)(miimCmdIoParam, "Miim %s error: %d\r\n", opMsg, opRes);
+        (*pTcpipCmdDevice->pCmdApi->print)(miimCmdIoParam, "Miim %s error: %d\r\n", opName, opRes);
     } 
 
     if(opRes < 0 || opContinue == false)
@@ -4968,7 +5285,7 @@ static void _Command_TcpTrace(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv
 #endif  // (TCPIP_TCP_COMMANDS)
 
 #if (TCPIP_PACKET_LOG_ENABLE)
-static int _Command_PktLog(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_PktLog(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     const void* cmdIoParam = pCmdIO->cmdIoParam;
     
@@ -4983,7 +5300,7 @@ static int _Command_PktLog(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: plog persist and/or none/all/modId modId... <clr> - Updates the persist mask for the module list\r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: plog module and/or none/all/modId modId... <clr> - Updates the log mask for the module list\r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: plog socket and/or none/all/sktIx sktIx... or <clr> - Updates the log mask for the socket numbers\r\n");
-        return false;
+        return;
     }
 
     if(strcmp(argv[1], "show") == 0)
@@ -5011,7 +5328,6 @@ static int _Command_PktLog(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
         _CommandPktLogMask(pCmdIO, argc, argv);
     }
 
-    return false;
 }
 
 
@@ -5549,7 +5865,7 @@ static void _CommandPktLogDefHandler(TCPIP_STACK_MODULE moduleId, const TCPIP_PK
 
 
 #if defined(TCPIP_PACKET_ALLOCATION_TRACE_ENABLE)
-static int _Command_PktInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_PktInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     int  ix;
     TCPIP_PKT_TRACE_ENTRY tEntry;
@@ -5561,7 +5877,7 @@ static int _Command_PktInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     if(!TCPIP_PKT_TraceGetEntriesNo(&tInfo))
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "No packet info available\r\n");
-        return true;
+        return;
     }
 
 
@@ -5576,12 +5892,11 @@ static int _Command_PktInfo(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
         }
     }
 
-    return true;
 }
 #endif  // defined(TCPIP_PACKET_ALLOCATION_TRACE_ENABLE)
 
 #if defined(TCPIP_STACK_USE_INTERNAL_HEAP_POOL)
-static int _Command_HeapList(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_HeapList(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
 
     TCPIP_STACK_HEAP_HANDLE heapH;
@@ -5593,7 +5908,7 @@ static int _Command_HeapList(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     if(heapH == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "No pool heap exists!\r\n");
-        return false;
+        return;
     }
 
     int nEntries = TCPIP_HEAP_POOL_Entries(heapH);
@@ -5601,7 +5916,7 @@ static int _Command_HeapList(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     if(nEntries == 0)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "No entries in this pool heap!\r\n");
-        return false;
+        return;
     }
 
     int totSize = 0;
@@ -5623,12 +5938,11 @@ static int _Command_HeapList(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     }
     (*pCmdIO->pCmdApi->print)(cmdIoParam, "Pool Heap total size: %d, total free: %d, expansion: %d\r\n", totSize, totFreeSize, expansionSize);
 
-    return false;
 }
 #endif  // defined(TCPIP_STACK_USE_INTERNAL_HEAP_POOL)
 
 #if defined(TCPIP_STACK_USE_IPV4) && defined(TCPIP_STACK_USE_ANNOUNCE)
-static int _Command_Announce(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_Announce(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     // announce 0/1 for limited/network directed broadcast
 
@@ -5637,7 +5951,7 @@ static int _Command_Announce(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     if(argc < 2)
     {
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: announce 0/1\r\n");
-        return false;
+        return;
     }
     
     int param = atoi(argv[1]);
@@ -5660,7 +5974,6 @@ static int _Command_Announce(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 
     (*pCmdIO->pCmdApi->print)(cmdIoParam, "%s bcast submitted: %d\r\n", msg, res);
 
-    return false;
 }
 #endif  // defined(TCPIP_STACK_USE_IPV4) && defined(TCPIP_STACK_USE_ANNOUNCE)
 
@@ -5811,7 +6124,7 @@ void ftpc_res_print(SYS_CMD_DEVICE_NODE* pCmdIO, TCPIP_FTPC_RETURN_TYPE ftpcRes)
     }
 }
 
-static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+static void _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
 {
     int i;
     const void* cmdIoParam = pCmdIO->cmdIoParam;
@@ -5828,7 +6141,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc connect <server ip address> <server port>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc connect 192.168.0.8 0 \r\n");
-            return false;
+            return;
         }
         
         ftpcServerPort = 0;
@@ -5851,7 +6164,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         else
         {
             (*pCmdIO->pCmdApi->msg)(pCmdIO->cmdIoParam, "FTPC: Invalid Server IP address.\r\n");
-            return true;
+            return;
         }        
         
         
@@ -5871,7 +6184,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc disconnect\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc disconnect\r\n");
-            return false;
+            return;
         }
         
         TCPIP_FTPC_Get_Status(ftpcHandle, &ftpcStatus);
@@ -5892,7 +6205,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc login <username> <pswd> <account>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc login ftptest test123 0 \r\n");
-            return false;
+            return;
         }
         
         strcpy(ftpc_username, argv[2]);
@@ -5922,7 +6235,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc pwd\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc pwd\r\n");
-            return false;
+            return;
         }        
         res = TCPIP_FTPC_Get_WorkingDir(ftpcHandle);
         ftpc_res_print(pCmdIO,res);
@@ -5933,7 +6246,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc mkdir <pathname>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc mkdir test\r\n");
-            return false;
+            return;
         }        
         strcpy(ftpc_src_pathname, argv[2]);        
         res = TCPIP_FTPC_MakeDir(ftpcHandle, ftpc_src_pathname);
@@ -5946,7 +6259,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc cd <pathname>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc cd test\r\n");
-            return false;
+            return;
         }        
         strcpy(ftpc_src_pathname, argv[2]);
         res = TCPIP_FTPC_Change_Dir(ftpcHandle, ftpc_src_pathname);
@@ -5959,7 +6272,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc cdup\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc cdup \r\n");
-            return false;
+            return;
         }
         res = TCPIP_FTPC_ChangeToParentDir(ftpcHandle);
         ftpc_res_print(pCmdIO,res);   
@@ -5970,7 +6283,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc quit\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc quit\r\n");
-            return false;
+            return;
         }
         res = TCPIP_FTPC_Logout(ftpcHandle);
         ftpc_res_print(pCmdIO,res);   
@@ -5981,7 +6294,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc rmdir <pathname>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc rmdir test\r\n");
-            return false;
+            return;
         }
         
         strcpy(ftpc_src_pathname, argv[2]);
@@ -5994,7 +6307,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc dele <pathname>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc dele test.txt\r\n");
-            return false;
+            return;
         }
         
         strcpy(ftpc_src_pathname, argv[2]);
@@ -6007,7 +6320,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc pasv\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc pasv\r\n");
-            return false;
+            return;
         }
         res = TCPIP_FTPC_SetPassiveMode(ftpcHandle);
         ftpc_res_print(pCmdIO,res);         
@@ -6021,7 +6334,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc port <Data socket ip address> <Data socket port>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc port 192.168.0.8 54216\r\n");
-            return false;
+            return;
         }
         
         if(TCPIP_Helper_StringToIPAddress(argv[2], &dataServerIpAddr.v4Add))
@@ -6031,7 +6344,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         else
         {
             (*pCmdIO->pCmdApi->msg)(pCmdIO->cmdIoParam, "FTPC: Invalid DataServer IP address.\r\n");
-            return true;
+            return;
         } 
         memcpy(&(ftpcDataConn.dataServerAddr), &(dataServerIpAddr), sizeof(IP_MULTI_ADDRESS));
            
@@ -6052,7 +6365,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc get <-a> <-p> <server_filename><client_filename>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc get -a -p test.txt 0 \r\n");
-            return false;
+            return;
         }        
         ftpcDataConn.ftpcIsPassiveMode = false;  
         ftpcDataConn.ftpcDataType = TCPIP_FTPC_DATA_REP_ASCII;
@@ -6111,7 +6424,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc put <-a> <-p> <-u> <client_filename><server_filename>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc put -a -p test.txt 0 \r\n");
-            return false;
+            return;
         }
         
         fileOptions.store_unique = false;
@@ -6174,7 +6487,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc type <representation type : a,e,i>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc type a\r\n");
-            return false;
+            return;
         }
         
         if(strcmp("a",argv[2])==0)
@@ -6199,7 +6512,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc stru <file structure : f,r,p>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc stru f\r\n");
-            return false;
+            return;
         }
         
         if(strcmp("f",argv[2])==0)
@@ -6224,7 +6537,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc mode <transfer mode : s,b,c>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc mode s\r\n");
-            return false;
+            return;
         }
         
         if(strcmp("s",argv[2])==0)
@@ -6253,7 +6566,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc nlist -p <server_pathname><filename_to_savelist>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc nlist -p test.txt\r\n");
-            return false;
+            return;
         }
 
         ftpcDataConn.ftpcIsPassiveMode = false;
@@ -6276,7 +6589,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
             {
                 strcpy(serverPathname, argv[opt_count + 2]);
                 fileOptions.serverPathName = serverPathname;
-            }		
+            }       
         }
 
         fileOptions.clientPathName = (char *)"name_list.txt";
@@ -6304,7 +6617,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         {
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: ftpc ls -p <server_pathname><filename_to_savelist>\r\n");
             (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: ftpc ls -p test list.txt\r\n");
-            return false;
+            return;
         }
 
         ftpcDataConn.ftpcIsPassiveMode = false;
@@ -6327,7 +6640,7 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
             {
                 strcpy(serverPathname, argv[opt_count + 2]);
                 fileOptions.serverPathName = serverPathname;
-            }		
+            }       
         }
         fileOptions.clientPathName = (char *)"list.txt";
         if (argc == (opt_count + 4))
@@ -6367,7 +6680,6 @@ static int _Command_FTPC_Service(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** a
         mode - Set Transfer mode\r\n");
         (*pCmdIO->pCmdApi->msg)(cmdIoParam, "For command specific help, enter 'ftpc <command>'\r\n");
     }
-    return false;
 }
 
 #endif // defined(TCPIP_STACK_USE_FTP_CLIENT)
@@ -6488,7 +6800,7 @@ static void _CommandIpv4Table(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv
     // ip table index
     size_t ix;
     const void* cmdIoParam = pCmdIO->cmdIoParam;
-    TCPIP_IPV4_FORWARD_ENTRY_BIN fwdEntry;
+    TCPIP_IPV4_FORWARD_ENTRY_BIN fwdEntry = {0};
     unsigned int index = 0;
 
     if(argc > 2)
@@ -7574,6 +7886,288 @@ static void _CommandHdlc(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
     (*pCmdIO->pCmdApi->msg)(cmdIoParam, "HDLC usage: hdlc stat <clr>\r\n");
 }
 #endif  // defined(_TCPIP_STACK_HDLC_COMMANDS)
+
+#if defined(TCPIP_STACK_RUN_TIME_INIT) && (TCPIP_STACK_RUN_TIME_INIT != 0)
+static void _CommandModDeinit(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+    // deinit moduleId
+
+    const void* cmdIoParam = pCmdIO->cmdIoParam;
+
+    if(argc > 1)
+    {
+        size_t modId = (size_t)atoi(argv[1]);
+        bool res = TCPIP_MODULE_Deinitialize(modId);
+
+        (*pCmdIO->pCmdApi->print)(cmdIoParam, "deinit module: %d returned: %d\r\n", modId, res);
+    }
+}
+
+static void _CommandModRunning(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+    // runstat moduleId
+
+    const void* cmdIoParam = pCmdIO->cmdIoParam;
+
+    if(argc > 1)
+    {
+        size_t modId = (size_t)atoi(argv[1]);
+        bool res = TCPIP_MODULE_IsRunning(modId);
+
+        (*pCmdIO->pCmdApi->print)(cmdIoParam, "runstat module: %d returned: %d\r\n", modId, res);
+    }
+}
+#endif  // defined(TCPIP_STACK_RUN_TIME_INIT) && (TCPIP_STACK_RUN_TIME_INIT != 0)
+
+#if defined(TCPIP_STACK_USE_SNMPV3_SERVER)  
+static uint8_t SNMPV3_USM_ERROR_STR[SNMPV3_USM_NO_ERROR][100]=
+{
+    /* SNMPV3_USM_SUCCESS=0 */
+    "\r\n",
+    /* SNMPV3_USM_INVALID_INPUTCONFIG */
+    "Error! Invalid input parameter \r\n", 
+    /* SNMPV3_USM_INVALID_USER */
+    "Error! User index position value exceeds the user configuration \r\n",
+    /* SNMPV3_USM_INVALID_USERNAME */
+    "Error! Invalid user name \r\n",
+   /* SNMPV3_USM_INVALID_USER_NAME_LENGTH */
+    "Error!Invalid User name length \r\n",
+    /* SNMPV3_USM_INVALID_PRIVAUTH_PASSWORD_LEN */
+    "Error!Invalid Auth and Priv password length \r\n",
+    /* SNMPV3_USM_INVALID_PRIVAUTH_LOCALIZED_PASSWORD_LEN */
+    "Error!Invalid Auth and Priv localized password length \r\n",
+    /* SNMPV3_USM_INVALID_PRIVAUTH_TYPE */
+    "Error!Privacy Authentication security level configuration not allowed \r\n",
+    /* SNMPV3_USM_INVALID_AUTH_CONFIG_NOT_ALLOWED */
+    "Error! Authentication security level configuration not allowed \r\n",
+    /* SNMPV3_USM_INVALID_PRIV_CONFIG_NOT_ALLOWED */
+    "Error! Privacy security level configuration not allowed \r\n",
+    /*SNMPV3_USM_INVALID_SECURITY_LEVEL */
+    "Error! Invalid USM Security level type  \r\n",
+    /*SNMPV3_USM_NOT_SUPPORTED */
+    "Error! USM Set configuration not allowed \r\n",
+};
+/*
+ "Usage: snmpv3 usm <pos> <name> <security-level> <authpass> <privpass>"
+ * pos - USM config table 
+ * 
+ * usmOpcode = 0 ; only user name configuration
+ * usmOpcode = 1 ; both username and security level configuration
+ * usmOpcode = 0 ; only user name configuration
+ * usmOpcode = 1 ; both username and security level configuration
+ */
+
+static void _Command_SNMPv3USMSet(SYS_CMD_DEVICE_NODE* pCmdIO, int argc, char** argv)
+{
+    const void* cmdIoParam = pCmdIO->cmdIoParam;
+    uint8_t  usmPos=TCPIP_SNMPV3_USM_MAX_USER;
+    bool     usmUserNameOpcode=false;
+    bool     usmSecLevelOpcode=false;
+    bool     usmAuthPasswdOpcode=false;
+    bool     usmPrivPasswdOpcode=false;
+    bool     usmUserInfo=false;
+    char     userNameBuf[TCPIP_SNMPV3_USER_SECURITY_NAME_LEN+1];
+    char     authPwBuf[TCPIP_SNMPV3_PRIVAUTH_PASSWORD_LEN+1];
+    char     privPwBuf[TCPIP_SNMPV3_PRIVAUTH_PASSWORD_LEN+1];
+    SNMPV3_PRIV_PROT_TYPE privType=SNMPV3_NO_PRIV;
+    SNMPV3_HMAC_HASH_TYPE hashType=SNMPV3_NO_HMAC_AUTH;
+    uint8_t  secLev = NO_AUTH_NO_PRIV;
+    uint8_t  configArgs=0;
+    TCPIP_SNMPV3_USM_CONFIG_ERROR_TYPE result=SNMPV3_USM_NO_ERROR;
+    
+    if(argc < 3)
+    {
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Usage: snmpv3 usm <pos> <u name> <l security-level> <a type authpass> <p type privpass>\r\n");
+        (*pCmdIO->pCmdApi->print)(cmdIoParam, "SNMPv3 USM position range - 0 to %d \r\n", TCPIP_SNMPV3_USM_MAX_USER-1);
+        (*pCmdIO->pCmdApi->print)(cmdIoParam, "SNMPv3 USM security level NoAuthNoPriv- %d, AuthNoPriv- %d, AuthPriv- %d \r\n", NO_AUTH_NO_PRIV, AUTH_NO_PRIV, AUTH_PRIV);
+        (*pCmdIO->pCmdApi->print)(cmdIoParam, "SNMPv3 USM authentication supported type md5- %d sha- %d \r\n", SNMPV3_HMAC_MD5, SNMPV3_HMAC_SHA1);
+        (*pCmdIO->pCmdApi->print)(cmdIoParam, "SNMPv3 USM privacy supported type DES- %d AES- %d \r\n", SNMPV3_DES_PRIV, SNMPV3_AES_PRIV);
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam, "Ex: snmpv3 usm 2 u mchp l 3 a 0 auth12345 p 1 priv12345 \r\n");
+        return;
+    }
+
+    if(argc>=3)
+    {
+        if(strcmp(argv[1], "usm") == 0)
+        {
+            usmPos = atoi(argv[2]);
+            if(usmPos>= TCPIP_SNMPV3_USM_MAX_USER)
+            {
+                (*pCmdIO->pCmdApi->msg)(cmdIoParam,"Invalid USM configuration position\r\n");
+                return;
+            }
+        }
+    }
+    else
+    {
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam,"insufficient number of arguments\r\n");
+        return;
+    }
+    // more than position field 
+    configArgs = 3;
+    while(argc >= 3)
+    {
+        if(strncmp("u",argv[configArgs],1) == 0)
+        {
+            memset(userNameBuf,0,sizeof(userNameBuf));
+            strncpy(userNameBuf,argv[configArgs+1],TCPIP_SNMPV3_USER_SECURITY_NAME_LEN);
+            usmUserNameOpcode = true;
+            configArgs = configArgs+2;
+        }
+        else if(strncmp("l",argv[configArgs],1) == 0)
+        {
+            secLev = atoi(argv[configArgs+1]);
+            usmSecLevelOpcode = true;
+            configArgs = configArgs+2;
+        }
+        else if(strncmp("a",argv[configArgs],1) == 0)
+        {
+            hashType = atoi(argv[configArgs+1]);
+            memset(authPwBuf,0,sizeof(authPwBuf));
+            strncpy(authPwBuf,argv[configArgs+2],TCPIP_SNMPV3_PRIVAUTH_PASSWORD_LEN);
+            usmAuthPasswdOpcode = true;
+            configArgs = configArgs+3;
+        }
+        else if(strncmp("p",argv[configArgs],1) == 0)
+        {
+            privType = atoi(argv[configArgs+1]);
+            memset(privPwBuf,0,sizeof(privPwBuf));
+            strncpy(privPwBuf,argv[configArgs+2],TCPIP_SNMPV3_PRIVAUTH_PASSWORD_LEN);
+            usmPrivPasswdOpcode = true;
+            configArgs = configArgs+3;
+        }
+        else if(strcmp("info",argv[configArgs-1]) == 0)
+        {
+            usmUserInfo = true;
+            break;
+        }
+        else
+        {
+            (*pCmdIO->pCmdApi->msg)(cmdIoParam,"invalid number of arguments\r\n");
+            return;
+        }
+        if(configArgs>=argc)
+        {
+            (*pCmdIO->pCmdApi->msg)(cmdIoParam,"End of arguments\r\n");
+            break;
+        }
+    }
+    
+    if(usmUserNameOpcode)
+    {
+        uint8_t userNameLen = 0;
+        userNameLen = strlen((char*)userNameBuf);
+        result = TCPIP_SNMPV3_SetUSMUserName(userNameBuf,userNameLen,usmPos);
+        if(result != SNMPV3_USM_SUCCESS)
+        {
+            (*pCmdIO->pCmdApi->msg)(cmdIoParam,(char*)SNMPV3_USM_ERROR_STR[result]);
+            return;
+        }
+        else
+        {
+            (*pCmdIO->pCmdApi->msg)(cmdIoParam,"USM user name configured successfully\r\n");
+        }
+    }
+    if(usmSecLevelOpcode)
+    {
+        uint8_t userNameLen = 0;
+        userNameLen = strlen((char*)userNameBuf);
+        result = TCPIP_SNMPV3_SetUSMSecLevel(userNameBuf,userNameLen,secLev);
+        if(result != SNMPV3_USM_SUCCESS)
+        {
+            (*pCmdIO->pCmdApi->msg)(cmdIoParam,(char*)SNMPV3_USM_ERROR_STR[result]);
+            return;
+        }
+        else
+        {
+            (*pCmdIO->pCmdApi->msg)(cmdIoParam,"USM Security level configured successfully\r\n");
+        }
+    }
+    
+    if(usmAuthPasswdOpcode)
+    {
+        uint8_t userNameLen = 0;
+        uint8_t authPwLen=0;
+        userNameLen = strlen((char*)userNameBuf);
+        authPwLen = strlen((char*)authPwBuf);
+        result = TCPIP_SNMPV3_SetUSMAuth(userNameBuf,userNameLen,authPwBuf,authPwLen,hashType);
+        if(result != SNMPV3_USM_SUCCESS)
+        {
+            (*pCmdIO->pCmdApi->msg)(cmdIoParam,(char*)SNMPV3_USM_ERROR_STR[result]);
+            return;
+        }
+        else
+        {
+            (*pCmdIO->pCmdApi->msg)(cmdIoParam,"USM Authentication password configured successfully\r\n");
+        }
+    }
+    
+    if(usmPrivPasswdOpcode)
+    {
+        uint8_t userNameLen = 0;
+        uint8_t privPwLen=0;
+        userNameLen = strlen((char*)userNameBuf);
+        privPwLen = strlen((char*)privPwBuf);
+        result = TCPIP_SNMPV3_SetUSMPrivacy(userNameBuf,userNameLen,privPwBuf,privPwLen,privType);
+        if(result != SNMPV3_USM_SUCCESS)
+        {
+            (*pCmdIO->pCmdApi->msg)(cmdIoParam,(char*)SNMPV3_USM_ERROR_STR[result]);
+            return;
+        }
+        else
+        {
+            (*pCmdIO->pCmdApi->msg)(cmdIoParam,"USM Privacy password configured successfully\r\n");
+        }
+    }
+    if(usmAuthPasswdOpcode || usmPrivPasswdOpcode)
+    {
+        TCPIP_SNMPV3_USMAuthPrivLocalization(usmPos);
+    }
+    if(usmUserInfo)
+    {
+        uint8_t usmUserLen=0;
+        uint8_t usmUserAuthLen=0;
+        uint8_t usmUserPrivLen=0;
+        STD_BASED_SNMPV3_SECURITY_LEVEL securityLevel=NO_AUTH_NO_PRIV;
+        uint8_t i=0;
+        
+        (*pCmdIO->pCmdApi->msg)(cmdIoParam,"SNMPv3 USM CONFIGURATION DETAILS\r\n");
+        
+        for(i=0;i<TCPIP_SNMPV3_USM_MAX_USER;i++)
+        {
+            memset(userNameBuf,0,sizeof(userNameBuf));
+            result = TCPIP_SNMPV3_GetUSMUserName(userNameBuf,&usmUserLen,i);
+            if(result != SNMPV3_USM_SUCCESS)
+            {
+                (*pCmdIO->pCmdApi->msg)(cmdIoParam,(char*)SNMPV3_USM_ERROR_STR[result]);
+            }
+             
+            memset(authPwBuf,0,sizeof(authPwBuf));
+            result = TCPIP_SNMPV3_GetUSMAuth(userNameBuf,usmUserLen,authPwBuf,&usmUserAuthLen,&hashType);
+            if(result != SNMPV3_USM_SUCCESS)
+            {
+                (*pCmdIO->pCmdApi->msg)(cmdIoParam,(char*)SNMPV3_USM_ERROR_STR[result]);
+            }
+
+            memset(privPwBuf,0,sizeof(privPwBuf));
+            result = TCPIP_SNMPV3_GetUSMPrivacy(userNameBuf,usmUserLen,privPwBuf,&usmUserPrivLen,&privType);
+            if(result != SNMPV3_USM_SUCCESS)
+            {
+                (*pCmdIO->pCmdApi->msg)(cmdIoParam,(char*)SNMPV3_USM_ERROR_STR[result]);
+            }
+
+            result = TCPIP_SNMPV3_GetUSMSecLevel(userNameBuf,usmUserLen,&securityLevel);
+            if(result != SNMPV3_USM_SUCCESS)
+            {
+                (*pCmdIO->pCmdApi->msg)(cmdIoParam,(char*)SNMPV3_USM_ERROR_STR[result]);
+            }
+            
+            (*pCmdIO->pCmdApi->print)(cmdIoParam,"index:%d  username: %s  secLevel: %d authType: %d authpw: %s  privType: %d privpw: %s \r\n", i,userNameBuf, securityLevel,hashType,authPwBuf,privType,privPwBuf );
+        }
+    }
+    
+}
+#endif
 
 #endif // defined(TCPIP_STACK_COMMAND_ENABLE)
 

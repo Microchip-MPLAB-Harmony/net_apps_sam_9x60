@@ -14,30 +14,28 @@
     This file provides the TCP/IP Stack DHCPV6 Private file API definitions.
 *******************************************************************************/
 // DOM-IGNORE-BEGIN
-/*****************************************************************************
- Copyright (C) 2012-2018 Microchip Technology Inc. and its subsidiaries.
+/*
+Copyright (C) 2012-2023, Microchip Technology Inc., and its subsidiaries. All rights reserved.
 
-Microchip Technology Inc. and its subsidiaries.
+The software and documentation is provided by microchip and its contributors
+"as is" and any express, implied or statutory warranties, including, but not
+limited to, the implied warranties of merchantability, fitness for a particular
+purpose and non-infringement of third party intellectual property rights are
+disclaimed to the fullest extent permitted by law. In no event shall microchip
+or its contributors be liable for any direct, indirect, incidental, special,
+exemplary, or consequential damages (including, but not limited to, procurement
+of substitute goods or services; loss of use, data, or profits; or business
+interruption) however caused and on any theory of liability, whether in contract,
+strict liability, or tort (including negligence or otherwise) arising in any way
+out of the use of the software and documentation, even if advised of the
+possibility of such damage.
 
-Subject to your compliance with these terms, you may use Microchip software 
-and any derivatives exclusively with Microchip products. It is your 
-responsibility to comply with third party license terms applicable to your 
-use of third party software (including open source software) that may 
-accompany Microchip software.
-
-THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
-EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
-WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR 
-PURPOSE.
-
-IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
-WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
-BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE 
-FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN 
-ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, 
-THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*****************************************************************************/
+Except as expressly permitted hereunder and subject to the applicable license terms
+for any third-party software incorporated in the software and any applicable open
+source software license terms, no license or other rights, whether express or
+implied, are granted under any patent or other intellectual property rights of
+Microchip or any third party.
+*/
 
 
 
@@ -90,38 +88,43 @@ typedef enum
 
 
 // DHCPV6 debugging levels/masks
-// basic debugging
+// basic debugging - asserts 
 #define TCPIP_DHCPV6_DEBUG_MASK_BASIC           (0x0001)
+// run-time conditions, not critical
+#define TCPIP_DHCPV6_DEBUG_MASK_COND            (0x0002) 
 // report in messages
-#define TCPIP_DHCPV6_DEBUG_MASK_IN              (0x0002)
+#define TCPIP_DHCPV6_DEBUG_MASK_IN              (0x0004)
 // report out messages
-#define TCPIP_DHCPV6_DEBUG_MASK_OUT             (0x0004)
+#define TCPIP_DHCPV6_DEBUG_MASK_OUT             (0x0008)
 // report changes in the current client state
-#define TCPIP_DHCPV6_DEBUG_MASK_CLIENT_STATE    (0x0008)
+#define TCPIP_DHCPV6_DEBUG_MASK_CLIENT_STATE    (0x0010)
 // report client state when user notification is made
-#define TCPIP_DHCPV6_DEBUG_MASK_CLIENT_NOTIFY_STATE (0x0010)
+#define TCPIP_DHCPV6_DEBUG_MASK_CLIENT_NOTIFY_STATE (0x0020)
+// report client events 
+#define TCPIP_DHCPV6_DEBUG_MASK_CLIENT_NOTIFY_EVENT (0x0040)
+
 // advanced: report changes in the current IA state
-#define TCPIP_DHCPV6_DEBUG_MASK_IA_STATE        (0x0020)
+#define TCPIP_DHCPV6_DEBUG_MASK_IA_STATE        (0x0080)
 // display the Server status code (if != OK)
-#define TCPIP_DHCPV6_DEBUG_MASK_SRV_STATUS_CODE (0x0040)
+#define TCPIP_DHCPV6_DEBUG_MASK_SRV_STATUS_CODE (0x0100)
 // display a message when the IA timeouts
-#define TCPIP_DHCPV6_DEBUG_MASK_IA_TMO          (0x0080)
+#define TCPIP_DHCPV6_DEBUG_MASK_IA_TMO          (0x0200)
 // display the IA retransmission tmo
-#define TCPIP_DHCPV6_DEBUG_MASK_IA_RTMO         (0x0100)
+#define TCPIP_DHCPV6_DEBUG_MASK_IA_RTMO         (0x0400)
 // display the IA pass/fail messages
-#define TCPIP_DHCPV6_DEBUG_MASK_IA_IN           (0x0200)
+#define TCPIP_DHCPV6_DEBUG_MASK_IA_IN           (0x0800)
 // display the link up/down changes
-#define TCPIP_DHCPV6_DEBUG_MASK_LINK_STAT       (0x0400)
+#define TCPIP_DHCPV6_DEBUG_MASK_LINK_STAT       (0x1000)
 
 // advanced: additional IA state prints
-#define TCPIP_DHCPV6_DEBUG_MASK_IA_ADD_STATE    (0x0800)
+#define TCPIP_DHCPV6_DEBUG_MASK_IA_ADD_STATE    (0x2000)
 
 // advanced: print buffers traces
-#define TCPIP_DHCPV6_DEBUG_MASK_BUFF_TRACE      (0x2000)
+#define TCPIP_DHCPV6_DEBUG_MASK_BUFF_TRACE      (0x4000)
 
 
 // enable DHCP debugging levels
-#define TCPIP_DHCPV6_DEBUG_LEVEL  (0)
+#define TCPIP_DHCPV6_DEBUG_LEVEL  (0x0001)
 
 
 // don't spit out IAs that don't have valid IAs...?
@@ -248,7 +251,7 @@ typedef enum
                                                 // 
     
 
-    TCPIP_DHCPV6_MSG_TYPE_RENEW,            // (5) Client Renew message to the server that originally provided the client’s addresses;
+    TCPIP_DHCPV6_MSG_TYPE_RENEW,            // (5) Client Renew message to the server that originally provided the client?s addresses;
                                             // Client -> Server
 
     TCPIP_DHCPV6_MSG_TYPE_REBIND,           // (6) Client Rebind message to any available server to extend the lease lifetime;
@@ -357,7 +360,7 @@ typedef struct __attribute__((aligned(2), packed))
 typedef struct __attribute__((aligned(2), packed))
 {
     uint16_t    duid_type;      // == TCPIP_DHCPV6_DUID_TYPE_EN
-    uint32_t    ent_number;     // Vendor’s registered Private Enterprise Number as maintained by IANA
+    uint32_t    ent_number;     // Vendor?s registered Private Enterprise Number as maintained by IANA
     uint8_t     identifier[TCPIP_DHCPV6_DUID_EN_IDENTIFIER_LENGTH];   // variable length;
                                 
 
@@ -592,19 +595,19 @@ typedef enum
     TCPIP_DHCPV6_OPT_CODE_GEOCONF_CIVIC         = 36,       // 
 
     // RFC 4649
-    TCPIP_DHCPV6_OPT_CODE_REMOTE_ID             = 37,       // 	
+    TCPIP_DHCPV6_OPT_CODE_REMOTE_ID             = 37,       //  
 
     // RFC 4580
-    TCPIP_DHCPV6_OPT_CODE_RELAY_AGENT_SUBSCRIBER_ID = 38,   // Relay Agent Subscriber-ID.	
+    TCPIP_DHCPV6_OPT_CODE_RELAY_AGENT_SUBSCRIBER_ID = 38,   // Relay Agent Subscriber-ID.   
 
     // RFC 4704
-    TCPIP_DHCPV6_OPT_CODE_FQDN                  = 39,       // FQDN, Fully Qualified Domain Name.	
+    TCPIP_DHCPV6_OPT_CODE_FQDN                  = 39,       // FQDN, Fully Qualified Domain Name.   
 
     // RFC 5192
-    TCPIP_DHCPV6_OPT_CODE_PANA_AUTH_AGENT       = 40,       // PANA Authentication Agent.	
+    TCPIP_DHCPV6_OPT_CODE_PANA_AUTH_AGENT       = 40,       // PANA Authentication Agent.   
 
 
-    // 	RFC 4833 - 
+    //  RFC 4833 - 
     TCPIP_DHCPV6_OPT_CODE_NEW_POSIX_TIMEZONE   = 41,        // 
     TCPIP_DHCPV6_OPT_CODE_NEW_TZDB_TIMEZONE    = 42,        //
 
@@ -620,7 +623,7 @@ typedef enum
 
 
     // RFC 6610
-    TCPIP_DHCPV6_OPT_CODE_MIPV6_HOME_NETWORK_ID                 = 49,   // MIPv6 Home Network ID FQDN.	
+    TCPIP_DHCPV6_OPT_CODE_MIPV6_HOME_NETWORK_ID                 = 49,   // MIPv6 Home Network ID FQDN.  
     TCPIP_DHCPV6_OPT_CODE_MIPV6_HOME_NETWORK_INFO  = 50,                // MIPv6 Visited Home Network Information
 
     /* Options 64 - 95 */
@@ -632,29 +635,29 @@ typedef enum
     TCPIP_DHCPV6_OPT_CODE_MIPV6_HOME_AGENT_FQDN                 = 73,   // MIPv6 Home Agent FQDN
 
     // RFC 5223
-    TCPIP_DHCPV6_OPT_CODE_LOST_SERVER           = 51,       // LoST Server.	
+    TCPIP_DHCPV6_OPT_CODE_LOST_SERVER           = 51,       // LoST Server. 
 
-    // 	RFC 5417
+    //  RFC 5417
     TCPIP_DHCPV6_OPT_CODE_CAPWAP_ACCESS_CONTROLLER_ADDRESSES    = 52,   // CAPWAP Access Controller addresses.
 
 
     // RFC 5460
-    TCPIP_DHCPV6_OPT_CODE_RELAY_ID              = 53,       // 	
+    TCPIP_DHCPV6_OPT_CODE_RELAY_ID              = 53,       //  
 
     // RFC 5678
-    TCPIP_DHCPV6_OPT_CODE_IPV6_ADDRESS_MOS      = 54,       // 	
+    TCPIP_DHCPV6_OPT_CODE_IPV6_ADDRESS_MOS      = 54,       //  
     TCPIP_DHCPV6_OPT_CODE_IPV6_FQDN_MOS         = 55,       //
 
     // RFC 5908
     TCPIP_DHCPV6_OPT_CODE_NTP_SERVER            = 56,       // 
 
     // RFC 5986
-    TCPIP_DHCPV6_OPT_CODE_V6_ACCESS_DOMAIN      = 57,       // 	
+    TCPIP_DHCPV6_OPT_CODE_V6_ACCESS_DOMAIN      = 57,       //  
 
     // RFC 6011
-    TCPIP_DHCPV6_OPT_CODE_SIP_UA_CS_LIST        = 58,       // 	
+    TCPIP_DHCPV6_OPT_CODE_SIP_UA_CS_LIST        = 58,       //  
 
-    // 	RFC 5970
+    //  RFC 5970
 
     TCPIP_DHCPV6_OPT_CODE_BOOTFILE_URL          = 59,       // 
     TCPIP_DHCPV6_OPT_CODE_BOOTFILE_PARAM        = 60,       // 
@@ -662,22 +665,22 @@ typedef enum
     TCPIP_DHCPV6_OPT_CODE_NII                   = 62,       // 
 
     // RFC 6225
-    TCPIP_DHCPV6_OPT_CODE_GEOLOCATION           = 63,       // 	
+    TCPIP_DHCPV6_OPT_CODE_GEOLOCATION           = 63,       //  
 
     // RFC 6334
-    TCPIP_DHCPV6_OPT_CODE_AFTR_NAME             = 64,       // 	
+    TCPIP_DHCPV6_OPT_CODE_AFTR_NAME             = 64,       //  
 
     // RFC 6440
     TCPIP_DHCPV6_OPT_CODE_ERP_LOCAL_DOMAIN_NAME = 65,       // 
 
     // RFC 6422
-    TCPIP_DHCPV6_OPT_CODE_RSOO                  = 66,       // 	
+    TCPIP_DHCPV6_OPT_CODE_RSOO                  = 66,       //  
 
-    // 	RFC 6603
+    //  RFC 6603
     TCPIP_DHCPV6_OPT_CODE_PD_EXCLUDE            = 67,       // 
 
     // RFC 6607
-    TCPIP_DHCPV6_OPT_CODE_VIRTUAL_SUBNET_SELECTION = 68,    // 	
+    TCPIP_DHCPV6_OPT_CODE_VIRTUAL_SUBNET_SELECTION = 68,    //  
 
     // RFC 7083
     TCPIP_DHCPV6_OPT_CODE_MAX_RT                = 82,       // server->client; override the TCPIP_DHCPV6_SOLICIT_MRT (SOL_MAX_RT) value
@@ -729,7 +732,7 @@ typedef struct __attribute__((aligned(1), packed))
 typedef struct __attribute__((aligned(1), packed))
 {
     uint32_t                iaid;       // The unique identifier for this IA_NA;
-                                        // the IAID must be unique among the identifiers for all of this client’s IA_NAs.
+                                        // the IAID must be unique among the identifiers for all of this client?s IA_NAs.
                                         // The number space for IA_NA IAIDs is separate from the number space for IA_TA IAIDs.
                                         // value == 0 is used to mark IAs as invalid!
     uint32_t                t1;         // The time at which the client contacts the server from which the addresses in the IA_NA
@@ -768,7 +771,7 @@ typedef struct __attribute__((aligned(1), packed))
 typedef struct __attribute__((aligned(1), packed))
 {
     uint32_t    iaid;       // The unique identifier for this IA_TA;
-                            // the IAID must be unique among the identifiers for all of this client’s IA_NAs.
+                            // the IAID must be unique among the identifiers for all of this client?s IA_NAs.
                             // The number space for IA_NA IAIDs is separate from the number space for IA_TA IAIDs.
                             // value == 0 is used to mark IAs as invalid!
                             //
@@ -972,7 +975,7 @@ typedef struct __attribute__((aligned(1), packed))
 {
     uint16_t                        optCode;            // = TCPIP_DHCPV6_OPT_CODE_VENDOR_CLASS
     uint16_t                        optLen;             // 4 + length of vendor class data field
-    uint32_t                        enterpriseNo;       // The vendor’s registered Enterprise Number as registered with IANA
+    uint32_t                        enterpriseNo;       // The vendor?s registered Enterprise Number as registered with IANA
     TCPIP_DHCPV6_VENDOR_CLASS_DATA  vendorClassData[];  // The hardware configuration of the host on which the client is running
 
 }TCPIP_DHCPV6_OPTION_VENDOR_CLASS;
@@ -997,7 +1000,7 @@ typedef struct __attribute__((aligned(1), packed))
 {
     uint16_t                        optCode;            // = TCPIP_DHCPV6_OPT_CODE_VENDOR_OPTS
     uint16_t                        optLen;             // 4 + length of option-data field
-    uint32_t                        enterpriseNo;       // The vendor’s registered Enterprise Number as registered with IANA
+    uint32_t                        enterpriseNo;       // The vendor?s registered Enterprise Number as registered with IANA
     TCPIP_DHCPV6_VENDOR_OPTION_DATA vendorOptData[];    // The hardware configuration of the host on which the client is running
 
 }TCPIP_DHCPV6_OPTION_VENDOR_OPTS;
@@ -1010,7 +1013,7 @@ typedef struct __attribute__((aligned(1), packed))
     uint16_t                        optCode;            // = TCPIP_DHCPV6_OPT_CODE_INTERFACE_ID
     uint16_t                        optLen;             // Length of interface-id field
     uint8_t                         interfaceId[];      // An opaque value of arbitrary length generated by the relay agent to identify one of the
-                                                        // relay agent’s interfaces.
+                                                        // relay agent?s interfaces.
 }TCPIP_DHCPV6_OPTION_INTERFACE_ID;
 
 
@@ -1047,7 +1050,7 @@ typedef struct __attribute__((aligned(1), packed))
 // DNS Recursive Name Servers option
 // part of STATELESS DHCP!
 // Provides a list of one or more IPv6 addresses of DNS recursive name servers
-// to which a client’s DNS resolver MAY send DNS queries
+// to which a client?s DNS resolver MAY send DNS queries
 // The DNS servers are listed in the order of preference for use by the client resolver
 //
 typedef struct __attribute__((aligned(1), packed))
@@ -1068,10 +1071,10 @@ typedef struct __attribute__((aligned(1), packed))
 typedef struct __attribute__((aligned(1), packed))
 {
     uint16_t                        optCode;        // = TCPIP_DHCPV6_OPT_CODE_DOMAIN_LIST
-    uint16_t                        optLen;         // Length of the ’searchlist’ field in octets;
+    uint16_t                        optLen;         // Length of the ?searchlist? field in octets;
                                                     //
     uint8_t                         searchList[];   // The specification of the list of domain names in the Domain Search List
-                                                    // The list of domain names in the ’searchlist’ MUST be encoded as specified in section
+                                                    // The list of domain names in the ?searchlist? MUST be encoded as specified in section
                                                     // "Representation and use of domain names" of RFC 3315:
                                                     //      A domain name or a list of domain names is encoded using the technique described in
                                                     //      section 3.1 of RFC 1035 [10].
@@ -1310,7 +1313,7 @@ typedef struct _tag_TCPIP_DHCPV6_IA_DCPT
     //int16_t                                 nAddrs;     // how many addresses associated with this IA_NA
                                                         // Kame: "The primary goal of IAs is to define multiple identities
                                                         // within a single client, each of which is associated with a different IPv6 address.
-                                                        // For example, consider a client acting as “virtual hosts” which provide multiple services
+                                                        // For example, consider a client acting as ?virtual hosts? which provide multiple services
                                                         // with different IPv6 addresses.
                                                         // If the client wants to configure itself with these addresses using DHCPv6, it would
                                                         // associate each address with a separate IA!
@@ -1464,7 +1467,7 @@ typedef enum
 
 typedef struct  _TAG_DHCPV6_LIST_NODE
 {
-	struct _TAG_DHCPV6_LIST_NODE*   next;		// next node in list
+    struct _TAG_DHCPV6_LIST_NODE*   next;       // next node in list
                                                 // makes it valid SGL_LIST_NODE node
     TCPIP_DHCPV6_EVENT_HANDLER      handler;    // handler to be called for event
     const void*                     hParam;     // handler parameter
