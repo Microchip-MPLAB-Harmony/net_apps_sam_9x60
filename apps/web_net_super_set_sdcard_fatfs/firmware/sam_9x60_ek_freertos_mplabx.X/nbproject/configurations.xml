@@ -37,8 +37,8 @@
             </logicalFolder>
             <logicalFolder name="f1" displayName="miim" projectFiles="true">
               <logicalFolder name="f1" displayName="src" projectFiles="true">
-                <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
-                  <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/driver/miim/src/dynamic/drv_miim_mapping.h</itemPath>
+                <logicalFolder name="dynamic" displayName="dynamic" projectFiles="true">
+                  <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/driver/miim/src/dynamic/drv_miim_device.h</itemPath>
                 </logicalFolder>
                 <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/driver/miim/src/drv_miim_local.h</itemPath>
               </logicalFolder>
@@ -48,6 +48,7 @@
               <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/driver/sdmmc/drv_sdmmc.h</itemPath>
               <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/driver/sdmmc/src/drv_sdmmc_local.h</itemPath>
               <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/driver/sdmmc/drv_sdmmc_definitions.h</itemPath>
+              <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/driver/sdmmc/src/drv_sdmmc_file_system.h</itemPath>
             </logicalFolder>
             <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/driver/driver.h</itemPath>
             <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/driver/driver_common.h</itemPath>
@@ -287,6 +288,7 @@
           <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/interrupts.h</itemPath>
           <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/config.h</itemPath>
           <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/FreeRTOSConfig.h</itemPath>
+          <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sys_tasks.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="FreeRTOS" displayName="FreeRTOS" projectFiles="true">
@@ -308,6 +310,22 @@
             <itemPath>../src/third_party/rtos/FreeRTOS/Source/Include/croutine.h</itemPath>
             <itemPath>../src/third_party/rtos/FreeRTOS/Source/Include/mpu_wrappers.h</itemPath>
             <itemPath>../src/third_party/rtos/FreeRTOS/Source/Include/FreeRTOS.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/message_buffer.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/list.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/croutine.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/stack_macros.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/mpu_prototypes.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/portable.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/mpu_wrappers.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/queue.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/event_groups.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/FreeRTOS.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/timers.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/semphr.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/projdefs.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/task.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/stream_buffer.h</itemPath>
+            <itemPath>../src/third_party/rtos/FreeRTOS/Source/include/deprecated_definitions.h</itemPath>
           </logicalFolder>
           <logicalFolder name="portable" displayName="portable" projectFiles="true">
             <logicalFolder name="XC32" displayName="XC32" projectFiles="true">
@@ -441,6 +459,11 @@
           <itemPath>../src/packs/SAM9X60_DFP/sam9x60.h</itemPath>
         </logicalFolder>
       </logicalFolder>
+      <logicalFolder name="system" displayName="system" projectFiles="true">
+        <logicalFolder name="tmr" displayName="tmr" projectFiles="true">
+          <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/system/tmr/sys_tmr.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
       <logicalFolder name="f4" displayName="wolfcrypt" projectFiles="true">
         <logicalFolder name="f1" displayName="port" projectFiles="true">
           <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/port/pic32/pic32mz-crypt.h</itemPath>
@@ -534,9 +557,7 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/ge_448.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/ge_operations.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/hash.h</itemPath>
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/hc128.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/hmac.h</itemPath>
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/idea.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/integer.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/logging.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/md2.h</itemPath>
@@ -552,7 +573,6 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/pkcs7.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/poly1305.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/pwdbased.h</itemPath>
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/rabbit.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/random.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/ripemd.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/rsa.h</itemPath>
@@ -577,6 +597,11 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/wc_port.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/certs_test.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/rc2.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/sakke.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/eccsi.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/siphash.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/kdf.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/falcon.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f5" displayName="wolfssl" projectFiles="true">
         <itemPath>../src/third_party/wolfssl/wolfssl/callbacks.h</itemPath>
@@ -590,9 +615,17 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/test.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/version.h</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfio.h</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/openssl/compat_types.h</itemPath>
       </logicalFolder>
       <itemPath>../src/app.h</itemPath>
       <itemPath>../src/http_net_print.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="true">
+      <itemPath>Makefile</itemPath>
+      <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/harmony-manifest-success.yml</itemPath>
+      <itemPath>web_net_super_set_sdcard_fatfs.mc3</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -640,6 +673,7 @@
               <logicalFolder name="f1" displayName="src" projectFiles="true">
                 <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
                   <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/driver/miim/src/dynamic/drv_miim.c</itemPath>
+                  <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/driver/miim/src/dynamic/drv_miim_emac.c</itemPath>
                 </logicalFolder>
               </logicalFolder>
             </logicalFolder>
@@ -690,6 +724,8 @@
                 <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/library/tcpip/src/tftpc.c</itemPath>
                 <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/library/tcpip/src/dhcpv6.c</itemPath>
                 <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/library/tcpip/src/dhcp_server.c</itemPath>
+                <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/library/tcpip/src/zero_conf_multicast_dns.c</itemPath>
+                <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/library/tcpip/src/dnss.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
@@ -901,9 +937,7 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ge_low_mem.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ge_operations.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/hash.c</itemPath>
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/hc128.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/hmac.c</itemPath>
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/idea.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/integer.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/logging.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/md2.c</itemPath>
@@ -914,7 +948,6 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/pkcs7.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/poly1305.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/pwdbased.c</itemPath>
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/rabbit.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/ripemd.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/rsa.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha3.c</itemPath>
@@ -943,6 +976,13 @@
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha256.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sha512.c</itemPath>
         <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/rc2.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/misc.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/falcon.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/kdf.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/siphash.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/sakke.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/evp.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/eccsi.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f4" displayName="wolfssl" projectFiles="true">
         <itemPath>../src/third_party/wolfssl/src/crl.c</itemPath>
@@ -954,138 +994,17 @@
         <itemPath>../src/third_party/wolfssl/src/tls13.c</itemPath>
         <itemPath>../src/third_party/wolfssl/src/wolfio.c</itemPath>
         <itemPath>../src/third_party/wolfssl/src/internal.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/src/dtls13.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/src/x509.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/src/x509_str.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/src/conf.c</itemPath>
+        <itemPath>../src/third_party/wolfssl/src/pk.c</itemPath>
       </logicalFolder>
       <itemPath>../src/app.c</itemPath>
       <itemPath>../src/main_sam_9x60.c</itemPath>
       <itemPath>../src/http_net_print.c</itemPath>
       <itemPath>../src/custom_http_net_app.c</itemPath>
       <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/pin_configurations.csv</itemPath>
-    </logicalFolder>
-    <logicalFolder name="ExternalFiles"
-                   displayName="Important Files"
-                   projectFiles="false">
-      <logicalFolder name="f4"
-                     displayName="sam_9x60_ek_freertos_mplabx.mhc"
-                     projectFiles="true">
-        <logicalFolder name="f1" displayName="TCP_IP_STACK" projectFiles="true">
-          <logicalFolder name="f1" displayName="APPLICATION_LAYER" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/APPLICATION_LAYER.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipAnnounce.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipBerkeleyApi.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcpcv6.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipDhcps.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipDns.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipFtpc.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipFtps.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipHttpNet.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipIperf.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipNbns.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipSmtpc.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipSntp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipTelnet.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipTftpc.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipTftps.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpipZeroConf.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/APPLICATION_LAYER/tcpip_apps_config.yml</itemPath>
-          </logicalFolder>
-          <logicalFolder name="f2" displayName="BASIC_CONFIGURATION" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/BASIC_CONFIGURATION.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipCmd.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipNetConfig.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpipStack.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/BASIC_CONFIGURATION/tcpip_basic_config.yml</itemPath>
-          </logicalFolder>
-          <logicalFolder name="f3" displayName="DRIVER_LAYER" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/DRIVER_LAYER/DRIVER_LAYER.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/DRIVER_LAYER/drvEmac0.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/DRIVER_LAYER/drvExtPhyKsz8081.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/DRIVER_LAYER/drvMiim.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/DRIVER_LAYER/tcpip_driver_config.yml</itemPath>
-          </logicalFolder>
-          <logicalFolder name="f4" displayName="NETWORK_LAYER" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/NETWORK_LAYER.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipArp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipIcmp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipIcmpv6.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipIPv4.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipIPv6.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpipNdp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/NETWORK_LAYER/tcpip_network_config.yml</itemPath>
-          </logicalFolder>
-          <logicalFolder name="f5" displayName="PRESENTATION_LAYER" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/PRESENTATION_LAYER/net_Pres.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/PRESENTATION_LAYER/PRESENTATION_LAYER.yml</itemPath>
-          </logicalFolder>
-          <logicalFolder name="f6" displayName="TRANSPORT_LAYER" projectFiles="true">
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/TRANSPORT_LAYER/tcpipTcp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/TRANSPORT_LAYER/tcpipUdp.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/TRANSPORT_LAYER/tcpip_transport_config.yml</itemPath>
-            <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/TRANSPORT_LAYER/TRANSPORT_LAYER.yml</itemPath>
-          </logicalFolder>
-          <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/TCP_IP_STACK/TCP_IP_STACK.yml</itemPath>
-        </logicalFolder>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/BSP_SAM_9X60_Evaluation_Kit.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/core.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/dbgu.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/dfp.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/drv_sdmmc.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/GraphSettings.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/HarmonyCore.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/lib_crypto.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/lib_wolfcrypt.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/lib_wolfssl.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/project.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/sdmmc0.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/settings.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/sys_command.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/sys_console.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/sys_debug.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/sys_fs.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/sys_time.yml</itemPath>
-        <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/sam_9x60_ek_freertos_mplabx.mhc/tc0.yml</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f3"
-                     displayName="sam_9x60_ek_freertos_mplabx.mhc"
-                     projectFiles="true">
-        <logicalFolder name="f1" displayName="TCP_IP_STACK" projectFiles="true">
-          <logicalFolder name="f1" displayName="APPLICATION_LAYER" projectFiles="true">
-          </logicalFolder>
-          <logicalFolder name="f2" displayName="BASIC_CONFIGURATION" projectFiles="true">
-          </logicalFolder>
-          <logicalFolder name="f3" displayName="DRIVER_LAYER" projectFiles="true">
-          </logicalFolder>
-          <logicalFolder name="f4" displayName="NETWORK_LAYER" projectFiles="true">
-          </logicalFolder>
-          <logicalFolder name="f5" displayName="PRESENTATION_LAYER" projectFiles="true">
-          </logicalFolder>
-          <logicalFolder name="f6" displayName="TRANSPORT_LAYER" projectFiles="true">
-          </logicalFolder>
-        </logicalFolder>
-      </logicalFolder>
-      <logicalFolder name="f1"
-                     displayName="sam_9x60_ek_freertos_mplabx.mhc"
-                     projectFiles="true">
-        <logicalFolder name="f1" displayName="TCP_IP_STACK" projectFiles="true">
-          <logicalFolder name="f1" displayName="APPLICATION_LAYER" projectFiles="true">
-          </logicalFolder>
-          <logicalFolder name="f2" displayName="BASIC_CONFIGURATION" projectFiles="true">
-          </logicalFolder>
-          <logicalFolder name="f3" displayName="DRIVER_LAYER" projectFiles="true">
-          </logicalFolder>
-          <logicalFolder name="f4" displayName="NETWORK_LAYER" projectFiles="true">
-          </logicalFolder>
-          <logicalFolder name="f5" displayName="TRANSPORT_LAYER" projectFiles="true">
-          </logicalFolder>
-        </logicalFolder>
-      </logicalFolder>
-      <logicalFolder name="f2" displayName="wolfcrypt" projectFiles="true">
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/misc.c</itemPath>
-        <itemPath>../src/third_party/wolfssl/wolfssl/wolfcrypt/src/evp.c</itemPath>
-      </logicalFolder>
-      <itemPath>Makefile</itemPath>
-      <itemPath>../src/config/sam_9x60_ek_freertos_mplabx/harmony-manifest-success.yml</itemPath>
-      <itemPath>web_net_super_set_sdcard_fatfs.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -1101,17 +1020,18 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>jlink</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.00</languageToolchainVersion>
+        <languageToolchainVersion>4.35</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="SAM9X6_DFP" vendor="Microchip" version="1.7.85"/>
+        <pack name="SAM9X6_DFP" vendor="Microchip" version="1.8.216"/>
       </packs>
       <ScriptingSettings>
         <ScriptingSetting key="boot.load_adr" value=""/>
-        <ScriptingSetting key="boot.use" value="false"/>
+        <ScriptingSetting key="boot.use" value="true"/>
         <ScriptingSetting key="boot.entry_adr" value=""/>
-        <ScriptingSetting key="boot.path" value=""/>
+        <ScriptingSetting key="boot.path"
+                          value="${ProjectDir}\..\..\..\..\deps\at91bootstrap_sam_9x60_binaries\at91bootstrap.elf"/>
         <ScriptingSetting key="boot.prj" value=""/>
       </ScriptingSettings>
       <compileType>
@@ -1166,7 +1086,7 @@
       <C32>
         <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>
-        <property key="appendMe" value=""/>
+        <property key="appendMe" value="-marm"/>
         <property key="enable-app-io" value="false"/>
         <property key="enable-omit-frame-pointer" value="false"/>
         <property key="enable-symbols" value="true"/>
@@ -1192,6 +1112,7 @@
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
+        <appendMe value="-marm"/>
       </C32>
       <C32-AR>
         <property key="additional-options-chop-files" value="false"/>
@@ -1293,6 +1214,19 @@
         <property key="use-iar" value="false"/>
         <property key="use-indirect-calls" value="false"/>
       </C32CPP>
+      <C32Global>
+        <property key="common-include-directories" value=""/>
+        <property key="gp-relative-option" value=""/>
+        <property key="legacy-libc" value="false"/>
+        <property key="mdtcm" value=""/>
+        <property key="mitcm" value=""/>
+        <property key="mstacktcm" value="false"/>
+        <property key="omit-pack-options" value="1"/>
+        <property key="relaxed-math" value="false"/>
+        <property key="save-temps" value="false"/>
+        <property key="stack-smashing" value=""/>
+        <property key="wpo-lto" value="false"/>
+      </C32Global>
       <PICkit3PlatformTool>
         <property key="ADC 1" value="true"/>
         <property key="AutoSelectMemRanges" value="auto"/>
@@ -1821,11 +1755,16 @@
       </Simulator>
       <Tool>
         <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="communication.adaptivespeed" value="false"/>
         <property key="communication.autoselectspeed" value="true"/>
-        <property key="communication.interface" value="swd"/>
+        <property key="communication.interface" value="4wire"/>
         <property key="communication.speed" value="4"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
+        <property key="jlink.override" value=""/>
         <property key="lastid" value=""/>
         <property key="loader.board_file" value="${ProjectDir}/board.xboard"/>
         <property key="memories.bootflash" value="true"/>
@@ -1840,21 +1779,29 @@
         <property key="programoptions.eraseb4program" value="false"/>
         <property key="programoptions.preservebootflash" value="false"/>
         <property key="programoptions.preserveprogrammemory" value="false"/>
+        <property key="programoptions.preserveprogrammemory.ranges"
+                  value="0x300000-0x4fffff"/>
         <property key="programoptions.preserveprogramrange.ranges"
                   value="0x300000-0x4fffff"/>
-        <property key="programoptions.resetafterprogram" value="true"/>
+        <property key="programoptions.resetafterprogram" value="false"/>
         <property key="script.has_reset" value="true"/>
         <property key="script.log_level" value="1"/>
         <property key="script.reset_delay" value="0"/>
         <property key="script.show_output" value="false"/>
+        <property key="x.recover.delay" value="100000"/>
       </Tool>
       <jlink>
         <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="communication.adaptivespeed" value="false"/>
         <property key="communication.autoselectspeed" value="true"/>
-        <property key="communication.interface" value="swd"/>
+        <property key="communication.interface" value="4wire"/>
         <property key="communication.speed" value="4"/>
         <property key="debugoptions.debug-startup" value="Use system settings"/>
         <property key="debugoptions.reset-behaviour" value="Use system settings"/>
+        <property key="event.recorder.debugger.behavior" value="Running"/>
+        <property key="event.recorder.enabled" value="false"/>
+        <property key="event.recorder.scvd.files" value=""/>
+        <property key="jlink.override" value=""/>
         <property key="lastid" value=""/>
         <property key="loader.board_file" value="${ProjectDir}/board.xboard"/>
         <property key="memories.bootflash" value="true"/>
@@ -1869,13 +1816,14 @@
         <property key="programoptions.eraseb4program" value="false"/>
         <property key="programoptions.preservebootflash" value="false"/>
         <property key="programoptions.preserveprogrammemory" value="false"/>
-        <property key="programoptions.preserveprogramrange.ranges"
+        <property key="programoptions.preserveprogrammemory.ranges"
                   value="0x300000-0x4fffff"/>
-        <property key="programoptions.resetafterprogram" value="true"/>
+        <property key="programoptions.resetafterprogram" value="false"/>
         <property key="script.has_reset" value="true"/>
         <property key="script.log_level" value="1"/>
         <property key="script.reset_delay" value="0"/>
         <property key="script.show_output" value="false"/>
+        <property key="x.recover.delay" value="100000"/>
       </jlink>
     </conf>
   </confs>
