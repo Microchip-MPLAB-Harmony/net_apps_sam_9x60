@@ -3595,7 +3595,7 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;GraphSettings canvasHeight=&quot;543&quot; canvasWidth=&quot;553&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;GraphSettings canvasHeight=&quot;176&quot; canvasWidth=&quot;361&quot; dnOrder=&quot;0&quot;/&gt;
     &lt;PowerProfiles dnOrder=&quot;1&quot;&gt;
       &lt;Profile dnOrder=&quot;0&quot; id=&quot;profile0&quot; name=&quot;Main&quot;/&gt;
     &lt;/PowerProfiles&gt;
@@ -3615,10 +3615,10 @@
     &lt;/ComponentGraph&gt;
     &lt;ComponentGraph dnOrder=&quot;4&quot; id=&quot;DATA LINK LAYER&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
-        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;drvEmac0&quot; x=&quot;195&quot; y=&quot;111&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;drvExtPhyKsz8081&quot; x=&quot;0&quot; y=&quot;126&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;drvMiim&quot; x=&quot;260&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;tcpipNetConfig&quot; x=&quot;400&quot; y=&quot;20&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;drvEmac0&quot; x=&quot;114&quot; y=&quot;34&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;drvExtPhyKsz8081&quot; x=&quot;4&quot; y=&quot;36&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;drvMiim&quot; x=&quot;384&quot; y=&quot;42&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;tcpipNetConfig&quot; x=&quot;226&quot; y=&quot;8&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
     &lt;ComponentGraph dnOrder=&quot;5&quot; id=&quot;NETWORK LAYER&quot;&gt;
@@ -5010,7 +5010,7 @@
   &lt;core dnOrder=&quot;0&quot; id=&quot;XC32_HEAP_SIZE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;1024&quot;/&gt;
-      &lt;User dnOrder=&quot;1&quot; value=&quot;402400&quot;/&gt;
+      &lt;User dnOrder=&quot;1&quot; value=&quot;768000&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -5446,7 +5446,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="drvEmac0" name="DRV_EMAC_HEAP_SIZE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;drvEmac0&gt;
   &lt;drvEmac0 dnOrder=&quot;0&quot; id=&quot;DRV_EMAC_HEAP_SIZE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;drvEmac0&quot; value=&quot;76800&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/drvEmac0&gt;
 &lt;/drvEmac0&gt;
 </value>
@@ -5728,7 +5730,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;drvEmac0&gt;
   &lt;drvEmac0 dnOrder=&quot;0&quot; id=&quot;MAX_RX_PACKET_POINTERS&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;drvEmac0&quot; value=&quot;100&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;drvEmac0&quot; value=&quot;300&quot;/&gt;
     &lt;/Values&gt;
   &lt;/drvEmac0&gt;
 &lt;/drvEmac0&gt;
@@ -5774,7 +5776,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="drvEmac0" name="RX_BUFFER_ALLOCATION_0"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;drvEmac0&gt;
   &lt;drvEmac0 dnOrder=&quot;0&quot; id=&quot;RX_BUFFER_ALLOCATION_0&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;200&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/drvEmac0&gt;
 &lt;/drvEmac0&gt;
 </value>
@@ -5783,7 +5787,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="drvEmac0" name="RX_BUFFER_ALLOCATION_THRESHOLD_0"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;drvEmac0&gt;
   &lt;drvEmac0 dnOrder=&quot;0&quot; id=&quot;RX_BUFFER_ALLOCATION_THRESHOLD_0&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;100&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/drvEmac0&gt;
 &lt;/drvEmac0&gt;
 </value>
@@ -5801,7 +5807,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="drvEmac0" name="RX_DESCRIPTOR_COUNT_0"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;drvEmac0&gt;
   &lt;drvEmac0 dnOrder=&quot;0&quot; id=&quot;RX_DESCRIPTOR_COUNT_0&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;300&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/drvEmac0&gt;
 &lt;/drvEmac0&gt;
 </value>
@@ -5819,7 +5827,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="drvEmac0" name="RX_STATIC_BUFFERS_0"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;drvEmac0&gt;
   &lt;drvEmac0 dnOrder=&quot;0&quot; id=&quot;RX_STATIC_BUFFERS_0&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;300&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/drvEmac0&gt;
 &lt;/drvEmac0&gt;
 </value>
@@ -12270,7 +12280,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcpipStack&gt;
   &lt;tcpipStack dnOrder=&quot;0&quot; id=&quot;TCPIP_STACK_DRAM_SIZE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;124287&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;358400&quot;/&gt;
     &lt;/Values&gt;
   &lt;/tcpipStack&gt;
 &lt;/tcpipStack&gt;
@@ -12344,7 +12354,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcpipStack&gt;
   &lt;tcpipStack dnOrder=&quot;0&quot; id=&quot;TCPIP_STACK_HEAP_SIZE_RECOMMEND&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;tcpipStack&quot; value=&quot;50&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;tcpipStack&quot; value=&quot;119&quot;/&gt;
     &lt;/Values&gt;
   &lt;/tcpipStack&gt;
 &lt;/tcpipStack&gt;
@@ -13242,7 +13252,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\configuration.h</file>
-         <hash>a1e4c4fce1f683e2f55481a2ff370d2dd3b05009a51d94a2d81dcf27336cf1c7</hash>
+         <hash>c4342dfc6d4b5538c9294736ce80a561abd46668562c854c24d2b61d2327aaf6</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\crypto\crypto.h</file>
