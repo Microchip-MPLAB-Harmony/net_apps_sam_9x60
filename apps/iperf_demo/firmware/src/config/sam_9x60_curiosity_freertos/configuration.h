@@ -215,6 +215,9 @@ extern "C" {
 
 
 
+#define TCPIP_STACK_USE_ICMPV6_SERVER
+
+
 /*** ARP Configuration ***/
 #define TCPIP_ARP_CACHE_ENTRIES                 		5
 #define TCPIP_ARP_CACHE_DELETE_OLD		        	true
@@ -230,9 +233,6 @@ extern "C" {
 #define TCPIP_ARP_PRIMARY_CACHE_ONLY		        	true
 #define TCPIP_ARP_COMMANDS false
 
-
-
-#define TCPIP_STACK_USE_ICMPV6_SERVER
 
 
 #define TCPIP_IPV6_NDP_MAX_RTR_SOLICITATION_DELAY 	1
@@ -262,7 +262,7 @@ extern "C" {
 #define EMAC_MIN_TX_DESCRIPTORS                     1       // needed to accommodate zero copy and TCP traffic
 #define TCPIP_INTMAC_PERIPHERAL_CLK                 200000000
 #define TCPIP_INTMAC_MAX_NUMBER_OF_QUEUES           1
-#define TCPIP_INTMAC_MAX_RX_PACKET_POINTERS         100
+#define TCPIP_INTMAC_MAX_RX_PACKET_POINTERS         300
 #define DRV_EMAC0_BASE_ADDRESS                      EMAC0_BASE_ADDRESS
 #define TCPIP_INTMAC_MODULE_ID                                           EMAC0_BASE_ADDRESS
 #define DRV_EMAC0_CLIENTS_NUMBER                    1
@@ -274,11 +274,11 @@ extern "C" {
 #define DRV_EMAC0_TX_DESCRIPTORS_COUNT_QUE0         80
 #define DRV_EMAC0_TX_BUFF_SIZE_QUE0                 1536
 #define DRV_EMAC0_RX_DEVICE_MAX_DESCRIPTORS0        1024
-#define DRV_EMAC0_RX_DESCRIPTORS_COUNT_QUE0         100
+#define DRV_EMAC0_RX_DESCRIPTORS_COUNT_QUE0         300
 #define DRV_EMAC0_RX_BUFF_SIZE_QUE0                 128
-#define DRV_EMAC0_RX_BUFF_STATIC_COUNT_QUE0         0
-#define DRV_EMAC0_RX_BUFF_COUNT_THRESHOLD_QUE0      15
-#define DRV_EMAC0_RX_BUFF_ALLOC_COUNT_QUE0          30
+#define DRV_EMAC0_RX_BUFF_STATIC_COUNT_QUE0         300
+#define DRV_EMAC0_RX_BUFF_COUNT_THRESHOLD_QUE0      100
+#define DRV_EMAC0_RX_BUFF_ALLOC_COUNT_QUE0          200
 
 #define DRV_EMAC0_RX_FILTERS                        ( 0\
                                                     | TCPIP_MAC_RX_FILTER_TYPE_BCAST_ACCEPT\
@@ -373,7 +373,7 @@ extern "C" {
 
 /*** TCPIP Heap Configuration ***/
 #define TCPIP_STACK_USE_INTERNAL_HEAP
-#define TCPIP_STACK_DRAM_SIZE                       124287
+#define TCPIP_STACK_DRAM_SIZE                       358400
 #define TCPIP_STACK_DRAM_RUN_LIMIT                  2048
 
 #define TCPIP_STACK_MALLOC_FUNC                     malloc
