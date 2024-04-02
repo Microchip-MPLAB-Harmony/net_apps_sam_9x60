@@ -52,6 +52,7 @@
 
 #include "configuration.h"
 #include "definitions.h"
+#include "sys_tasks.h"
 
 
 // *****************************************************************************
@@ -59,16 +60,46 @@
 // Section: RTOS "Tasks" Routine
 // *****************************************************************************
 // *****************************************************************************
+static void lDRV_MEMORY_0_Tasks(  void *pvParameters  )
+{
+    while(true)
+    {
+        DRV_MEMORY_Tasks(sysObj.drvMemory0);
+        vTaskDelay(DRV_MEMORY_RTOS_DELAY_IDX0 / portTICK_PERIOD_MS);
+    }
+}
+
 /* Handle for the APP_Tasks. */
 TaskHandle_t xAPP_Tasks;
 
-void _APP_Tasks(  void *pvParameters  )
+static void lAPP_Tasks(  void *pvParameters  )
 {   
-    while(1)
+    while(true)
     {
         APP_Tasks();
     }
 }
+
+
+void _TCPIP_STACK_Task(  void *pvParameters  )
+{
+    while(1)
+    {
+        TCPIP_STACK_Task(sysObj.tcpip);
+        vTaskDelay(1 / portTICK_PERIOD_MS);
+    }
+}
+
+TaskHandle_t xSYS_CMD_Tasks;
+void lSYS_CMD_Tasks(  void *pvParameters  )
+{
+    while(1)
+    {
+        SYS_CMD_Tasks();
+        vTaskDelay(1 / portTICK_PERIOD_MS);
+    }
+}
+
 
 
 void _DRV_MIIM_Task(  void *pvParameters  )
@@ -77,7 +108,7 @@ void _DRV_MIIM_Task(  void *pvParameters  )
     {
        
        
-       DRV_MIIM_Tasks(sysObj.drvMiim_0);
+       DRV_MIIM_OBJECT_BASE_Default.DRV_MIIM_Tasks(sysObj.drvMiim_0);
        
        
        
@@ -97,41 +128,12 @@ void _NET_PRES_Tasks(  void *pvParameters  )
 }
 
 
-void _SYS_FS_Tasks(  void *pvParameters  )
+static void lSYS_FS_Tasks(  void *pvParameters  )
 {
-    while(1)
+    while(true)
     {
         SYS_FS_Tasks();
-        vTaskDelay(1 / portTICK_PERIOD_MS);
-    }
-}
-
-
-void _DRV_MEMORY_0_Tasks(  void *pvParameters  )
-{
-    while(1)
-    {
-        DRV_MEMORY_Tasks(sysObj.drvMemory0);
-        vTaskDelay(DRV_MEMORY_RTOS_DELAY_IDX0 / portTICK_PERIOD_MS);
-    }
-}
-
-
-void _TCPIP_STACK_Task(  void *pvParameters  )
-{
-    while(1)
-    {
-        TCPIP_STACK_Task(sysObj.tcpip);
-        vTaskDelay(1 / portTICK_PERIOD_MS);
-    }
-}
-
-void _SYS_CMD_Tasks(  void *pvParameters  )
-{
-    while(1)
-    {
-        SYS_CMD_Tasks();
-        vTaskDelay(1 / portTICK_PERIOD_MS);
+        vTaskDelay(1U / portTICK_PERIOD_MS);
     }
 }
 
@@ -157,7 +159,17 @@ void SYS_Tasks ( void )
     /* Maintain system services */
     
 
-    xTaskCreate( _SYS_FS_Tasks,
+    (void) xTaskCreate( lSYS_CMD_Tasks,
+        "SYS_CMD_TASKS",
+        SYS_CMD_RTOS_STACK_SIZE,
+        (void*)NULL,
+        SYS_CMD_RTOS_TASK_PRIORITY,
+        &xSYS_CMD_Tasks
+    );
+
+
+
+    (void) xTaskCreate( lSYS_FS_Tasks,
         "SYS_FS_TASKS",
         SYS_FS_STACK_SIZE,
         (void*)NULL,
@@ -166,19 +178,17 @@ void SYS_Tasks ( void )
     );
 
 
-    xTaskCreate( _SYS_CMD_Tasks,
-        "SYS_CMD_TASKS",
-        SYS_CMD_RTOS_STACK_SIZE,
+
+    /* Maintain Device Drivers */
+        (void)xTaskCreate( lDRV_MEMORY_0_Tasks,
+        "DRV_MEM_0_TASKS",
+        DRV_MEMORY_STACK_SIZE_IDX0,
         (void*)NULL,
-        SYS_CMD_RTOS_TASK_PRIORITY,
+        DRV_MEMORY_PRIORITY_IDX0,
         (TaskHandle_t*)NULL
     );
 
-
-
-
-    /* Maintain Device Drivers */
-        xTaskCreate( _DRV_MIIM_Task,
+    xTaskCreate( _DRV_MIIM_Task,
         "DRV_MIIM_Tasks",
         DRV_MIIM_RTOS_STACK_SIZE,
         (void*)NULL,
@@ -187,28 +197,10 @@ void SYS_Tasks ( void )
     );
 
 
-    xTaskCreate( _DRV_MEMORY_0_Tasks,
-        "DRV_MEM_0_TASKS",
-        DRV_MEMORY_STACK_SIZE_IDX0,
-        (void*)NULL,
-        DRV_MEMORY_PRIORITY_IDX0,
-        (TaskHandle_t*)NULL
-    );
-
 
 
     /* Maintain Middleware & Other Libraries */
     
-    xTaskCreate( _NET_PRES_Tasks,
-        "NET_PRES_Tasks",
-        NET_PRES_RTOS_STACK_SIZE,
-        (void*)NULL,
-        NET_PRES_RTOS_TASK_PRIORITY,
-        (TaskHandle_t*)NULL
-    );
-
-
-
     xTaskCreate( _TCPIP_STACK_Task,
         "TCPIP_STACK_Tasks",
         TCPIP_RTOS_STACK_SIZE,
@@ -219,10 +211,20 @@ void SYS_Tasks ( void )
 
 
 
+    xTaskCreate( _NET_PRES_Tasks,
+        "NET_PRES_Tasks",
+        NET_PRES_RTOS_STACK_SIZE,
+        (void*)NULL,
+        NET_PRES_RTOS_TASK_PRIORITY,
+        (TaskHandle_t*)NULL
+    );
+
+
+
 
     /* Maintain the application's state machine. */
         /* Create OS Thread for APP_Tasks. */
-    xTaskCreate((TaskFunction_t) _APP_Tasks,
+    (void) xTaskCreate((TaskFunction_t) lAPP_Tasks,
                 "APP_Tasks",
                 2048,
                 NULL,

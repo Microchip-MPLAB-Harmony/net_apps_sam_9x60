@@ -15,30 +15,28 @@
 
 *******************************************************************************/
 // DOM-IGNORE-BEGIN
-/*****************************************************************************
- Copyright (C) 2017-2018 Microchip Technology Inc. and its subsidiaries.
+/*
+Copyright (C) 2017-2023, Microchip Technology Inc., and its subsidiaries. All rights reserved.
 
-Microchip Technology Inc. and its subsidiaries.
+The software and documentation is provided by microchip and its contributors
+"as is" and any express, implied or statutory warranties, including, but not
+limited to, the implied warranties of merchantability, fitness for a particular
+purpose and non-infringement of third party intellectual property rights are
+disclaimed to the fullest extent permitted by law. In no event shall microchip
+or its contributors be liable for any direct, indirect, incidental, special,
+exemplary, or consequential damages (including, but not limited to, procurement
+of substitute goods or services; loss of use, data, or profits; or business
+interruption) however caused and on any theory of liability, whether in contract,
+strict liability, or tort (including negligence or otherwise) arising in any way
+out of the use of the software and documentation, even if advised of the
+possibility of such damage.
 
-Subject to your compliance with these terms, you may use Microchip software 
-and any derivatives exclusively with Microchip products. It is your 
-responsibility to comply with third party license terms applicable to your 
-use of third party software (including open source software) that may 
-accompany Microchip software.
-
-THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
-EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
-WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A PARTICULAR 
-PURPOSE.
-
-IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
-WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
-BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO THE 
-FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN 
-ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY, 
-THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
-*****************************************************************************/
+Except as expressly permitted hereunder and subject to the applicable license terms
+for any third-party software incorporated in the software and any applicable open
+source software license terms, no license or other rights, whether express or
+implied, are granted under any patent or other intellectual property rights of
+Microchip or any third party.
+*/
 
 // DOM-IGNORE-END
 
@@ -51,34 +49,33 @@ THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
 
 typedef enum
 {
-	/*
-	// basic registers, across all registers: 0-8
-	PHY_REG_BMCON		= 0,
-	PHY_REG_BMSTAT		= 1,
-	// extended registers: 2-15
-	PHY_REG_PHYID1		= 2,
-	PHY_REG_PHYID2		= 3,
-	PHY_REG_ANAD		= 4,
-	PHY_REG_ANLPAD		= 5,
-	PHY_REG_ANEXP		= 6,
-	PHY_REG_ANNPTR		= 7,
-	PHY_REG_ANLPRNP		= 8,
-	*/
-	// specific vendor registers: 16-31
-	PHY_REG_DIGITAL_CONTROL     = 0x10,
-	PHY_REG_AFE_CONTROL         = 0x11,
-	PHY_REG_RXER_COUNTER        = 0x15,
-	PHY_REG_STRAP_OVERRIDE      = 0x16,
-	PHY_REG_STRAP_STATUS        = 0x17,
-	PHY_REG_EXPANDED_CONTROL    = 0x18,
-	PHY_REG_INTERUPT            = 0x1b,
-	PHY_REG_LINKMD_CONTROL      = 0x1d,
-	PHY_REG_PHY_CONTROL_1       = 0x1e,
-	PHY_REG_PHY_CONTROL_2       = 0x1f,
-	//
-	//PHY_REGISTERS		= 32	// total number of registers
-}ePHY_VENDOR_REG_KSZ8081;
-// updated version of ePHY_REG
+    /*
+    // basic registers, across all registers: 0-8
+    PHY_REG_BMCON       = 0,
+    PHY_REG_BMSTAT      = 1,
+    // extended registers: 2-15
+    PHY_REG_PHYID1      = 2,
+    PHY_REG_PHYID2      = 3,
+    PHY_REG_ANAD        = 4,
+    PHY_REG_ANLPAD      = 5,
+    PHY_REG_ANEXP       = 6,
+    PHY_REG_ANNPTR      = 7,
+    PHY_REG_ANLPRNP     = 8,
+    */
+    // specific vendor registers: 16-31
+    PHY_REG_DIGITAL_CONTROL     = 0x10,
+    PHY_REG_AFE_CONTROL         = 0x11,
+    PHY_REG_RXER_COUNTER        = 0x15,
+    PHY_REG_STRAP_OVERRIDE      = 0x16,
+    PHY_REG_STRAP_STATUS        = 0x17,
+    PHY_REG_EXPANDED_CONTROL    = 0x18,
+    PHY_REG_INTERUPT            = 0x1b,
+    PHY_REG_LINKMD_CONTROL      = 0x1d,
+    PHY_REG_PHY_CONTROL_1       = 0x1e,
+    PHY_REG_PHY_CONTROL_2       = 0x1f,
+    //
+    //PHY_REGISTERS     = 32    // total number of registers
+}KSZ8081_VENDOR_REG;
 
 
 // vendor registers
@@ -90,7 +87,7 @@ typedef union {
     unsigned            :11;
     };
   unsigned short w:16;
-} __KSZ8081_DigitalControlBits_t;	
+} __KSZ8081_DigitalControlBits_t;   
 
 typedef union {
   struct {    
@@ -99,7 +96,7 @@ typedef union {
     unsigned            :10;
   };
   unsigned short w:16;
-} __KSZ8081_AFEControlBits_t;	
+} __KSZ8081_AFEControlBits_t;   
 
 
 typedef union {
@@ -107,7 +104,7 @@ typedef union {
     unsigned short rxerCount:16;
   };
   unsigned short w:16;
-} __KSZ8081_RXERCounterBits_t;	
+} __KSZ8081_RXERCounterBits_t;  
 
 #if (KSZ8081RNB == 0)
 typedef union {
@@ -125,7 +122,7 @@ typedef union {
     unsigned FACT_TEST_MODE :1;
   };
   unsigned short w:16;
-} __KSZ8081_StrapOverrideBits_t;	
+} __KSZ8081_StrapOverrideBits_t;    
 #else
 typedef union {
   struct {
@@ -142,7 +139,7 @@ typedef union {
     unsigned                :1;
   };
   unsigned short w:16;
-} __KSZ8081_StrapOverrideBits_t;	
+} __KSZ8081_StrapOverrideBits_t;    
 #endif  // (KSZ8081RNB == 0)
 
 
@@ -161,7 +158,7 @@ typedef union {
     unsigned PHY_ADD        :3;
   };
   unsigned short w:16;
-} __KSZ8081_StrapStatusBits_t;	
+} __KSZ8081_StrapStatusBits_t;  
 #else
 typedef union {
   struct {
@@ -177,7 +174,7 @@ typedef union {
     unsigned PHY_ADD        :3;
   };
   unsigned short w:16;
-} __KSZ8081_StrapStatusBits_t;	
+} __KSZ8081_StrapStatusBits_t;  
 #endif  // (KSZ8081RNB == 0)
 
 #if (KSZ8081RNB == 0)
@@ -191,7 +188,7 @@ typedef union {
     unsigned                :4;
   };
   unsigned short w:16;
-} __KSZ8081_ExpandedControlBits_t;	
+} __KSZ8081_ExpandedControlBits_t;  
 #else
 typedef union {
   struct {
@@ -200,7 +197,7 @@ typedef union {
     unsigned                :4;
   };
   unsigned short w:16;
-} __KSZ8081_ExpandedControlBits_t;	
+} __KSZ8081_ExpandedControlBits_t;  
 #endif  // (KSZ8081RNB == 0)
 
 typedef union {
@@ -223,56 +220,56 @@ typedef union {
     unsigned JABBER_ENABLE                      :1;
   };
   unsigned short w:16;
-} __KSZ8081_InterruptBits_t;	
+} __KSZ8081_InterruptBits_t;    
 
 typedef union {
-	struct {
+    struct {
         unsigned CABLE_FAULT_COUNT  :9;
         unsigned                    :3;
-		unsigned SHORT_CABLE        :1;
-		unsigned CABLE_DIAG_RESULT  :2;
-		unsigned CABLE_DIAG_ENABLE  :1;
-	};
+        unsigned SHORT_CABLE        :1;
+        unsigned CABLE_DIAG_RESULT  :2;
+        unsigned CABLE_DIAG_ENABLE  :1;
+    };
     unsigned short w:16;
 } __KSZ8081_LinkMDControlBits_t;
 
 typedef union {
-	struct {
-		unsigned OPERATION_MODE: 3;
-		unsigned PHY_ISOLATE    :1;
-		unsigned ENERGY_DETECT  :1;
-		unsigned MDI_STATE      :1;
-		unsigned                :1;
-		unsigned POLARITY_STAT  :1;
-		unsigned LINK_STAT      :1;
-		unsigned ENABLE_PAUSE   :1;
+    struct {
+        unsigned OPERATION_MODE: 3;
+        unsigned PHY_ISOLATE    :1;
+        unsigned ENERGY_DETECT  :1;
+        unsigned MDI_STATE      :1;
+        unsigned                :1;
+        unsigned POLARITY_STAT  :1;
+        unsigned LINK_STAT      :1;
+        unsigned ENABLE_PAUSE   :1;
         unsigned                :6;
-	};
+    };
     unsigned short w:16;
 } __KSZ8081_PhyControl1Bits_t;
 
 typedef union {
-	struct {
-		unsigned DATA_SCRAMBLER     :1;
-		unsigned SQE_TEST           :1;
-		unsigned REMOTE_LOOPBACK    :1;
-		unsigned DISABLE_TRANSMIT   :1;
-		unsigned LED_MODE           :2;
-		unsigned                    :1;
+    struct {
+        unsigned DATA_SCRAMBLER     :1;
+        unsigned SQE_TEST           :1;
+        unsigned REMOTE_LOOPBACK    :1;
+        unsigned DISABLE_TRANSMIT   :1;
+        unsigned LED_MODE           :2;
+        unsigned                    :1;
 #if (KSZ8081RNB != 0)
         unsigned RMII_CLOCK_SELECT  :1;
 #else
-		unsigned                    :1;
+        unsigned                    :1;
 #endif  // (KSZ8081RNB != 0)
-		unsigned JABBER_ENABLE      :1;
-		unsigned INTERUPT_LEVEL     :1;
-		unsigned POWER_SAVING       :1;
-		unsigned FORCE_LINK         :1;
-		unsigned                    :1;
-		unsigned PAIR_SWAP_DISABLE  :1;
-		unsigned MDI_X_SELECT       :1;
-		unsigned HP_MDIX            :1;
-	};
+        unsigned JABBER_ENABLE      :1;
+        unsigned INTERUPT_LEVEL     :1;
+        unsigned POWER_SAVING       :1;
+        unsigned FORCE_LINK         :1;
+        unsigned                    :1;
+        unsigned PAIR_SWAP_DISABLE  :1;
+        unsigned MDI_X_SELECT       :1;
+        unsigned HP_MDIX            :1;
+    };
     unsigned short w: 16;
 } __KSZ8081_PhyControl2Bits_t;
 
