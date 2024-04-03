@@ -1,16 +1,245 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:axf="http://www.antennahouse.com/names/XSL/Extensions">
-   <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>MPLAB® Harmony TCP/IP Application for SAM 9x60 Family</title>
-      <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-      <link rel="stylesheet" type="text/css" href="webhelplayout.css"><script language="javascript" type="text/javascript" src="start.js"></script></head>
-   <frameset rows="80,*" onload="LoadDocument('contentframe');">
-      <frame name="headerwin" src="header.html" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" noresize>
-      <frameset cols="325,*" borderColor="#e0e0e0" frameborder="1">
-         <frame name="navigationwin" src="toc.html" scrolling="auto" frameborder="0" marginwidth="0" marginheight="0" target="contentwin" borderColor="#e0e0e0" style="overflow:auto">
-         <frame id="contentframe" name="contentwin" frameborder="0" marginwidth="6" marginheight="0" borderColor="#e0e0e0" style="overflow:auto">
-      </frameset>
-   </frameset>
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" data-whc_version="24.1" lang="en-US" dir="ltr">
+    <script src="mchp-context-help.js"></script><head><link rel="shortcut icon" href="oxygen-webhelp\template\resources/images/favicon.ico"/><link rel="icon" href="oxygen-webhelp\template\resources/images/favicon.ico"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="wh-path2root" content=""/><title>MPLAB® Harmony 3 TCP/IP Application for SAM9X60 Family 
+    </title>
+        
+        
+                
+        
+    <link rel="stylesheet" href="./oxygen-webhelp/lib/jquery-ui/jquery-ui.min.css"/>
+    
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="./oxygen-webhelp/lib/bootstrap/css/bootstrap.min.css"/>
+    
+    <!-- Template default styles  -->
+    <link rel="stylesheet" type="text/css" href="./oxygen-webhelp/app/main-page.css?buildId=2022062014"/>
+    
+    
+    <script src="./oxygen-webhelp/lib/jquery/jquery-3.5.1.min.js"></script>
+    
+    <script data-main="./oxygen-webhelp/app/main-page.js" src="./oxygen-webhelp/lib/requirejs/require.js"></script>
+    
+
+        <link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/microchip.css?buildId=2022062014"/><link rel="stylesheet" type="text/css" href="oxygen-webhelp/template/notes.css?buildId=2022062014"/>
+        
+        
+<script src="mchp-context-help.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async="" type="text/javascript"></script>
+    <script src="https://assets.adobedtm.com/6a72a357eb48/a636c708c7fe/launch-0b0023397020.min.js"></script><!-- Adobe Analytics -->
+
+        
+    </head>
+    <body class="wh_main_page">
+        <a href="#content" class="sr-only sr-only-focusable">
+            Jump to main content
+        </a>
+        
+        
+        
+        
+        
+        <header class="navbar navbar-default wh_header">
+    <div class="container-fluid">
+        <div class="wh_header_flex_container navbar-nav navbar-expand-md navbar-dark">
+            <div class="wh_logo_and_publication_title_container">
+                <div class="wh_logo_and_publication_title">
+                    
+                    <a href="index.html" class=" wh_logo d-none d-sm-block "><img src="oxygen-webhelp\template\resources/images/microchip.png" alt="MPLAB® Harmony 3 TCP/IP Application for SAM9X60 Family &#xA;    "/></a>
+                    <div class=" wh_publication_title "><a href="index.html">MPLAB® Harmony 3 TCP/IP Application for SAM9X60 Family 
+    </a></div>
+                    
+                </div>
+                
+                
+            </div>
+
+            <div class="wh_top_menu_and_indexterms_link collapse navbar-collapse" id="wh_top_menu_and_indexterms_link">
+                
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</header>
+        
+        
+                
+        
+        <div class=" wh_search_input navbar-form wh_main_page_search search " role="form">
+            
+            
+            
+            
+            <div class="wh_welcome"></div>          
+            <form id="searchForm" method="get" role="search" action="search.html"><div class="d-flex justify-contents-around"><div class="flex-grow-1"></div><div class="position-relative flex-grow-1"><input type="search" placeholder="Search " class="wh_search_textfield" id="textToSearch" name="searchQuery" aria-label="Search query" required="required"/><button type="submit" class="wh_search_button" aria-label="Search"><span class="search_input_text">Search</span></button></div><div class="align-self-center flex-grow-1 ml-2"></div></div></form>
+            <div class="mchp-color-stripe-grid-container">
+  <div class="mchp-main-bar mchp-orange-bar"></div>
+  <div class="mchp-main-bar mchp-blue-bar"></div>
+  <div class="mchp-main-bar mchp-green-bar"></div>
+</div>
+            
+            
+            
+        </div>
+        
+        <span></span>
+        
+        
+        <div class="wh_content_area " id="content">
+            
+            <div class="container-fluid wh_content_flex_container">
+                
+                <div class=" wh_main_page_toc "><div class=" wh_main_page_toc_accordion_header "><span role="heading" aria-level="1" id="GUID-5AF6C3B9-331B-4CE9-8674-B2C793CCC2C7-d409e11-heading"><span role="button" aria-expanded="false" class="header-button" aria-controls="GUID-5AF6C3B9-331B-4CE9-8674-B2C793CCC2C7-d409e11-entries" tabindex="0"></span><span class="topicref"><a href="GUID-5AF6C3B9-331B-4CE9-8674-B2C793CCC2C7.html" data-id="GUID-5AF6C3B9-331B-4CE9-8674-B2C793CCC2C7"><ph xmlns="">1</ph>
+Harmony 3 TCP/IP Application for SAM9X60 Family</a></span></span></div><div class=" wh_main_page_toc_accordion_entries " id="GUID-5AF6C3B9-331B-4CE9-8674-B2C793CCC2C7-d409e11-entries" role="region" aria-labelledby="GUID-5AF6C3B9-331B-4CE9-8674-B2C793CCC2C7-d409e11-heading"><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-C7192615-C089-4E61-A940-3482C1BA0DE2.html" data-id="GUID-C7192615-C089-4E61-A940-3482C1BA0DE2"><ph xmlns="">1.1</ph>
+TCP/IP Berkeley TCP Client</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-0AC1973B-A8AD-42B2-8733-51ED12E95F50.html" data-id="GUID-0AC1973B-A8AD-42B2-8733-51ED12E95F50"><ph xmlns="">1.2</ph>
+TCP/IP Berkeley TCP Server</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-87963B18-6008-45A1-88B0-45D5C4DFD745.html" data-id="GUID-87963B18-6008-45A1-88B0-45D5C4DFD745"><ph xmlns="">1.3</ph>
+TCP/IP Berkeley UDP Client</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-A15EE0F0-0E9B-4964-AF49-0446A132BEB2.html" data-id="GUID-A15EE0F0-0E9B-4964-AF49-0446A132BEB2"><ph xmlns="">1.4</ph>
+TCP/IP Berkeley UDP Relay</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-0A2AED2A-4306-4959-A6D3-47C34DBD853D.html" data-id="GUID-0A2AED2A-4306-4959-A6D3-47C34DBD853D"><ph xmlns="">1.5</ph>
+TCP/IP Berkeley UDP Server</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-92042EF1-BDC8-449F-833A-21CB87A12623.html" data-id="GUID-92042EF1-BDC8-449F-833A-21CB87A12623"><ph xmlns="">1.6</ph>
+TCP/IP IPERF Application</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-B30E9AD3-2C03-4E3D-B7FC-0ECE9649E0E6.html" data-id="GUID-B30E9AD3-2C03-4E3D-B7FC-0ECE9649E0E6"><ph xmlns="">1.7</ph>
+TCP/IP TCP and UDP Client Server</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-8FDB7D77-C6FA-4900-9495-53015704C2BD.html" data-id="GUID-8FDB7D77-C6FA-4900-9495-53015704C2BD"><ph xmlns="">1.8</ph>
+TCP/IP TCP Client</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-05A6ACC5-5CC6-43E3-AE88-4FA8278BDA12.html" data-id="GUID-05A6ACC5-5CC6-43E3-AE88-4FA8278BDA12"><ph xmlns="">1.9</ph>
+TCP/IP TCP Client Server</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-3088FF1D-94EA-417E-8E9B-AB0A17CEE900.html" data-id="GUID-3088FF1D-94EA-417E-8E9B-AB0A17CEE900"><ph xmlns="">1.10</ph>
+TCP/IP TCP Server</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-687B2C50-9D4A-47B6-B7AD-B5E6DBE250E6.html" data-id="GUID-687B2C50-9D4A-47B6-B7AD-B5E6DBE250E6"><ph xmlns="">1.11</ph>
+TCP/IP UDP Client</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-C8BF2C11-759F-4017-B857-85F511DC26E9.html" data-id="GUID-C8BF2C11-759F-4017-B857-85F511DC26E9"><ph xmlns="">1.12</ph>
+TCP/IP UDP Client Server</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-90ABF39D-3B62-4ED9-ADF1-C46CA9FD87CC.html" data-id="GUID-90ABF39D-3B62-4ED9-ADF1-C46CA9FD87CC"><ph xmlns="">1.13</ph>
+TCP/IP UDP Server</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-7EB6E023-E021-4762-8030-843257F78F21.html" data-id="GUID-7EB6E023-E021-4762-8030-843257F78F21"><ph xmlns="">1.14</ph>
+TCP/IP WEB NET Server QSPI MPFS</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-77478033-F6A4-4543-8059-E7424F158431.html" data-id="GUID-77478033-F6A4-4543-8059-E7424F158431"><ph xmlns="">1.15</ph>
+TCP/IP WEB NET Server SDCard FATFS</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-4388A144-2AB2-41C0-82AF-A0E6E8182320.html" data-id="GUID-4388A144-2AB2-41C0-82AF-A0E6E8182320"><ph xmlns="">1.16</ph>
+TCP/IP WEB NET Super Set SDCard FATFS</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-831F44B0-8F61-4BD6-BAE9-8EB140DAB5C1.html" data-id="GUID-831F44B0-8F61-4BD6-BAE9-8EB140DAB5C1"><ph xmlns="">1.17</ph>
+TCP/IP WolfSSL MQTT Application</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-E1DD631D-4517-4F55-BEB9-AB1DE380CE14.html" data-id="GUID-E1DD631D-4517-4F55-BEB9-AB1DE380CE14"><ph xmlns="">1.18</ph>
+TCP/IP WolfSSL TCP Client</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-F7F6353E-6D15-46EF-99AA-49848F2F81BD.html" data-id="GUID-F7F6353E-6D15-46EF-99AA-49848F2F81BD"><ph xmlns="">1.19</ph>
+TCP/IP WolfSSL TCP Server</a></span></div></div><div class=" wh_main_page_toc_accordion_header "><span role="heading" aria-level="1" id="GUID-DBFCCF5E-F4C8-4A3B-B4F6-56448F0C6008-d409e172-heading"><span role="button" aria-expanded="false" class="header-button" aria-controls="GUID-DBFCCF5E-F4C8-4A3B-B4F6-56448F0C6008-d409e172-entries" tabindex="0"></span><span class="topicref"><a href="GUID-DBFCCF5E-F4C8-4A3B-B4F6-56448F0C6008.html" data-id="GUID-DBFCCF5E-F4C8-4A3B-B4F6-56448F0C6008"><ph xmlns="">2</ph>
+Appendix</a></span></span></div><div class=" wh_main_page_toc_accordion_entries " id="GUID-DBFCCF5E-F4C8-4A3B-B4F6-56448F0C6008-d409e172-entries" role="region" aria-labelledby="GUID-DBFCCF5E-F4C8-4A3B-B4F6-56448F0C6008-d409e172-heading"><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-6B98F4A3-BF08-4F85-9B43-F4AD757EA4D3.html" data-id="GUID-6B98F4A3-BF08-4F85-9B43-F4AD757EA4D3"><ph xmlns="">2.1</ph>
+Using AT91Boostrap Loader with Harmony 3 MPU Applications</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-509B23F6-0F71-43F3-88BB-CD1FBFA0C31F.html" data-id="GUID-509B23F6-0F71-43F3-88BB-CD1FBFA0C31F"><ph xmlns="">2.2</ph>
+Building AT91Bootstrap Project Using MPLABx</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-B7E0C911-C58F-49A8-9B8C-D5A621EF5EEA.html" data-id="GUID-B7E0C911-C58F-49A8-9B8C-D5A621EF5EEA"><ph xmlns="">2.3</ph>
+MPLAB X Integrated Development Environment</a></span></div><div class=" wh_main_page_toc_entry "><span class="topicref"><a href="GUID-71E6F246-9C3D-4750-9819-1A6928A386C5.html" data-id="GUID-71E6F246-9C3D-4750-9819-1A6928A386C5"><ph xmlns="">2.4</ph>
+MPLAB Code Configurator</a></span></div></div><div class=" wh_main_page_toc_accordion_header "><span role="heading" aria-level="1" id="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d409e212-heading"><span role="button" aria-expanded="false" class="header-button" aria-controls="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d409e212-entries" tabindex="0"></span><span class="backmatter backmatter_parent"><a href="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B.html" data-id="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B">Microchip Information</a></span></span></div><div class=" wh_main_page_toc_accordion_entries " id="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d409e212-entries" role="region" aria-labelledby="GUID-0FB3F908-88EE-45CE-94F5-E97AF9049C9B-d409e212-heading"><div class=" wh_main_page_toc_entry "><span class="backmatter"><a href="GUID-7551DC67-D79D-4F0C-B56F-7B17E12400E0.html" data-id="GUID-7551DC67-D79D-4F0C-B56F-7B17E12400E0">The Microchip Website</a></span></div><div class=" wh_main_page_toc_entry "><span class="backmatter"><a href="GUID-CDA512D8-0DE4-4672-8716-04CAC681CB38.html" data-id="GUID-CDA512D8-0DE4-4672-8716-04CAC681CB38">Product Change Notification Service</a></span></div><div class=" wh_main_page_toc_entry "><span class="backmatter"><a href="GUID-F05182E4-B102-4775-A746-1FF37F465312.html" data-id="GUID-F05182E4-B102-4775-A746-1FF37F465312">Customer Support</a></span></div><div class=" wh_main_page_toc_entry "><span class="backmatter newpage"><a href="GUID-ADB76E99-DC24-4AF5-9900-BED214AAAF86.html" data-id="GUID-ADB76E99-DC24-4AF5-9900-BED214AAAF86">Product Identification System</a></span></div><div class=" wh_main_page_toc_entry "><span class="backmatter"><a href="GUID-E8251634-7B15-4073-A103-5A5F128B8699.html" data-id="GUID-E8251634-7B15-4073-A103-5A5F128B8699">Microchip Devices Code Protection Feature</a></span></div><div class=" wh_main_page_toc_entry "><span class="backmatter"><a href="GUID-125F1A93-76CC-4BD7-BACA-01844FBD5F4F.html" data-id="GUID-125F1A93-76CC-4BD7-BACA-01844FBD5F4F">Legal Notice</a></span></div><div class=" wh_main_page_toc_entry "><span class="backmatter"><a href="GUID-21750586-F9F2-4E33-87FB-8F2994BF4744.html" data-id="GUID-21750586-F9F2-4E33-87FB-8F2994BF4744">Trademarks</a></span></div><div class=" wh_main_page_toc_entry "><span class="backmatter"><a href="GUID-07985EED-D525-413B-AEFE-78B563328687.html" data-id="GUID-07985EED-D525-413B-AEFE-78B563328687">Quality Management System</a></span></div><div class=" wh_main_page_toc_entry "><span class="salessection"><a href="GUID-02A694CF-88A5-4ADA-8785-7EEEC62D66EA.html" data-id="GUID-02A694CF-88A5-4ADA-8785-7EEEC62D66EA">Worldwide Sales and Service</a></span></div></div></div>
+                
+            </div>
+        </div>
+        
+        
+        
+        
+        <footer class="navbar navbar-default wh_footer">
+  <div class=" footer-container mx-auto ">
+    <div class="footer">
+  <div class="mchp-wh-footer">
+    <div class="mchp-footer">
+      <div class="mchp-footer-tier1">
+        <div class="spacer"></div>
+        <div class="mchp-footer-container">
+          <div class="mchp-footer-links mchp-social-media-links">
+            <div class="mchp-component-items">
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.facebook.com/pages/Microchip-Technology-Inc/20320981741" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Facebook" src="oxygen-webhelp/template/resources/images/201016-corp-facebook.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.linkedin.com/company/microchip-technology" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip LinkedIn" src="oxygen-webhelp/template/resources/images/201016-corp-linkedin.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://twitter.com/MicrochipTech" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Twitter" src="oxygen-webhelp/template/resources/images/201016-corp-twitter.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.youtube.com/user/MicrochipTechnology" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip YouTube" src="oxygen-webhelp/template/resources/images/201016-corp-youtube.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.instagram.com/microchiptechnologyinc/" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Instagram" src="oxygen-webhelp/template/resources/images/201016-corp-instagram.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.weibo.com/microchiptech" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Weibo" src="oxygen-webhelp/template/resources/images/201016-corp-weibo.png"/>
+                </a>
+              </div>
+              <div class="mchp-component-item">
+                <a class="cmp-image__link" href="https://www.microchip.com/en-us/about/blog" target="_blank">
+                  <img class="cmp-image__image" alt="Microchip Blog" src="oxygen-webhelp/template/resources/images/201016-corp-blog.png"/>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mchp-footer-links">
+            <div class="mchp-component-items">
+              <div class="mchp-component-item">
+                <div class="link">
+                  <a href="https://www.microchip.com/about-us/contact-us" class="mchp-link__link">Contact</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information" class="mchp-link__link">Legal</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information/privacy-policy" class="mchp-link__link">Privacy Policy</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item ">
+                <div class="link">
+                  <a href="https://www.microchip.com/en-us/about/legal-information/microchip-cookie-statement" class="mchp-link__link">Cookies</a>
+                  <span class="mchp-link__separator">|</span>
+                </div>
+              </div>
+              <div class="mchp-component-item">
+                <div class="link">
+                  <a href="https://careers.microchip.com/" class="mchp-link__link">Careers</a>
+                  <span class="mchp-link__separator"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mchp-footer-newsletter">
+            <div class="cmp-text">
+              <p>Stay on the leading edge with our blog</p>
+            </div>
+            <div class="mchp-button-wrapper">
+              <a role="button" href="https://www.microchip.com/en-us/about/blog" class="mchp-button mchp-button-regular solid">
+                <span class="mchp-button__span">MicroSolutions</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="graphic">
+          <img src="oxygen-webhelp/template/resources/images/footer-graphic.png"/>
+        </div>
+      </div>
+      <div class="mchp-footer-tier2">
+        <p class="mchp-copyright">© Copyright 1998-2022 Microchip Technology Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async="true" src="https://www.googletagmanager.com/gtag/js?id=UA-2724382-19"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];  
+    function gtag(){dataLayer.push(arguments);}  
+    gtag('js', new Date());   
+    gtag('config', 'UA-2724382-19');
+  </script>
+  
+  <script type="text/javascript">_satellite.pageBottom();</script><!-- Adobe Analytics -->
+  
+</div>
+  </div>
+</footer>
+        
+        
+        
+    </body>
 </html>
