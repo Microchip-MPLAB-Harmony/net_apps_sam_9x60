@@ -234,7 +234,7 @@ extern "C" {
 #define TCPIP_HTTP_NET_USE_AUTHENTICATION
 #define TCPIP_HTTP_NET_MAX_DATA_LEN		        		100
 #define TCPIP_HTTP_NET_SKT_TX_BUFF_SIZE		    		1024
-#define TCPIP_HTTP_NET_SKT_RX_BUFF_SIZE		    		1024
+#define TCPIP_HTTP_NET_SKT_RX_BUFF_SIZE		    		10240
 #define TCPIP_HTTP_NET_LISTEN_PORT		    		    443
 #define TCPIP_HTTP_NET_CONFIG_FLAGS                       \
                                                         TCPIP_HTTP_NET_MODULE_FLAG_SECURE_DEFAULT |\
@@ -309,7 +309,7 @@ extern "C" {
 #define TCPIP_TCP_TASK_TICK_RATE		        	5
 #define TCPIP_TCP_MSL_TIMEOUT		        	    0
 #define TCPIP_TCP_QUIET_TIME		        	    0
-#define TCPIP_TCP_COMMANDS   true
+#define TCPIP_TCP_COMMANDS   false
 #define TCPIP_TCP_EXTERN_PACKET_PROCESS   false
 #define TCPIP_TCP_DISABLE_CRYPTO_USAGE		        	    false
 
@@ -499,7 +499,7 @@ extern "C" {
 
 /*** TCPIP Heap Configuration ***/
 #define TCPIP_STACK_USE_INTERNAL_HEAP
-#define TCPIP_STACK_DRAM_SIZE                       385536
+#define TCPIP_STACK_DRAM_SIZE                       409600
 #define TCPIP_STACK_DRAM_RUN_LIMIT                  2048
 
 #define TCPIP_STACK_MALLOC_FUNC                     malloc

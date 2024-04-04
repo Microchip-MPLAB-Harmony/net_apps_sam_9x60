@@ -3656,7 +3656,7 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;GraphSettings canvasHeight=&quot;178&quot; canvasWidth=&quot;180&quot; dnOrder=&quot;0&quot;/&gt;
+    &lt;GraphSettings canvasHeight=&quot;176&quot; canvasWidth=&quot;307&quot; dnOrder=&quot;0&quot;/&gt;
     &lt;PowerProfiles dnOrder=&quot;1&quot;&gt;
       &lt;Profile dnOrder=&quot;0&quot; id=&quot;profile0&quot; name=&quot;Main&quot;/&gt;
     &lt;/PowerProfiles&gt;
@@ -5299,7 +5299,7 @@
   &lt;core dnOrder=&quot;0&quot; id=&quot;XC32_HEAP_SIZE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
       &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;core&quot; value=&quot;1024&quot;/&gt;
-      &lt;User dnOrder=&quot;1&quot; value=&quot;750000&quot;/&gt;
+      &lt;User dnOrder=&quot;1&quot; value=&quot;1024000&quot;/&gt;
     &lt;/Values&gt;
   &lt;/core&gt;
 &lt;/core&gt;
@@ -13197,7 +13197,9 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="tcpipHttpNet" name="TCPIP_HTTP_NET_SKT_RX_BUFF_SIZE"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcpipHttpNet&gt;
   &lt;tcpipHttpNet dnOrder=&quot;0&quot; id=&quot;TCPIP_HTTP_NET_SKT_RX_BUFF_SIZE&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;/&gt;
+    &lt;Values dnOrder=&quot;0&quot;&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;10240&quot;/&gt;
+    &lt;/Values&gt;
   &lt;/tcpipHttpNet&gt;
 &lt;/tcpipHttpNet&gt;
 </value>
@@ -16150,7 +16152,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcpipStack&gt;
   &lt;tcpipStack dnOrder=&quot;0&quot; id=&quot;TCPIP_STACK_DRAM_SIZE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;385536&quot;/&gt;
+      &lt;User dnOrder=&quot;0&quot; value=&quot;409600&quot;/&gt;
     &lt;/Values&gt;
   &lt;/tcpipStack&gt;
 &lt;/tcpipStack&gt;
@@ -16224,7 +16226,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcpipStack&gt;
   &lt;tcpipStack dnOrder=&quot;0&quot; id=&quot;TCPIP_STACK_HEAP_SIZE_RECOMMEND&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;tcpipStack&quot; value=&quot;51&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;tcpipStack&quot; value=&quot;87&quot;/&gt;
     &lt;/Values&gt;
   &lt;/tcpipStack&gt;
 &lt;/tcpipStack&gt;
@@ -16783,9 +16785,7 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="tcpipTcp" name="TCPIP_TCP_COMMANDS"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcpipTcp&gt;
   &lt;tcpipTcp dnOrder=&quot;0&quot; id=&quot;TCPIP_TCP_COMMANDS&quot;&gt;
-    &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;User dnOrder=&quot;0&quot; value=&quot;true&quot;/&gt;
-    &lt;/Values&gt;
+    &lt;Values dnOrder=&quot;0&quot;/&gt;
   &lt;/tcpipTcp&gt;
 &lt;/tcpipTcp&gt;
 </value>
@@ -16840,7 +16840,7 @@
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;tcpipTcp&gt;
   &lt;tcpipTcp dnOrder=&quot;0&quot; id=&quot;TCPIP_TCP_HEAP_SIZE&quot;&gt;
     &lt;Values dnOrder=&quot;0&quot;&gt;
-      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;tcpipTcp&quot; value=&quot;22856&quot;/&gt;
+      &lt;Dynamic dnOrder=&quot;0&quot; id=&quot;tcpipTcp&quot; value=&quot;59720&quot;/&gt;
     &lt;/Values&gt;
   &lt;/tcpipTcp&gt;
 &lt;/tcpipTcp&gt;
@@ -17126,7 +17126,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\configuration.h</file>
-         <hash>132e4dba51c19d2153e1803a29142d7d783455130daed1493f2c7d87050cafb6</hash>
+         <hash>937f47d10a163af3a02d15892d21dc23ea7e0d0e825ca110f9a8c18e877aff8c</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\crypto\crypto.h</file>
@@ -17146,7 +17146,7 @@
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\definitions.h</file>
-         <hash>2cfdd6e17d1a098a4aec07f14fc63f58ebf5f8f7f17a461cbe39e5aa4c0782e8</hash>
+         <hash>82c6321923c8202c4c99e4ad2a197d179c4f1689fce67fa5049c6d5e8c696797</hash>
       </entry>
       <entry>
          <file>..\src\config\sam_9x60_curiosity\device.h</file>
