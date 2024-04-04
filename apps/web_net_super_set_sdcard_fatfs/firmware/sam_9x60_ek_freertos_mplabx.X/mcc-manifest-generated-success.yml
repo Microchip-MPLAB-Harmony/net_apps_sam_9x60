@@ -2,7 +2,7 @@
 
 manifest_file_version: 1.0.0
 project: web_net_super_set_sdcard_fatfs
-creation_date: 2024-04-02T09:27:27.058+05:30[Asia/Calcutta]
+creation_date: 2024-04-04T11:57:57.529+05:30[Asia/Calcutta]
 operating_system: Windows 10
 mcc_mode: IDE
 mcc_mode_version: v6.20
@@ -21,7 +21,7 @@ modules:
 - {name: core, type: HARMONY, version: v3.13.3}
 - {name: csp, type: HARMONY, version: v3.18.4}
 - {name: wolfssl, type: HARMONY, version: v5.4.0}
-- {name: net, type: HARMONY, version: fa_net_dev}
+- {name: net, type: HARMONY, version: v3.11.1}
 - {name: bsp, type: HARMONY, version: v3.18.0}
 - {name: crypto, type: HARMONY, version: v3.8.1}
 - {name: CMSIS-FreeRTOS, type: HARMONY, version: v10.5.1}

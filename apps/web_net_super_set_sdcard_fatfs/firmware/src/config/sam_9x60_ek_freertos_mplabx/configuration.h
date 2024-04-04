@@ -492,7 +492,7 @@ extern "C" {
 
 /* Net Pres RTOS Configurations*/
 #define NET_PRES_RTOS_STACK_SIZE                12288
-#define NET_PRES_RTOS_TASK_PRIORITY             1
+#define NET_PRES_RTOS_TASK_PRIORITY             4
 	
 #define FREERTOS
 
@@ -572,12 +572,6 @@ extern "C" {
 
 
 
-/*** NBNS Configuration ***/
-#define TCPIP_STACK_USE_NBNS
-#define TCPIP_NBNS_TASK_TICK_RATE   110
-
-
-
 /*** HTTP NET Configuration ***/
 #define TCPIP_STACK_USE_HTTP_NET_SERVER
 #define TCPIP_HTTP_NET_MAX_HEADER_LEN		    		15
@@ -592,7 +586,7 @@ extern "C" {
 #define TCPIP_HTTP_NET_USE_AUTHENTICATION
 #define TCPIP_HTTP_NET_MAX_DATA_LEN		        		100
 #define TCPIP_HTTP_NET_SKT_TX_BUFF_SIZE		    		1024
-#define TCPIP_HTTP_NET_SKT_RX_BUFF_SIZE		    		1024
+#define TCPIP_HTTP_NET_SKT_RX_BUFF_SIZE		    		10240
 #define TCPIP_HTTP_NET_LISTEN_PORT		    		    443
 #define TCPIP_HTTP_NET_CONFIG_FLAGS                       \
                                                         TCPIP_HTTP_NET_MODULE_FLAG_SECURE_DEFAULT |\
@@ -624,6 +618,12 @@ extern "C" {
 #define TCPIP_HTTP_NET_MALLOC_FUNC                  pvPortMalloc
 #define TCPIP_HTTP_NET_FREE_FUNC                    vPortFree
 #define TCPIP_HTTP_NET_CONSOLE_CMD           		false
+
+
+
+/*** NBNS Configuration ***/
+#define TCPIP_STACK_USE_NBNS
+#define TCPIP_NBNS_TASK_TICK_RATE   110
 
 
 
@@ -764,7 +764,7 @@ extern "C" {
 
 /*** TCPIP Heap Configuration ***/
 #define TCPIP_STACK_USE_INTERNAL_HEAP
-#define TCPIP_STACK_DRAM_SIZE                       385536
+#define TCPIP_STACK_DRAM_SIZE                       409600
 #define TCPIP_STACK_DRAM_RUN_LIMIT                  2048
 
 #define TCPIP_STACK_MALLOC_FUNC                     malloc
@@ -820,7 +820,7 @@ extern "C" {
 
 /* TCP/IP RTOS Configurations*/
 #define TCPIP_RTOS_STACK_SIZE                1024
-#define TCPIP_RTOS_PRIORITY             1
+#define TCPIP_RTOS_PRIORITY             3
 
 
 
