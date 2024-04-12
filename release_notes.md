@@ -1,8 +1,58 @@
 ![Microchip logo](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_logo.png)
 ![Harmony logo small](https://raw.githubusercontent.com/wiki/Microchip-MPLAB-Harmony/Microchip-MPLAB-Harmony.github.io/images/microchip_mplab_harmony_logo_small.png)
 
-# Microchip MPLABÂ® Harmony 3 Release Notes
+# Microchip MPLAB® Harmony 3 Release Notes
 
+## Network Application Examples for SAM9X60 Family, v3.10.0
+
+### New Features
+- Added demo applications for SAM9X60 Curiosity Development Board.
+- All applications with TCP/IP Configurator Plugin.
+
+### Improvements and Bug Fixes
+- SAM9X60-EK Evaluation Kit is obsolete, switch/update to new [SAM9X60 Curiosity Development Board](https://www.microchip.com/en-us/development-tool/EV40E67A). Few demo applications for SAM9X60-EK are still maintained (Refer to the demo documentation). 
+- Fixed INVALID_SOCKET handle error condition.
+- Moved at91bootstrap binaries from 'apps/binaries' folder to 'deps' folder.
+- Fixed the wolfSSL+FreeRTOS demos to work with secure port 443.
+- Updated demo documentation.
+- Bug fixes in package.yml
+
+### Known Issues
+- Poor IPERF throughput in 'TCP server' mode.
+	- Issue under investigation.
+- While regenerationg the web_net_server_qspi_mpfs demo configurations do not overwrite the mpfs_net_img.c file.
+    - The symbols used in the automatically generated file are not present in the project.
+- Build warnings for third_party/wolfMQTT/mqtt_socket.c in wolfMQTT demo. Workaround is to uncheck 'Make warnings into errors' in xc32 options.
+- wolfssl_tcp_client demos (BareMetal/RTOS based) requires higher TCPIP_TCP_SOCKET_DEFAULT_RX_SIZE to perform SSL negotiation & establish a connection with the remote server with secure port 443.
+	- After the connection is established, the application does not close the connection for few remote servers. 
+	- Application works good i.e., closes the connection for most of the servers (No issues seen).
+	- Issue under investigation.
+- web_net_server demos (BareMetal/RTOS based) delays updating the web_pages during run time.
+	- Increasing the TCPIP_HTTP_NET_SKT_RX_BUFF_SIZE size improves it and makes the web_pages better responsive.
+	- Issue under investigation.
+	
+### Development Tools
+
+- [MPLAB® X IDE, v6.20](https://www.microchip.com/mplab/mplab-x-ide) or later
+- [MPLAB® XC32 C/C++ Compiler, v4.35](https://www.microchip.com/mplab/compilers) or later
+- [MPLAB® Code Configurator(MCC) Plugin, v5.5.0](https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator) or later
+- [MPLAB® Harmony v3 net repository, v3.11.1](https://github.com/Microchip-MPLAB-Harmony/net/tree/v3.11.1)
+- [MPLAB® Harmony v3 net\_apps\_sam\_9x60 demo apps repository, v3.10.0](https://github.com/Microchip-MPLAB-Harmony/net_apps_sam_9x60/tree/v3.10.0)
+
+### Development Kit Support
+
+This release supports applications for the following development kit.
+
+| Development Kits |
+| --- |
+| [SAM9X60-EK Evaluation Kit](https://www.microchip.com/en-us/development-tool/DT100126) |
+| [SAM9X60 Curiosity Development Board](https://www.microchip.com/en-us/development-tool/EV40E67A)|
+
+## Net Release Notes
+
+- See the [Net v3.11.1 Release Notes](https://github.com/Microchip-MPLAB-Harmony/net/tree/v3.11.1)
+
+---
 ## Harmony 3 Network application examples for SAM9X60 family  v3.9.0
 
 ### New Features
