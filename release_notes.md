@@ -3,6 +3,27 @@
 
 # Microchip MPLAB® Harmony 3 Release Notes
 
+## Network Application Examples for SAM9X60 Family, v3.10.1
+
+### New Features
+- None
+
+### Improvements and Bug Fixes
+- Documentation updates
+
+### Known Issues
+- Same as previous release (v3.10.0)
+	
+### Development Tools
+- Same as previous release (v3.10.0)
+
+### Development Kit Support
+- Same as previous release (v3.10.0)
+
+## Net Release Notes
+- Same as previous release (v3.10.0)
+
+---
 ## Network Application Examples for SAM9X60 Family, v3.10.0
 
 ### New Features
